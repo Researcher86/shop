@@ -6,26 +6,17 @@ import java.util.List;
  * Created by Tanat on 30.09.2015.
  */
 public class Cart {
-    private Client client;
     private List<Order> orders;
 
     public Cart() {
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
     }
 
     public List<Order> getOrders() {
         return orders;
     }
 
-    public void addOrder(Order orders) {
-        this.orders.add(orders);
+    public void addGoods(Goods goods, int amount) {
+        this.orders.add(new Order(goods, amount));
     }
 
     public int getTotalPrice() {

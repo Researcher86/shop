@@ -32,6 +32,7 @@ public class CategoryOfGoods {
 
     public void addGoods(Goods goods) {
         this.goods.add(goods);
+        goods.getCategoryOfGoods().getGoods().remove(goods);
         goods.setCategoryOfGoods(this);
     }
 }
