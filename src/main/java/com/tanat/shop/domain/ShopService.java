@@ -1,12 +1,13 @@
 package com.tanat.shop.domain;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by Tanat on 30.09.2015.
  */
 public class ShopService {
-    private Map<Client, Cart> clientCartMap;
+    private Map<Client, Cart> clientCartMap = new HashMap<>();
 
     public void clientByGoods(Client client, Goods goods, int amount) {
         Cart cart = clientCartMap.get(client);
@@ -17,6 +18,9 @@ public class ShopService {
         }
 
         cart.addGoods(goods, amount);
+    }
 
+    public Cart getCartByClient(Client client) {
+        return clientCartMap.get(client);
     }
 }

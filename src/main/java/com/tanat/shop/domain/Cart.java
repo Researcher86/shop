@@ -1,12 +1,13 @@
 package com.tanat.shop.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Tanat on 30.09.2015.
  */
 public class Cart {
-    private List<Order> orders;
+    private List<Order> orders = new ArrayList<>();
 
     public Cart() {
     }

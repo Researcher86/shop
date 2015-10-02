@@ -8,10 +8,9 @@ import java.util.List;
  */
 public class CategoryOfGoods {
     private String name;
-    private List<Goods> goods;
+    private List<Goods> goods = new ArrayList<>();
 
     public CategoryOfGoods() {
-        this.goods = new ArrayList<>();
     }
 
     public CategoryOfGoods(String name) {
@@ -32,7 +31,10 @@ public class CategoryOfGoods {
 
     public void addGoods(Goods goods) {
         this.goods.add(goods);
-        goods.getCategoryOfGoods().getGoods().remove(goods);
+
+        if (goods.getCategoryOfGoods() != null) {
+            goods.getCategoryOfGoods().getGoods().remove(goods);
+        }
         goods.setCategoryOfGoods(this);
     }
 }
