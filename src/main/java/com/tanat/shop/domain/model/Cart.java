@@ -1,4 +1,4 @@
-package com.tanat.shop.domain;
+package com.tanat.shop.domain.model;
 
 import java.util.ArrayList;
 import java.util.List;

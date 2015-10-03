@@ -1,10 +1,8 @@
-package com.tanat.shop.domain;
+package com.tanat.shop.domain.model;
 
 import org.junit.Test;
 
 import java.util.Calendar;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Tanat on 02.10.2015.

@@ -1,4 +1,4 @@
-package com.tanat.shop.domain;
+package com.tanat.shop.domain.model;
 
 /**
  * Created by Tanat on 30.09.2015.
