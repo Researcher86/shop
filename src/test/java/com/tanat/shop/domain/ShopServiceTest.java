@@ -27,11 +27,11 @@ public class ShopServiceTest {
             System.out.println(goods.getName() + " - " + goods.getCategoryOfGoods().getName());
         }
 
-        Comment comment = new Comment("Супер!", pencel, tanat, Calendar.getInstance());
-        Comment comment2 = new Comment("Супер! Супер!", pencel2, janara, Calendar.getInstance());
+        Comment tanatComment = new Comment("Супер!", pencel, tanat, Calendar.getInstance());
+        Comment janaraComment = new Comment("Супер! Супер!", pencel2, janara, Calendar.getInstance());
 
-        System.out.println(comment.getClient().getFio() + " " + comment.getGoods().getName() + " " + comment.getText());
-        System.out.println(comment2.getClient().getFio() + " " + comment2.getGoods().getName() + " " + comment2.getText());
+        System.out.println(tanatComment.getClient().getFio() + " " + tanatComment.getGoods().getName() + " " + tanatComment.getText());
+        System.out.println(janaraComment.getClient().getFio() + " " + janaraComment.getGoods().getName() + " " + janaraComment.getText());
 
         ShopService shopService = new ShopService();
         shopService.clientByGoods(tanat, pencel, 3);
