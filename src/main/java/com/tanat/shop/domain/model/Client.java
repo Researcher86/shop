@@ -6,15 +6,15 @@ package com.tanat.shop.domain.model;
 public class Client {
     private String fio;
     private String phone;
-    private String shippingAddress;
+    private String address;
 
     public Client() {
     }
 
-    public Client(String fio, String phone, String shippingAddress) {
+    public Client(String fio, String phone, String address) {
         this.fio = fio;
         this.phone = phone;
-        this.shippingAddress = shippingAddress;
+        this.address = address;
     }
 
     public String getFio() {
@@ -33,11 +33,11 @@ public class Client {
         this.phone = phone;
     }
 
-    public String getShippingAddress() {
-        return shippingAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setShippingAddress(String shippingAddress) {
-        this.shippingAddress = shippingAddress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
