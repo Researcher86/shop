@@ -14,11 +14,11 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(String text, Goods goods, Client client, Calendar date) {
+    public Comment(String text, Goods goods, Client client) {
         this.text = text;
         this.goods = goods;
         this.client = client;
-        this.date = date;
+        this.date = Calendar.getInstance();
     }
 
     public String getText() {

@@ -25,16 +25,27 @@ public class ShopServiceTest {
             System.out.println(goods.getName() + " - " + goods.getCategoryOfGoods().getName());
         }
 
-        Comment tanatComment = new Comment("Супер!", pencel, tanat, Calendar.getInstance());
-        Comment janaraComment = new Comment("Супер! Супер!", pencel2, janara, Calendar.getInstance());
+        System.out.println("Comment*******************************");
 
-        System.out.println(tanatComment.getClient().getFio() + " " + tanatComment.getGoods().getName() + " " + tanatComment.getText());
-        System.out.println(janaraComment.getClient().getFio() + " " + janaraComment.getGoods().getName() + " " + janaraComment.getText());
+        Comment tanatComment = new Comment("Супер!", pencel, tanat);
+        Comment janaraComment = new Comment("Супер! Супер!", pencel2, janara);
+
+        System.out.println(tanatComment.getClient().getFio() + " " +
+                tanatComment.getGoods().getName() + " " +
+                tanatComment.getText() + " " +
+                tanatComment.getDate().getTime());
+
+        System.out.println(janaraComment.getClient().getFio() + " " +
+                janaraComment.getGoods().getName() + " " +
+                janaraComment.getText() + " " +
+                janaraComment.getDate().getTime());
 
         ShopService shopService = new ShopService();
         shopService.clientByGoods(tanat, pencel, 3);
         shopService.clientByGoods(tanat, pencel2, 2);
         shopService.clientByGoods(janara, pencel2, 2);
+
+        System.out.println("Cart*******************************");
 
         Cart tanatCart = shopService.getCartByClient(tanat);
         for (Order order : tanatCart.getOrders()) {
@@ -45,6 +56,8 @@ public class ShopServiceTest {
         }
         System.out.println("Tanat cart price: " + tanatCart.getTotalPrice());
 
+        System.out.println("Cart*******************************");
+
         Cart janaraCart = shopService.getCartByClient(janara);
         for (Order order : janaraCart.getOrders()) {
             System.out.println("Name: " + order.getGoods().getName() +
@@ -53,5 +66,6 @@ public class ShopServiceTest {
                     ", sum: " + order.getTotalPrice());
         }
         System.out.println("janara cart price: " + janaraCart.getTotalPrice());
+
     }
 }
