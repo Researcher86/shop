@@ -8,9 +8,10 @@ import static org.junit.Assert.assertTrue;
 
 
 /**
+ * Тестирование модели электронного магазина
  * Created by Tanat on 02.10.2015.
  */
-public class ShopServiceTest {
+public class ShopModelTest {
 
     private Client tanat;
     private Goods pencel;
@@ -54,11 +55,11 @@ public class ShopServiceTest {
 
     @Test
     public void testCommentForGoods() throws Exception {
-        Comment tanatComment = new Comment("Супер!", pencel, tanat);
+        Comment comment = new Comment("Супер!", pencel, tanat);
 
-        assertNotNull("Comment client is null", tanatComment.getClient());
-        assertNotNull("Comment goods is null", tanatComment.getGoods());
-        assertNotNull("Comment text is null", tanatComment.getText());
-        assertNotNull("Comment date is null", tanatComment.getDate());
+        assertNotNull("Comment client is null", comment.getClient());
+        assertNotNull("Comment goods is null", comment.getGoods());
+        assertNotNull("Comment text is null", comment.getText());
+        assertNotNull("Comment date is null", comment.getDate());
     }
 }
