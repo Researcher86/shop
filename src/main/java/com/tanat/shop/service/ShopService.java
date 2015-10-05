@@ -1,4 +1,8 @@
-package com.tanat.shop.domain.model;
+package com.tanat.shop.service;
+
+import com.tanat.shop.model.Cart;
+import com.tanat.shop.model.Client;
+import com.tanat.shop.model.Goods;
 
 import java.util.HashMap;
 import java.util.Map;

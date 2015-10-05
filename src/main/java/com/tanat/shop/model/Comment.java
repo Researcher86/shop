@@ -1,4 +1,4 @@
-package com.tanat.shop.domain.model;
+package com.tanat.shop.model;
 
 import java.util.Calendar;
 
