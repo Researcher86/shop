@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class CartDao extends AbstractDao {
 
-    public Cart getById(int id) throws DaoException {
+    public Cart getById(int id) {
         try (Connection connection = getConnection();
              PreparedStatement stat = connection.prepareStatement("SELECT * FROM cart WHERE id = ?")) {
             stat.setInt(1, id);
@@ -24,8 +24,9 @@ public class CartDao extends AbstractDao {
 
             return null; /*result.getString("body");*/
         } catch (Exception e) {
-            throw new DaoException("Cart.getById", e);
+//            throw new DaoException("Cart.getById", e);
         }
+        return null;
     }
 
     public List<Cart> getByClient(Client client) {
