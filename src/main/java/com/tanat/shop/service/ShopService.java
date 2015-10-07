@@ -1,8 +1,6 @@
 package com.tanat.shop.service;
 
-import com.tanat.shop.model.Cart;
-import com.tanat.shop.model.Client;
-import com.tanat.shop.model.Goods;
+import com.tanat.shop.model.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,20 +9,30 @@ import java.util.Map;
  * Created by Tanat on 30.09.2015.
  */
 public class ShopService {
-    private Map<Client, Cart> clientCartMap = new HashMap<>();
 
-    public void clientByGoods(Client client, Goods goods, int amount) {
-        Cart cart = clientCartMap.get(client);
+    public Cart newCart() {
+        return new Cart();
+    }
 
-        if (cart == null) {
-            cart = new Cart();
-            clientCartMap.put(client, cart);
-        }
+    public CategoryOfGoods newCategoryOfGoods(String name) {
+        return new CategoryOfGoods(name);
+    }
+    
+    public Comment newComment(String text, Client client) {
+        return new Comment(text, client);
+    }
 
+    public void addCommentForGoods(Comment comment, Goods goods) {
+        comment.setGoods(goods);
+    }
+
+    public void addGoodsInCategory(Goods goods, CategoryOfGoods categoryOfGoods) {
+        categoryOfGoods.addGoods(goods);
+    }
+
+    public void cartAddGoods(Cart cart, Goods goods, int amount) {
         cart.addGoods(goods, amount);
     }
-
-    public Cart getCartByClient(Client client) {
-        return clientCartMap.get(client);
-    }
+    
+    
 }

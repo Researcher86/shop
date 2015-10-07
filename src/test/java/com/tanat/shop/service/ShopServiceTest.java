@@ -1,11 +1,10 @@
 package com.tanat.shop.service;
 
-import com.tanat.shop.model.Cart;
-import com.tanat.shop.model.Client;
-import com.tanat.shop.model.Goods;
-import com.tanat.shop.model.Order;
+import com.tanat.shop.model.*;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Date;
 
 import static org.junit.Assert.*;
 
@@ -15,24 +14,63 @@ import static org.junit.Assert.*;
  */
 public class ShopServiceTest {
 
+    private ShopService shopService;
     private Client tanat;
     private Goods pencel;
     private Goods pencel2;
 
     @Before
     public void setUp() throws Exception {
-        tanat = new Client("Альпенов Танат Маратович", "87011520885", "Дощанова 133б");
+        shopService = new ShopService();
+        tanat = new Client("Альпенов Танат Маратович", "87011520885", "Дощанова 133б", "researcher86@mail.ru");
         pencel = new Goods("Ручка", 5, "Обычная", "Обычная ручка", new byte[5]);
         pencel2 = new Goods("Ручка2", 5, "Обычная", "Обычная ручка", new byte[5]);
     }
 
     @Test
-    public void testClientByGoods() throws Exception {
-        ShopService shopService = new ShopService();
-        shopService.clientByGoods(tanat, pencel, 3);
-        shopService.clientByGoods(tanat, pencel2, 2);
+    public void testNewCart() throws Exception {
+        Cart cart = shopService.newCart();
+        assertNotNull("Not create cart", cart);
+    }
 
-        Cart tanatCart = shopService.getCartByClient(tanat);
+    @Test
+    public void testNewCategoryOfGoods() throws Exception {
+        CategoryOfGoods categoryOfGoods = shopService.newCategoryOfGoods("Канцтовары");
+        assertNotNull("Not create categoryOfGoods", categoryOfGoods);
+    }
+
+    @Test
+    public void testNewComment() throws Exception {
+        Comment comment = shopService.newComment("Test", tanat);
+        assertNotNull("Not create comment for goods", comment);
+    }
+
+    @Test
+    public void testAddCommentForGoods() throws Exception {
+        Comment comment = shopService.newComment("Test", tanat);
+
+        shopService.addCommentForGoods(comment, pencel);
+
+        assertTrue("Incorrect goods in comment", comment.getGoods() == pencel);
+    }
+
+    @Test
+    public void testAddGoodsInCategory() throws Exception {
+        CategoryOfGoods categoryOfGoods = shopService.newCategoryOfGoods("Test");
+
+        shopService.addGoodsInCategory(pencel, categoryOfGoods);
+
+        assertTrue("Incorrect add GoodsInCategory", categoryOfGoods.getGoods().contains(pencel));
+        assertTrue("Incorrect add GoodsInCategory", pencel.getCategoryOfGoods() == categoryOfGoods);
+    }
+
+    @Test
+    public void testCartAddGoods() throws Exception {
+        Cart tanatCart = new Cart(tanat, "Низнаю куда");
+
+        shopService.cartAddGoods(tanatCart, pencel, 3);
+        shopService.cartAddGoods(tanatCart, pencel2, 2);
+
         for (Order order : tanatCart.getOrders()) {
             assertNotNull("Order is nul", order);
             assertNotNull("Goods is nul", order.getGoods());
@@ -42,14 +80,5 @@ public class ShopServiceTest {
         }
 
         assertTrue("Cart total price error", tanatCart.getTotalPrice() == 25);
-    }
-
-    @Test
-    public void testGetCartByClient() throws Exception {
-        ShopService shopService = new ShopService();
-        shopService.clientByGoods(tanat, pencel, 3);
-        shopService.clientByGoods(tanat, pencel2, 2);
-
-        assertNotNull("Cart is nul", shopService.getCartByClient(tanat));
     }
 }

@@ -6,10 +6,33 @@ import java.util.List;
 /**
  * Created by Tanat on 30.09.2015.
  */
-public class Cart {
+public class Cart extends AbstractModel {
+    private Client client;
+    private String shippingAddress;
     private List<Order> orders = new ArrayList<>();
 
     public Cart() {
+    }
+
+    public Cart(Client client, String shippingAddress) {
+        this.client = client;
+        this.shippingAddress = shippingAddress;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public String getShippingAddress() {
+        return shippingAddress;
+    }
+
+    public void setShippingAddress(String shippingAddress) {
+        this.shippingAddress = shippingAddress;
     }
 
     public List<Order> getOrders() {

@@ -3,10 +3,9 @@ package com.tanat.shop.model;
 /**
  * Created by Tanat on 30.09.2015.
  */
-public class Order {
+public class Order extends AbstractModel {
     private Goods goods;
     private int goodsCount;
-    private String shippingAddress;
 
     public Order() {
     }
@@ -30,14 +29,6 @@ public class Order {
 
     public void setGoodsCount(int goodsCount) {
         this.goodsCount = goodsCount;
-    }
-
-    public String getShippingAddress() {
-        return shippingAddress;
-    }
-
-    public void setShippingAddress(String shippingAddress) {
-        this.shippingAddress = shippingAddress;
     }
 
     public int getTotalPrice() {

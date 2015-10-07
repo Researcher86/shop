@@ -5,7 +5,7 @@ import java.util.Calendar;
 /**
  * Created by Tanat on 02.10.2015.
  */
-public class Comment {
+public class Comment extends AbstractModel {
     private String text;
     private Calendar date;
     private Goods goods;
@@ -14,9 +14,8 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(String text, Goods goods, Client client) {
+    public Comment(String text, Client client) {
         this.text = text;
-        this.goods = goods;
         this.client = client;
         this.date = Calendar.getInstance();
     }

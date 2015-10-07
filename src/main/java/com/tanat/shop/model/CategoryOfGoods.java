@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by Tanat on 30.09.2015.
  */
-public class CategoryOfGoods {
+public class CategoryOfGoods extends AbstractModel {
     private String name;
     private List<Goods> goods = new ArrayList<>();
 

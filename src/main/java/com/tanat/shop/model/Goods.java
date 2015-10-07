@@ -3,7 +3,7 @@ package com.tanat.shop.model;
 /**
  * Created by Tanat on 30.09.2015.
  */
-public class Goods {
+public class Goods extends AbstractModel {
     private String name;
     private int price;
     private CategoryOfGoods categoryOfGoods;
