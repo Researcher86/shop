@@ -1,25 +1,33 @@
 package com.tanat.shop.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Tanat on 30.09.2015.
  */
-public class Goods extends AbstractModel {
+public class Goods {
+    private int id;
     private String name;
     private int price;
-    private CategoryOfGoods categoryOfGoods;
-    private String shortDescription;
-    private String fullDescription;
-    private byte[] picture;
+    private String description;
+    private List<Comment> comments = new ArrayList<>();
 
     public Goods() {
     }
 
-    public Goods(String name, int price, String shortDescription, String fullDescription, byte[] picture) {
+    public Goods(String name, int price, String description) {
         this.name = name;
         this.price = price;
-        this.shortDescription = shortDescription;
-        this.fullDescription = fullDescription;
-        this.picture = picture;
+        this.description = description;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -38,35 +46,19 @@ public class Goods extends AbstractModel {
         this.price = price;
     }
 
-    public CategoryOfGoods getCategoryOfGoods() {
-        return categoryOfGoods;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCategoryOfGoods(CategoryOfGoods categoryOfGoods) {
-        this.categoryOfGoods = categoryOfGoods;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getShortDescription() {
-        return shortDescription;
+    public List<Comment> getComments() {
+        return comments;
     }
 
-    public void setShortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
-    }
-
-    public String getFullDescription() {
-        return fullDescription;
-    }
-
-    public void setFullDescription(String fullDescription) {
-        this.fullDescription = fullDescription;
-    }
-
-    public byte[] getPicture() {
-        return picture;
-    }
-
-    public void setPicture(byte[] picture) {
-        this.picture = picture;
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

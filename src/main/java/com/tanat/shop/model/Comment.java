@@ -5,10 +5,10 @@ import java.util.Calendar;
 /**
  * Created by Tanat on 02.10.2015.
  */
-public class Comment extends AbstractModel {
+public class Comment {
+    private int id;
     private String text;
     private Calendar date;
-    private Goods goods;
     private Client client;
 
     public Comment() {
@@ -18,6 +18,14 @@ public class Comment extends AbstractModel {
         this.text = text;
         this.client = client;
         this.date = Calendar.getInstance();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getText() {
@@ -34,14 +42,6 @@ public class Comment extends AbstractModel {
 
     public void setDate(Calendar date) {
         this.date = date;
-    }
-
-    public Goods getGoods() {
-        return goods;
-    }
-
-    public void setGoods(Goods goods) {
-        this.goods = goods;
     }
 
     public Client getClient() {

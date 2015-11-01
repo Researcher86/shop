@@ -3,7 +3,8 @@ package com.tanat.shop.model;
 /**
  * Created by Tanat on 30.09.2015.
  */
-public class Client extends AbstractModel {
+public class Client {
+    private int id;
     private String fio;
     private String phone;
     private String address;
@@ -17,6 +18,14 @@ public class Client extends AbstractModel {
         this.phone = phone;
         this.address = address;
         this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFio() {

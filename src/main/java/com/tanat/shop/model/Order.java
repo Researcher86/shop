@@ -3,7 +3,8 @@ package com.tanat.shop.model;
 /**
  * Created by Tanat on 30.09.2015.
  */
-public class Order extends AbstractModel {
+public class Order {
+    private int id;
     private Goods goods;
     private int goodsCount;
 
@@ -13,6 +14,14 @@ public class Order extends AbstractModel {
     public Order(Goods goods, int goodsCount) {
         this.goods = goods;
         this.goodsCount = goodsCount;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Goods getGoods() {

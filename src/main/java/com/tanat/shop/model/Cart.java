@@ -6,7 +6,8 @@ import java.util.List;
 /**
  * Created by Tanat on 30.09.2015.
  */
-public class Cart extends AbstractModel {
+public class Cart {
+    private int id;
     private Client client;
     private String shippingAddress;
     private List<Order> orders = new ArrayList<>();
@@ -17,6 +18,14 @@ public class Cart extends AbstractModel {
     public Cart(Client client, String shippingAddress) {
         this.client = client;
         this.shippingAddress = shippingAddress;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Client getClient() {
@@ -39,8 +48,8 @@ public class Cart extends AbstractModel {
         return orders;
     }
 
-    public void addGoods(Goods goods, int amount) {
-        this.orders.add(new Order(goods, amount));
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     public int getTotalPrice() {

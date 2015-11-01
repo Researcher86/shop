@@ -6,7 +6,8 @@ import java.util.List;
 /**
  * Created by Tanat on 30.09.2015.
  */
-public class CategoryOfGoods extends AbstractModel {
+public class CategoryOfGoods {
+    private int id;
     private String name;
     private List<Goods> goods = new ArrayList<>();
 
@@ -15,6 +16,14 @@ public class CategoryOfGoods extends AbstractModel {
 
     public CategoryOfGoods(String name) {
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -29,12 +38,7 @@ public class CategoryOfGoods extends AbstractModel {
         return goods;
     }
 
-    public void addGoods(Goods goods) {
-        this.goods.add(goods);
-
-        if (goods.getCategoryOfGoods() != null) {
-            goods.getCategoryOfGoods().getGoods().remove(goods);
-        }
-        goods.setCategoryOfGoods(this);
+    public void setGoods(List<Goods> goods) {
+        this.goods = goods;
     }
 }
