@@ -44,12 +44,12 @@ public class Cart {
         this.shippingAddress = shippingAddress;
     }
 
-    public List<Order> getOrders() {
-        return orders;
-    }
+    public void addGoods(Goods goods, int amount) {
+        if (orders == null) {
+            orders = new ArrayList<>();
+        }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+        orders.add(new Order(goods, amount));
     }
 
     public int getTotalPrice() {

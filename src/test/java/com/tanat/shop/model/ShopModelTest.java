@@ -40,13 +40,13 @@ public class ShopModelTest {
         Goods pencel = new Goods("Ручка", 5, "Обычная ручка");
 
         CategoryOfGoods categoryOfGoods = new CategoryOfGoods("Канцтовары");
-        categoryOfGoods.getGoods().add(pencel);
-        categoryOfGoods.getGoods().add(pencel);
+        categoryOfGoods.addGoods(pencel);
+        categoryOfGoods.addGoods(pencel);
 
         assertTrue("Incorrect category name", "Канцтовары".equals(categoryOfGoods.getName()));
-        assertTrue("Incorrect list goods", categoryOfGoods.getGoods().size() == 2);
+        assertTrue("Incorrect list goods", categoryOfGoods.getGoodsList().size() == 2);
 
-        for (Goods goods : categoryOfGoods.getGoods()) {
+        for (Goods goods : categoryOfGoods.getGoodsList()) {
             assertNotNull("Goods is null", goods);
         }
     }
@@ -56,7 +56,7 @@ public class ShopModelTest {
         Client client = new Client("Альпенов Танат Маратович", "87011520885", "Дощанова 133б", "researcher86@mail.ru");
         Goods pencel = new Goods("Ручка", 5, "Обычная ручка");
 
-        pencel.getComments().add(new Comment("Супер!", client));
+        pencel.addComments(new Comment("Супер!", client));
 
         final Comment comment = pencel.getComments().get(0);
         assertTrue("Comment client is null", "Альпенов Танат Маратович".equals(comment.getClient().getFio()));
@@ -70,11 +70,10 @@ public class ShopModelTest {
         Goods pencel = new Goods("Ручка", 5, "Обычная ручка");
 
         Cart cart = new Cart(client, "Низнаю куда");
-        cart.getOrders().add(new Order(pencel, 2));
+        cart.addGoods(pencel, 2);
 
         assertTrue("Cart incorrect ShippingAddress", "Низнаю куда".equals(cart.getShippingAddress()));
         assertTrue("Cart incorrect client", cart.getClient() == client);
-        assertTrue("Cart order is empty", cart.getOrders().size() == 1);
         assertTrue("Cart TotalPrice", cart.getTotalPrice() == 10);
     }
 

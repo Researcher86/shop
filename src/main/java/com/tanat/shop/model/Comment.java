@@ -12,12 +12,13 @@ public class Comment {
     private Client client;
 
     public Comment() {
+        this.date = Calendar.getInstance();
     }
 
     public Comment(String text, Client client) {
+        this();
         this.text = text;
         this.client = client;
-        this.date = Calendar.getInstance();
     }
 
     public int getId() {

@@ -1,6 +1,7 @@
 package com.tanat.shop.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
 public class CategoryOfGoods {
     private int id;
     private String name;
-    private List<Goods> goods = new ArrayList<>();
+    private List<Goods> goodsList = new ArrayList<>();
 
     public CategoryOfGoods() {
     }
@@ -34,11 +35,15 @@ public class CategoryOfGoods {
         this.name = name;
     }
 
-    public List<Goods> getGoods() {
-        return goods;
+    public List<Goods> getGoodsList() {
+        return Collections.unmodifiableList(goodsList);
     }
 
-    public void setGoods(List<Goods> goods) {
-        this.goods = goods;
+    public void addGoods(Goods goods) {
+        if (goodsList == null) {
+            goodsList = new ArrayList<>();
+        }
+        goodsList.add(goods);
     }
+
 }

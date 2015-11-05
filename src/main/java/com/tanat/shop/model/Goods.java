@@ -1,6 +1,7 @@
 package com.tanat.shop.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -55,10 +56,14 @@ public class Goods {
     }
 
     public List<Comment> getComments() {
-        return comments;
+        return Collections.unmodifiableList(comments);
     }
 
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
+    public void addComments(Comment comment) {
+        if (comments == null) {
+            comments = new ArrayList<>();
+        }
+
+        comments.add(comment);
     }
 }
