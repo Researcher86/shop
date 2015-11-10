@@ -1,10 +1,8 @@
 package com.tanat.shop.model;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Calendar;
-import java.util.Date;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -70,7 +68,7 @@ public class ShopModelTest {
         Goods pencel = new Goods("Ручка", 5, "Обычная ручка");
 
         Cart cart = new Cart(client, "Низнаю куда");
-        cart.addGoods(pencel, 2);
+        cart.addOrder(pencel, 2);
 
         assertTrue("Cart incorrect ShippingAddress", "Низнаю куда".equals(cart.getShippingAddress()));
         assertTrue("Cart incorrect client", cart.getClient() == client);

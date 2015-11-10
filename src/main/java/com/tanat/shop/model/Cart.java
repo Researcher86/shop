@@ -44,7 +44,7 @@ public class Cart {
         this.shippingAddress = shippingAddress;
     }
 
-    public void addGoods(Goods goods, int amount) {
+    public void addOrder(Goods goods, int amount) {
         if (orders == null) {
             orders = new ArrayList<>();
         }
