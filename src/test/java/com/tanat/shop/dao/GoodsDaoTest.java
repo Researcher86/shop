@@ -8,7 +8,9 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.junit.Assert.assertTrue;
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 /**
  * Created by Tanat on 12.11.2015.
@@ -27,8 +29,29 @@ public class GoodsDaoTest {
     @Rollback(false)
     public void testSave() throws Exception {
         Goods goods = new Goods("Ручка", 5, "Обычная ручка");
+
         dao.saveAndFlush(goods);
 
         assertTrue(dao.findAll().size() == 1);
+    }
+
+    @Test
+    @Rollback(false)
+    public void testGetById() throws Exception {
+        Goods goods = new Goods("Ручка", 5, "Обычная ручка");
+
+        dao.saveAndFlush(goods);
+
+        assertNotNull(dao.getOne(goods.getId()));
+    }
+
+    @Test
+    @Rollback(false)
+    public void testFindLike() throws Exception {
+        Goods goods = new Goods("Ручка", 5, "Обычная ручка");
+
+        dao.saveAndFlush(goods);
+
+        assertNotNull(dao.findByNameLike(goods.getName() + "%"));
     }
 }
