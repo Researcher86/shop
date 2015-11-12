@@ -4,12 +4,6 @@
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <jpa:repositories base-package="com.tanat.shop.dao" entity-manager-factory-ref="emf" />
-
-    <!--Включаем поддержку транзакций-->
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>
-    <tx:annotation-driven transaction-manager="transactionManager"/>
-
     <!--Настраиваем подключение к БД-->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -37,4 +31,11 @@
             </props>
         </property>
     </bean>
+
+    <!--Включаем поддержку транзакций-->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!--Включаем поддержку Spring Data-->
+    <jpa:repositories base-package="com.tanat.shop.dao" entity-manager-factory-ref="emf" />
 </beans>

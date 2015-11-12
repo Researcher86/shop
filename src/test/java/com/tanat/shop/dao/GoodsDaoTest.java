@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
-
 
 import static org.junit.Assert.assertTrue;
 
@@ -17,12 +15,11 @@ import static org.junit.Assert.assertTrue;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({
-        "file:src/main/webapp/WEB-INF/spring/applicationContext.xml",
+//        "file:src/main/webapp/WEB-INF/spring/applicationContext.xml",
         "file:src/main/webapp/WEB-INF/spring/database.xml"
 })
 public class GoodsDaoTest {
 
-    @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
     private GoodsDao dao;
 
