@@ -17,7 +17,6 @@ public class GoodsDaoTest extends AbstractDaoTest {
     private GoodsDao dao;
 
     @Test
-    @Rollback(false)
     public void testSave() throws Exception {
         Goods goods = new Goods("Ручка", 5, "Обычная ручка");
 
@@ -27,7 +26,6 @@ public class GoodsDaoTest extends AbstractDaoTest {
     }
 
     @Test
-    @Rollback(false)
     public void testGetById() throws Exception {
         Goods goods = new Goods("Ручка", 5, "Обычная ручка");
 
@@ -37,7 +35,6 @@ public class GoodsDaoTest extends AbstractDaoTest {
     }
 
     @Test
-    @Rollback(false)
     public void testFindLike() throws Exception {
         Goods goods = new Goods("Ручка", 5, "Обычная ручка");
 
