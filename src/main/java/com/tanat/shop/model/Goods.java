@@ -16,12 +16,9 @@ public class Goods {
     @GeneratedValue
     private Long id;
 
-
     private String name;
 
-
     private int price;
-
 
     private String description;
 
@@ -29,7 +26,7 @@ public class Goods {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "goods")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "goods")
     private List<Comment> comments;
 
     public Goods() {
@@ -43,10 +40,6 @@ public class Goods {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -74,15 +67,7 @@ public class Goods {
     }
 
     public List<Comment> getComments() {
-        return Collections.unmodifiableList(comments);
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
+        return comments;
     }
 
     public void addComments(Comment comment) {
@@ -91,5 +76,13 @@ public class Goods {
         }
 
         comments.add(comment);
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

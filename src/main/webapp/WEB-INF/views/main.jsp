@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Shop</title>
+    <title>E-Shop</title>
 </head>
 <body>
 <h2>Rendering from servlet</h2>

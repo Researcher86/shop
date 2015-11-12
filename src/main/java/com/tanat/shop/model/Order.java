@@ -34,24 +34,12 @@ public class Order {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Goods getGoods() {
         return goods;
     }
 
-    public void setGoods(Goods goods) {
-        this.goods = goods;
-    }
-
     public int getGoodsCount() {
         return goodsCount;
-    }
-
-    public void setGoodsCount(int goodsCount) {
-        this.goodsCount = goodsCount;
     }
 
     public int getTotalPrice() {
@@ -62,7 +50,4 @@ public class Order {
         return cart;
     }
 
-    public void setCart(Cart cart) {
-        this.cart = cart;
-    }
 }

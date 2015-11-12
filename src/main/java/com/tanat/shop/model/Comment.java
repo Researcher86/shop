@@ -41,32 +41,16 @@ public class Comment {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getText() {
         return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
     }
 
     public Calendar getDate() {
         return date;
     }
 
-    public void setDate(Calendar date) {
-        this.date = date;
-    }
-
     public Client getClient() {
         return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
     }
 
     public Goods getGoods() {

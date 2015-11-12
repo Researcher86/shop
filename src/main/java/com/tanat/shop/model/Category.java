@@ -18,7 +18,7 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category")
-    private List<Goods> goodsList = new ArrayList<>();
+    private List<Goods> goodsList;
 
     public Category() {
     }
@@ -31,10 +31,6 @@ public class Category {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -44,7 +40,7 @@ public class Category {
     }
 
     public List<Goods> getGoodsList() {
-        return Collections.unmodifiableList(goodsList);
+        return goodsList;
     }
 
     public void addGoods(Goods goods) {

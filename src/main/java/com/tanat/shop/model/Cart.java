@@ -18,7 +18,6 @@ public class Cart {
     @JoinColumn(name = "client_id")
     private Client client;
 
-
     private String shippingAddress;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "cart")
@@ -36,16 +35,8 @@ public class Cart {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Client getClient() {
         return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
     }
 
     public String getShippingAddress() {
