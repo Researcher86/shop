@@ -1,15 +1,31 @@
 package com.tanat.shop.model;
 
+import javax.persistence.*;
 import java.util.Calendar;
 
 /**
  * Created by Tanat on 02.10.2015.
  */
+@Entity
+@Table(name = "comments")
 public class Comment {
-    private int id;
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @Column(columnDefinition = "text")
     private String text;
+
+    @Temporal(TemporalType.TIMESTAMP)
     private Calendar date;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id")
     private Client client;
+
+    @ManyToOne
+    @JoinColumn(name = "goods_id")
+    private Goods goods;
 
     public Comment() {
         this.date = Calendar.getInstance();
@@ -21,11 +37,11 @@ public class Comment {
         this.client = client;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -51,5 +67,13 @@ public class Comment {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public Goods getGoods() {
+        return goods;
+    }
+
+    public void setGoods(Goods goods) {
+        this.goods = goods;
     }
 }

@@ -1,13 +1,26 @@
 package com.tanat.shop.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Created by Tanat on 30.09.2015.
  */
+@Entity
+@Table(name = "clients")
 public class Client {
-    private int id;
+    @Id
+    @GeneratedValue
+    private Long id;
+
     private String fio;
+
     private String phone;
+
     private String address;
+
     private String email;
 
     public Client() {
@@ -20,11 +33,11 @@ public class Client {
         this.email = email;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

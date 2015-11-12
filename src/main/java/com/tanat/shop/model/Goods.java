@@ -1,5 +1,6 @@
 package com.tanat.shop.model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -7,12 +8,29 @@ import java.util.List;
 /**
  * Created by Tanat on 30.09.2015.
  */
+@Entity
+@Table(name = "goods")
 public class Goods {
-    private int id;
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+
     private String name;
+
+
     private int price;
+
+
     private String description;
-    private List<Comment> comments = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "goods")
+    private List<Comment> comments;
 
     public Goods() {
     }
@@ -23,11 +41,11 @@ public class Goods {
         this.description = description;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -57,6 +75,14 @@ public class Goods {
 
     public List<Comment> getComments() {
         return Collections.unmodifiableList(comments);
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public void addComments(Comment comment) {

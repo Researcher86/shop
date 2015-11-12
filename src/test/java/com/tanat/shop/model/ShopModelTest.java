@@ -15,36 +15,17 @@ import static org.junit.Assert.assertTrue;
 public class ShopModelTest {
 
     @Test
-    public void testClient() throws Exception {
-        Client client = new Client("Альпенов Танат Маратович", "87011520885", "Дощанова 133б", "researcher86@mail.ru");
-
-        assertTrue("Incorrect client fio", "Альпенов Танат Маратович".equals(client.getFio()));
-        assertTrue("Incorrect client phone", "87011520885".equals(client.getPhone()));
-        assertTrue("Incorrect client address", "Дощанова 133б".equals(client.getAddress()));
-        assertTrue("Incorrect client email", "researcher86@mail.ru".equals(client.getEmail()));
-    }
-
-    @Test
-    public void testGoods() throws Exception {
-        Goods goods = new Goods("Ручка", 5, "Обычная ручка");
-
-        assertTrue("Incorrect goods name", "Ручка".equals(goods.getName()));
-        assertTrue("Incorrect goods price", goods.getPrice() == 5);
-        assertTrue("Incorrect goods description", "Обычная ручка".equals(goods.getDescription()));
-    }
-
-    @Test
     public void testCategoryOfGoods() throws Exception {
         Goods pencel = new Goods("Ручка", 5, "Обычная ручка");
 
-        CategoryOfGoods categoryOfGoods = new CategoryOfGoods("Канцтовары");
-        categoryOfGoods.addGoods(pencel);
-        categoryOfGoods.addGoods(pencel);
+        Category category = new Category("Канцтовары");
+        category.addGoods(pencel);
+        category.addGoods(pencel);
 
-        assertTrue("Incorrect category name", "Канцтовары".equals(categoryOfGoods.getName()));
-        assertTrue("Incorrect list goods", categoryOfGoods.getGoodsList().size() == 2);
+        assertTrue("Incorrect category name", "Канцтовары".equals(category.getName()));
+        assertTrue("Incorrect list goods", category.getGoodsList().size() == 2);
 
-        for (Goods goods : categoryOfGoods.getGoodsList()) {
+        for (Goods goods : category.getGoodsList()) {
             assertNotNull("Goods is null", goods);
         }
     }
