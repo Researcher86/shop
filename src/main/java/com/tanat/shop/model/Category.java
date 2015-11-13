@@ -46,6 +46,7 @@ public class Category {
         if (goodsList == null) {
             goodsList = new ArrayList<>();
         }
+        goods.setCategory(this);
         goodsList.add(goods);
     }
 

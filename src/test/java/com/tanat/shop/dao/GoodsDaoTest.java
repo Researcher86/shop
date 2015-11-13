@@ -5,7 +5,6 @@ import com.tanat.shop.model.Comment;
 import com.tanat.shop.model.Goods;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
 
