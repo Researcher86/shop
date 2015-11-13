@@ -73,7 +73,7 @@ public class Goods {
         if (comments == null) {
             comments = new ArrayList<>();
         }
-
+        comment.setGoods(this);
         comments.add(comment);
     }
 
