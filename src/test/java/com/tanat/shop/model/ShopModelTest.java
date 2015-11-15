@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 
 
 /**
- * Тестирование модели электронного магазина
+ * Тестируем модель предметной области электронный магазин
  * Created by Tanat on 02.10.2015.
  */
 public class ShopModelTest {

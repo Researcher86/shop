@@ -12,6 +12,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 /**
+ * Тестируем слой DAO товаров
  * Created by Tanat on 12.11.2015.
  */
 public class GoodsDaoTest extends AbstractDaoTest {
