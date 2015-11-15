@@ -12,5 +12,6 @@ import java.util.List;
  */
 public interface CommentDao extends JpaRepository<Comment, Long> {
     List<Comment> findByGoods(Goods goods);
+
     List<Comment> findByClient(Client client);
 }

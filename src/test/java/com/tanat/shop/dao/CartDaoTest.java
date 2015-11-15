@@ -3,14 +3,12 @@ package com.tanat.shop.dao;
 import com.tanat.shop.model.Cart;
 import com.tanat.shop.model.Client;
 import com.tanat.shop.model.Goods;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Тестируем слой DAO корзины
@@ -59,7 +57,7 @@ public class CartDaoTest extends AbstractDaoTest {
         dao.saveAndFlush(cart);
 
         assertNotNull(dao.findOne(cart.getId()).getOrders());
-        assertEquals(dao.findOne(cart.getId()).getOrders().size(),  2);
+        assertEquals(dao.findOne(cart.getId()).getOrders().size(), 2);
         assertEquals(dao.findOne(cart.getId()).getTotalPrice(), 50);
     }
 }

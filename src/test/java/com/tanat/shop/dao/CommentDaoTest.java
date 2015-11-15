@@ -3,7 +3,6 @@ package com.tanat.shop.dao;
 import com.tanat.shop.model.Client;
 import com.tanat.shop.model.Comment;
 import com.tanat.shop.model.Goods;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
