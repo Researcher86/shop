@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.Calendar;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -22,9 +23,9 @@ public class ShopModelTest {
         category.addGoods(pencel);
         category.addGoods(pencel);
 
-        assertTrue("Incorrect category name", "Канцтовары".equals(category.getName()));
-        assertTrue("Incorrect list goods", category.getGoodsList().size() == 2);
-        assertTrue("Incorrect category in goods", pencel.getCategory() == category);
+        assertEquals("Incorrect category name", category.getName(), "Канцтовары");
+        assertEquals("Incorrect list goods", category.getGoodsList().size(), 2);
+        assertEquals("Incorrect category in goods", pencel.getCategory(), category);
 
         for (Goods goods : category.getGoodsList()) {
             assertNotNull("Goods is null", goods);
@@ -39,9 +40,9 @@ public class ShopModelTest {
         pencel.addComments(new Comment("Супер!", client));
 
         final Comment comment = pencel.getComments().get(0);
-        assertTrue("Comment client is null", "Альпенов Танат Маратович".equals(comment.getClient().getFio()));
-        assertTrue("Comment incorrect text ", "Супер!".equals(comment.getText()));
-        assertTrue("Comment incorrect date", Calendar.getInstance().getTime().toString().equals(comment.getDate().getTime().toString()));
+        assertEquals("Comment client is null", comment.getClient().getFio(), "Альпенов Танат Маратович");
+        assertEquals("Comment incorrect text ", comment.getText(), "Супер!");
+        assertEquals("Comment incorrect date", comment.getDate().getTime(), Calendar.getInstance().getTime());
     }
 
     @Test
@@ -49,12 +50,13 @@ public class ShopModelTest {
         Client client = new Client("Альпенов Танат Маратович", "87011520885", "Дощанова 133б", "researcher86@mail.ru");
         Goods pencel = new Goods("Ручка", 5, "Обычная ручка");
 
-        Cart cart = new Cart(client, "Низнаю куда");
+        Cart cart = new Cart(client);
+        cart.setShippingAddress("Низнаю куда");
         cart.addOrder(pencel, 2);
 
-        assertTrue("Cart incorrect ShippingAddress", "Низнаю куда".equals(cart.getShippingAddress()));
-        assertTrue("Cart incorrect client", cart.getClient() == client);
-        assertTrue("Cart TotalPrice", cart.getTotalPrice() == 10);
+        assertEquals("Cart incorrect ShippingAddress", cart.getShippingAddress(), "Низнаю куда");
+        assertEquals("Cart incorrect client", cart.getClient(), client);
+        assertEquals("Cart TotalPrice", cart.getTotalPrice(), 10);
     }
 
 }

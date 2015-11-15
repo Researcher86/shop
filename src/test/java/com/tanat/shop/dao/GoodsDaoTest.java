@@ -3,11 +3,13 @@ package com.tanat.shop.dao;
 import com.tanat.shop.model.Client;
 import com.tanat.shop.model.Comment;
 import com.tanat.shop.model.Goods;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.transaction.Transactional;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -22,29 +24,22 @@ public class GoodsDaoTest extends AbstractDaoTest {
 
     @Autowired
     private ClientDao daoClient;
+    private Goods goods;
 
-    @Test
-    public void testSave() throws Exception {
-        Goods goods = new Goods("Ручка", 5, "Обычная ручка");
-
-        dao.saveAndFlush(goods);
-
-        assertTrue(dao.findAll().size() == 1);
+    @Before
+    public void setUp() throws Exception {
+        goods = new Goods("Ручка", 5, "Обычная ручка");
     }
 
     @Test
-    public void testGetById() throws Exception {
-        Goods goods = new Goods("Ручка", 5, "Обычная ручка");
-
+    public void testSave() throws Exception {
         dao.saveAndFlush(goods);
 
-        assertNotNull(dao.getOne(goods.getId()));
+        assertNotNull(dao.findOne(goods.getId()));
     }
 
     @Test
     public void testFindLike() throws Exception {
-        Goods goods = new Goods("Ручка", 5, "Обычная ручка");
-
         dao.saveAndFlush(goods);
 
         assertNotNull(dao.findByNameLike(goods.getName() + "%"));
@@ -56,21 +51,19 @@ public class GoodsDaoTest extends AbstractDaoTest {
         Client client = new Client("Альпенов Танат Маратович", "87011520885", "Дощанова 133б", "researcher86@mail.ru");
         daoClient.saveAndFlush(client);
 
-        Goods pencel = new Goods("Ручка", 5, "Обычная ручка");
+        goods.addComments(new Comment("Супер!", client));
+        goods.addComments(new Comment("Супер!2", client));
+        dao.saveAndFlush(goods);
 
-        pencel.addComments(new Comment("Супер!", client));
-        pencel.addComments(new Comment("Супер!2", client));
-        dao.saveAndFlush(pencel);
+        Comment comment = dao.findOne(goods.getId()).getComments().get(0);
+        Comment comment2 = dao.findOne(goods.getId()).getComments().get(1);
 
-        Comment comment = dao.findOne(pencel.getId()).getComments().get(0);
-        Comment comment2 = dao.findOne(pencel.getId()).getComments().get(1);
+        assertEquals(comment.getText(), "Супер!");
+        assertEquals(comment.getGoods().getName(), "Ручка");
+        assertEquals(comment.getClient().getFio(), "Альпенов Танат Маратович");
 
-        assertTrue("Супер!".equals(comment.getText()));
-        assertTrue("Ручка".equals(comment.getGoods().getName()));
-        assertTrue("Альпенов Танат Маратович".equals(comment.getClient().getFio()));
-
-        assertTrue("Супер!2".equals(comment2.getText()));
-        assertTrue("Ручка".equals(comment2.getGoods().getName()));
-        assertTrue("Альпенов Танат Маратович".equals(comment2.getClient().getFio()));
+        assertEquals(comment2.getText(), "Супер!2");
+        assertEquals(comment2.getGoods().getName(), "Ручка");
+        assertEquals(comment2.getClient().getFio(), "Альпенов Танат Маратович");
     }
 }

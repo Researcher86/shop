@@ -26,9 +26,8 @@ public class Cart {
     public Cart() {
     }
 
-    public Cart(Client client, String shippingAddress) {
+    public Cart(Client client) {
         this.client = client;
-        this.shippingAddress = shippingAddress;
     }
 
     public Long getId() {
@@ -45,6 +44,10 @@ public class Cart {
 
     public void setShippingAddress(String shippingAddress) {
         this.shippingAddress = shippingAddress;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
     }
 
     public void addOrder(Goods goods, int amount) {

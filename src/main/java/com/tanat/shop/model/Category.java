@@ -13,7 +13,7 @@ public class Category {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
     private String name;
 
     @OneToMany(mappedBy = "category")
@@ -26,7 +26,7 @@ public class Category {
         this.name = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

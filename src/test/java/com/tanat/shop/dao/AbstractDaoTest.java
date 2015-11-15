@@ -1,11 +1,15 @@
 package com.tanat.shop.dao;
 
+import com.tanat.shop.model.*;
+import org.junit.Before;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
 /**
+ * Настройки для слоя DAO
  * Created by Tanat on 12.11.2015.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
