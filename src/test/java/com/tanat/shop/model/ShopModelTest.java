@@ -25,10 +25,6 @@ public class ShopModelTest {
         assertEquals("Incorrect category name", category.getName(), "Канцтовары");
         assertEquals("Incorrect list goods", category.getGoodsList().size(), 2);
         assertEquals("Incorrect category in goods", pencel.getCategory(), category);
-
-        for (Goods goods : category.getGoodsList()) {
-            assertNotNull("Goods is null", goods);
-        }
     }
 
     @Test
