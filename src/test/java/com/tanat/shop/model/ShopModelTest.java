@@ -21,9 +21,9 @@ public class ShopModelTest {
         category.addGoods(pencel);
         category.addGoods(pencel);
 
-        assertEquals("Incorrect category name", category.getName(), "Канцтовары");
-        assertEquals("Incorrect list goods", category.getGoodsList().size(), 2);
-        assertEquals("Incorrect category in goods", pencel.getCategory(), category);
+        assertEquals("Канцтовары", category.getName());
+        assertEquals(2, category.getGoodsList().size());
+        assertEquals(category, pencel.getCategory());
     }
 
     @Test
@@ -34,9 +34,9 @@ public class ShopModelTest {
         pencel.addComments(new Comment("Супер!", client));
 
         final Comment comment = pencel.getComments().get(0);
-        assertEquals("Comment client is null", comment.getClient().getFio(), "Альпенов Танат Маратович");
-        assertEquals("Comment incorrect text ", comment.getText(), "Супер!");
-        assertEquals("Comment incorrect date", comment.getDate().getTime(), Calendar.getInstance().getTime());
+        assertEquals("Альпенов Танат Маратович", comment.getClient().getFio());
+        assertEquals("Супер!", comment.getText());
+        assertEquals(Calendar.getInstance().getTime(), comment.getDate().getTime());
     }
 
     @Test
@@ -48,9 +48,9 @@ public class ShopModelTest {
         cart.setShippingAddress("Низнаю куда");
         cart.addOrder(pencel, 2);
 
-        assertEquals("Cart incorrect ShippingAddress", cart.getShippingAddress(), "Низнаю куда");
-        assertEquals("Cart incorrect client", cart.getClient(), client);
-        assertEquals("Cart TotalPrice", cart.getTotalPrice(), 10);
+        assertEquals("Низнаю куда", cart.getShippingAddress());
+        assertEquals(client, cart.getClient());
+        assertEquals(10, cart.getTotalPrice());
     }
 
 }

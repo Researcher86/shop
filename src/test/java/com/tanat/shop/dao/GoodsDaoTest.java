@@ -57,12 +57,12 @@ public class GoodsDaoTest extends AbstractDaoTest {
         Comment comment = goodsDao.findOne(goods.getId()).getComments().get(0);
         Comment comment2 = goodsDao.findOne(goods.getId()).getComments().get(1);
 
-        assertEquals(comment.getText(), "Супер!");
-        assertEquals(comment.getGoods().getName(), "Ручка");
-        assertEquals(comment.getClient().getFio(), "Альпенов Танат Маратович");
+        assertEquals("Супер!", comment.getText());
+        assertEquals("Ручка", comment.getGoods().getName());
+        assertEquals("Альпенов Танат Маратович", comment.getClient().getFio());
 
-        assertEquals(comment2.getText(), "Супер!2");
-        assertEquals(comment2.getGoods().getName(), "Ручка");
-        assertEquals(comment2.getClient().getFio(), "Альпенов Танат Маратович");
+        assertEquals("Супер!2", comment2.getText());
+        assertEquals("Ручка", comment2.getGoods().getName());
+        assertEquals("Альпенов Танат Маратович", comment2.getClient().getFio());
     }
 }

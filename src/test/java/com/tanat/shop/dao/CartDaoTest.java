@@ -57,7 +57,7 @@ public class CartDaoTest extends AbstractDaoTest {
         cartDao.saveAndFlush(cart);
 
         assertNotNull(cartDao.findOne(cart.getId()).getOrders());
-        assertEquals(cartDao.findOne(cart.getId()).getOrders().size(), 2);
-        assertEquals(cartDao.findOne(cart.getId()).getTotalPrice(), 50);
+        assertEquals(2, cartDao.findOne(cart.getId()).getOrders().size());
+        assertEquals(50, cartDao.findOne(cart.getId()).getTotalPrice());
     }
 }

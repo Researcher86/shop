@@ -34,8 +34,8 @@ public class CategoryDaoTest extends AbstractDaoTest {
         final String categoryName = categoryDao.findOne(category.getId()).getName();
         final String goodsCategoryName = categoryDao.findOne(category.getId()).getGoodsList().get(0).getCategory().getName();
 
-        assertEquals("Incorrect category name", categoryName, "Канцтовары");
-        assertEquals("Incorrect list goods", categoryDao.findOne(category.getId()).getGoodsList().size(), 1);
-        assertEquals("Incorrect category in goods", goodsCategoryName, categoryName);
+        assertEquals("Канцтовары", categoryName);
+        assertEquals(1, categoryDao.findOne(category.getId()).getGoodsList().size());
+        assertEquals(categoryName, goodsCategoryName);
     }
 }

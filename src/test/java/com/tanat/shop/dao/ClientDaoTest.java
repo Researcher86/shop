@@ -24,9 +24,9 @@ public class ClientDaoTest extends AbstractDaoTest {
         clientDao.saveAndFlush(client);
 
         assertNotNull(clientDao.findOne(client.getId()));
-        assertEquals(clientDao.findOne(client.getId()).getFio(), "Альпенов Танат Маратович");
-        assertEquals(clientDao.findOne(client.getId()).getPhone(), "87011520885");
-        assertEquals(clientDao.findOne(client.getId()).getAddress(), "Дощанова 133б");
-        assertEquals(clientDao.findOne(client.getId()).getEmail(), "researcher86@mail.ru");
+        assertEquals("Альпенов Танат Маратович", clientDao.findOne(client.getId()).getFio());
+        assertEquals("87011520885", clientDao.findOne(client.getId()).getPhone());
+        assertEquals("Дощанова 133б", clientDao.findOne(client.getId()).getAddress());
+        assertEquals("researcher86@mail.ru", clientDao.findOne(client.getId()).getEmail());
     }
 }

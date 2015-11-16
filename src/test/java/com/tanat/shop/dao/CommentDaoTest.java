@@ -48,10 +48,10 @@ public class CommentDaoTest extends AbstractDaoTest {
 
         assertNotNull(commentDao.findOne(comment1.getId()));
         assertNotNull(commentDao.findOne(comment1.getId()).getClient());
-        assertEquals(commentDao.findOne(comment1.getId()).getClient().getFio(), "Альпенов Танат Маратович");
+        assertEquals("Альпенов Танат Маратович", commentDao.findOne(comment1.getId()).getClient().getFio());
         assertNotNull(commentDao.findOne(comment1.getId()).getGoods());
-        assertEquals(commentDao.findOne(comment1.getId()).getGoods().getName(), "Ручка");
-        assertEquals(commentDao.findOne(comment1.getId()).getText(), "Супер!");
+        assertEquals("Ручка", commentDao.findOne(comment1.getId()).getGoods().getName());
+        assertEquals("Супер!", commentDao.findOne(comment1.getId()).getText());
         assertNotNull(commentDao.findOne(comment1.getId()).getDate().getTime());
     }
 
@@ -62,13 +62,13 @@ public class CommentDaoTest extends AbstractDaoTest {
         commentDao.saveAndFlush(comment1);
         commentDao.saveAndFlush(comment2);
 
-        assertEquals(commentDao.findByGoods(pencel).size(), 2);
+        assertEquals(2, commentDao.findByGoods(pencel).size());
 
         assertNotNull(commentDao.findOne(comment1.getId()).getGoods());
-        assertEquals(commentDao.findOne(comment1.getId()).getGoods().getName(), "Ручка");
+        assertEquals("Ручка", commentDao.findOne(comment1.getId()).getGoods().getName());
 
         assertNotNull(commentDao.findOne(comment2.getId()).getGoods());
-        assertEquals(commentDao.findOne(comment2.getId()).getGoods().getName(), "Ручка");
+        assertEquals("Ручка", commentDao.findOne(comment2.getId()).getGoods().getName());
     }
 
     @Test
@@ -81,9 +81,9 @@ public class CommentDaoTest extends AbstractDaoTest {
         assertEquals(commentDao.findByClient(client).size(), 2);
 
         assertNotNull(commentDao.findOne(comment1.getId()).getClient());
-        assertEquals(commentDao.findOne(comment1.getId()).getClient().getFio(), "Альпенов Танат Маратович");
+        assertEquals("Альпенов Танат Маратович", commentDao.findOne(comment1.getId()).getClient().getFio());
 
         assertNotNull(commentDao.findOne(comment2.getId()).getClient());
-        assertEquals(commentDao.findOne(comment2.getId()).getClient().getFio(), "Альпенов Танат Маратович");
+        assertEquals("Альпенов Танат Маратович", commentDao.findOne(comment2.getId()).getClient().getFio());
     }
 }
