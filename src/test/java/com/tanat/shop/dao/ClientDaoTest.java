@@ -15,18 +15,18 @@ import static org.junit.Assert.assertNotNull;
 public class ClientDaoTest extends AbstractDaoTest {
 
     @Autowired
-    private ClientDao dao;
+    private ClientDao clientDao;
 
     @Test
     public void testSave() throws Exception {
         Client client = new Client("Альпенов Танат Маратович", "87011520885", "Дощанова 133б", "researcher86@mail.ru");
 
-        dao.saveAndFlush(client);
+        clientDao.saveAndFlush(client);
 
-        assertNotNull(dao.findOne(client.getId()));
-        assertEquals(dao.findOne(client.getId()).getFio(), "Альпенов Танат Маратович");
-        assertEquals(dao.findOne(client.getId()).getPhone(), "87011520885");
-        assertEquals(dao.findOne(client.getId()).getAddress(), "Дощанова 133б");
-        assertEquals(dao.findOne(client.getId()).getEmail(), "researcher86@mail.ru");
+        assertNotNull(clientDao.findOne(client.getId()));
+        assertEquals(clientDao.findOne(client.getId()).getFio(), "Альпенов Танат Маратович");
+        assertEquals(clientDao.findOne(client.getId()).getPhone(), "87011520885");
+        assertEquals(clientDao.findOne(client.getId()).getAddress(), "Дощанова 133б");
+        assertEquals(clientDao.findOne(client.getId()).getEmail(), "researcher86@mail.ru");
     }
 }

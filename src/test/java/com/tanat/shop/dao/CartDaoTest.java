@@ -17,13 +17,13 @@ import static org.junit.Assert.assertNotNull;
 public class CartDaoTest extends AbstractDaoTest {
 
     @Autowired
-    private CartDao dao;
+    private CartDao cartDao;
 
     @Autowired
-    private ClientDao daoClient;
+    private ClientDao clientDao;
 
     @Autowired
-    private GoodsDao daoGoods;
+    private GoodsDao goodsDao;
     private Client client;
     private Cart cart;
 
@@ -37,11 +37,11 @@ public class CartDaoTest extends AbstractDaoTest {
     public void testSave() throws Exception {
         cart.setShippingAddress("Низнаю куда");
 
-        daoClient.saveAndFlush(client);
-        dao.saveAndFlush(cart);
+        clientDao.saveAndFlush(client);
+        cartDao.saveAndFlush(cart);
 
-        assertNotNull(dao.findOne(cart.getId()));
-        assertNotNull(dao.findOne(cart.getId()).getClient());
+        assertNotNull(cartDao.findOne(cart.getId()));
+        assertNotNull(cartDao.findOne(cart.getId()).getClient());
     }
 
     @Test
@@ -52,12 +52,12 @@ public class CartDaoTest extends AbstractDaoTest {
         cart.addOrder(goods, 5);
         cart.addOrder(goods, 5);
 
-        daoGoods.saveAndFlush(goods);
-        daoClient.saveAndFlush(client);
-        dao.saveAndFlush(cart);
+        goodsDao.saveAndFlush(goods);
+        clientDao.saveAndFlush(client);
+        cartDao.saveAndFlush(cart);
 
-        assertNotNull(dao.findOne(cart.getId()).getOrders());
-        assertEquals(dao.findOne(cart.getId()).getOrders().size(), 2);
-        assertEquals(dao.findOne(cart.getId()).getTotalPrice(), 50);
+        assertNotNull(cartDao.findOne(cart.getId()).getOrders());
+        assertEquals(cartDao.findOne(cart.getId()).getOrders().size(), 2);
+        assertEquals(cartDao.findOne(cart.getId()).getTotalPrice(), 50);
     }
 }

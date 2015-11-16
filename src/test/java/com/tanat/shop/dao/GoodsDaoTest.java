@@ -19,10 +19,10 @@ import static org.junit.Assert.assertNotNull;
 public class GoodsDaoTest extends AbstractDaoTest {
 
     @Autowired
-    private GoodsDao dao;
+    private GoodsDao goodsDao;
 
     @Autowired
-    private ClientDao daoClient;
+    private ClientDao clientDao;
     private Goods goods;
 
     @Before
@@ -32,30 +32,30 @@ public class GoodsDaoTest extends AbstractDaoTest {
 
     @Test
     public void testSave() throws Exception {
-        dao.saveAndFlush(goods);
+        goodsDao.saveAndFlush(goods);
 
-        assertNotNull(dao.findOne(goods.getId()));
+        assertNotNull(goodsDao.findOne(goods.getId()));
     }
 
     @Test
     public void testFindLike() throws Exception {
-        dao.saveAndFlush(goods);
+        goodsDao.saveAndFlush(goods);
 
-        assertNotNull(dao.findByNameLike(goods.getName() + "%"));
+        assertNotNull(goodsDao.findByNameLike(goods.getName() + "%"));
     }
 
     @Test
     @Transactional
     public void testAddComment() throws Exception {
         Client client = new Client("Альпенов Танат Маратович", "87011520885", "Дощанова 133б", "researcher86@mail.ru");
-        daoClient.saveAndFlush(client);
+        clientDao.saveAndFlush(client);
 
         goods.addComments(new Comment("Супер!", client));
         goods.addComments(new Comment("Супер!2", client));
-        dao.saveAndFlush(goods);
+        goodsDao.saveAndFlush(goods);
 
-        Comment comment = dao.findOne(goods.getId()).getComments().get(0);
-        Comment comment2 = dao.findOne(goods.getId()).getComments().get(1);
+        Comment comment = goodsDao.findOne(goods.getId()).getComments().get(0);
+        Comment comment2 = goodsDao.findOne(goods.getId()).getComments().get(1);
 
         assertEquals(comment.getText(), "Супер!");
         assertEquals(comment.getGoods().getName(), "Ручка");

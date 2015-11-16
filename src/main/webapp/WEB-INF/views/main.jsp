@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Tanat
@@ -11,6 +12,9 @@
     <title>E-Shop</title>
 </head>
 <body>
-<h2>Rendering from servlet</h2>
+<h2>Товары</h2>
+<c:forEach var="good" items="${goods}">
+    <div>${good.name} ${good.price}</div>
+</c:forEach>
 </body>
 </html>

@@ -18,13 +18,13 @@ import static org.junit.Assert.assertNotNull;
 public class CommentDaoTest extends AbstractDaoTest {
 
     @Autowired
-    private CommentDao dao;
+    private CommentDao commentDao;
 
     @Autowired
-    private ClientDao daoClient;
+    private ClientDao clientDao;
 
     @Autowired
-    private GoodsDao daoGoods;
+    private GoodsDao goodsDao;
 
     private Client client;
     private Goods pencel;
@@ -42,48 +42,48 @@ public class CommentDaoTest extends AbstractDaoTest {
 
     @Test
     public void testSave() throws Exception {
-        daoClient.saveAndFlush(client);
-        daoGoods.saveAndFlush(pencel);
-        dao.saveAndFlush(comment1);
+        clientDao.saveAndFlush(client);
+        goodsDao.saveAndFlush(pencel);
+        commentDao.saveAndFlush(comment1);
 
-        assertNotNull(dao.findOne(comment1.getId()));
-        assertNotNull(dao.findOne(comment1.getId()).getClient());
-        assertEquals(dao.findOne(comment1.getId()).getClient().getFio(), "Альпенов Танат Маратович");
-        assertNotNull(dao.findOne(comment1.getId()).getGoods());
-        assertEquals(dao.findOne(comment1.getId()).getGoods().getName(), "Ручка");
-        assertEquals(dao.findOne(comment1.getId()).getText(), "Супер!");
-        assertNotNull(dao.findOne(comment1.getId()).getDate().getTime());
+        assertNotNull(commentDao.findOne(comment1.getId()));
+        assertNotNull(commentDao.findOne(comment1.getId()).getClient());
+        assertEquals(commentDao.findOne(comment1.getId()).getClient().getFio(), "Альпенов Танат Маратович");
+        assertNotNull(commentDao.findOne(comment1.getId()).getGoods());
+        assertEquals(commentDao.findOne(comment1.getId()).getGoods().getName(), "Ручка");
+        assertEquals(commentDao.findOne(comment1.getId()).getText(), "Супер!");
+        assertNotNull(commentDao.findOne(comment1.getId()).getDate().getTime());
     }
 
     @Test
     public void testFindByGoods() throws Exception {
-        daoClient.saveAndFlush(client);
-        daoGoods.saveAndFlush(pencel);
-        dao.saveAndFlush(comment1);
-        dao.saveAndFlush(comment2);
+        clientDao.saveAndFlush(client);
+        goodsDao.saveAndFlush(pencel);
+        commentDao.saveAndFlush(comment1);
+        commentDao.saveAndFlush(comment2);
 
-        assertEquals(dao.findByGoods(pencel).size(), 2);
+        assertEquals(commentDao.findByGoods(pencel).size(), 2);
 
-        assertNotNull(dao.findOne(comment1.getId()).getGoods());
-        assertEquals(dao.findOne(comment1.getId()).getGoods().getName(), "Ручка");
+        assertNotNull(commentDao.findOne(comment1.getId()).getGoods());
+        assertEquals(commentDao.findOne(comment1.getId()).getGoods().getName(), "Ручка");
 
-        assertNotNull(dao.findOne(comment2.getId()).getGoods());
-        assertEquals(dao.findOne(comment2.getId()).getGoods().getName(), "Ручка");
+        assertNotNull(commentDao.findOne(comment2.getId()).getGoods());
+        assertEquals(commentDao.findOne(comment2.getId()).getGoods().getName(), "Ручка");
     }
 
     @Test
     public void testFindByClient() throws Exception {
-        daoClient.saveAndFlush(client);
-        daoGoods.saveAndFlush(pencel);
-        dao.saveAndFlush(comment1);
-        dao.saveAndFlush(comment2);
+        clientDao.saveAndFlush(client);
+        goodsDao.saveAndFlush(pencel);
+        commentDao.saveAndFlush(comment1);
+        commentDao.saveAndFlush(comment2);
 
-        assertEquals(dao.findByClient(client).size(), 2);
+        assertEquals(commentDao.findByClient(client).size(), 2);
 
-        assertNotNull(dao.findOne(comment1.getId()).getClient());
-        assertEquals(dao.findOne(comment1.getId()).getClient().getFio(), "Альпенов Танат Маратович");
+        assertNotNull(commentDao.findOne(comment1.getId()).getClient());
+        assertEquals(commentDao.findOne(comment1.getId()).getClient().getFio(), "Альпенов Танат Маратович");
 
-        assertNotNull(dao.findOne(comment2.getId()).getClient());
-        assertEquals(dao.findOne(comment2.getId()).getClient().getFio(), "Альпенов Танат Маратович");
+        assertNotNull(commentDao.findOne(comment2.getId()).getClient());
+        assertEquals(commentDao.findOne(comment2.getId()).getClient().getFio(), "Альпенов Танат Маратович");
     }
 }

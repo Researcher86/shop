@@ -16,10 +16,10 @@ import static org.junit.Assert.assertEquals;
 public class CategoryDaoTest extends AbstractDaoTest {
 
     @Autowired
-    private CategoryDao dao;
+    private CategoryDao categoryDao;
 
     @Autowired
-    private GoodsDao daoGoods;
+    private GoodsDao goodsDao;
 
     @Test
     @Transactional
@@ -28,14 +28,14 @@ public class CategoryDaoTest extends AbstractDaoTest {
         Category category = new Category("Канцтовары");
         category.addGoods(pencel);
 
-        dao.saveAndFlush(category);
-        daoGoods.saveAndFlush(pencel);
+        categoryDao.saveAndFlush(category);
+        goodsDao.saveAndFlush(pencel);
 
-        final String categoryName = dao.findOne(category.getId()).getName();
-        final String goodsCategoryName = dao.findOne(category.getId()).getGoodsList().get(0).getCategory().getName();
+        final String categoryName = categoryDao.findOne(category.getId()).getName();
+        final String goodsCategoryName = categoryDao.findOne(category.getId()).getGoodsList().get(0).getCategory().getName();
 
         assertEquals("Incorrect category name", categoryName, "Канцтовары");
-        assertEquals("Incorrect list goods", dao.findOne(category.getId()).getGoodsList().size(), 1);
+        assertEquals("Incorrect list goods", categoryDao.findOne(category.getId()).getGoodsList().size(), 1);
         assertEquals("Incorrect category in goods", goodsCategoryName, categoryName);
     }
 }
