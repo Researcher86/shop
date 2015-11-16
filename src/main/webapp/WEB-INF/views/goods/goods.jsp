@@ -10,7 +10,7 @@
     <title>Товар</title>
 </head>
 <body>
-    <h2>${goods.name} ${goods.category.name} ${goods.price}</h2>
-    <a href="/goods">Back</a>
+<h2>${goods.name} ${goods.category.name} ${goods.price}</h2>
+<a href="/goods">Back</a>
 </body>
 </html>
