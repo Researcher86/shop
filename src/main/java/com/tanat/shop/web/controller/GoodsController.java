@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Created by Tanat on 16.11.2015.
@@ -21,7 +20,7 @@ public class GoodsController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
-        model.addAttribute("goods", goodsService.getAll());
+        model.addAttribute("goodsAll", goodsService.getAll());
         return "/goods/all";
     }
 

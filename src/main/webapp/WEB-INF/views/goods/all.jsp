@@ -19,13 +19,13 @@
         <th>Price</th>
         <th></th>
     </tr>
-    <c:forEach var="good" items="${goods}">
+    <c:forEach var="goods" items="${goodsAll}">
         <tr>
-            <td>${good.name}</td>
-            <td>${good.category.name}</td>
-            <td>${good.price}</td>
+            <td>${goods.name}</td>
+            <td>${goods.category.name}</td>
+            <td>${goods.price}</td>
             <td>
-                <a href="<c:url value="goods/${good.id}" />">Details</a>
+                <a href="<c:url value="goods/${goods.id}" />">Details</a>
             </td>
         </tr>
     </c:forEach>
