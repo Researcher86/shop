@@ -19,7 +19,6 @@ public class GoodsService {
         return goodsDao.findAll();
     }
 
-
     public Goods getById(Long id) {
         return goodsDao.findOne(id);
     }
