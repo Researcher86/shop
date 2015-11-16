@@ -13,8 +13,19 @@
 </head>
 <body>
 <h2>Товары</h2>
-<c:forEach var="good" items="${goods}">
-    <div>${good.name} ${good.price}</div>
-</c:forEach>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+    </tr>
+    <c:forEach var="good" items="${goods}">
+        <tr>
+            <td>${good.name}</td>
+            <td>${good.category.name}</td>
+            <td>${good.price}</td>
+        </tr>
+    </c:forEach>
+</table>
 </body>
 </html>

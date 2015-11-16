@@ -20,4 +20,7 @@ public class GoodsService {
     }
 
 
+    public Goods getById(Long id) {
+        return goodsDao.findOne(id);
+    }
 }
