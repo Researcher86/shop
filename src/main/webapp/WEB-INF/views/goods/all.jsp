@@ -18,12 +18,16 @@
         <th>Name</th>
         <th>Category</th>
         <th>Price</th>
+        <th></th>
     </tr>
     <c:forEach var="good" items="${goods}">
         <tr>
             <td>${good.name}</td>
             <td>${good.category.name}</td>
             <td>${good.price}</td>
+            <td>
+                <a href="<c:url value="goods/${good.id}" />">Details</a>
+            </td>
         </tr>
     </c:forEach>
 </table>
