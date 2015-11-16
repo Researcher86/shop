@@ -1,8 +1,7 @@
 package com.tanat.shop.web.controller;
 
-import com.tanat.shop.service.ShopService;
+import com.tanat.shop.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class GoodsController {
 
     @Autowired
-    private ShopService shopService;
+    private GoodsService goodsService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
-        model.addAttribute("goods", shopService.getGoodsAll());
+        model.addAttribute("goods", goodsService.getAll());
         return "main";
     }
 }

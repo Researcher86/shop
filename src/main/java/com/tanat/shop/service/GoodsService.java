@@ -11,11 +11,11 @@ import java.util.List;
  * Created by Tanat on 16.11.2015.
  */
 @Service
-public class ShopService {
+public class GoodsService {
     @Autowired
     private GoodsDao goodsDao;
 
-    public List<Goods> getGoodsAll() {
+    public List<Goods> getAll() {
         return goodsDao.findAll();
     }
 

@@ -20,7 +20,7 @@ public class InitDatabase implements ApplicationListener<ContextRefreshedEvent> 
         goodsDao.saveAndFlush(new Goods("Ручка", 5, "Обычная"));
         goodsDao.saveAndFlush(new Goods("Карандаш", 5, "Простой"));
         goodsDao.saveAndFlush(new Goods("Степлер", 50, "Супер"));
-        goodsDao.saveAndFlush(new Goods("Тетратдь", 25, "Простая"));
+        goodsDao.saveAndFlush(new Goods("Тетрадь", 25, "Простая"));
         goodsDao.saveAndFlush(new Goods("Ластик", 5, "Простой"));
     }
 }
