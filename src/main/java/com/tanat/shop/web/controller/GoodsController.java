@@ -25,14 +25,18 @@ public class GoodsController {
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
         logger.info("goodsAll");
+
         model.addAttribute("goodsAll", goodsService.getAll());
+
         return "/goods/all";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String getById(@PathVariable("id") Long id, Model model) {
         logger.info("getById {}", id);
+
         model.addAttribute("goods", goodsService.getById(id));
+
         return "/goods/goods";
     }
 }
