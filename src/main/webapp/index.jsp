@@ -11,6 +11,6 @@
     <title>E-Shop</title>
 </head>
 <body>
-<h2>Welcome to E-Shop</h2>
+<h1>Welcome to E-Shop</h1>
 </body>
 </html>
