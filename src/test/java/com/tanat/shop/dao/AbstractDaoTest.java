@@ -11,8 +11,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({
-//        "file:src/main/webapp/WEB-INF/spring/applicationContext.xml",
-        "file:src/main/webapp/WEB-INF/spring/database.xml"
+        "classpath:spring/database.xml"
 })
 @TransactionConfiguration(defaultRollback = false)
 public abstract class AbstractDaoTest {

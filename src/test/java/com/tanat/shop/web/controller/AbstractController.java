@@ -18,9 +18,9 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration({
-        "file:src/main/webapp/WEB-INF/spring/applicationContext.xml",
-        "file:src/main/webapp/WEB-INF/spring/database.xml",
-        "file:src/main/webapp/WEB-INF/spring/mvc.xml"
+        "classpath:spring/applicationContext.xml",
+        "classpath:spring/database.xml",
+        "classpath:spring/mvc.xml"
 })
 public abstract class AbstractController {
     protected MockMvc mockMvc;
