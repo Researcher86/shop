@@ -6,6 +6,7 @@ import com.tanat.shop.model.Goods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -20,8 +21,12 @@ public class CategoryService {
         return categoryDao.findAll();
     }
 
+    @Transactional
     public Category getById(Long id) {
-        return categoryDao.findOne(id);
+        Category category = categoryDao.findOne(id);
+        category.getGoodsList().size();
+
+        return category;
     }
 
     public void addGoodsInCategory(Goods goods, Category category) {
