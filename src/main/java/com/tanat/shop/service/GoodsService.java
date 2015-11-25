@@ -22,4 +22,12 @@ public class GoodsService {
     public Goods getById(Long id) {
         return goodsDao.findOne(id);
     }
+
+    public void save(Goods goods) {
+        goodsDao.saveAndFlush(goods);
+    }
+
+    public void delete(Goods goods) {
+        goodsDao.delete(goods);
+    }
 }
