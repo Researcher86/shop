@@ -52,7 +52,7 @@ public class GoodsController {
         model.addAttribute("categories", categoryService.getAll());
         return "/goods/edit";
     }
-
+    // TODO: Надо объеденить эти два метода
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String edit2(@PathVariable Long id, Model model) {
         model.addAttribute("goods", goodsService.getById(id));
