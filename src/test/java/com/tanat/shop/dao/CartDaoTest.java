@@ -73,4 +73,14 @@ public class CartDaoTest extends AbstractDaoTest {
         assertEquals(2, cartDao.findOne(cart.getId()).getOrders().size());
         assertEquals(50, cartDao.findOne(cart.getId()).getTotalPrice());
     }
+
+    @Test
+    public void testFindByClient() throws Exception {
+        cart.setShippingAddress("Низнаю куда");
+
+        clientDao.saveAndFlush(client);
+        cartDao.saveAndFlush(cart);
+
+        assertNotNull(cartDao.findByClient(client));
+    }
 }
