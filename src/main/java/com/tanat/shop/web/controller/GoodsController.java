@@ -28,7 +28,7 @@ public class GoodsController {
 
         model.addAttribute("goodsAll", goodsService.getAll());
 
-        return "/goods/all";
+        return "/goods/list";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

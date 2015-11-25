@@ -15,7 +15,7 @@ public class GoodsControllerTest extends AbstractController {
     public void testIndex() throws Exception {
         mockMvc.perform(get("/goods"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("/goods/all"))
+                .andExpect(view().name("/goods/list"))
                 .andExpect(model().attributeExists("goodsAll"));
     }
 
