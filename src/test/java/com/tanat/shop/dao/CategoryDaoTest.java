@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.transaction.Transactional;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 /**
  * Тестируем слой DAO категорий товаров
@@ -37,5 +39,19 @@ public class CategoryDaoTest extends AbstractDaoTest {
         assertEquals("Канцтовары", categoryName);
         assertEquals(1, categoryDao.findOne(category.getId()).getGoodsList().size());
         assertEquals(categoryName, goodsCategoryName);
+    }
+
+    @Test
+    public void testDelete() throws Exception {
+        Goods pencel = new Goods("Ручка", 5, "Обычная ручка");
+        Category category = new Category("Канцтовары");
+        category.addGoods(pencel);
+
+        categoryDao.saveAndFlush(category);
+        goodsDao.saveAndFlush(pencel);
+        categoryDao.delete(category);
+
+        assertNull(categoryDao.findOne(category.getId()));
+        assertNull(goodsDao.findOne(pencel.getId()));
     }
 }

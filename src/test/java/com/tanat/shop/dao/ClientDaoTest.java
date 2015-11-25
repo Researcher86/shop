@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 
 /**
@@ -28,5 +29,15 @@ public class ClientDaoTest extends AbstractDaoTest {
         assertEquals("87011520885", clientDao.findOne(client.getId()).getPhone());
         assertEquals("Дощанова 133б", clientDao.findOne(client.getId()).getAddress());
         assertEquals("researcher86@mail.ru", clientDao.findOne(client.getId()).getEmail());
+    }
+
+    @Test
+    public void testDelete() throws Exception {
+        Client client = new Client("Альпенов Танат Маратович", "87011520885", "Дощанова 133б", "researcher86@mail.ru");
+
+        clientDao.saveAndFlush(client);
+        clientDao.delete(client);
+
+        assertNull(clientDao.findOne(client.getId()));
     }
 }

@@ -9,8 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.transaction.Transactional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 /**
  * Тестируем слой DAO товаров
@@ -35,6 +34,15 @@ public class GoodsDaoTest extends AbstractDaoTest {
         goodsDao.saveAndFlush(goods);
 
         assertNotNull(goodsDao.findOne(goods.getId()));
+    }
+
+    @Test
+    public void testDelete() throws Exception {
+        goodsDao.saveAndFlush(goods);
+
+        goodsDao.delete(goods);
+
+        assertNull(goodsDao.findOne(goods.getId()));
     }
 
     @Test

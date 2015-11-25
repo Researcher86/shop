@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 /**
  * Тестируем слой DAO корзины
@@ -42,6 +43,18 @@ public class CartDaoTest extends AbstractDaoTest {
 
         assertNotNull(cartDao.findOne(cart.getId()));
         assertNotNull(cartDao.findOne(cart.getId()).getClient());
+    }
+
+    @Test
+    public void testDelete() throws Exception {
+        cart.setShippingAddress("Низнаю куда");
+
+        clientDao.saveAndFlush(client);
+        cartDao.saveAndFlush(cart);
+        cartDao.delete(cart);
+
+        assertNull(cartDao.findOne(cart.getId()));
+        assertNotNull(clientDao.findOne(client.getId()));
     }
 
     @Test
