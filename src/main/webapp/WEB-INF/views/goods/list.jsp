@@ -12,6 +12,7 @@
 </head>
 <body>
 <h2>Товары</h2>
+<a href="/goods/edit">Добавить</a>
 <table>
     <tr>
         <th>Name</th>
@@ -26,6 +27,7 @@
             <td>${goods.price}</td>
             <td>
                 <a href="<c:url value="goods/${goods.id}" />">Details</a>
+                <a href="<c:url value="goods/edit/${goods.id}" />">Edit</a>
             </td>
         </tr>
     </c:forEach>
