@@ -30,6 +30,10 @@ public class Category {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -40,6 +44,10 @@ public class Category {
 
     public List<Goods> getGoodsList() {
         return goodsList;
+    }
+
+    public void setGoodsList(List<Goods> goodsList) {
+        this.goodsList = goodsList;
     }
 
     public void addGoods(Goods goods) {

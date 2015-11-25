@@ -41,6 +41,10 @@ public class Goods {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -67,6 +71,10 @@ public class Goods {
 
     public List<Comment> getComments() {
         return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     public void addComments(Comment comment) {
