@@ -2,53 +2,53 @@
 <!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
-	<!-- Appenders -->
+    <!-- Appenders -->
     <!--logging to console-->
-	<appender name="console" class="org.apache.log4j.ConsoleAppender">
-		<param name="Target" value="System.out" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
-		</layout>
-	</appender>
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p: %c - %m%n"/>
+        </layout>
+    </appender>
 
     <!--Logging info to file-->
-	<appender name="fileInfo" class="org.apache.log4j.RollingFileAppender">
-		<!--<param name="Threshold" value="INFO" />-->
+    <appender name="fileInfo" class="org.apache.log4j.RollingFileAppender">
+        <!--<param name="Threshold" value="INFO" />-->
         <param name="File" value="${catalina.base}/logs/InfoInOutSend.log"/>
         <layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%-5p  [%c{1}] %m %n" />
-		</layout>
+            <param name="ConversionPattern" value="%-5p  [%c{1}] %m %n"/>
+        </layout>
         <filter class="org.apache.log4j.varia.LevelRangeFilter">
-            <param name="levelMin" value="INFO" />
-            <param name="levelMax" value="INFO" />
+            <param name="levelMin" value="INFO"/>
+            <param name="levelMax" value="INFO"/>
         </filter>
     </appender>
 
     <!--Logging errors to file-->
     <appender name="fileError" class="org.apache.log4j.RollingFileAppender">
-        <param name="Threshold" value="ERROR" />
+        <param name="Threshold" value="ERROR"/>
         <param name="File" value="${catalina.base}/logs/ErrorInOutSend.log"/>
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="%-5p  [%c{1}] %m %n" />
+            <param name="ConversionPattern" value="%-5p  [%c{1}] %m %n"/>
         </layout>
     </appender>
 
     <!--Logging to email-->
     <appender name="mail" class="org.apache.log4j.net.SMTPAppender">
-        <param name="BufferSize" value="50" />
-        <param name="SMTPHost" value="smtp.gmail.com" />
-        <param name="SMTPPort" value="465" />
-        <param name="SMTPUsername" value="researcher2286@gmail.com" />
-        <param name="SMTPPassword" value="qwedsazxc86" />
-        <param name="From" value="researcher2286@gmail.com" />
-        <param name="To" value="researcher2286@gmail.com" />
-        <param name="Subject" value="Testing Log4j mail notification" />
+        <param name="BufferSize" value="50"/>
+        <param name="SMTPHost" value="smtp.gmail.com"/>
+        <param name="SMTPPort" value="465"/>
+        <param name="SMTPUsername" value="researcher2286@gmail.com"/>
+        <param name="SMTPPassword" value="qwedsazxc86"/>
+        <param name="From" value="researcher2286@gmail.com"/>
+        <param name="To" value="researcher2286@gmail.com"/>
+        <param name="Subject" value="Testing Log4j mail notification"/>
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="%-5p  [%c{1}] %m %n" />
+            <param name="ConversionPattern" value="%-5p  [%c{1}] %m %n"/>
         </layout>
         <filter class="org.apache.log4j.varia.LevelRangeFilter">
-            <param name="LevelMin" value="error" />
-            <param name="LevelMax" value="fatal" />
+            <param name="LevelMin" value="error"/>
+            <param name="LevelMax" value="fatal"/>
         </filter>
     </appender>
 
@@ -70,53 +70,53 @@
     <!--MESSAGE VARCHAR(1000)  NOT NULL-->
     <!--);-->
     <!--<appender name="DB" class="org.apache.log4j.jdbc.JDBCAppender">-->
-        <!--<param name="url" value="jdbc:mysql://localhost/DBNAME"/>-->
-        <!--<param name="driver" value="com.mysql.jdbc.Driver"/>-->
-        <!--<param name="user" value="user_id"/>-->
-        <!--<param name="password" value="password"/>-->
-        <!--<param name="sql" value="INSERT INTO LOGS VALUES('%x','%d','%C','%p','%m')"/>-->
+    <!--<param name="url" value="jdbc:mysql://localhost/DBNAME"/>-->
+    <!--<param name="driver" value="com.mysql.jdbc.Driver"/>-->
+    <!--<param name="user" value="user_id"/>-->
+    <!--<param name="password" value="password"/>-->
+    <!--<param name="sql" value="INSERT INTO LOGS VALUES('%x','%d','%C','%p','%m')"/>-->
 
-        <!--<layout class="org.apache.log4j.PatternLayout">-->
-        <!--</layout>-->
+    <!--<layout class="org.apache.log4j.PatternLayout">-->
+    <!--</layout>-->
     <!--</appender>-->
     <!-- Appenders -->
 
-	<!-- Application Loggers -->
-	<logger name="com.tanat.shop">
-		<level value="info" />
-	</logger>
-	
-	<!-- 3rdparty Loggers -->
-	<!--<logger name="org.springframework.core">-->
-		<!--<level value="info" />-->
-	<!--</logger>-->
-	<!-- -->
-	<!--<logger name="org.springframework.beans">-->
-		<!--<level value="info" />-->
-	<!--</logger>-->
-	<!-- -->
-	<!--<logger name="org.springframework.context">-->
-		<!--<level value="info" />-->
-	<!--</logger>-->
+    <!-- Application Loggers -->
+    <logger name="com.tanat.shop">
+        <level value="info"/>
+    </logger>
 
-	<!--<logger name="org.springframework.web">-->
-		<!--<level value="info" />-->
-	<!--</logger>-->
+    <!-- 3rdparty Loggers -->
+    <!--<logger name="org.springframework.core">-->
+    <!--<level value="info" />-->
+    <!--</logger>-->
+    <!-- -->
+    <!--<logger name="org.springframework.beans">-->
+    <!--<level value="info" />-->
+    <!--</logger>-->
+    <!-- -->
+    <!--<logger name="org.springframework.context">-->
+    <!--<level value="info" />-->
+    <!--</logger>-->
 
-	<!--<logger name="org.hibernate">-->
-		<!--<level value="debug" />-->
-		<!--&lt;!&ndash;<level value="trace" />&ndash;&gt;-->
-	<!--</logger>-->
+    <!--<logger name="org.springframework.web">-->
+    <!--<level value="info" />-->
+    <!--</logger>-->
 
-	<!-- Root Logger -->
-	<root>
-		<priority value="warn" />
-		<appender-ref ref="console" />
-		<appender-ref ref="fileInfo" />
-		<appender-ref ref="fileError" />
-		<!--<appender-ref ref="mail" />-->
-		<appender-ref ref="SYSLOG" />
-		<!--<appender-ref ref="DB" />-->
-	</root>
-	
+    <!--<logger name="org.hibernate">-->
+    <!--<level value="debug" />-->
+    <!--&lt;!&ndash;<level value="trace" />&ndash;&gt;-->
+    <!--</logger>-->
+
+    <!-- Root Logger -->
+    <root>
+        <priority value="warn"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="fileInfo"/>
+        <appender-ref ref="fileError"/>
+        <!--<appender-ref ref="mail" />-->
+        <appender-ref ref="SYSLOG"/>
+        <!--<appender-ref ref="DB" />-->
+    </root>
+
 </log4j:configuration>
