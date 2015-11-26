@@ -12,7 +12,7 @@
     <title>E-Shop</title>
 </head>
 <body>
-    <form:form modelAttribute="goods" action="/goods/edit">
+    <form:form modelAttribute="goods" action="/goods/save">
         <form:hidden path="id" />
         <form:input path="name"/> <br>
         <form:input path="price"/> <br>
