@@ -28,14 +28,6 @@ public class GoodsController {
     @Autowired
     private CategoryService categoryService;
 
-    @Autowired
-    private CategoryEditor categoryEditor;
-
-    @InitBinder
-    public void initBinder(WebDataBinder binder) {
-        binder.registerCustomEditor(Category.class, this.categoryEditor);
-    }
-
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
         logger.info("goodsAll");
@@ -52,7 +44,7 @@ public class GoodsController {
         return "/goods/goods";
     }
 
-    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String add(@ModelAttribute Goods goods, Model model) {
         model.addAttribute("categories", categoryService.getAll());
         return "/goods/edit";
