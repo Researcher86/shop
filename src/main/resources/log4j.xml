@@ -11,16 +11,16 @@
         </layout>
     </appender>
 
-    <!--Logging info to file-->
+    <!--Logging debug to file-->
     <appender name="fileInfo" class="org.apache.log4j.RollingFileAppender">
         <!--<param name="Threshold" value="INFO" />-->
-        <param name="File" value="${catalina.base}/logs/InfoInOutSend.log"/>
+        <param name="File" value="${catalina.base}/logs/DebugInOutSend.log"/>
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%-5p  [%c{1}] %m %n"/>
         </layout>
         <filter class="org.apache.log4j.varia.LevelRangeFilter">
-            <param name="levelMin" value="INFO"/>
-            <param name="levelMax" value="INFO"/>
+            <param name="levelMin" value="DEBUG"/>
+            <param name="levelMax" value="DEBUG"/>
         </filter>
     </appender>
 
@@ -83,7 +83,7 @@
 
     <!-- Application Loggers -->
     <logger name="com.tanat.shop">
-        <level value="info"/>
+        <level value="debug"/>
     </logger>
 
     <!-- 3rdparty Loggers -->
@@ -110,7 +110,7 @@
 
     <!-- Root Logger -->
     <root>
-        <priority value="warn"/>
+        <priority value="debug"/>
         <appender-ref ref="console"/>
         <appender-ref ref="fileInfo"/>
         <appender-ref ref="fileError"/>
