@@ -44,16 +44,16 @@ public class GoodsController {
         return "/goods/goods";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String add(@ModelAttribute Goods goods, Model model) {
-        logger.debug("add goods");
+        logger.info("new goods");
         model.addAttribute("categories", categoryService.getAll());
         return "/goods/edit";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String edit(@PathVariable Long id, Model model) {
-        logger.debug("edit goods {}", id);
+        logger.info("edit goods {}", id);
         model.addAttribute("goods", goodsService.getById(id));
         model.addAttribute("categories", categoryService.getAll());
 
@@ -62,7 +62,7 @@ public class GoodsController {
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable Long id) {
-        logger.debug("delete goods {}", id);
+        logger.info("delete goods {}", id);
         goodsService.delete(id);
 
         return "redirect:/goods";
@@ -70,7 +70,7 @@ public class GoodsController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(@ModelAttribute Goods goods) {
-        logger.debug("save goods [{}, {}, {}, {}]", goods.getName(), goods.getPrice(), goods.getDescription(), goods.getCategory().getId());
+        logger.info("save goods [{}, {}, {}, {}]", goods.getName(), goods.getPrice(), goods.getDescription(), goods.getCategory().getId());
         goodsService.save(goods);
 
         return "redirect:/goods";
