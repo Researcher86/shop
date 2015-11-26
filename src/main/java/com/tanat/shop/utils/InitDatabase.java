@@ -22,6 +22,8 @@ public class InitDatabase implements ApplicationListener<ContextRefreshedEvent> 
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
+        categoryDao.saveAndFlush(new Category("Электроника"));
+
         Category category = new Category("Канцтовары");
         categoryDao.saveAndFlush(category);
 

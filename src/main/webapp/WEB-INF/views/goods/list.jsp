@@ -12,7 +12,7 @@
 </head>
 <body>
 <h2>Товары</h2>
-<a href="/goods/edit">Добавить</a>
+<a href="/goods/add">Добавить</a>
 <table>
     <tr>
         <th>Name</th>
