@@ -28,6 +28,7 @@
             <td>
                 <a href="<c:url value="goods/${goods.id}" />">Details</a>
                 <a href="<c:url value="goods/edit/${goods.id}" />">Edit</a>
+                <a href="<c:url value="goods/delete/${goods.id}" />">Delete</a>
             </td>
         </tr>
     </c:forEach>

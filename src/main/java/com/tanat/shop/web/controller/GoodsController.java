@@ -46,20 +46,31 @@ public class GoodsController {
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String add(@ModelAttribute Goods goods, Model model) {
+        logger.debug("add goods");
         model.addAttribute("categories", categoryService.getAll());
         return "/goods/edit";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String edit(@PathVariable Long id, Model model) {
+        logger.debug("edit goods {}", id);
         model.addAttribute("goods", goodsService.getById(id));
         model.addAttribute("categories", categoryService.getAll());
 
         return "/goods/edit";
     }
 
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String delete(@PathVariable Long id) {
+        logger.debug("delete goods {}", id);
+        goodsService.delete(id);
+
+        return "redirect:/goods";
+    }
+
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(@ModelAttribute Goods goods /*, BindingResult bindingResult, Model model*/) {
+    public String save(@ModelAttribute Goods goods) {
+        logger.debug("save goods [{}, {}, {}, {}]", goods.getName(), goods.getPrice(), goods.getDescription(), goods.getCategory().getId());
         goodsService.save(goods);
 
         return "redirect:/goods";

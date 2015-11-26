@@ -30,4 +30,8 @@ public class GoodsService {
     public void delete(Goods goods) {
         goodsDao.delete(goods);
     }
+
+    public void delete(Long id) {
+        goodsDao.delete(id);
+    }
 }
