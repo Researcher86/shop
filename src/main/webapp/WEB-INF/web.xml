@@ -28,8 +28,8 @@
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>
-                classpath:spring/applicationContext.xml,
-                classpath:spring/database.xml,
+                classpath:spring/applicationContext.xml
+                classpath:spring/database.xml
                 classpath:spring/mvc.xml
             </param-value>
         </init-param>
