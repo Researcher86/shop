@@ -13,12 +13,15 @@
 </head>
 <body>
 <h2>Категории товаров</h2>
+<a href="/categories/new">Добавить</a>
 <table>
     <c:forEach var="category" items="${categories}">
         <tr>
             <td>${category.name}</td>
             <td>
                 <a href="<c:url value="categories/${category.id}" />">Details</a>
+                <a href="<c:url value="categories/edit/${category.id}" />">Edit</a>
+                <a href="<c:url value="categories/delete/${category.id}" />">Delete</a>
             </td>
         </tr>
     </c:forEach>

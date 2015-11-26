@@ -1,5 +1,6 @@
 package com.tanat.shop.service;
 
+import com.tanat.shop.WebAppException;
 import com.tanat.shop.dao.CategoryDao;
 import com.tanat.shop.model.Category;
 import com.tanat.shop.model.Goods;
@@ -36,5 +37,13 @@ public class CategoryService {
 
     public void save(Category category) {
         categoryDao.saveAndFlush(category);
+    }
+
+    public void delete(Long id) {
+        try {
+            categoryDao.delete(id);
+        } catch (Exception e) {
+            throw new WebAppException("Error deleting the category id = " + id, e);
+        }
     }
 }
