@@ -1,10 +1,11 @@
 package com.tanat.shop.service;
 
-import com.tanat.shop.WebAppException;
 import com.tanat.shop.dao.CategoryDao;
+import com.tanat.shop.exceptions.WebAppException;
 import com.tanat.shop.model.Category;
 import com.tanat.shop.model.Goods;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -42,7 +43,7 @@ public class CategoryService {
     public void delete(Long id) {
         try {
             categoryDao.delete(id);
-        } catch (Exception e) {
+        } catch (EmptyResultDataAccessException e) {
             throw new WebAppException("Error deleting the category id = " + id, e);
         }
     }
