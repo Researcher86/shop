@@ -2,8 +2,6 @@ package com.tanat.shop.web.controller;
 
 import com.tanat.shop.model.Category;
 import com.tanat.shop.service.CategoryService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @RequestMapping(value = "/categories")
-public class CategoryController {
-
-    private Logger logger = LoggerFactory.getLogger(getClass().getName());
+public class CategoryController extends BaseController {
 
     @Autowired
     private CategoryService categoryService;
@@ -73,4 +69,5 @@ public class CategoryController {
 
         return "redirect:/categories";
     }
+
 }
