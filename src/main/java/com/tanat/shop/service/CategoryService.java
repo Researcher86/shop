@@ -1,11 +1,10 @@
 package com.tanat.shop.service;
 
 import com.tanat.shop.dao.CategoryDao;
-import com.tanat.shop.exceptions.WebAppException;
+import com.tanat.shop.exceptions.NotFound;
 import com.tanat.shop.model.Category;
 import com.tanat.shop.model.Goods;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -26,6 +25,10 @@ public class CategoryService {
     @Transactional
     public Category getById(Long id) {
         Category category = categoryDao.findOne(id);
+        if (category == null) {
+            throw new NotFound(String.format("Category id = %d not found", id));
+        }
+
         category.getGoodsList().size();
 
         return category;
@@ -41,10 +44,6 @@ public class CategoryService {
     }
 
     public void delete(Long id) {
-        try {
-            categoryDao.delete(id);
-        } catch (EmptyResultDataAccessException e) {
-            throw new WebAppException("Error deleting the category id = " + id, e);
-        }
+        categoryDao.delete(id);
     }
 }
