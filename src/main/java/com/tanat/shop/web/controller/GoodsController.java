@@ -3,6 +3,8 @@ package com.tanat.shop.web.controller;
 import com.tanat.shop.model.Goods;
 import com.tanat.shop.service.CategoryService;
 import com.tanat.shop.service.GoodsService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @RequestMapping(value = "/goods")
-public class GoodsController extends BaseController {
+public class GoodsController {
+
+    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
 
     @Autowired
     private GoodsService goodsService;
@@ -28,7 +32,9 @@ public class GoodsController extends BaseController {
     public String index(Model model) {
         logger.info("goodsAll");
         model.addAttribute("goodsAll", goodsService.getAll());
-
+//        if (true) {
+//            throw new RuntimeException("sdfsdf");
+//        }
         return "/goods/list";
     }
 
@@ -44,6 +50,7 @@ public class GoodsController extends BaseController {
     public String add(@ModelAttribute Goods goods, Model model) {
         logger.info("new goods");
         model.addAttribute("categories", categoryService.getAll());
+
         return "/goods/edit";
     }
 

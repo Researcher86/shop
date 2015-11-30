@@ -1,6 +1,7 @@
 package com.tanat.shop.service;
 
 import com.tanat.shop.dao.GoodsDao;
+import com.tanat.shop.exceptions.AppException;
 import com.tanat.shop.model.Goods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,18 +21,18 @@ public class GoodsService {
     }
 
     public Goods getById(Long id) {
-        return goodsDao.findOne(id);
+        Goods goods = goodsDao.findOne(id);
+        if (goods == null) {
+            throw new AppException("Товар не найден id = " + id);
+        }
+        return goods;
     }
 
     public void save(Goods goods) {
         goodsDao.saveAndFlush(goods);
     }
 
-    public void delete(Goods goods) {
-        goodsDao.delete(goods);
-    }
-
     public void delete(Long id) {
-        goodsDao.delete(id);
+        goodsDao.delete(getById(id).getId());
     }
 }
