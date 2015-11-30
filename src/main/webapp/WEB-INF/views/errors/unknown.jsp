@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Comp
+  User: Tanat
   Date: 27.11.2015
   Time: 15:48
   To change this template use File | Settings | File Templates.
@@ -11,6 +11,6 @@
     <title>E-Shop</title>
 </head>
 <body>
-<h1>500 Error!!!</h1>
+<h1>Unknown Error!!!</h1>
 </body>
 </html>
