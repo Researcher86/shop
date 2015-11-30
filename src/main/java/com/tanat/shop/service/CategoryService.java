@@ -1,7 +1,7 @@
 package com.tanat.shop.service;
 
 import com.tanat.shop.dao.CategoryDao;
-import com.tanat.shop.exceptions.NotFound;
+import com.tanat.shop.exceptions.AppException;
 import com.tanat.shop.model.Category;
 import com.tanat.shop.model.Goods;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class CategoryService {
     public Category getById(Long id) {
         Category category = categoryDao.findOne(id);
         if (category == null) {
-            throw new NotFound(String.format("Category id = %d not found", id));
+            throw new AppException("Категория товара не найдена id = " + id);
         }
 
         category.getGoodsList().size();
@@ -44,6 +44,10 @@ public class CategoryService {
     }
 
     public void delete(Long id) {
-        categoryDao.delete(id);
+        Category category = getById(id);
+        if (category.getGoodsList().size() > 0) {
+            throw new AppException("Категория содержит товары и не может быть удалена");
+        }
+        categoryDao.delete(category.getId());
     }
 }

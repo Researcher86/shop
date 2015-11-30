@@ -47,27 +47,25 @@ public class CategoryControllerTest extends AbstractController {
     @Test
     public void testDeleteNotGoods() throws Exception {
         mockMvc.perform(get("/categories/delete/1"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/categories"));
+                .andExpect(view().name("/errors/error"));
     }
 
-//    @Test
-//    public void testDeleteWithGoods() throws Exception {
-//        mockMvc.perform(get("/categories/delete/2"))
-//                .andExpect(status().is3xxRedirection())
-//                .andExpect(redirectedUrl("/categories"));
-//    }
+    @Test
+    public void testDeleteWithGoods() throws Exception {
+        mockMvc.perform(get("/categories/delete/2"))
+                .andExpect(view().name("/errors/error"));
+    }
 
     @Test
     public void testDeleteNotExists() throws Exception {
         mockMvc.perform(get("/categories/delete/30"))
-                .andExpect(view().name("/errors/500"));
+                .andExpect(view().name("/errors/error"));
     }
 
     @Test
     public void testGetByIdNotExists() throws Exception {
         mockMvc.perform(get("/categories/30"))
-                .andExpect(view().name("/errors/404"));
+                .andExpect(view().name("/errors/error"));
     }
 
     @Test

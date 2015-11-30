@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.fail;
 
 /**
  * Тестируем слой DAO категорий товаров
@@ -42,6 +43,16 @@ public class CategoryDaoTest extends AbstractDaoTest {
 
     @Test
     public void testDelete() throws Exception {
+        Category category = new Category("Канцтовары");
+
+        categoryDao.saveAndFlush(category);
+        categoryDao.delete(category);
+
+        assertNull(categoryDao.findOne(category.getId()));
+    }
+
+    @Test(expected = Exception.class)
+    public void testDeleteWithGoods() throws Exception {
         Goods pencel = new Goods("Ручка", 5, "Обычная ручка");
         Category category = new Category("Канцтовары");
         category.addGoods(pencel);
@@ -50,7 +61,6 @@ public class CategoryDaoTest extends AbstractDaoTest {
         goodsDao.saveAndFlush(pencel);
         categoryDao.delete(category);
 
-        assertNull(categoryDao.findOne(category.getId()));
-        assertNull(goodsDao.findOne(pencel.getId()));
+        fail();
     }
 }
