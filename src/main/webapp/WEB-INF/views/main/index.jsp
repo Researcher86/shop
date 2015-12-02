@@ -12,37 +12,65 @@
     <div class="list-group">
         <c:forEach var="category" items="${categories}">
             <a href="<c:url value="categories/${category.id}" />"
-               class="list-group-item  borderRed">${category.name}</a>
+               class="list-group-item">${category.name}</a>
         </c:forEach>
     </div>
 </div>
 
-<div class="col-lg-9">
-    <div class="goodsCatalog">
-        <table class="table table-bordered">
-            <c:forEach var="goods" items="${goodsList}">
-                <tr>
-                    <td>
-                            ${goods.name} <br>
-                            ${goods.category.name}
-                    </td>
-                    <td class="text-center">
-                        <div>
-                            <h4>${goods.price} тг.</h4>
+<div class="col-lg-9 goodsCatalog">
+    <table class="table table-hover table-bordered">
+        <c:forEach var="goods" items="${goodsList}">
+            <tr>
+                <td>
+                    <div class="row">
+                        <div class="col-lg-4">
+
                         </div>
 
-                        <div>
-                            <a href="javascript:void(0);">
-                                <button class="btn btn-danger">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span> Купить
-                                </button>
-                            </a>
+                        <div class="col-lg-8">
+                            <h4>${goods.name}</h4>
+                            <h5>${goods.category.name}</h5>
                         </div>
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>
-    </div>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div>
+                        <h4>${goods.price} тг.</h4>
+                    </div>
+
+                    <div>
+                        <a href="javascript:void(0);">
+                            <button class="btn btn-danger">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> Купить
+                            </button>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </c:forEach>
+    </table>
+
+    <nav class="text-right">
+        <ul class="pagination pagination-sm">
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
 </div>
+
 
 

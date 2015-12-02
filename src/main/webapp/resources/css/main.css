@@ -1,6 +1,6 @@
 
 
-header{
+.header{
     height: 100px;
     padding-top: 5px;
 }
@@ -24,7 +24,7 @@ header{
 }
 
 .cart a{
-    color: black;
+    color: #337ab7;
     text-decoration: underline;
 }
 
@@ -41,17 +41,23 @@ header{
     background: url("/resources/img/cart.jpg") top center no-repeat;
 }
 
-
-.borderRed{
-    border : 1px solid #c9302c;
+.goodsCatalog .pagination {
+    margin: 0 0 25px 0;!important;
 }
 
+.goodsCatalog .active a, .goodsCatalog .active a:hover, .goodsCatalog .active a:focus{
+    background-color: #c9302c;
+    border-color: #c9302c;
+}
 
 .goodsCatalog table td:last-child{
     width: 150px;
+    height: 250px;
 }
 
-footer {
+.footer {
+    text-align: center;
+    z-index: 10;
     position: absolute;
     bottom: 0;
     width: 100%;
