@@ -31,7 +31,11 @@ public class MainController {
     public String index(Model model) {
         logger.info("main index");
 
-        return "/main/index";
+        model.addAttribute("categories", categoryService.getAll());
+        model.addAttribute("goodsList", goodsService.getAll());
+
+        model.addAttribute("content", "index");
+        return "/main/template";
     }
 
 }
