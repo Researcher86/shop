@@ -11,7 +11,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Тестируем веб контроллер категории товаров
  * Created by Tanat on 16.11.2015.
  */
-@Ignore
+//@Ignore
 public class CategoryControllerTest extends AbstractController {
 
     @Test
