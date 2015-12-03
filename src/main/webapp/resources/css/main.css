@@ -1,7 +1,29 @@
 
 header{
     height: 100px;
-    margin: 5px 0 5px 0;
+    margin: 5px 0 100px 0;
+}
+
+header .headerMenu{
+    background-color: #c9302c;
+    height: 50px;
+    border-radius: 5px 5px 5px 5px;
+    padding: 15px;
+    text-align: center;
+}
+
+header .headerMenu ul{
+    display: table;
+    width: 100%;
+}
+
+header .headerMenu li{
+    display: table-cell;
+}
+
+header .headerMenu a{
+    color: white;
+    font-size: 16px;
 }
 
 .logo{
@@ -51,6 +73,15 @@ header{
 
 .goodsCatalog table td:last-child{
     width: 150px;
+}
+
+.goodsCatalog .goodsImg{
+    text-align: center;
+    font-size: small;
+}
+
+.goodsCatalog .goodsImg img{
+    margin-bottom: 5px;
 }
 
 /*=========================Footer==========================*/

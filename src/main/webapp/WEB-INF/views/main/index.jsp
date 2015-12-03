@@ -8,7 +8,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<div class="col-lg-3">
+<div class="col-xs-3">
     <div class="list-group">
         <c:forEach var="category" items="${categories}">
             <a href="<c:url value="categories/${category.id}" />"
@@ -17,19 +17,23 @@
     </div>
 </div>
 
-<div class="col-lg-9 goodsCatalog">
+<div class="col-xs-9 goodsCatalog">
     <table class="table table-hover table-bordered">
         <c:forEach var="goods" items="${goodsList}">
             <tr>
                 <td>
                     <div class="row">
-                        <div class="col-lg-4">
-
+                        <div class="col-xs-4 goodsImg">
+                            <div>
+                                <img src="<c:url value="/resources/img/bumaga.png"/>" height="133" border="0" alt="">
+                            </div>
+                            <strong>Код товара: </strong><span>15364</span>
                         </div>
 
-                        <div class="col-lg-8">
+                        <div class="col-xs-8 goodsDetails">
                             <h4>${goods.name}</h4>
                             <h5>${goods.category.name}</h5>
+                            <h5>${goods.description}</h5>
                         </div>
                     </div>
                 </td>

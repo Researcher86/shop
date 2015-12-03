@@ -10,19 +10,19 @@
 <html>
 <head>
     <title>E-Shop</title>
-    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>">
 
-    <link rel="stylesheet" href="/resources/css/main.css">
-    <link rel="icon" href="/resources/img/eshop_icon.png">
+    <link rel="icon" href="<c:url value="/resources/img/eshop_icon.png"/>">
 </head>
 <body>
 
 <header>
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 logo"></div>
+            <div class="col-xs-3 logo"></div>
 
-            <div class="col-lg-6">
+            <div class="col-xs-6">
                 <div class="search">
                     <div class="input-group has-error">
                         <input type="text" class="form-control" placeholder="Поиск">
@@ -33,7 +33,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3">
+            <div class="col-xs-3">
                 <div class="cart text-left">
                     <a href="javascript:void(0);" class="yen-bs-count_link">В корзине</a>
                     <strong>0</strong><span> товаров</span><br>
@@ -43,6 +43,23 @@
                         <div class="icon"></div>
                     </a>
                 </div>
+            </div>
+        </div>
+        <div class="row headerMenu">
+            <div class="col-xs-3">
+                <a href="#">Главная</a>
+            </div>
+
+            <div class="col-xs-3">
+                <a href="#">О компании</a>
+            </div>
+
+            <div class="col-xs-3">
+                <a href="#">Оплата и доставка</a>
+            </div>
+
+            <div class="col-xs-3">
+                <a href="#">Контакты</a>
             </div>
         </div>
     </div>
@@ -60,8 +77,8 @@
     </div>
 </footer>
 
-<script src="/resources/js/jquery-2.1.4.min.js"></script>
-<script src="/resources/js/bootstrap.min.js"></script>
+<script src="<c:url value="/resources/js/jquery-2.1.4.min.js"/>"></script>
+<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 </body>
 </html>
 
