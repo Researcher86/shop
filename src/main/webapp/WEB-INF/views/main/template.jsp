@@ -17,45 +17,48 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="row header">
-        <div class="col-lg-3 logo"></div>
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 logo"></div>
 
-        <div class="col-lg-6">
-            <div class="search">
-                <div class="input-group has-error">
-                    <input type="text" class="form-control" placeholder="Поиск">
+            <div class="col-lg-6">
+                <div class="search">
+                    <div class="input-group has-error">
+                        <input type="text" class="form-control" placeholder="Поиск">
                         <span class="input-group-btn">
                             <button class="btn btn-danger glyphicon glyphicon-search" type="button"/>
                         </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="cart text-left">
+                    <a href="javascript:void(0);" class="yen-bs-count_link">В корзине</a>
+                    <strong>0</strong><span> товаров</span><br>
+                    <span>на сумму </span><strong>0 тг.</strong>
+
+                    <a href="javascript:void(0);" class="yen-bs-count_link" title="Корзина">
+                        <div class="icon"></div>
+                    </a>
                 </div>
             </div>
         </div>
-
-        <div class="col-lg-3">
-            <div class="cart text-left">
-                <a href="javascript:void(0);" class="yen-bs-count_link">В корзине</a>
-                <strong>0</strong><span> товаров</span><br>
-                <span>на сумму </span><strong>0 тг.</strong>
-
-                <a href="javascript:void(0);" class="yen-bs-count_link" title="Корзина">
-                    <div class="icon"></div>
-                </a>
-            </div>
-        </div>
     </div>
+</header>
 
+<div class="container">
     <div class="row">
         <jsp:include page="${content}.jsp"/>
     </div>
-
 </div>
 
-<div class="footer">
+<footer>
     <div class="container">
         E-Shop 2015
     </div>
-</div>
+</footer>
 
 <script src="/resources/js/jquery-2.1.4.min.js"></script>
 <script src="/resources/js/bootstrap.min.js"></script>
