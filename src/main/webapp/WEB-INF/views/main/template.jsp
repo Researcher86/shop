@@ -46,20 +46,28 @@
             </div>
         </div>
         <div class="row headerMenu">
-            <div class="col-xs-3">
+            <div class="col-xs-2">
                 <a href="#">Главная</a>
             </div>
 
-            <div class="col-xs-3">
+            <div class="col-xs-2">
                 <a href="#">О компании</a>
             </div>
 
-            <div class="col-xs-3">
+            <div class="col-xs-2">
                 <a href="#">Оплата и доставка</a>
             </div>
 
-            <div class="col-xs-3">
+            <div class="col-xs-2">
                 <a href="#">Контакты</a>
+            </div>
+
+            <div class="col-xs-2">
+                <a href="#">Прайс-лист</a>
+            </div>
+
+            <div class="col-xs-2">
+                <a href="#">Отзывы</a>
             </div>
         </div>
     </div>

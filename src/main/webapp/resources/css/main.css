@@ -75,6 +75,12 @@ header .headerMenu a{
     width: 150px;
 }
 
+.goodsCatalog .table-hover>tbody>tr:hover{
+    /*border: 1px solid #2aabd2;*/
+    /*border-color: #c9302c;!important;*/
+    /*background-color: #c9302c;!important;*/
+}
+
 .goodsCatalog .goodsImg{
     text-align: center;
     font-size: small;
