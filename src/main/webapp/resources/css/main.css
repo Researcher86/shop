@@ -53,10 +53,14 @@ header .headerMenu a{
     color: red;
 }
 
+.cart strong, .cart span{
+    font-size: small;
+}
+
 .cart .icon{
     position: absolute;
     top: 23px;
-    right: 40px;
+    right: 60px;
     height: 55px;
     width: 55px;
     background: url("/resources/img/cart.jpg") top center no-repeat;
@@ -75,15 +79,10 @@ header .headerMenu a{
     width: 150px;
 }
 
-.goodsCatalog .table-hover>tbody>tr:hover{
-    /*border: 1px solid #2aabd2;*/
-    /*border-color: #c9302c;!important;*/
-    /*background-color: #c9302c;!important;*/
-}
-
 .goodsCatalog .goodsImg{
     text-align: center;
     font-size: small;
+    color: #C3C3C3;
 }
 
 .goodsCatalog .goodsImg img{
