@@ -36,7 +36,7 @@ public class ShopModelTest {
         final Comment comment = pencel.getComments().get(0);
         assertEquals("Альпенов Танат Маратович", comment.getClient().getFio());
         assertEquals("Супер!", comment.getText());
-        assertEquals(Calendar.getInstance().getTime(), comment.getDate().getTime());
+        assertEquals(Calendar.getInstance().getTime().toString(), comment.getDate().getTime().toString());
     }
 
     @Test
