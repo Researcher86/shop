@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "/admin")
 public class AdminController {
 
-    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
+    private static Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     @Autowired
     private GoodsService goodsService;

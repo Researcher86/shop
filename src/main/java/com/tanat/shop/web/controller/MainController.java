@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class MainController {
 
-    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
+    private static Logger logger = LoggerFactory.getLogger(MainController.class);
 
     @Autowired
     private GoodsService goodsService;

@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @ControllerAdvice
 public class AppExceptionHandler {
-    protected Logger logger = LoggerFactory.getLogger(getClass().getName());
+    private static Logger logger = LoggerFactory.getLogger(AppException.class);
 
     // Total control - setup a model and return the view name yourself. Or consider
     // subclassing ExceptionHandlerExceptionResolver (see below).
