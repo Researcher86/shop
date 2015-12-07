@@ -28,9 +28,7 @@
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>
-                classpath:spring/applicationContext.xml
-                classpath:spring/database.xml
-                classpath:spring/mvc.xml
+                classpath:spring/*.xml
             </param-value>
         </init-param>
     </servlet>
