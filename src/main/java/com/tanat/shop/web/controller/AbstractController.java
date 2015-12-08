@@ -9,14 +9,14 @@ import org.springframework.ui.Model;
  */
 public class AbstractController {
 
-    private final String baseFolder;
+    private final String viewFolder;
 
-    public AbstractController(String baseFolder) {
-        this.baseFolder = baseFolder;
+    public AbstractController(String viewFolder) {
+        this.viewFolder = viewFolder;
     }
 
     protected String getView(Model model, String page) {
         model.addAttribute("content", page);
-        return "/" + baseFolder + "/template";
+        return "/" + viewFolder + "/template";
     }
 }
