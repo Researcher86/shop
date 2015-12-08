@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
+ * Контроллер главной страницы магазина
  * Created by Tanat on 16.11.2015.
  */
 @Controller
