@@ -11,6 +11,7 @@
     <title>E-Shop</title>
 </head>
 <body>
+<img src="/resources/img/robot.png">
 <h1>App Error!!!</h1>
 <hr>
 <h2>${msg}</h2>

@@ -11,6 +11,7 @@
     <title>E-Shop</title>
 </head>
 <body>
+<img src="/resources/img/robot.png">
 <h1>Unknown Error!!!</h1>
 </body>
 </html>
