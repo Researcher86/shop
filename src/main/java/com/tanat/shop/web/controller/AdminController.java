@@ -38,4 +38,9 @@ public class AdminController extends AbstractController {
         return getView(model, "index");
     }
 
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login() {
+        return "/admin/login";
+    }
+
 }
