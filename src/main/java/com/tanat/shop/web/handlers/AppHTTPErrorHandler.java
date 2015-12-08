@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class AppHTTPErrorHandler {
     @RequestMapping(value = "/404", method = RequestMethod.GET)
-    public String handle404(Model model) {
+    public String handle404() {
         return "/errors/404";
     }
 
     @RequestMapping(value = "/unknown", method = RequestMethod.GET)
-    public String handleUnknown(Model model) {
+    public String handleUnknown() {
         return "/errors/unknown";
     }
 }
