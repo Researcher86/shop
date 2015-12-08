@@ -39,6 +39,10 @@ public class MainController extends AbstractController {
         model.addAttribute("categories", categoryService.getAll());
         model.addAttribute("goodsList", goodsService.getAll());
 
+//        if (true) {
+//            throw new NullPointerException();
+//        }
+
         return getView(model, "index");
     }
 
