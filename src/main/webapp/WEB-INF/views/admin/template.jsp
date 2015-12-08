@@ -11,7 +11,7 @@
     <title>E-Shop</title>
 </head>
 <body>
-<h1>Welcome to E-Shop</h1>
+<jsp:include page="${content}.jsp"/>
 </body>
 </html>
 
