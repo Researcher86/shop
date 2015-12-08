@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
         "classpath:spring/database.xml",
         "classpath:spring/mvc.xml"
 })
-public abstract class AbstractController {
+public abstract class AbstractControllerTest {
     protected MockMvc mockMvc;
 
     @SuppressWarnings("SpringJavaAutowiringInspection")

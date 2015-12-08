@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by Tanat on 16.11.2015.
  */
 @Controller
-public class MainController {
+public class MainController extends AbstractController {
 
     private static Logger logger = LoggerFactory.getLogger(MainController.class);
 
@@ -28,6 +28,10 @@ public class MainController {
     @Autowired
     private CategoryService categoryService;
 
+    public MainController() {
+        super("main");
+    }
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model model) {
         logger.info("main index");
@@ -35,8 +39,7 @@ public class MainController {
         model.addAttribute("categories", categoryService.getAll());
         model.addAttribute("goodsList", goodsService.getAll());
 
-        model.addAttribute("content", "index");
-        return "/main/template";
+        return getView(model, "index");
     }
 
 }

@@ -11,13 +11,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Тестируем главный контроллер магазина
  * Created by Tanat on 08.12.2015.
  */
-public class MainControllerTest extends AbstractController {
+public class MainControllerTest extends AbstractControllerTest {
 
     @Test
     public void testIndexAction() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-//                .andExpect(view().name("/categories/list"))
+                .andExpect(view().name("/main/template"))
+                .andExpect(model().attributeExists("content"))
                 .andExpect(model().attributeExists("categories"))
                 .andExpect(model().attributeExists("goodsList"));
     }
