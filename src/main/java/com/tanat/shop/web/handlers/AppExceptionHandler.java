@@ -20,7 +20,7 @@ public class AppExceptionHandler {
     // Total control - setup a model and return the view name yourself. Or consider
     // subclassing ExceptionHandlerExceptionResolver (see below).
     @ExceptionHandler(Exception.class)
-    public ModelAndView handleError(HttpServletRequest req, Exception exception) {
+    public ModelAndView handleUnknownError(HttpServletRequest req, Exception exception) {
         logger.error("Request: " + req.getRequestURL() + " raised " + exception);
 
         ModelAndView mav = new ModelAndView();
@@ -32,7 +32,7 @@ public class AppExceptionHandler {
     }
 
     @ExceptionHandler(AppException.class)
-    public ModelAndView handleErrorNotFound(HttpServletRequest req, Exception exception) {
+    public ModelAndView handleAppError(HttpServletRequest req, Exception exception) {
         logger.error("Request: " + req.getRequestURL() + " raised " + exception);
 
         ModelAndView mav = new ModelAndView();
