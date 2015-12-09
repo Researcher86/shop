@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Tanat
@@ -12,5 +13,6 @@
 </head>
 <body>
     <h1>Страница админки</h1>
+    <a href="<c:url value="/admin/logout"/>">Выход</a>
 </body>
 </html>

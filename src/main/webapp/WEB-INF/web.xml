@@ -4,7 +4,7 @@
 	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
     <display-name>Shop</display-name>
-
+<!--*******************************************************************-->
     <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -22,18 +22,30 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
+<!--*******************************************************************-->
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
+<!--*******************************************************************-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
             classpath:spring/applicationContext.xml
             classpath:spring/database.xml
+            classpath:spring/security.xml
         </param-value>
     </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
+<!--*******************************************************************-->
     <servlet>
         <servlet-name>dispatcherServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -83,8 +95,8 @@
         <location>/404</location>
     </error-page>
 
-    <error-page>
-        <location>/unknown</location>
-    </error-page>
+    <!--<error-page>-->
+        <!--<location>/unknown</location>-->
+    <!--</error-page>-->
 
 </web-app>
