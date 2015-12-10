@@ -16,7 +16,14 @@
 
     <form action="<c:url value="/admin/logout"/>" method="post" id="logoutForm">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <input type="submit" name="submit" value="Выход">
     </form>
+
+    <c:if test="${pageContext.request.userPrincipal.name != null}">
+        <h2>
+            Welcome : ${pageContext.request.userPrincipal.name} |
+            <a href="javascript:document.getElementById('logoutForm').submit()"> Выход</a>
+        </h2>
+    </c:if>
+
 </body>
 </html>

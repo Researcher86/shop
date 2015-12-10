@@ -34,7 +34,7 @@
         }
     </style>
 </head>
-<body onload='document.loginForm.username.focus();'>
+<body onload="document.loginForm.username.focus();">
 
 <div id="login-box">
 
@@ -47,19 +47,19 @@
         <div class="msg">${msg}</div>
     </c:if>
 
-    <form name='loginForm' method='POST'>
+    <form name="loginForm" method="POST">
 
         <table>
             <tr>
                 <td>User:</td>
-                <td><input type='text' name='username' value=''></td>
+                <td><input type="text" name="username" value="xor"></td>
             </tr>
             <tr>
                 <td>Password:</td>
-                <td><input type='password' name='password' /></td>
+                <td><input type="password" name="password" value="123456" /></td>
             </tr>
             <tr>
-                <td colspan='2'><input name="submit" type="submit" value="submit" /></td>
+                <td colspan="2"><input name="submit" type="submit" value="submit" /></td>
             </tr>
         </table>
 
