@@ -1,7 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Login Page</title>
+    <link rel="icon" href="<c:url value="/resources/img/login-icon.png"/>">
     <style>
         .error {
             padding: 15px;
@@ -59,7 +61,7 @@
                 <td><input type="password" name="password" value="123456" /></td>
             </tr>
             <tr>
-                <td colspan="2"><input name="submit" type="submit" value="submit" /></td>
+                <td colspan="2"><input name="submit" type="submit" value="Вход" /></td>
             </tr>
         </table>
 
