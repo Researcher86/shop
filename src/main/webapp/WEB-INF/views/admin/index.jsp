@@ -13,6 +13,10 @@
 </head>
 <body>
     <h1>Страница админки</h1>
-    <a href="<c:url value="/admin/logout"/>">Выход</a>
+
+    <form action="<c:url value="/admin/logout"/>" method="post" id="logoutForm">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <input type="submit" name="submit" value="Выход">
+    </form>
 </body>
 </html>

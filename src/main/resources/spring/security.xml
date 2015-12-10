@@ -39,7 +39,6 @@
                     password-parameter="password" />
 
         <logout logout-url="/admin/logout" logout-success-url="/admin/login?logout" delete-cookies="JSESSIONID" invalidate-session="true" />
-        <!--<logout logout-success-url="/admin/login?logout" />-->
     </http>
 
     <authentication-manager>
