@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Tanat
@@ -8,7 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>E-Shop</title>
+    <title>E-Shop Admin page</title>
+    <link rel="icon" href="<c:url value="/resources/img/admin.png"/>">
 </head>
 <body>
 <jsp:include page="${content}.jsp"/>

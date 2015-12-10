@@ -7,23 +7,17 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Admin page</title>
-</head>
-<body>
-    <h1>Страница админки</h1>
 
-    <form action="<c:url value="/admin/logout"/>" method="post" id="logoutForm">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    </form>
+<h1>Страница админки</h1>
 
-    <c:if test="${pageContext.request.userPrincipal.name != null}">
-        <h2>
-            Welcome : ${pageContext.request.userPrincipal.name} |
-            <a href="javascript:document.getElementById('logoutForm').submit()"> Выход</a>
-        </h2>
-    </c:if>
+<form action="<c:url value="/admin/logout"/>" method="post" id="logoutForm">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form>
 
-</body>
-</html>
+<c:if test="${pageContext.request.userPrincipal.name != null}">
+    <h2>
+        Welcome : ${pageContext.request.userPrincipal.name} |
+        <a href="javascript:document.getElementById('logoutForm').submit()"> Выход</a>
+    </h2>
+</c:if>
+
