@@ -22,29 +22,31 @@ public class InitDatabase implements ApplicationListener<ContextRefreshedEvent> 
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        categoryDao.saveAndFlush(new Category("Электроника"));
+        if (categoryDao.findAll().size() == 0) {
+            categoryDao.saveAndFlush(new Category("Электроника"));
 
-        Category category = new Category("Канцтовары");
-        categoryDao.saveAndFlush(category);
+            Category category = new Category("Канцтовары");
+            categoryDao.saveAndFlush(category);
 
-        Goods goods = new Goods("Ручка", 5, "Обычная");
-        goods.setCategory(category);
-        goodsDao.saveAndFlush(goods);
+            Goods goods = new Goods("Ручка", 5, "Обычная");
+            goods.setCategory(category);
+            goodsDao.saveAndFlush(goods);
 
-        goods = new Goods("Карандаш", 5, "Простой");
-        goods.setCategory(category);
-        goodsDao.saveAndFlush(goods);
+            goods = new Goods("Карандаш", 5, "Простой");
+            goods.setCategory(category);
+            goodsDao.saveAndFlush(goods);
 
-        goods = new Goods("Степлер", 50, "Супер");
-        goods.setCategory(category);
-        goodsDao.saveAndFlush(goods);
+            goods = new Goods("Степлер", 50, "Супер");
+            goods.setCategory(category);
+            goodsDao.saveAndFlush(goods);
 
-        goods = new Goods("Тетрадь", 25, "Простая");
-        goods.setCategory(category);
-        goodsDao.saveAndFlush(goods);
+            goods = new Goods("Тетрадь", 25, "Простая");
+            goods.setCategory(category);
+            goodsDao.saveAndFlush(goods);
 
-        goods = new Goods("Ластик", 5, "Простой");
-        goods.setCategory(category);
-        goodsDao.saveAndFlush(goods);
+            goods = new Goods("Ластик", 5, "Простой");
+            goods.setCategory(category);
+            goodsDao.saveAndFlush(goods);
+        }
     }
 }
