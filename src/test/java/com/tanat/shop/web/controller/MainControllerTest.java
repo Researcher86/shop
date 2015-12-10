@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class MainControllerTest extends AbstractControllerTest {
 
     @Test
-    public void testIndexAction() throws Exception {
+    public void testIndex() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("/main/template"))

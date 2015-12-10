@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
+ * Контроллер ртвечает за страницу админки
  * Created by Tanat on 16.11.2015.
  */
 @Controller
@@ -42,17 +43,18 @@ public class AdminController extends AbstractController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout) {
-        logger.info("login");
+        logger.info("login action");
 
-        ModelAndView model = new ModelAndView();
+        ModelAndView model = new ModelAndView("/admin/login");
         if (error != null) {
+            logger.info("error");
             model.addObject("error", "Invalid username and password!");
         }
 
         if (logout != null) {
+            logger.info("logout");
             model.addObject("msg", "You've been logged out successfully.");
         }
-        model.setViewName("/admin/login");
 
         return model;
     }
