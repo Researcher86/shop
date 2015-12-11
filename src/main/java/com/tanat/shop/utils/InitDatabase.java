@@ -10,6 +10,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 /**
+ * Компонент для иницыализации БД
  * Created by Tanat on 16.11.2015.
  */
 @Component
