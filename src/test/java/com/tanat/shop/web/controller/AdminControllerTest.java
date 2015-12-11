@@ -28,7 +28,7 @@ public class AdminControllerTest extends AbstractControllerTest {
     public void testLogin() throws Exception {
 //        mockMvc = webAppContextSetup(this.wac).apply(springSecurity()).build();
 //        mockMvc.perform(get("/admin/login")
-//
+//              .
 //        );
     }
 
