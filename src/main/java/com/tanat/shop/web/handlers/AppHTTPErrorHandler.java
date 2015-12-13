@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by Tanat on 30.11.2015.
  */
 @Controller
-public class AppHTTPErrorHandler {
+public class AppHttpErrorHandler {
     @RequestMapping(value = "/404", method = RequestMethod.GET)
     public String handle404() {
         return "/errors/404";
