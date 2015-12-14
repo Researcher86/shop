@@ -75,7 +75,7 @@
 
 <div class="container">
     <div class="row">
-        <jsp:include page="${content}.jsp"/>
+        <jsp:include page="${content}"/>
     </div>
 </div>
 

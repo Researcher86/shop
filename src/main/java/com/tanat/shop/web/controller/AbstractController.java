@@ -16,7 +16,7 @@ public class AbstractController {
     }
 
     protected String getView(Model model, String page) {
-        model.addAttribute("content", page);
+        model.addAttribute("content", page + ".jsp");
         return "/" + viewFolder + "/template";
     }
 }

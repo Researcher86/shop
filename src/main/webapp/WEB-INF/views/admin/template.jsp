@@ -13,7 +13,7 @@
     <link rel="icon" href="<c:url value="/resources/img/admin.png"/>">
 </head>
 <body>
-<jsp:include page="${content}.jsp"/>
+<jsp:include page="${content}"/>
 </body>
 </html>
 
