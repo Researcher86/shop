@@ -1,0 +1,9 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+form{
+    width: 300px;
+    margin: auto;
+}
