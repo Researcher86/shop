@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
  * Содержит вспомогательные методы
  * Created by Tanat on 08.12.2015.
  */
-public class AbstractController {
+public abstract class AbstractController {
 
     private final String viewFolder;
 
