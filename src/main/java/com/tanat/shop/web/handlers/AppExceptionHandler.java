@@ -27,7 +27,7 @@ public class AppExceptionHandler {
         mav.addObject("exceptionName", exception.getClass().getCanonicalName());
         mav.addObject("exception", exception);
         mav.addObject("msg", "Неизвестная ошибка!");
-        mav.setViewName("/errors/error");
+        mav.setViewName("errors/error");
         return mav;
     }
 
@@ -39,7 +39,7 @@ public class AppExceptionHandler {
         mav.addObject("exceptionName", exception.getClass().getCanonicalName());
         mav.addObject("exception", exception);
         mav.addObject("msg", exception.getMessage());
-        mav.setViewName("/errors/error");
+        mav.setViewName("errors/error");
         return mav;
     }
 }

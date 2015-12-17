@@ -45,7 +45,7 @@ public class AdminController extends AbstractController {
     public ModelAndView login(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout) {
         logger.info("login action");
 
-        ModelAndView model = new ModelAndView("/admin/login");
+        ModelAndView model = new ModelAndView("admin/login");
         if (error != null) {
             logger.info("error");
             model.addObject("error", "Invalid username and password!");
