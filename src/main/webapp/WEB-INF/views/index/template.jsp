@@ -45,29 +45,14 @@
                 </div>
             </div>
         </div>
-        <div class="row headerMenu">
-            <div class="col-xs-2">
-                <a href="#">Главная</a>
-            </div>
-
-            <div class="col-xs-2">
-                <a href="#">О компании</a>
-            </div>
-
-            <div class="col-xs-2">
-                <a href="#">Оплата и доставка</a>
-            </div>
-
-            <div class="col-xs-2">
-                <a href="#">Контакты</a>
-            </div>
-
-            <div class="col-xs-2">
-                <a href="#">Прайс-лист</a>
-            </div>
-
-            <div class="col-xs-2">
-                <a href="#">Отзывы</a>
+        <div class="row">
+            <div class="btn-group btn-group-justified headerMenu">
+                <a href="#" class="btn btn-danger">Главная</a>
+                <a href="#" class="btn btn-danger">О компании</a>
+                <a href="#" class="btn btn-danger">Оплата и доставка</a>
+                <a href="#" class="btn btn-danger">Контакты</a>
+                <a href="#" class="btn btn-danger">Прайс-лист</a>
+                <a href="#" class="btn btn-danger">Отзывы</a>
             </div>
         </div>
     </div>
