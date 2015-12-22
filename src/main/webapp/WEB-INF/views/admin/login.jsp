@@ -32,23 +32,23 @@
                     </div>
                 </c:if>
                 <div class="form-group">
-                    <label for="login">Логин</label>
+                    <label for="login"><span class="glyphicon glyphicon-user"></span> Логин</label>
                     <input id="login" class="form-control" type="text" name="username" value="xor"/>
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Пароль</label>
+                    <label for="password"><span class="glyphicon glyphicon-eye-open"></span> Пароль</label>
                     <input id="password" class="form-control" type="password" name="password" value="123456"/>
                 </div>
 
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <label class="checkbox-inline"><input type="checkbox" value="">Запомнить меня</label>
                     </div>
 
-                    <div class="col-md-6 text-right">
-                        <input class="btn btn-default" name="submit" type="submit" value="Вход"/>
+                    <div class="col-md-4 text-right">
+                        <button type="submit" class="btn btn-default btn-block"><span class="glyphicon glyphicon-off"></span> Вход</button>
                     </div>
                 </div>
             </form>
