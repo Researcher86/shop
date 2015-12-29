@@ -7,7 +7,7 @@ import java.util.Calendar;
  * Created by Tanat on 02.10.2015.
  */
 @Entity
-@Table(name = "comments")
+@Table(name = "commentss")
 public class Comment {
     @Id
     @GeneratedValue

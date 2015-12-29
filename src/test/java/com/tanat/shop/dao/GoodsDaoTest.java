@@ -7,8 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.transaction.Transactional;
-
 import static org.junit.Assert.*;
 
 /**
@@ -53,7 +51,7 @@ public class GoodsDaoTest extends AbstractDaoTest {
     }
 
     @Test
-    @Transactional
+//    @Transactional
     public void testAddComment() throws Exception {
         Client client = new Client("Альпенов Танат Маратович", "87011520885", "Дощанова 133б", "researcher86@mail.ru");
         clientDao.saveAndFlush(client);
