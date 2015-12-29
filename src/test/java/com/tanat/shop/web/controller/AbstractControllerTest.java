@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 @WebAppConfiguration
 @ContextConfiguration({
         "classpath:spring/applicationContext.xml",
-        "classpath:spring/database.xml",
+        "classpath:spring/testDatabase.xml",
         "classpath:spring/mvc.xml"
 })
 public abstract class AbstractControllerTest {

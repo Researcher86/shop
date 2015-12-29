@@ -7,13 +7,13 @@ import java.util.Calendar;
  * Created by Tanat on 02.10.2015.
  */
 @Entity
-@Table(name = "commentss")
+@Table(name = "comments")
 public class Comment {
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column(columnDefinition = "text")
+    @Lob
     private String text;
 
     @Temporal(TemporalType.TIMESTAMP)
