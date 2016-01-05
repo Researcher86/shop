@@ -20,14 +20,14 @@ public class AppExceptionHandler {
     // Total control - setup a model and return the view name yourself. Or consider
     // subclassing ExceptionHandlerExceptionResolver (see below).
     @ExceptionHandler(Exception.class)
-    public ModelAndView handleUnknownError(HttpServletRequest req, Exception exception) {
+    public ModelAndView handle500Error(HttpServletRequest req, Exception exception) {
         logger.error("Request: " + req.getRequestURL() + " raised " + exception);
 
         ModelAndView mav = new ModelAndView();
         mav.addObject("exceptionName", exception.getClass().getCanonicalName());
         mav.addObject("exception", exception);
         mav.addObject("msg", "Неизвестная ошибка!");
-        mav.setViewName("errors/error");
+        mav.setViewName("error/500");
         return mav;
     }
 
@@ -39,7 +39,7 @@ public class AppExceptionHandler {
         mav.addObject("exceptionName", exception.getClass().getCanonicalName());
         mav.addObject("exception", exception);
         mav.addObject("msg", exception.getMessage());
-        mav.setViewName("errors/error");
+        mav.setViewName("error/500");
         return mav;
     }
 }
