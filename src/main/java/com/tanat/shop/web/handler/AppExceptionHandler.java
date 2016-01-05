@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @ControllerAdvice
 public class AppExceptionHandler {
-    private static Logger logger = LoggerFactory.getLogger(AppException.class);
+    private static Logger logger = LoggerFactory.getLogger(AppExceptionHandler.class);
 
     // Total control - setup a model and return the view name yourself. Or consider
     // subclassing ExceptionHandlerExceptionResolver (see below).
@@ -32,7 +32,7 @@ public class AppExceptionHandler {
     }
 
     @ExceptionHandler(AppException.class)
-    public ModelAndView handleAppError(HttpServletRequest req, Exception exception) {
+    public ModelAndView handleAppError(HttpServletRequest req, AppException exception) {
         logger.error("Request: " + req.getRequestURL() + " raised " + exception);
 
         ModelAndView mav = new ModelAndView();
