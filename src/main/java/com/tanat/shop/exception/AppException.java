@@ -1,4 +1,4 @@
-package com.tanat.shop.exceptions;
+package com.tanat.shop.exception;
 
 /**
  * Exception бросается при возникновении ошибки в приложении

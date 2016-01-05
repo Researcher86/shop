@@ -1,4 +1,4 @@
-package com.tanat.shop.utils;
+package com.tanat.shop.util;
 
 import com.tanat.shop.dao.CategoryDao;
 import com.tanat.shop.dao.GoodsDao;

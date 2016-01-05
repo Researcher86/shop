@@ -1,7 +1,7 @@
 package com.tanat.shop.service;
 
 import com.tanat.shop.dao.CategoryDao;
-import com.tanat.shop.exceptions.AppException;
+import com.tanat.shop.exception.AppException;
 import com.tanat.shop.model.Category;
 import com.tanat.shop.model.Goods;
 import org.springframework.beans.factory.annotation.Autowired;
