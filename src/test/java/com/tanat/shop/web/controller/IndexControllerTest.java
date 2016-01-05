@@ -17,8 +17,7 @@ public class IndexControllerTest extends AbstractControllerTest {
     public void testIndex() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("index/template"))
-                .andExpect(model().attributeExists("content"))
+                .andExpect(view().name("index/index"))
                 .andExpect(model().attributeExists("categories"))
                 .andExpect(model().attributeExists("goodsList"));
     }

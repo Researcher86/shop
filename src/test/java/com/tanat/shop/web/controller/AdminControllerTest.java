@@ -2,13 +2,10 @@ package com.tanat.shop.web.controller;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-//import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+//import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.*;
 
 /**
  * Тестируем контроллер админки
@@ -20,7 +17,7 @@ public class AdminControllerTest extends AbstractControllerTest {
     public void testIndex() throws Exception {
         mockMvc.perform(get("/admin"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("admin/template"))
+                .andExpect(view().name("admin/index"))
                 .andExpect(model().attributeExists("categories"));
     }
 
