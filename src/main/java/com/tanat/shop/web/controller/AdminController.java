@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @RequestMapping(value = "/admin")
-public class AdminController extends AbstractController {
+public class AdminController {
 
     private static Logger logger = LoggerFactory.getLogger(AdminController.class);
 
@@ -28,17 +28,13 @@ public class AdminController extends AbstractController {
     @Autowired
     private CategoryService categoryService;
 
-    public AdminController() {
-        super("admin");
-    }
-
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
         logger.info("categories");
 
         model.addAttribute("categories", categoryService.getAll());
 
-        return getView(model, "index");
+        return "admin/index";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)

@@ -1,0 +1,63 @@
+<html>
+<head>
+    <title>Login Page</title>
+    <link rel="icon" href="{{'/resources/img/eshop_icon.png' | path}}">
+    <link rel="stylesheet" href="{{'/resources/css/bootstrap.min.css' | path}}">
+    <link rel="stylesheet" href="{{'/resources/css/login.css' | path}}">
+</head>
+<body onload="document.loginForm.username.focus();">
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3><img src="{{'/resources/img/login-icon.png' | path}}" height="32"> Авторизация</h3>
+            <hr>
+            <form name="loginForm" method="POST">
+                {% if (error) %}
+                <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <span class="glyphicon glyphicon-ban-circle"></span> {{error}}
+                </div>
+                {% endif %}
+
+                {% if (msg) %}
+                <div class="alert alert-info alert-dismissible fade in" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <span class="glyphicon glyphicon-exclamation-sign"></span> {{msg}}
+                </div>
+                {% endif %}
+
+                <div class="form-group">
+                    <label for="login"><span class="glyphicon glyphicon-user"></span> Логин</label>
+                    <input id="login" class="form-control" type="text" name="username" value="xor"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="password"><span class="glyphicon glyphicon-eye-open"></span> Пароль</label>
+                    <input id="password" class="form-control" type="password" name="password" value="123456"/>
+                </div>
+
+                <input type="hidden" name="{{csrf.parameterName}}" value="{{csrf.token}}"/>
+                <div class="row">
+                    <div class="col-md-8">
+                        <label class="checkbox-inline"><input type="checkbox" value="">Запомнить меня</label>
+                    </div>
+
+                    <div class="col-md-4 text-right">
+                        <button type="submit" class="btn btn-default btn-block"><span
+                                class="glyphicon glyphicon-off"></span> Вход
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="{{'/resources/js/jquery-2.1.4.min.js' | path}}"></script>
+<script src="{{'/resources/js/bootstrap.min.js' | path}}"></script>
+</body>
+</html>

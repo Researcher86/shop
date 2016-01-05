@@ -11,9 +11,16 @@
     <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
     <mvc:resources location="/resources/" mapping="/resources/**"/>
 
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+        <!--<property name="prefix" value="/WEB-INF/views/"/>-->
+        <!--<property name="suffix" value=".jsp"/>-->
+        <!--<property name="order" value="1"/>-->
+    <!--</bean>-->
+
+    <bean id="viewResolver" class="com.lyncode.jtwig.mvc.JtwigViewResolver">
+        <!--<property name="viewNames" value="*-jtwig"/>-->
         <property name="prefix" value="/WEB-INF/views/"/>
-        <property name="suffix" value=".jsp"/>
+        <property name="suffix" value=".html"/>
         <property name="order" value="1"/>
     </bean>
 

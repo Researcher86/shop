@@ -1,0 +1,17 @@
+{% extends "template.html" %}
+
+{% block content %}
+    <h1>Страница админки</h1>
+
+    <form action="{{'/admin/logout' | path}}" method="post" id="logoutForm">
+        <input type="hidden" name="{{csrf.parameterName}}" value="{{csrf.token}}"/>
+    </form>
+
+    {% if (request.userPrincipal.name) %}
+        <h2>
+            Welcome : {{request.userPrincipal.name}} |
+            <a href="javascript:document.getElementById('logoutForm').submit()"> Выход</a>
+        </h2>
+    {% endif %}
+{% endblock %}
+
