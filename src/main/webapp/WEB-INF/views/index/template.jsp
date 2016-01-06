@@ -1,10 +1,19 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: Tanat
+  Date: 01.12.2015
+  Time: 11:09
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>E-Shop</title>
-    <link rel="stylesheet" href="{{'/resources/css/bootstrap.min.css' | path}}">
-    <link rel="stylesheet" href="{{'/resources/css/main.css' | path}}">
+    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>">
 
-    <link rel="icon" href="{{'/resources/img/eshop_icon.png' | path}}">
+    <link rel="icon" href="<c:url value="/resources/img/eshop_icon.png"/>">
 </head>
 <body>
 
@@ -51,7 +60,7 @@
 
 <div class="container">
     <div class="row">
-        {% block content %}{% endblock %}
+        <jsp:include page="${content}"/>
     </div>
 </div>
 
@@ -61,8 +70,8 @@
     </div>
 </footer>
 
-<script src="{{'/resources/js/jquery-2.1.4.min.js' | path}}"></script>
-<script src="{{'/resources/js/bootstrap.min.js' | path}}"></script>
+<script src="<c:url value="/resources/js/jquery-2.1.4.min.js"/>"></script>
+<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 </body>
 </html>
 

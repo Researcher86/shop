@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by Tanat on 16.11.2015.
  */
 @Controller
-public class IndexController {
+public class IndexController extends AbstractController {
 
     private static Logger logger = LoggerFactory.getLogger(IndexController.class);
 
@@ -25,6 +25,10 @@ public class IndexController {
     @Autowired
     private CategoryService categoryService;
 
+    public IndexController() {
+        super("index");
+    }
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model model) {
         logger.info("main index");
@@ -32,7 +36,11 @@ public class IndexController {
         model.addAttribute("categories", categoryService.getAll());
         model.addAttribute("goodsList", goodsService.getAll());
 
-        return "index/index";
+//        if (true) {
+//            throw new NullPointerException();
+//        }
+
+        return getView(model, "index");
     }
 
 }
