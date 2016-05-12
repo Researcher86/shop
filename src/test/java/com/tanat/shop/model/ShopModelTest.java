@@ -15,7 +15,7 @@ public class ShopModelTest {
 
     @Test
     public void testCategoryOfGoods() throws Exception {
-        Goods pencel = new Goods("Ручка", 5, "Обычная ручка");
+        Goods pencel = new Goods("Ручка", 5, "Обычная ручка", null);
 
         Category category = new Category("Канцтовары");
         category.addGoods(pencel);
@@ -29,7 +29,7 @@ public class ShopModelTest {
     @Test
     public void testCommentForGoods() throws Exception {
         Client client = new Client("Альпенов Танат Маратович", "87011520885", "Дощанова 133б", "researcher86@mail.ru");
-        Goods pencel = new Goods("Ручка", 5, "Обычная ручка");
+        Goods pencel = new Goods("Ручка", 5, "Обычная ручка", null);
 
         pencel.addComments(new Comment("Супер!", client));
 
@@ -42,7 +42,7 @@ public class ShopModelTest {
     @Test
     public void testCart() throws Exception {
         Client client = new Client("Альпенов Танат Маратович", "87011520885", "Дощанова 133б", "researcher86@mail.ru");
-        Goods pencel = new Goods("Ручка", 5, "Обычная ручка");
+        Goods pencel = new Goods("Ручка", 5, "Обычная ручка", null);
 
         Cart cart = new Cart(client);
         cart.setShippingAddress("Низнаю куда");

@@ -57,7 +57,7 @@ public class CartDaoTest extends AbstractDaoTest {
 
     @Test
     public void testAddOrder() throws Exception {
-        final Goods goods = new Goods("Ручка", 5, "Обычная ручка");
+        final Goods goods = new Goods("Ручка", 5, "Обычная ручка", null);
 
         cart.setShippingAddress("Низнаю куда");
         cart.addOrder(goods, 5);

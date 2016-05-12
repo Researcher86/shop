@@ -33,7 +33,7 @@ public class CommentDaoTest extends AbstractDaoTest {
     @Before
     public void setUp() throws Exception {
         client = new Client("Альпенов Танат Маратович", "87011520885", "Дощанова 133б", "researcher86@mail.ru");
-        pencel = new Goods("Ручка", 5, "Обычная ручка");
+        pencel = new Goods("Ручка", 5, "Обычная ручка", null);
         comment1 = new Comment("Супер!", client);
         comment2 = new Comment("Супер!2", client);
         comment1.setGoods(pencel);

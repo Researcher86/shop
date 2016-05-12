@@ -25,7 +25,7 @@
                     <div class="row">
                         <div class="col-xs-4 goodsImg">
                             <div>
-                                <img src="<c:url value="/resources/img/bumaga.png"/>" height="133" border="0" alt="">
+                                <img src="data:image/${goods.image.ext};base64,${goods.image.base64}" height="133" border="0" alt="">
                             </div>
                             <strong>Код товара: </strong><span>15364</span>
                         </div>

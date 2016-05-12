@@ -26,7 +26,7 @@ public class GoodsDaoTest extends AbstractDaoTest {
 
     @Before
     public void setUp() throws Exception {
-        goods = new Goods("Ручка", 5, "Обычная ручка");
+        goods = new Goods("Ручка", 5, "Обычная ручка", null);
     }
 
     @Test

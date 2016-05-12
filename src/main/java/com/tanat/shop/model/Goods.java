@@ -23,15 +23,20 @@ public class Goods {
     private Category category;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "goods")
-    private List<Comment> comments;
+    private List<Comment> comments = new ArrayList<>();
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "image_id")
+    private Image image;
 
     public Goods() {
     }
 
-    public Goods(String name, int price, String description) {
+    public Goods(String name, int price, String description, Image image) {
         this.name = name;
         this.price = price;
         this.description = description;
+        this.image = image;
     }
 
     public Long getId() {
@@ -74,10 +79,15 @@ public class Goods {
         this.comments = comments;
     }
 
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
     public void addComments(Comment comment) {
-        if (comments == null) {
-            comments = new ArrayList<>();
-        }
         comment.setGoods(this);
         comments.add(comment);
     }

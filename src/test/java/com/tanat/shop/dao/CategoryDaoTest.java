@@ -26,7 +26,7 @@ public class CategoryDaoTest extends AbstractDaoTest {
     @Test
     @Transactional
     public void testSave() throws Exception {
-        Goods pencel = new Goods("Ручка", 5, "Обычная ручка");
+        Goods pencel = new Goods("Ручка", 5, "Обычная ручка", null);
         Category category = new Category("Канцтовары");
         category.addGoods(pencel);
 
@@ -53,7 +53,7 @@ public class CategoryDaoTest extends AbstractDaoTest {
 
     @Test(expected = Exception.class)
     public void testDeleteWithGoods() throws Exception {
-        Goods pencel = new Goods("Ручка", 5, "Обычная ручка");
+        Goods pencel = new Goods("Ручка", 5, "Обычная ручка", null);
         Category category = new Category("Канцтовары");
         category.addGoods(pencel);
 
