@@ -2,7 +2,6 @@ package com.tanat.shop.util;
 
 import com.tanat.shop.dao.CategoryDao;
 import com.tanat.shop.dao.GoodsDao;
-import com.tanat.shop.dao.ImageDao;
 import com.tanat.shop.model.Category;
 import com.tanat.shop.model.Goods;
 import com.tanat.shop.model.Image;
@@ -33,9 +32,6 @@ public class InitDatabase implements ApplicationListener<ContextRefreshedEvent> 
 
     @Autowired
     private GoodsDao goodsDao;
-
-    @Autowired
-    private ImageDao imageDao;
 
     @Transactional
     @Override
