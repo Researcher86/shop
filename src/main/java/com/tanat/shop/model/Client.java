@@ -5,9 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * Created by Tanat on 30.09.2015.
- */
 @Entity
 @Table(name = "clients")
 public class Client {

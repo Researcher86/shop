@@ -8,9 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created by Tanat on 12.11.2015.
- */
 @Repository
 public interface CommentDao extends JpaRepository<Comment, Long> {
     List<Comment> findByGoods(Goods goods);

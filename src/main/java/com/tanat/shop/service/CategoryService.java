@@ -10,9 +10,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 
-/**
- * Created by Tanat on 25.11.2015.
- */
 @Service
 public class CategoryService {
     @Autowired

@@ -2,9 +2,6 @@ package com.tanat.shop.model;
 
 import javax.persistence.*;
 
-/**
- * Created by Tanat on 30.09.2015.
- */
 @Entity
 @Table(name = "orders")
 public class Order {

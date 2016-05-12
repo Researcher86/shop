@@ -6,9 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created by Tanat on 12.11.2015.
- */
 @Repository
 public interface GoodsDao extends JpaRepository<Goods, Long> {
 

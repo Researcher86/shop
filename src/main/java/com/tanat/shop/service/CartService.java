@@ -9,9 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created by Tanat on 25.11.2015.
- */
 @Service
 public class CartService {
     @Autowired

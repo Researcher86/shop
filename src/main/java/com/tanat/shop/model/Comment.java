@@ -3,9 +3,6 @@ package com.tanat.shop.model;
 import javax.persistence.*;
 import java.util.Calendar;
 
-/**
- * Created by Tanat on 02.10.2015.
- */
 @Entity
 @Table(name = "comments")
 public class Comment {
