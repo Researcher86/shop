@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * Глобальный контроллер для обработки ошибок приложения
  * Created by Tanat on 27.11.2015.
  */
-@ControllerAdvice
+//@ControllerAdvice
 public class AppExceptionHandler {
     private static Logger logger = LoggerFactory.getLogger(AppExceptionHandler.class);
 

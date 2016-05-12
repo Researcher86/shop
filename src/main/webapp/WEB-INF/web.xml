@@ -90,14 +90,14 @@
     <!--Коды статуса в 400x диапазоне(400-499) предназначены для случаев, в которых клиент, возможно, допустил ошибку и должен выполнить корректный запрос. Вышеупомянутый 404 является таким примером-->
     <!--Коды статуса в 500x диапазоне(500-599) предназначены для случаев, когда произошла ошибка на сервере, несмотря на правильность запроса-->
 
-    <error-page>
-        <error-code>404</error-code>
-        <location>/404</location>
-    </error-page>
+    <!--<error-page>-->
+        <!--<error-code>404</error-code>-->
+        <!--<location>/404</location>-->
+    <!--</error-page>-->
 
-    <error-page>
-        <error-code>500</error-code>
-        <location>/500</location>
-    </error-page>
+    <!--<error-page>-->
+        <!--<error-code>500</error-code>-->
+        <!--<location>/500</location>-->
+    <!--</error-page>-->
 
 </web-app>
