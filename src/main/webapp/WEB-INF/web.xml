@@ -37,7 +37,7 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>
             classpath:spring/applicationContext.xml
-            classpath:spring/MySQL_DB.xml
+            classpath:spring/HSQL_DB.xml
             classpath:spring/security.xml
         </param-value>
     </context-param>
