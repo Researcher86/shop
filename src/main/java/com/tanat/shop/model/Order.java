@@ -43,8 +43,4 @@ public class Order {
         return goods.getPrice() * goodsCount;
     }
 
-    public Cart getCart() {
-        return cart;
-    }
-
 }
