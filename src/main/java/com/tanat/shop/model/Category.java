@@ -14,7 +14,7 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category")
-    private List<Goods> goodsList;
+    private List<Goods> goodsList = new ArrayList<>();
 
     public Category() {
     }
@@ -48,9 +48,6 @@ public class Category {
     }
 
     public void addGoods(Goods goods) {
-        if (goodsList == null) {
-            goodsList = new ArrayList<>();
-        }
         goods.setCategory(this);
         goodsList.add(goods);
     }

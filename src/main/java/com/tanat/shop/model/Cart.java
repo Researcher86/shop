@@ -18,7 +18,7 @@ public class Cart {
     private String shippingAddress;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "cart")
-    private List<Order> orders;
+    private List<Order> orders = new ArrayList<>();
 
     public Cart() {
     }
@@ -48,10 +48,6 @@ public class Cart {
     }
 
     public void addOrder(Goods goods, int amount) {
-        if (orders == null) {
-            orders = new ArrayList<>();
-        }
-
         orders.add(new Order(goods, amount, this));
     }
 
