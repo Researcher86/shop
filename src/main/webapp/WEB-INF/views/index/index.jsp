@@ -11,7 +11,7 @@
 <div class="col-xs-3">
     <div class="list-group">
         <c:forEach var="category" items="${categories}">
-            <a href="<c:url value="categories/${category.id}" />"
+            <a href="<c:url value="/categories/${category.id}" />"
                class="list-group-item">${category.name}</a>
         </c:forEach>
     </div>

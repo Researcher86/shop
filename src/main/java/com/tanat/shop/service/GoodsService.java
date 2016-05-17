@@ -1,7 +1,9 @@
 package com.tanat.shop.service;
 
+import com.tanat.shop.dao.CategoryDao;
 import com.tanat.shop.dao.GoodsDao;
 import com.tanat.shop.exception.AppException;
+import com.tanat.shop.model.Category;
 import com.tanat.shop.model.Goods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,9 @@ import java.util.List;
 public class GoodsService {
     @Autowired
     private GoodsDao goodsDao;
+
+    @Autowired
+    private CategoryDao categoriesDao;
 
     public List<Goods> getAll() {
         return goodsDao.findAll();
@@ -35,5 +40,10 @@ public class GoodsService {
 
     public List<Goods> findByName(String str) {
         return goodsDao.findByNameLike("%" + str + "%");
+    }
+
+    public List<Goods> findByCategoryId(Long id) {
+        Category category = categoriesDao.findOne(id);
+        return goodsDao.findByCategory(category);
     }
 }

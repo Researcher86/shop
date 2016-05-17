@@ -1,15 +1,14 @@
 package com.tanat.shop.dao;
 
-import com.tanat.shop.model.Client;
-import com.tanat.shop.model.Comment;
-import com.tanat.shop.model.Goods;
-import com.tanat.shop.model.Image;
+import com.tanat.shop.model.*;
 import com.tanat.shop.util.LoadImage;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.transaction.Transactional;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -21,6 +20,9 @@ public class GoodsDaoTest extends AbstractDaoTest {
 
     @Autowired
     private GoodsDao goodsDao;
+
+    @Autowired
+    private CategoryDao categoryDao;
 
     @Autowired
     private ClientDao clientDao;
@@ -84,5 +86,19 @@ public class GoodsDaoTest extends AbstractDaoTest {
         goodsDao.saveAndFlush(goods);
 
         assertEquals(LoadImage.load().getBase64(), goodsDao.findOne(goods.getId()).getImage().getBase64());
+    }
+
+    @Test
+    public void testFindByCategory() throws Exception {
+        Category category = new Category("Test");
+        categoryDao.saveAndFlush(category);
+
+        goods.setCategory(category);
+        goodsDao.saveAndFlush(goods);
+
+        List<Goods> byCategory = goodsDao.findByCategory(category);
+
+        assertNotNull(byCategory);
+        assertFalse(byCategory.isEmpty());
     }
 }
