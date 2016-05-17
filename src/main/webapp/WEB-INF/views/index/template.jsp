@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Tanat
@@ -24,12 +25,14 @@
 
             <div class="col-xs-6">
                 <div class="search">
-                    <div class="input-group has-error">
-                        <input type="text" class="form-control" placeholder="Поиск">
-                        <span class="input-group-btn">
-                            <button class="btn btn-danger glyphicon glyphicon-search" type="button"/>
-                        </span>
-                    </div>
+                    <spring:form action="/" method="post">
+                        <div class="input-group has-error">
+                            <input type="text" class="form-control" name="str" placeholder="Поиск">
+                            <span class="input-group-btn">
+                                <button class="btn btn-danger glyphicon glyphicon-search" type="submit"/>
+                            </span>
+                        </div>
+                    </spring:form>
                 </div>
             </div>
 

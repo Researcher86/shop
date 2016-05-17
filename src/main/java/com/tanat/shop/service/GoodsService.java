@@ -32,4 +32,8 @@ public class GoodsService {
     public void delete(Long id) {
         goodsDao.delete(getById(id).getId());
     }
+
+    public List<Goods> findByName(String str) {
+        return goodsDao.findByNameLike("%" + str + "%");
+    }
 }

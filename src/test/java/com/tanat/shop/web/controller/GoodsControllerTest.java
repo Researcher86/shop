@@ -11,7 +11,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Тестируем главный контроллер магазина
  * Created by Tanat on 08.12.2015.
  */
-public class IndexControllerTest extends AbstractControllerTest {
+public class GoodsControllerTest extends AbstractControllerTest {
 
     @Test
     public void testIndex() throws Exception {
