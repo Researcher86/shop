@@ -25,6 +25,7 @@ public class IndexController extends AbstractController {
     public static final String PAGE_ABOUT_COMPANY = "aboutCompany";
     public static final String PAGE_SHIPPING = "shipping";
     public static final String PAGE_CONTACTS = "contacts";
+    public static final String PAGE_PRICE_LIST = "priceList";
 
     private static Logger logger = LoggerFactory.getLogger(IndexController.class);
 
@@ -87,6 +88,13 @@ public class IndexController extends AbstractController {
         logger.info("Show info contacts");
 
         return getView(model, PAGE_CONTACTS);
+    }
+
+    @RequestMapping(value = "/priceList", method = RequestMethod.GET)
+    public String priceList(Model model) {
+        logger.info("Show info price list");
+
+        return getView(model, PAGE_PRICE_LIST);
     }
 
 }

@@ -54,7 +54,7 @@
                 <a href="/aboutCompany" class="btn btn-danger">О компании</a>
                 <a href="/shipping" class="btn btn-danger">Доставка</a>
                 <a href="/contacts" class="btn btn-danger">Контакты</a>
-                <a href="#" class="btn btn-danger">Прайс-лист</a>
+                <a href="/priceList" class="btn btn-danger">Прайс-лист</a>
             </div>
         </div>
     </div>
