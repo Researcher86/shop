@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "/categories")
 public class CategoryController extends AbstractController{
 
-    private static Logger logger = LoggerFactory.getLogger(GoodsController.class);
+    private static Logger logger = LoggerFactory.getLogger(CategoryController.class);
 
     @Autowired
     private GoodsService goodsService;
