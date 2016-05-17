@@ -81,11 +81,13 @@ public class GoodsDaoTest extends AbstractDaoTest {
     @Test
     @Transactional
     public void testAddImage() throws Exception {
-        goods.setImage(LoadImage.load());
+        Image image = LoadImage.load();
+        goods.setImage(image);
 
         goodsDao.saveAndFlush(goods);
 
-        assertEquals(LoadImage.load().getBase64(), goodsDao.findOne(goods.getId()).getImage().getBase64());
+        Image storeImage = goodsDao.findOne(goods.getId()).getImage();
+        assertEquals(image.getBase64(), storeImage.getBase64());
     }
 
     @Test
