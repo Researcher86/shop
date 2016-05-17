@@ -72,4 +72,11 @@ public class IndexController extends AbstractController {
         return getView(model, "aboutCompany");
     }
 
+    @RequestMapping(value = "/shipping", method = RequestMethod.GET)
+    public String shipping(Model model) {
+        logger.info("Show info shipping");
+
+        return getView(model, "shipping");
+    }
+
 }
