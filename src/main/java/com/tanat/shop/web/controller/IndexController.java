@@ -18,6 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 public class IndexController extends AbstractController {
+    public static final String PAGE_INDEX = "index";
+    public static final String VIEW_FOLDER = "index";
+    public static final String CATEGORIES = "categories";
+    public static final String GOODS_LIST = "goodsList";
 
     private static Logger logger = LoggerFactory.getLogger(IndexController.class);
 
@@ -28,37 +32,37 @@ public class IndexController extends AbstractController {
     private CategoryService categoryService;
 
     public IndexController() {
-        super("index");
+        super(VIEW_FOLDER);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model model) {
         logger.info("goods index");
 
-        model.addAttribute("categories", categoryService.getAll());
-        model.addAttribute("goodsList", goodsService.getAll());
+        model.addAttribute(CATEGORIES, categoryService.getAll());
+        model.addAttribute(GOODS_LIST, goodsService.getAll());
 
-        return getView(model, "index");
+        return getView(model, PAGE_INDEX);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String search(@RequestParam String str, Model model) {
         logger.info("goods search");
 
-        model.addAttribute("categories", categoryService.getAll());
-        model.addAttribute("goodsList", goodsService.findByName(str));
+        model.addAttribute(CATEGORIES, categoryService.getAll());
+        model.addAttribute(GOODS_LIST, goodsService.findByName(str));
 
-        return getView(model, "index");
+        return getView(model, PAGE_INDEX);
     }
 
     @RequestMapping(value = "/categories/{id}", method = RequestMethod.GET)
     public String showCategory(@PathVariable Long id, Model model) {
         logger.info("category show");
 
-        model.addAttribute("categories", categoryService.getAll());
-        model.addAttribute("goodsList", goodsService.findByCategoryId(id));
+        model.addAttribute(CATEGORIES, categoryService.getAll());
+        model.addAttribute(GOODS_LIST, goodsService.findByCategoryId(id));
 
-        return getView(model, "index");
+        return getView(model, PAGE_INDEX);
     }
 
 }
