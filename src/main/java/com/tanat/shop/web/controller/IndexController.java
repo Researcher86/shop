@@ -65,4 +65,11 @@ public class IndexController extends AbstractController {
         return getView(model, PAGE_INDEX);
     }
 
+    @RequestMapping(value = "/aboutCompany", method = RequestMethod.GET)
+    public String aboutCompany(Model model) {
+        logger.info("Show info \"About Company\"");
+
+        return getView(model, "aboutCompany");
+    }
+
 }

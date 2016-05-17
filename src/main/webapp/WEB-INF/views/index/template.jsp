@@ -50,8 +50,8 @@
         </div>
         <div class="row">
             <div class="btn-group btn-group-justified headerMenu">
-                <a href="#" class="btn btn-danger">Главная</a>
-                <a href="#" class="btn btn-danger">О компании</a>
+                <a href="/" class="btn btn-danger">Главная</a>
+                <a href="/aboutCompany" class="btn btn-danger">О компании</a>
                 <a href="#" class="btn btn-danger">Оплата и доставка</a>
                 <a href="#" class="btn btn-danger">Контакты</a>
                 <a href="#" class="btn btn-danger">Прайс-лист</a>
