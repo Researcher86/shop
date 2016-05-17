@@ -40,11 +40,12 @@ public class CategoryService {
         categoryDao.saveAndFlush(category);
     }
 
-    public void delete(Long id) {
-        Category category = getById(id);
-        if (category.getGoodsList().size() > 0) {
+    public void delete(Category category) {
+        Category storeCategory = getById(category.getId());
+
+        if (storeCategory.getGoodsList().size() > 0) {
             throw new AppException("Категория содержит товары и не может быть удалена");
         }
-        categoryDao.delete(category.getId());
+        categoryDao.delete(storeCategory.getId());
     }
 }

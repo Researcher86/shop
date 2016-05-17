@@ -34,16 +34,16 @@ public class GoodsService {
         goodsDao.saveAndFlush(goods);
     }
 
-    public void delete(Long id) {
-        goodsDao.delete(getById(id).getId());
+    public void delete(Goods goods) {
+        goodsDao.delete(goods);
     }
 
     public List<Goods> findByName(String str) {
         return goodsDao.findByNameLike("%" + str + "%");
     }
 
-    public List<Goods> findByCategoryId(Long id) {
-        Category category = categoriesDao.findOne(id);
+    public List<Goods> findByCategory(Category category) {
         return goodsDao.findByCategory(category);
     }
+
 }
