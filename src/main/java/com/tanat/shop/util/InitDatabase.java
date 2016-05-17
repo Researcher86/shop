@@ -42,21 +42,7 @@ public class InitDatabase implements ApplicationListener<ContextRefreshedEvent> 
             Category category = new Category("Канцтовары");
             categoryDao.saveAndFlush(category);
 
-            File file = null;
-            byte[] fileArray = new byte[0];
-
-            try {
-                file = ResourceUtils.getFile("classpath:bumaga.png");
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            try {
-                fileArray = Files.readAllBytes(file.toPath());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Image image = new Image(fileArray, StringUtils.getFilenameExtension(file.getPath()));
+            Image image = LoadImage.load();
 
             Goods goods = new Goods("Ручка", 5, "Обычная", image);
             goods.setCategory(category);

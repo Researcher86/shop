@@ -3,6 +3,8 @@ package com.tanat.shop.dao;
 import com.tanat.shop.model.Client;
 import com.tanat.shop.model.Comment;
 import com.tanat.shop.model.Goods;
+import com.tanat.shop.model.Image;
+import com.tanat.shop.util.LoadImage;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,5 +74,15 @@ public class GoodsDaoTest extends AbstractDaoTest {
         assertEquals("Супер!2", comment2.getText());
         assertEquals("Ручка", comment2.getGoods().getName());
         assertEquals("Альпенов Танат Маратович", comment2.getClient().getFio());
+    }
+
+    @Test
+    @Transactional
+    public void testAddImage() throws Exception {
+        goods.setImage(LoadImage.load());
+
+        goodsDao.saveAndFlush(goods);
+
+        assertEquals(LoadImage.load().getBase64(), goodsDao.findOne(goods.getId()).getImage().getBase64());
     }
 }
