@@ -22,6 +22,9 @@ public class IndexController extends AbstractController {
     public static final String VIEW_FOLDER = "index";
     public static final String CATEGORIES = "categories";
     public static final String GOODS_LIST = "goodsList";
+    public static final String PAGE_ABOUT_COMPANY = "aboutCompany";
+    public static final String PAGE_SHIPPING = "shipping";
+    public static final String PAGE_CONTACTS = "contacts";
 
     private static Logger logger = LoggerFactory.getLogger(IndexController.class);
 
@@ -69,21 +72,21 @@ public class IndexController extends AbstractController {
     public String aboutCompany(Model model) {
         logger.info("Show info \"About Company\"");
 
-        return getView(model, "aboutCompany");
+        return getView(model, PAGE_ABOUT_COMPANY);
     }
 
     @RequestMapping(value = "/shipping", method = RequestMethod.GET)
     public String shipping(Model model) {
         logger.info("Show info shipping");
 
-        return getView(model, "shipping");
+        return getView(model, PAGE_SHIPPING);
     }
 
     @RequestMapping(value = "/contacts", method = RequestMethod.GET)
     public String contacts(Model model) {
         logger.info("Show info contacts");
 
-        return getView(model, "contacts");
+        return getView(model, PAGE_CONTACTS);
     }
 
 }

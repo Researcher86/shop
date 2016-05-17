@@ -55,7 +55,6 @@
                 <a href="/shipping" class="btn btn-danger">Доставка</a>
                 <a href="/contacts" class="btn btn-danger">Контакты</a>
                 <a href="#" class="btn btn-danger">Прайс-лист</a>
-                <a href="#" class="btn btn-danger">Отзывы</a>
             </div>
         </div>
     </div>
