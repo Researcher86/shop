@@ -9,12 +9,14 @@ import java.util.Base64;
 @Entity
 @Table(name = "images")
 public class Image {
+    private static final int MB = 1024 * 1024;
+
     @Id
     @GeneratedValue
     private Long id;
 
     @Lob
-    @Column(length = 1000000)
+    @Column(length = MB)
     private byte[] data;
 
     private String ext;
