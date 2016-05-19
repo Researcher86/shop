@@ -16,7 +16,7 @@
         <div class="panel-body">
             <spring:form action="/login" method="post">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="login" placeholder="Почтовый ящик">
+                    <input class="form-control" type="email" name="login" placeholder="Почтовый ящик">
                     <input class="form-control" type="password" name="password" placeholder="Пароль">
                 </div>
                 <div class="form-group row">
