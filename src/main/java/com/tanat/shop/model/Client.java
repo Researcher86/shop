@@ -8,6 +8,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "clients")
 public class Client {
+
     @Id
     @GeneratedValue
     private Long id;
@@ -20,14 +21,17 @@ public class Client {
 
     private String email;
 
+    private String password;
+
     public Client() {
     }
 
-    public Client(String fio, String phone, String address, String email) {
+    public Client(String fio, String phone, String address, String email, String password) {
         this.fio = fio;
         this.phone = phone;
         this.address = address;
         this.email = email;
+        this.password = password;
     }
 
     public Long getId() {
@@ -68,5 +72,9 @@ public class Client {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public static Client create() {
+        return new Client("Альпенов Танат Маратович", "87011520885", "Дощанова 133б", "researcher86@mail.ru", "123456");
     }
 }

@@ -18,7 +18,7 @@ public class ClientDaoTest extends AbstractDaoTest {
 
     @Test
     public void testSave() throws Exception {
-        Client client = new Client("Альпенов Танат Маратович", "87011520885", "Дощанова 133б", "researcher86@mail.ru");
+        Client client = Client.create();
 
         clientDao.saveAndFlush(client);
 
@@ -31,7 +31,7 @@ public class ClientDaoTest extends AbstractDaoTest {
 
     @Test
     public void testDelete() throws Exception {
-        Client client = new Client("Альпенов Танат Маратович", "87011520885", "Дощанова 133б", "researcher86@mail.ru");
+        Client client = Client.create();
 
         clientDao.saveAndFlush(client);
         clientDao.delete(client);

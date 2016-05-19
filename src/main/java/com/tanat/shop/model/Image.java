@@ -1,5 +1,8 @@
 package com.tanat.shop.model;
 
+import com.tanat.shop.util.ReadResourceFile;
+import org.springframework.util.StringUtils;
+
 import javax.persistence.*;
 import java.util.Base64;
 
@@ -38,5 +41,9 @@ public class Image {
 
     public String getBase64() {
         return Base64.getEncoder().encodeToString(this.data);
+    }
+
+    public static Image load(String name) {
+        return new Image(ReadResourceFile.read(name), StringUtils.getFilenameExtension(name));
     }
 }

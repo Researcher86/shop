@@ -1,7 +1,6 @@
 package com.tanat.shop.dao;
 
 import com.tanat.shop.model.*;
-import com.tanat.shop.util.LoadImage;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +28,7 @@ public class GoodsDaoTest extends AbstractDaoTest {
 
     @Before
     public void setUp() throws Exception {
-        goods = new Goods("Ручка", 5, "Обычная ручка", null);
+        goods = Goods.create();
     }
 
     @Test
@@ -58,29 +57,24 @@ public class GoodsDaoTest extends AbstractDaoTest {
     @Test
     @Transactional
     public void testAddComment() throws Exception {
-        Client client = new Client("Альпенов Танат Маратович", "87011520885", "Дощанова 133б", "researcher86@mail.ru");
+        Client client = Client.create();
         clientDao.saveAndFlush(client);
 
         goods.addComments(new Comment("Супер!", client));
         goods.addComments(new Comment("Супер!2", client));
         goodsDao.saveAndFlush(goods);
 
-        Comment comment = goodsDao.findOne(goods.getId()).getComments().get(0);
-        Comment comment2 = goodsDao.findOne(goods.getId()).getComments().get(1);
+        List<Comment> comments = goodsDao.findOne(goods.getId()).getComments();
 
-        assertEquals("Супер!", comment.getText());
-        assertEquals("Ручка", comment.getGoods().getName());
-        assertEquals("Альпенов Танат Маратович", comment.getClient().getFio());
+        assertFalse(comments.isEmpty());
+        assertEquals(2, comments.size());
 
-        assertEquals("Супер!2", comment2.getText());
-        assertEquals("Ручка", comment2.getGoods().getName());
-        assertEquals("Альпенов Танат Маратович", comment2.getClient().getFio());
     }
 
     @Test
     @Transactional
     public void testAddImage() throws Exception {
-        Image image = LoadImage.load("bumaga.png");
+        Image image = Image.load("bumaga.png");
         goods.setImage(image);
 
         goodsDao.saveAndFlush(goods);

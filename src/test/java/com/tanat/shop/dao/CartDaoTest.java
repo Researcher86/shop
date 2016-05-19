@@ -28,7 +28,7 @@ public class CartDaoTest extends AbstractDaoTest {
 
     @Before
     public void setUp() throws Exception {
-        client = new Client("Альпенов Танат Маратович", "87011520885", "Дощанова 133б", "researcher86@mail.ru");
+        client = Client.create();
         cart = new Cart(client);
     }
 

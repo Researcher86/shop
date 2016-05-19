@@ -30,14 +30,14 @@ public class InitDatabase implements ApplicationListener<ContextRefreshedEvent> 
             Category category2 = new Category("Ручка");
             categoryDao.saveAndFlush(category2);
 
-            Goods goods = new Goods("Ручка", 5, "Обычная", LoadImage.load("pencel.jpg"));
+            Goods goods = new Goods("Ручка", 5, "Обычная", Image.load("pencel.jpg"));
             goods.setCategory(category2);
             goodsDao.saveAndFlush(goods);
 
             category2 = new Category("Дырокол");
             categoryDao.saveAndFlush(category2);
 
-            goods = new Goods("Дырокол", 45, "Обычный", LoadImage.load("dirakol.jpg"));
+            goods = new Goods("Дырокол", 45, "Обычный", Image.load("dirakol.jpg"));
             goods.setCategory(category2);
             goodsDao.saveAndFlush(goods);
 
@@ -45,7 +45,7 @@ public class InitDatabase implements ApplicationListener<ContextRefreshedEvent> 
             category2 = new Category("Карандаш");
             categoryDao.saveAndFlush(category2);
 
-            goods = new Goods("Карандаш", 45, "Обычный", LoadImage.load("karandash.jpg"));
+            goods = new Goods("Карандаш", 45, "Обычный", Image.load("karandash.jpg"));
             goods.setCategory(category2);
             goodsDao.saveAndFlush(goods);
 
@@ -53,7 +53,7 @@ public class InitDatabase implements ApplicationListener<ContextRefreshedEvent> 
             category2 = new Category("Бумага");
             categoryDao.saveAndFlush(category2);
 
-            goods = new Goods("Бумага", 45, "Обычная", LoadImage.load("bumaga.png"));
+            goods = new Goods("Бумага", 45, "Обычная", Image.load("bumaga.png"));
             goods.setCategory(category2);
             goodsDao.saveAndFlush(goods);
 

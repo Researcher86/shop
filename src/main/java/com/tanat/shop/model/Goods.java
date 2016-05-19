@@ -99,4 +99,8 @@ public class Goods {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    public static Goods create() {
+        return new Goods("Ручка", 5, "Обычная ручка", null);
+    }
 }
