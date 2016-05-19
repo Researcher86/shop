@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Tanat
@@ -8,13 +9,43 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<div class="col-xs-3">
-    <div class="list-group">
-        <c:forEach var="category" items="${categories}">
-            <a href="<c:url value="/categories/${category.id}" />"
-               class="list-group-item">${category.name}</a>
-        </c:forEach>
+<div class="col-xs-3 goodsCatalog">
+
+    <div class="panel panel-danger">
+        <div class="panel-heading"><i class="glyphicon glyphicon-user"></i> Авторизация</div>
+        <div class="panel-body">
+            <spring:form action="/login" method="post">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="login" placeholder="Почтовый ящик">
+                    <input class="form-control" type="password" name="password" placeholder="Пароль">
+                </div>
+                <div class="form-group row">
+                    <div class="col-xs-6 text-center">
+                        <a href="#">Регистрация</a>
+                    </div>
+                    <div class="col-xs-6">
+                        <button class="form-control" type="submit" >
+                            Вход
+                        </button>
+                    </div>
+
+                </div>
+            </spring:form>
+        </div>
     </div>
+
+    <div class="panel panel-danger">
+        <div class="panel-heading"><i class="glyphicon glyphicon-list-alt"></i> Категории</div>
+        <div class="panel-body">
+            <div class="list-group">
+                <c:forEach var="category" items="${categories}">
+                    <a href="<c:url value="/categories/${category.id}" />"
+                       class="list-group-item">${category.name}</a>
+                </c:forEach>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <div class="col-xs-9 goodsCatalog">
@@ -25,7 +56,8 @@
                     <div class="row">
                         <div class="col-xs-4 goodsImg">
                             <div>
-                                <img src="data:image/${goods.image.ext};base64,${goods.image.base64}" height="133" border="0" alt="">
+                                <img src="data:image/${goods.image.ext};base64,${goods.image.base64}" height="133"
+                                     border="0" alt="">
                             </div>
                             <strong>Код товара: </strong><span>15364</span>
                         </div>

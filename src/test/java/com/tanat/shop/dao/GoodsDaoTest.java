@@ -80,7 +80,7 @@ public class GoodsDaoTest extends AbstractDaoTest {
     @Test
     @Transactional
     public void testAddImage() throws Exception {
-        Image image = LoadImage.load();
+        Image image = LoadImage.load("bumaga.png");
         goods.setImage(image);
 
         goodsDao.saveAndFlush(goods);

@@ -27,32 +27,38 @@ public class InitDatabase implements ApplicationListener<ContextRefreshedEvent> 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         if (categoryDao.findAll().size() == 0) {
-            categoryDao.saveAndFlush(new Category("Электроника"));
+            Category category2 = new Category("Ручка");
+            categoryDao.saveAndFlush(category2);
 
-            Category category = new Category("Канцтовары");
-            categoryDao.saveAndFlush(category);
-
-            Image image = LoadImage.load();
-
-            Goods goods = new Goods("Ручка", 5, "Обычная", image);
-            goods.setCategory(category);
+            Goods goods = new Goods("Ручка", 5, "Обычная", LoadImage.load("pencel.jpg"));
+            goods.setCategory(category2);
             goodsDao.saveAndFlush(goods);
 
-            goods = new Goods("Карандаш", 5, "Простой", image);
-            goods.setCategory(category);
+            category2 = new Category("Дырокол");
+            categoryDao.saveAndFlush(category2);
+
+            goods = new Goods("Дырокол", 45, "Обычный", LoadImage.load("dirakol.jpg"));
+            goods.setCategory(category2);
             goodsDao.saveAndFlush(goods);
 
-            goods = new Goods("Степлер", 50, "Супер", image);
-            goods.setCategory(category);
+
+            category2 = new Category("Карандаш");
+            categoryDao.saveAndFlush(category2);
+
+            goods = new Goods("Карандаш", 45, "Обычный", LoadImage.load("karandash.jpg"));
+            goods.setCategory(category2);
             goodsDao.saveAndFlush(goods);
 
-            goods = new Goods("Тетрадь", 25, "Простая", image);
-            goods.setCategory(category);
+
+            category2 = new Category("Бумага");
+            categoryDao.saveAndFlush(category2);
+
+            goods = new Goods("Бумага", 45, "Обычная", LoadImage.load("bumaga.png"));
+            goods.setCategory(category2);
             goodsDao.saveAndFlush(goods);
 
-            goods = new Goods("Ластик", 5, "Простой", image);
-            goods.setCategory(category);
-            goodsDao.saveAndFlush(goods);
+            categoryDao.saveAndFlush(new Category("Линейка"));
+            categoryDao.saveAndFlush(new Category("Папка"));
         }
     }
 }

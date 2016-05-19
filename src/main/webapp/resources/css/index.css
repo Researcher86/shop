@@ -71,6 +71,30 @@ header .headerMenu{
     margin-bottom: 5px;
 }
 
+.goodsCatalog .panel-danger>.panel-heading{
+    color: white;
+    background-color: #d9534f;
+}
+
+.goodsCatalog .panel-danger>.panel-body{
+    padding: 20px 5px 0 5px;
+}
+
+.goodsCatalog .panel-danger>.panel-body{
+    border-color: #2aabd2;
+}
+
+.goodsCatalog .panel-danger>.panel-body input[type="text"]{
+    margin-bottom: 5px;
+}
+
+.goodsCatalog .panel-danger>.panel-body input[type="text"]:focus,
+.goodsCatalog .panel-danger>.panel-body input[type="password"]:focus {
+    border-color: #d9534f/*rgba(126, 239, 104, 0.8)*/;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #d9534f/*rgba(126, 239, 104, 0.6)*/;
+    outline: 0 none;
+}
+
 /*=========================Footer==========================*/
 html {
     position: relative;

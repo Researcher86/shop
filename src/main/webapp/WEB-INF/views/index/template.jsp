@@ -12,7 +12,7 @@
 <head>
     <title>E-Shop</title>
     <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>">
-    <link rel="stylesheet" href="<c:url value="/resources/css/main.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/css/index.css"/>">
 
     <link rel="icon" href="<c:url value="/resources/img/eshop_icon.png"/>">
 </head>

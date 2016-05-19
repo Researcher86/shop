@@ -10,12 +10,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 public class LoadImage {
-    public static Image load() {
+    public static Image load(String name) {
         File file = null;
         byte[] fileArray = new byte[0];
 
         try {
-            file = ResourceUtils.getFile("classpath:bumaga.png");
+            file = ResourceUtils.getFile("classpath:img/" + name);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
