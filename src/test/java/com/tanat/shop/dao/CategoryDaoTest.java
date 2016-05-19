@@ -4,8 +4,7 @@ import com.tanat.shop.model.Category;
 import com.tanat.shop.model.Goods;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
