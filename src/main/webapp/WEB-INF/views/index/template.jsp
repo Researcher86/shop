@@ -50,11 +50,11 @@
         </div>
         <div class="row">
             <div class="btn-group btn-group-justified headerMenu">
-                <a href="/" class="btn btn-danger">Главная</a>
-                <a href="/aboutCompany" class="btn btn-danger">О компании</a>
-                <a href="/shipping" class="btn btn-danger">Доставка</a>
-                <a href="/contacts" class="btn btn-danger">Контакты</a>
-                <a href="/priceList" class="btn btn-danger">Прайс-лист</a>
+                <a href="<c:url value="/"/>" class="btn btn-danger">Главная</a>
+                <a href="<c:url value="/aboutCompany"/>" class="btn btn-danger">О компании</a>
+                <a href="<c:url value="/shipping"/>" class="btn btn-danger">Доставка</a>
+                <a href="<c:url value="/contacts"/>" class="btn btn-danger">Контакты</a>
+                <a href="<c:url value="/priceList"/>" class="btn btn-danger">Прайс-лист</a>
             </div>
         </div>
     </div>

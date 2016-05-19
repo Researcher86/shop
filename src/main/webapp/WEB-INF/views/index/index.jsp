@@ -38,8 +38,9 @@
         <div class="panel-heading"><i class="glyphicon glyphicon-list-alt"></i> Категории</div>
         <div class="panel-body">
             <div class="list-group">
+                <a href="<c:url value="/"/>" class="list-group-item">Все</a>
                 <c:forEach var="category" items="${categories}">
-                    <a href="<c:url value="/categories/${category.id}" />"
+                    <a href="<c:url value="/categories/${category.id}"/>"
                        class="list-group-item">${category.name}</a>
                 </c:forEach>
             </div>
