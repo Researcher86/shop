@@ -43,7 +43,7 @@ public class Image {
         return Base64.getEncoder().encodeToString(this.data);
     }
 
-    public static Image load(String name) {
-        return new Image(ReadResourceFile.read(name), StringUtils.getFilenameExtension(name));
+    public static Image load(String fileName) {
+        return new Image(ReadResourceFile.read(fileName), StringUtils.getFilenameExtension(fileName));
     }
 }
