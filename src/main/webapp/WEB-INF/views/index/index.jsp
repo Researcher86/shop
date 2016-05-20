@@ -14,23 +14,32 @@
     <div class="panel panel-danger">
         <div class="panel-heading"><i class="glyphicon glyphicon-user"></i> Авторизация</div>
         <div class="panel-body">
-            <spring:form action="/auth/login" method="post">
-                <div class="form-group">
-                    <input class="form-control" type="email" name="email" placeholder="Почтовый ящик">
-                    <input class="form-control" type="password" name="password" placeholder="Пароль">
-                </div>
-                <div class="form-group row">
-                    <div class="col-xs-6 text-center">
-                        <a href="#">Регистрация</a>
+            <span class="bg-danger">${error}</span>
+            <c:if test="${empty client}">
+                <spring:form action="/auth/login" method="post">
+                    <div class="form-group">
+                        <input class="form-control" type="email" name="email" placeholder="Почтовый ящик">
+                        <input class="form-control" type="password" name="password" placeholder="Пароль">
                     </div>
-                    <div class="col-xs-6">
-                        <button class="form-control" type="submit" >
-                            Вход
-                        </button>
+                    <div class="form-group row">
+                        <div class="col-xs-6 text-center">
+                            <a href="#">Регистрация</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <button class="form-control" type="submit">
+                                Вход
+                            </button>
+                        </div>
                     </div>
-
-                </div>
-            </spring:form>
+                </spring:form>
+            </c:if>
+            <c:if test="${not empty client}">
+                <span>${client.email}</span>
+                <br>
+                <span>${client.password}</span>
+                <br>
+                <a href="<c:url value="/auth/logout"/>">Выход</a>
+            </c:if>
         </div>
     </div>
 
