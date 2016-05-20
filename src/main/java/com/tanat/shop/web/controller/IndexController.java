@@ -28,7 +28,7 @@ public class IndexController extends AbstractController {
     public static final String PAGE_CONTACTS = "contacts";
     public static final String PAGE_PRICE_LIST = "priceList";
 
-    private static Logger logger = LoggerFactory.getLogger(IndexController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(IndexController.class);
 
     @Autowired
     private GoodsService goodsService;
@@ -42,7 +42,7 @@ public class IndexController extends AbstractController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model model) {
-        logger.info("goods index");
+        LOG.info("goods index");
 
         model.addAttribute(CATEGORIES, categoryService.getAll());
         model.addAttribute(GOODS_LIST, goodsService.getAll());
@@ -52,7 +52,7 @@ public class IndexController extends AbstractController {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String search(@RequestParam String str, Model model) {
-        logger.info("goods search");
+        LOG.info("goods search");
 
         model.addAttribute(CATEGORIES, categoryService.getAll());
         model.addAttribute(GOODS_LIST, goodsService.findByName(str));
@@ -62,7 +62,7 @@ public class IndexController extends AbstractController {
 
     @RequestMapping(value = "/categories/{id}", method = RequestMethod.GET)
     public String showCategory(@ModelAttribute Category category, Model model) {
-        logger.info("category show");
+        LOG.info("category show");
 
         model.addAttribute(CATEGORIES, categoryService.getAll());
         model.addAttribute(GOODS_LIST, goodsService.findByCategory(category));
@@ -72,28 +72,28 @@ public class IndexController extends AbstractController {
 
     @RequestMapping(value = "/aboutCompany", method = RequestMethod.GET)
     public String aboutCompany(Model model) {
-        logger.info("Show info \"About Company\"");
+        LOG.info("Show info \"About Company\"");
 
         return getView(model, PAGE_ABOUT_COMPANY);
     }
 
     @RequestMapping(value = "/shipping", method = RequestMethod.GET)
     public String shipping(Model model) {
-        logger.info("Show info shipping");
+        LOG.info("Show info shipping");
 
         return getView(model, PAGE_SHIPPING);
     }
 
     @RequestMapping(value = "/contacts", method = RequestMethod.GET)
     public String contacts(Model model) {
-        logger.info("Show info contacts");
+        LOG.info("Show info contacts");
 
         return getView(model, PAGE_CONTACTS);
     }
 
     @RequestMapping(value = "/priceList", method = RequestMethod.GET)
     public String priceList(Model model) {
-        logger.info("Show info price list");
+        LOG.info("Show info price list");
 
         return getView(model, PAGE_PRICE_LIST);
     }

@@ -20,7 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/admin")
 public class AdminController extends AbstractController {
 
-    private static Logger logger = LoggerFactory.getLogger(AdminController.class);
+    private static Logger LOG = LoggerFactory.getLogger(AdminController.class);
 
     @Autowired
     private GoodsService goodsService;
@@ -34,7 +34,7 @@ public class AdminController extends AbstractController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
-        logger.info("categories");
+        LOG.info("categories");
 
         model.addAttribute("categories", categoryService.getAll());
 
@@ -43,16 +43,16 @@ public class AdminController extends AbstractController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout) {
-        logger.info("login action");
+        LOG.info("login action");
 
         ModelAndView model = new ModelAndView("admin/login");
         if (error != null) {
-            logger.info("error");
+            LOG.info("error");
             model.addObject("error", "Invalid username and password!");
         }
 
         if (logout != null) {
-            logger.info("logout");
+            LOG.info("logout");
             model.addObject("msg", "You've been logged out successfully.");
         }
 
