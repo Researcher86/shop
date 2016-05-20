@@ -74,6 +74,14 @@ public class Client {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public static Client create() {
         return new Client("Альпенов Танат Маратович", "87011520885", "Дощанова 133б", "researcher86@mail.ru", "123456");
     }
