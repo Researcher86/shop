@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 public class IndexController extends AbstractController {
+    private static final Logger LOG = LoggerFactory.getLogger(IndexController.class);
+
     public static final String PAGE_INDEX = "index";
     public static final String VIEW_FOLDER = "index";
     public static final String CATEGORIES = "categories";
@@ -27,8 +29,6 @@ public class IndexController extends AbstractController {
     public static final String PAGE_SHIPPING = "shipping";
     public static final String PAGE_CONTACTS = "contacts";
     public static final String PAGE_PRICE_LIST = "priceList";
-
-    private static final Logger LOG = LoggerFactory.getLogger(IndexController.class);
 
     @Autowired
     private GoodsService goodsService;
