@@ -9,20 +9,13 @@ import java.nio.file.Files;
 
 public class ReadResourceFile {
     public static byte[] read(String fileName) {
-        File file;
-        byte[] fileArray;
-
         try {
-            file = ResourceUtils.getFile("classpath:img/" + fileName);
+            File file = ResourceUtils.getFile("classpath:img/" + fileName);
+            return Files.readAllBytes(file.toPath());
         } catch (FileNotFoundException e) {
             throw new RuntimeException("Error: file " + fileName + " not found", e);
-        }
-        try {
-            fileArray = Files.readAllBytes(file.toPath());
         } catch (IOException e) {
             throw new RuntimeException("Error: read file " + fileName, e);
         }
-
-        return fileArray;
     }
 }
