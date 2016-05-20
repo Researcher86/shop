@@ -14,9 +14,9 @@
     <div class="panel panel-danger">
         <div class="panel-heading"><i class="glyphicon glyphicon-user"></i> Авторизация</div>
         <div class="panel-body">
-            <spring:form action="/login" method="post">
+            <spring:form action="/auth/login" method="post">
                 <div class="form-group">
-                    <input class="form-control" type="email" name="login" placeholder="Почтовый ящик">
+                    <input class="form-control" type="email" name="email" placeholder="Почтовый ящик">
                     <input class="form-control" type="password" name="password" placeholder="Пароль">
                 </div>
                 <div class="form-group row">
