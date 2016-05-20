@@ -83,7 +83,7 @@
 
     <!-- Application Loggers -->
     <logger name="com.tanat.shop">
-        <level value="info"/>
+        <level value="debug"/>
     </logger>
 
     <!-- 3rdparty Loggers -->
