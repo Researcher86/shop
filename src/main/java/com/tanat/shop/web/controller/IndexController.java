@@ -21,14 +21,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class IndexController extends AbstractController {
     private static final Logger LOG = LoggerFactory.getLogger(IndexController.class);
 
-    public static final String PAGE_INDEX = "index";
-    public static final String VIEW_FOLDER = "index";
-    public static final String CATEGORIES = "categories";
-    public static final String GOODS_LIST = "goodsList";
-    public static final String PAGE_ABOUT_COMPANY = "aboutCompany";
-    public static final String PAGE_SHIPPING = "shipping";
-    public static final String PAGE_CONTACTS = "contacts";
-    public static final String PAGE_PRICE_LIST = "priceList";
+    private static final String PAGE_INDEX = "index";
+    private static final String VIEW_FOLDER = "index";
+    private static final String CATEGORIES = "categories";
+    private static final String GOODS_LIST = "goodsList";
+    private static final String PAGE_ABOUT_COMPANY = "aboutCompany";
+    private static final String PAGE_SHIPPING = "shipping";
+    private static final String PAGE_CONTACTS = "contacts";
+    private static final String PAGE_PRICE_LIST = "priceList";
 
     @Autowired
     private GoodsService goodsService;
