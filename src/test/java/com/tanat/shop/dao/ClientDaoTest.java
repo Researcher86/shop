@@ -28,8 +28,11 @@ public class ClientDaoTest extends AbstractDaoTest {
         clientDao.saveAndFlush(client);
 
         Client storeClient = clientDao.findOne(client.getId());
+
+//        assertSame(client, storeClient); //TODO: Научится сравнивать объекты
+
         assertNotNull(storeClient);
-        assertEquals(client.getFio(), storeClient.getFio());
+        assertSame(client.getFio(), storeClient.getFio());
         assertEquals(client.getPhone(), storeClient.getPhone());
         assertEquals(client.getAddress(), storeClient.getAddress());
         assertEquals(client.getEmail(), storeClient.getEmail());
