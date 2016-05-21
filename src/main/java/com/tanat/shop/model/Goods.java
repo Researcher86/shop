@@ -100,7 +100,7 @@ public class Goods {
         this.category = category;
     }
 
-    public static Goods create() {
+    public static Goods createSimple() {
         return new Goods("Ручка", 5, "Обычная ручка", null);
     }
 }

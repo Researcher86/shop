@@ -1,6 +1,7 @@
 package com.tanat.shop.dao;
 
 import com.tanat.shop.model.Client;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,24 +16,27 @@ public class ClientDaoTest extends AbstractDaoTest {
 
     @Autowired
     private ClientDao clientDao;
+    private Client client;
+
+    @Before
+    public void setUp() throws Exception {
+        client = Client.createSimple();
+    }
 
     @Test
     public void testSave() throws Exception {
-        Client client = Client.create();
-
         clientDao.saveAndFlush(client);
 
-        assertNotNull(clientDao.findOne(client.getId()));
-        assertEquals("Альпенов Танат Маратович", clientDao.findOne(client.getId()).getFio());
-        assertEquals("87011520885", clientDao.findOne(client.getId()).getPhone());
-        assertEquals("Дощанова 133б", clientDao.findOne(client.getId()).getAddress());
-        assertEquals("researcher86@mail.ru", clientDao.findOne(client.getId()).getEmail());
+        Client storeClient = clientDao.findOne(client.getId());
+        assertNotNull(storeClient);
+        assertEquals(client.getFio(), storeClient.getFio());
+        assertEquals(client.getPhone(), storeClient.getPhone());
+        assertEquals(client.getAddress(), storeClient.getAddress());
+        assertEquals(client.getEmail(), storeClient.getEmail());
     }
 
     @Test
     public void testDelete() throws Exception {
-        Client client = Client.create();
-
         clientDao.saveAndFlush(client);
         clientDao.delete(client);
 

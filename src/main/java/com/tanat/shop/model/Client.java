@@ -82,7 +82,7 @@ public class Client {
         this.password = password;
     }
 
-    public static Client create() {
+    public static Client createSimple() {
         return new Client("Альпенов Танат Маратович", "87011520885", "Дощанова 133б", "researcher86@mail.ru", "123456");
     }
 }

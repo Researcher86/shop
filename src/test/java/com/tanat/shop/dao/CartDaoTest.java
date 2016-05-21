@@ -15,6 +15,7 @@ import static org.junit.Assert.*;
  */
 public class CartDaoTest extends AbstractDaoTest {
 
+    public static final String SHIPPING_ADDRESS = "Не знаю куда";
     @Autowired
     private CartDao cartDao;
 
@@ -28,13 +29,13 @@ public class CartDaoTest extends AbstractDaoTest {
 
     @Before
     public void setUp() throws Exception {
-        client = Client.create();
+        client = Client.createSimple();
         cart = new Cart(client);
     }
 
     @Test
     public void testSave() throws Exception {
-        cart.setShippingAddress("Низнаю куда");
+        cart.setShippingAddress(SHIPPING_ADDRESS);
 
         clientDao.saveAndFlush(client);
         cartDao.saveAndFlush(cart);
@@ -45,7 +46,7 @@ public class CartDaoTest extends AbstractDaoTest {
 
     @Test
     public void testDelete() throws Exception {
-        cart.setShippingAddress("Низнаю куда");
+        cart.setShippingAddress(SHIPPING_ADDRESS);
 
         clientDao.saveAndFlush(client);
         cartDao.saveAndFlush(cart);
@@ -57,9 +58,9 @@ public class CartDaoTest extends AbstractDaoTest {
 
     @Test
     public void testAddOrder() throws Exception {
-        final Goods goods = new Goods("Ручка", 5, "Обычная ручка", null);
+        final Goods goods = Goods.createSimple();
 
-        cart.setShippingAddress("Низнаю куда");
+        cart.setShippingAddress(SHIPPING_ADDRESS);
         cart.addOrder(goods, 5);
         cart.addOrder(goods, 5);
 
@@ -74,7 +75,7 @@ public class CartDaoTest extends AbstractDaoTest {
 
     @Test
     public void testFindByClient() throws Exception {
-        cart.setShippingAddress("Низнаю куда");
+        cart.setShippingAddress(SHIPPING_ADDRESS);
 
         clientDao.saveAndFlush(client);
         cartDao.saveAndFlush(cart);

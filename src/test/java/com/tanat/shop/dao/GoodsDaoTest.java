@@ -28,7 +28,7 @@ public class GoodsDaoTest extends AbstractDaoTest {
 
     @Before
     public void setUp() throws Exception {
-        goods = Goods.create();
+        goods = Goods.createSimple();
     }
 
     @Test
@@ -57,7 +57,7 @@ public class GoodsDaoTest extends AbstractDaoTest {
     @Test
     @Transactional
     public void testAddComment() throws Exception {
-        Client client = Client.create();
+        Client client = Client.createSimple();
         clientDao.saveAndFlush(client);
 
         goods.addComments(new Comment("Супер!", client));

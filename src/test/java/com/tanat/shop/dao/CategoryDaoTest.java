@@ -2,6 +2,7 @@ package com.tanat.shop.dao;
 
 import com.tanat.shop.model.Category;
 import com.tanat.shop.model.Goods;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,34 +17,40 @@ import static org.junit.Assert.fail;
  */
 public class CategoryDaoTest extends AbstractDaoTest {
 
+    public static final String CATEGORY_NAME = "Канцтовары";
+
     @Autowired
     private CategoryDao categoryDao;
 
     @Autowired
     private GoodsDao goodsDao;
+    private Category category;
+    private Goods goods;
+
+    @Before
+    public void setUp() throws Exception {
+        category = new Category(CATEGORY_NAME);
+        goods = Goods.createSimple();
+    }
 
     @Test
     @Transactional
     public void testSave() throws Exception {
-        Goods pencel = new Goods("Ручка", 5, "Обычная ручка", null);
-        Category category = new Category("Канцтовары");
-        category.addGoods(pencel);
+        category.addGoods(goods);
 
         categoryDao.saveAndFlush(category);
-        goodsDao.saveAndFlush(pencel);
+        goodsDao.saveAndFlush(goods);
 
         final String categoryName = categoryDao.findOne(category.getId()).getName();
         final String goodsCategoryName = categoryDao.findOne(category.getId()).getGoodsList().get(0).getCategory().getName();
 
-        assertEquals("Канцтовары", categoryName);
+        assertEquals(CATEGORY_NAME, categoryName);
         assertEquals(1, categoryDao.findOne(category.getId()).getGoodsList().size());
         assertEquals(categoryName, goodsCategoryName);
     }
 
     @Test
     public void testDelete() throws Exception {
-        Category category = new Category("Канцтовары");
-
         categoryDao.saveAndFlush(category);
         categoryDao.delete(category);
 
@@ -52,12 +59,10 @@ public class CategoryDaoTest extends AbstractDaoTest {
 
     @Test(expected = Exception.class)
     public void testDeleteWithGoods() throws Exception {
-        Goods pencel = new Goods("Ручка", 5, "Обычная ручка", null);
-        Category category = new Category("Канцтовары");
-        category.addGoods(pencel);
+        category.addGoods(goods);
 
         categoryDao.saveAndFlush(category);
-        goodsDao.saveAndFlush(pencel);
+        goodsDao.saveAndFlush(goods);
         categoryDao.delete(category);
 
         fail();
