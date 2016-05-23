@@ -41,8 +41,28 @@ public class ClientDaoTest extends AbstractDaoTest {
     @Test
     public void testDelete() throws Exception {
         clientDao.saveAndFlush(client);
+
         clientDao.delete(client);
 
-        assertNull(clientDao.findOne(client.getId()));
+        Client storeClient = clientDao.findOne(client.getId());
+        assertNull(storeClient);
+    }
+
+    @Test
+    public void testFindByEmail() throws Exception {
+        clientDao.saveAndFlush(client);
+
+        Client storeClient = clientDao.findByEmail(client.getEmail());
+
+        assertNotNull(storeClient);
+    }
+
+    @Test
+    public void testFindByEmailAndPassword() throws Exception {
+        clientDao.saveAndFlush(client);
+
+        Client storeClient = clientDao.findByEmailAndPassword(client.getEmail(), client.getPassword());
+
+        assertNotNull(storeClient);
     }
 }

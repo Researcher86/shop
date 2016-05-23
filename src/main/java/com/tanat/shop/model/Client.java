@@ -1,9 +1,9 @@
 package com.tanat.shop.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "clients")
@@ -13,14 +13,25 @@ public class Client {
     @GeneratedValue
     private Long id;
 
+    @NotBlank(message = "Не заполнено поле Ф.И.О.")
+    @Column(nullable = false)
     private String fio;
 
+    @NotBlank(message = "Не заполнено поле телефон")
+    @Column(nullable = false)
     private String phone;
 
+    @NotBlank(message = "Не заполнено поле адрес")
+    @Column(nullable = false)
     private String address;
 
+    @NotBlank(message = "Не заполнено поле почтовый ящик")
+    @Email(message = "Некорректный адрес электронной почты")
+    @Column(nullable = false)
     private String email;
 
+    @NotBlank(message = "Не заполнено поле пароль")
+    @Column(nullable = false)
     private String password;
 
     public Client() {

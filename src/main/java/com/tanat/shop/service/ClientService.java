@@ -24,4 +24,11 @@ public class ClientService {
         clientDao.saveAndFlush(client);
     }
 
+    public Client findByEmail(String email) {
+        return clientDao.findByEmail(email);
+    }
+
+    public Client findByEmailAndPassword(String email, String password) {
+        return clientDao.findByEmailAndPassword(email, password);
+    }
 }

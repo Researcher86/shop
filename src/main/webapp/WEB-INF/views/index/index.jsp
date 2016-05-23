@@ -14,7 +14,7 @@
     <div class="panel panel-danger">
         <div class="panel-heading"><i class="glyphicon glyphicon-user"></i> Авторизация</div>
         <div class="panel-body">
-            <span class="bg-danger">${error}</span>
+            <span class="text-danger">${error}</span>
             <c:if test="${empty client}">
                 <spring:form action="/auth/login" method="post">
                     <div class="form-group">
