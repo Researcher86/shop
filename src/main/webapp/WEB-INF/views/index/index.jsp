@@ -23,7 +23,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-6 text-center">
-                            <a href="#">Регистрация</a>
+                            <a href="<c:url value="/auth/registration"/>">Регистрация</a>
                         </div>
                         <div class="col-xs-6">
                             <button class="form-control" type="submit">
