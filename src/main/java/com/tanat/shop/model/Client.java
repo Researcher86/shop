@@ -27,7 +27,7 @@ public class Client {
 
     @NotBlank(message = "Не заполнено поле почтовый ящик")
     @Email(message = "Некорректный адрес электронной почты")
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @NotBlank(message = "Не заполнено поле пароль")

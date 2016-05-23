@@ -18,7 +18,7 @@ public class AuthControllerTest extends AbstractControllerTest {
     @Test
     public void testCorrectLoginData() throws Exception {
         mockMvc.perform(post("/auth/login")
-                .param("email", "researcher2286@gmail.com")
+                .param("email", "researcher86@mail.ru")
                 .param("password", "123456")
         )
                 .andExpect(request().sessionAttribute("client", notNullValue()))
