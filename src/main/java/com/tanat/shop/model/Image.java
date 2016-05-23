@@ -1,9 +1,11 @@
 package com.tanat.shop.model;
 
+import com.tanat.shop.exception.ImageLoadException;
 import com.tanat.shop.util.ReadResourceFile;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
+import java.io.IOException;
 import java.util.Base64;
 
 @Entity
@@ -46,6 +48,10 @@ public class Image {
     }
 
     public static Image load(String fileName) {
-        return new Image(ReadResourceFile.read(fileName), StringUtils.getFilenameExtension(fileName));
+        try {
+            return new Image(ReadResourceFile.read(fileName), StringUtils.getFilenameExtension(fileName));
+        } catch (IOException e) {
+            throw new ImageLoadException("Error load image", e);
+        }
     }
 }
