@@ -55,7 +55,6 @@ public class GoodsDaoTest extends AbstractDaoTest {
     }
 
     @Test
-    @Transactional
     public void testAddComment() throws Exception {
         Client client = Client.createSimple();
         clientDao.saveAndFlush(client);
@@ -72,7 +71,6 @@ public class GoodsDaoTest extends AbstractDaoTest {
     }
 
     @Test
-    @Transactional
     public void testAddImage() throws Exception {
         Image image = Image.load("bumaga.png");
         goods.setImage(image);

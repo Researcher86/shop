@@ -34,12 +34,11 @@ public class CategoryDaoTest extends AbstractDaoTest {
     }
 
     @Test
-    @Transactional
     public void testSave() throws Exception {
+        goodsDao.saveAndFlush(goods);
         category.addGoods(goods);
 
         categoryDao.saveAndFlush(category);
-        goodsDao.saveAndFlush(goods);
 
         final String categoryName = categoryDao.findOne(category.getId()).getName();
         final String goodsCategoryName = categoryDao.findOne(category.getId()).getGoodsList().get(0).getCategory().getName();
@@ -61,8 +60,8 @@ public class CategoryDaoTest extends AbstractDaoTest {
     public void testDeleteWithGoods() throws Exception {
         category.addGoods(goods);
 
-        categoryDao.saveAndFlush(category);
         goodsDao.saveAndFlush(goods);
+        categoryDao.saveAndFlush(category);
         categoryDao.delete(category);
 
         fail();

@@ -1,7 +1,9 @@
 package com.tanat.shop.web.controller;
 
+import com.tanat.shop.dao.ClientDao;
 import com.tanat.shop.model.Client;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -15,8 +17,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 public class AuthControllerTest extends AbstractControllerTest {
 
+    @Autowired
+    private ClientDao clientDao;
+
     @Test
     public void testCorrectLoginData() throws Exception {
+        clientDao.saveAndFlush(Client.createSimple());
+
         mockMvc.perform(post("/auth/login")
                 .param("email", "researcher86@mail.ru")
                 .param("password", "123456")

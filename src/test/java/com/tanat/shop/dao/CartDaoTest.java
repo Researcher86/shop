@@ -31,13 +31,13 @@ public class CartDaoTest extends AbstractDaoTest {
     public void setUp() throws Exception {
         client = Client.createSimple();
         cart = new Cart(client);
+        clientDao.saveAndFlush(client);
     }
 
     @Test
     public void testSave() throws Exception {
         cart.setShippingAddress(SHIPPING_ADDRESS);
 
-//        clientDao.saveAndFlush(client);
         cartDao.saveAndFlush(cart);
 
         assertNotNull(cartDao.findOne(cart.getId()));
@@ -48,7 +48,6 @@ public class CartDaoTest extends AbstractDaoTest {
     public void testDelete() throws Exception {
         cart.setShippingAddress(SHIPPING_ADDRESS);
 
-//        clientDao.saveAndFlush(client);
         cartDao.saveAndFlush(cart);
         cartDao.delete(cart);
 
@@ -65,7 +64,6 @@ public class CartDaoTest extends AbstractDaoTest {
         cart.addOrder(goods, 5);
 
         goodsDao.saveAndFlush(goods);
-//        clientDao.saveAndFlush(client);
         cartDao.saveAndFlush(cart);
 
         assertNotNull(cartDao.findOne(cart.getId()).getOrders());
@@ -77,7 +75,6 @@ public class CartDaoTest extends AbstractDaoTest {
     public void testFindByClient() throws Exception {
         cart.setShippingAddress(SHIPPING_ADDRESS);
 
-        clientDao.saveAndFlush(client);
         cartDao.saveAndFlush(cart);
 
         assertNotNull(cartDao.findByClient(client));
