@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,10 +25,10 @@ public class AuthController {
     private ClientService clientService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(Client client, HttpServletRequest request) {
-        LOG.debug("Client login email: {}, password: {}", client.getEmail(), client.getPassword());
+    public String login(@RequestParam String email, @RequestParam String password, HttpServletRequest request) {
+        LOG.debug("Client login email: {}, password: {}", email, password);
 
-        Client storeClient = clientService.findByEmailAndPassword(client.getEmail(), client.getPassword());
+        Client storeClient = clientService.findByEmailAndPassword(email, password);
 
         if (storeClient != null) {
             request.getSession().setAttribute("client", storeClient);
