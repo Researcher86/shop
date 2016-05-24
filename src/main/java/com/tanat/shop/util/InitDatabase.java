@@ -25,10 +25,6 @@ public class InitDatabase implements ApplicationListener<ContextRefreshedEvent> 
     @Autowired
     private GoodsDao goodsDao;
 
-    @Autowired
-    private ClientDao clientDao;
-
-    @Transactional
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         if (categoryDao.findAll().size() == 0) {
@@ -64,9 +60,6 @@ public class InitDatabase implements ApplicationListener<ContextRefreshedEvent> 
 
             categoryDao.saveAndFlush(new Category("Линейка"));
             categoryDao.saveAndFlush(new Category("Папка"));
-
-//            Client client = Client.createSimple();
-//            clientDao.saveAndFlush(client);
-        }
+       }
     }
 }
