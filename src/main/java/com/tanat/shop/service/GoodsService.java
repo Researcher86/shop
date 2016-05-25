@@ -7,6 +7,7 @@ import com.tanat.shop.model.Category;
 import com.tanat.shop.model.Goods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,6 +28,13 @@ public class GoodsService {
         if (goods == null) {
             throw new AppException("Товар не найден id = " + id);
         }
+        return goods;
+    }
+
+    @Transactional
+    public Goods getByIdAndAllComments(Long id) {
+        Goods goods = getById(id);
+        goods.getComments().size();
         return goods;
     }
 
