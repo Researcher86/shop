@@ -39,7 +39,7 @@ public class IndexController extends AbstractController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model model) {
-        LOG.info("goods index");
+        LOG.debug("Render index page");
 
         model.addAttribute(CATEGORIES, categoryService.getAll());
         model.addAttribute(GOODS_LIST, goodsService.getAll());
@@ -49,7 +49,7 @@ public class IndexController extends AbstractController {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String search(@RequestParam String str, Model model) {
-        LOG.info("goods search");
+        LOG.debug("Render result page, search goods by {}", str);
 
         model.addAttribute(CATEGORIES, categoryService.getAll());
         model.addAttribute(GOODS_LIST, goodsService.findByName(str));
@@ -59,7 +59,7 @@ public class IndexController extends AbstractController {
 
     @RequestMapping(value = "/categories/{id}", method = RequestMethod.GET)
     public String showCategory(@ModelAttribute Category category, Model model) {
-        LOG.info("category show");
+        LOG.debug("Render page goods by category {}", category.getId());
 
         model.addAttribute(CATEGORIES, categoryService.getAll());
         model.addAttribute(GOODS_LIST, goodsService.findByCategory(category));
@@ -69,35 +69,35 @@ public class IndexController extends AbstractController {
 
     @RequestMapping(value = "/aboutCompany", method = RequestMethod.GET)
     public String aboutCompany(Model model) {
-        LOG.info("Show info \"About Company\"");
+        LOG.debug("Render page \"About Company\"");
 
         return getView(model, PAGE_ABOUT_COMPANY);
     }
 
     @RequestMapping(value = "/shipping", method = RequestMethod.GET)
     public String shipping(Model model) {
-        LOG.info("Show info shipping");
+        LOG.debug("Render page shipping");
 
         return getView(model, PAGE_SHIPPING);
     }
 
     @RequestMapping(value = "/contacts", method = RequestMethod.GET)
     public String contacts(Model model) {
-        LOG.info("Show info contacts");
+        LOG.info("Render page contacts");
 
         return getView(model, PAGE_CONTACTS);
     }
 
     @RequestMapping(value = "/priceList", method = RequestMethod.GET)
     public String priceList(Model model) {
-        LOG.info("Show info price list");
+        LOG.debug("Render page price list");
 
         return getView(model, PAGE_PRICE_LIST);
     }
 
     @RequestMapping(value = "/goods/{id}", method = RequestMethod.GET)
     public String showGoods(@PathVariable Long id, Model model) {
-        LOG.debug("Show goods {}", id);
+        LOG.debug("Render page goods details {}", id);
 
         model.addAttribute("goods", goodsService.getByIdAndAllComments(id));
 
