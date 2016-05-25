@@ -34,7 +34,7 @@ public class AdminController extends AbstractController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
-        LOG.info("categories");
+        LOG.debug("Render index page");
 
         model.addAttribute("categories", categoryService.getAll());
 
@@ -43,16 +43,16 @@ public class AdminController extends AbstractController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout) {
-        LOG.info("login action");
+        LOG.debug("Render login page");
 
         ModelAndView model = new ModelAndView("admin/login");
         if (error != null) {
-            LOG.info("error");
-            model.addObject("error", "Invalid username and password!");
+            LOG.debug("Invalid username or password!");
+            model.addObject("error", "Invalid username or password!");
         }
 
         if (logout != null) {
-            LOG.info("logout");
+            LOG.debug("User logout");
             model.addObject("msg", "You've been logged out successfully.");
         }
 
