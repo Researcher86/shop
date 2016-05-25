@@ -18,15 +18,19 @@
         </a>
     </div>
     <div class="col-xs-12">
-        <hr>
+        <br>
     </div>
     <div class="col-xs-12">
         <h3>Комментарии: <span class="badge">${goods.comments.size()}</span></h3>
     </div>
+
+    <div class="col-xs-12">
+        <hr>
+    </div>
     <div class="col-xs-12">
         <form>
             <div class="form-group">
-                <textarea name="content" data-provide="markdown" rows="5" ></textarea>
+                <textarea name="content" data-provide="markdown" rows="10"></textarea>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-default">Отправить</button>
