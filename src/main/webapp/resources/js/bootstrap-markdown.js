@@ -1332,7 +1332,7 @@
     disabledButtons:[], // Default disabled buttons
     footer: '',
     fullscreen: {
-      enable: true,
+      enable: false,
       icons: {
         fullscreenOn: {
           fa: 'fa fa-expand',
