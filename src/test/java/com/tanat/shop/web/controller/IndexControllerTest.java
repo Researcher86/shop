@@ -22,4 +22,13 @@ public class IndexControllerTest extends AbstractControllerTest {
                 .andExpect(model().attributeExists("categories"))
                 .andExpect(model().attributeExists("goodsList"));
     }
+
+    @Test
+    public void showGoods() throws Exception {
+        mockMvc.perform(get("/goods/1"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("index/template"))
+                .andExpect(model().attributeExists("content"))
+                .andExpect(model().attributeExists("goods"));
+    }
 }

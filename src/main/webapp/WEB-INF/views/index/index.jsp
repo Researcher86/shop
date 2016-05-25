@@ -1,12 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Tanat
-  Date: 01.12.2015
-  Time: 11:12
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="col-xs-3 goodsCatalog">
@@ -73,7 +66,7 @@
                         </div>
 
                         <div class="col-xs-8 goodsDetails">
-                            <h4>${goods.name}</h4>
+                            <a href="<c:url value="/goods/${goods.id}"/>"><h4>${goods.name}</h4></a>
                             <h5>${goods.category.name}</h5>
                             <h5>${goods.description}</h5>
                         </div>

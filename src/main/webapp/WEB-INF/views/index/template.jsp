@@ -12,6 +12,7 @@
 <head>
     <title>E-Shop</title>
     <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap-markdown.min.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/index.css"/>">
 
     <link rel="icon" href="<c:url value="/resources/img/eshop_icon.png"/>">
@@ -74,6 +75,8 @@
 
 <script src="<c:url value="/resources/js/jquery-2.1.4.min.js"/>"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value="/resources/js/bootstrap-markdown.js"/>"></script>
+<script src="<c:url value="/resources/js/bootstrap-markdown.ru.js"/>"></script>
 </body>
 </html>
 
