@@ -21,7 +21,7 @@
         <hr>
     </div>
     <div class="col-xs-12">
-        <h3>Комментарии: <span class="badge">42</span></h3>
+        <h3>Комментарии: <span class="badge">${goods.comments.size()}</span></h3>
     </div>
     <div class="col-xs-12">
         <form>

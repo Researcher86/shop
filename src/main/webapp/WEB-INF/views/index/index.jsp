@@ -66,7 +66,9 @@
                         </div>
 
                         <div class="col-xs-8 goodsDetails">
-                            <a href="<c:url value="/goods/${goods.id}"/>"><h4>${goods.name}</h4></a>
+                            <a href="<c:url value="/goods/${goods.id}"/>">
+                                <h4>${goods.name}</h4>
+                            </a>
                             <h5>${goods.category.name}</h5>
                             <h5>${goods.description}</h5>
                         </div>
