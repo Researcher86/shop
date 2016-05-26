@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="col-xs-12">
     <div class="col-xs-4">
@@ -27,22 +29,42 @@
     <div class="col-xs-12">
         <hr>
     </div>
-    <div class="col-xs-12">
-        <form>
-            <div class="form-group">
-                <textarea name="content" data-provide="markdown" rows="10"></textarea>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-default">Отправить</button>
-            </div>
-        </form>
-    </div>
-
-    <div class="col-xs-12">
+    <div class="col-xs-12 comments">
         <c:forEach var="comment" items="${goods.comments}">
-            <div class="col-xs-12">
-                ${comment.text}
+            <div class="col-xs-1 text-center">
+                Foto
+            </div>
+            <div class="col-xs-11">
+                <div class="col-xs-12">
+                    <p>${comment.text}</p>
+                </div>
+                <div class="col-xs-12">
+                    <fmt:formatDate value="${comment.date.time}" type="date" pattern="dd.MM.yyyy HH:MM"/>
+                </div>
             </div>
         </c:forEach>
+    </div>
+
+    <c:if test="${goods.comments.size() != 0}">
+        <div class="col-xs-12">
+            <hr>
+        </div>
+    </c:if>
+
+    <div class="col-xs-12">
+        <c:if test="${not empty client}">
+            <spring:form method="post">
+                <div class="form-group">
+                    <textarea name="text" data-provide="markdown" rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">Отправить</button>
+                </div>
+            </spring:form>
+        </c:if>
+        <c:if test="${empty client}">
+            <h5>Только авторизованные пользователи могут оставлять комментарии</h5>
+            <h4><a href="#">Авторизоваться</a></h4>
+        </c:if>
     </div>
 </div>

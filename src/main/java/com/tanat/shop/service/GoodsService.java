@@ -4,6 +4,7 @@ import com.tanat.shop.dao.CategoryDao;
 import com.tanat.shop.dao.GoodsDao;
 import com.tanat.shop.exception.AppException;
 import com.tanat.shop.model.Category;
+import com.tanat.shop.model.Comment;
 import com.tanat.shop.model.Goods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,4 +55,14 @@ public class GoodsService {
         return goodsDao.findByCategory(category);
     }
 
+    @Transactional
+    public Goods addCommentForGoods(Comment comment, Long id) {
+        Goods goods = goodsDao.findOne(id);
+        goods.getComments().size();
+        goods.addComments(comment);
+
+        Goods storeGoods = goodsDao.save(goods);
+        storeGoods.getComments().size();
+        return storeGoods;
+    }
 }
