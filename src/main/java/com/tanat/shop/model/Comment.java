@@ -1,5 +1,7 @@
 package com.tanat.shop.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 import java.util.Calendar;
 
@@ -11,17 +13,19 @@ public class Comment {
     private Long id;
 
     @Lob
+    @NotBlank(message = "Не заполнен текст комментария")
+    @Column(nullable = false)
     private String text;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar date;
 
     @ManyToOne
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
     @ManyToOne
-    @JoinColumn(name = "goods_id")
+    @JoinColumn(name = "goods_id", nullable = false)
     private Goods goods;
 
     public Comment() {

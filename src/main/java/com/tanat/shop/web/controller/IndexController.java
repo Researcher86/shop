@@ -1,6 +1,9 @@
 package com.tanat.shop.web.controller;
 
 import com.tanat.shop.model.Category;
+import com.tanat.shop.model.Client;
+import com.tanat.shop.model.Comment;
+import com.tanat.shop.model.Goods;
 import com.tanat.shop.service.CategoryService;
 import com.tanat.shop.service.GoodsService;
 import org.slf4j.Logger;
@@ -9,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * Контроллер главной страницы магазина
@@ -97,9 +102,25 @@ public class IndexController extends AbstractController {
 
     @RequestMapping(value = "/goods/{id}", method = RequestMethod.GET)
     public String showGoods(@PathVariable Long id, Model model) {
-        LOG.debug("Render page goods details {}", id);
+        LOG.debug("Render page goods {}", id);
 
         model.addAttribute("goods", goodsService.getByIdAndAllComments(id));
+
+        return getView(model, "showGoods");
+    }
+
+    @RequestMapping(value = "/goods/{goodsId}", method = RequestMethod.POST)
+    public String addCommentForGoods(@PathVariable Long goodsId, @RequestParam String text, HttpSession session, Model model) {
+        LOG.debug("Add comment for goods {}", goodsId);
+
+        if (text.trim().equals("")) {
+            model.addAttribute("goods", goodsService.getByIdAndAllComments(goodsId));
+            model.addAttribute("text", "Text empty");
+            return getView(model, "showGoods");
+        }
+
+        Goods goods = goodsService.addCommentForGoods(new Comment(text, (Client) session.getAttribute("client")), goodsId);
+        model.addAttribute("goods", goods);
 
         return getView(model, "showGoods");
     }
