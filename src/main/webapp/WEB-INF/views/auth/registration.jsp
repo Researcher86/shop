@@ -11,22 +11,22 @@
                 <spring:errors path="fio" cssClass="text-danger"/>
             </div>
             <div class="form-group">
-                <label for="fio">Телефон</label>
+                <label for="phone">Телефон</label>
                 <spring:input path="phone" cssClass="form-control"/>
                 <spring:errors path="phone" cssClass="text-danger"/>
             </div>
             <div class="form-group">
-                <label for="fio">Адрес</label>
+                <label for="address">Адрес</label>
                 <spring:input path="address" cssClass="form-control"/>
                 <spring:errors path="address" cssClass="text-danger"/>
             </div>
             <div class="form-group">
-                <label for="fio">Почтовый ящик</label>
+                <label for="email">Почтовый ящик</label>
                 <spring:input path="email" cssClass="form-control"/>
                 <spring:errors path="email" cssClass="text-danger"/>
             </div>
             <div class="form-group">
-                <label for="fio">Пароль</label>
+                <label for="password">Пароль</label>
                 <spring:password path="password" cssClass="form-control"/>
                 <spring:errors path="password" cssClass="text-danger"/>
             </div>

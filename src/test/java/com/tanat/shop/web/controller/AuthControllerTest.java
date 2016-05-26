@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
+import static org.junit.Assert.assertNotNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -19,6 +20,16 @@ public class AuthControllerTest extends AbstractControllerTest {
 
     @Autowired
     private ClientDao clientDao;
+
+    @Test
+    public void testLoginForm() throws Exception {
+        mockMvc.perform(get("/auth/login"))
+                .andExpect(request().sessionAttribute("client", nullValue()))
+                .andExpect(request().sessionAttribute("error", nullValue()))
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("content"))
+                .andExpect(view().name("/index/template"));
+    }
 
     @Test
     public void testCorrectLoginData() throws Exception {
@@ -40,8 +51,9 @@ public class AuthControllerTest extends AbstractControllerTest {
                 .param("password", "test")
         )
                 .andExpect(request().sessionAttribute("client", nullValue()))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/"));
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("content"))
+                .andExpect(view().name("/index/template"));
     }
 
     @Test
