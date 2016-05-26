@@ -1,17 +1,19 @@
 package com.tanat.shop.web.controller;
 
 import com.tanat.shop.dao.ClientDao;
+import com.tanat.shop.dao.GoodsDao;
 import com.tanat.shop.model.Client;
+import com.tanat.shop.model.Goods;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.hasSize;
+import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Тестируем главный контроллер магазина
@@ -21,6 +23,9 @@ public class IndexControllerTest extends AbstractControllerTest {
 
     @Autowired
     private ClientDao clientDao;
+
+    @Autowired
+    private GoodsDao goodsDao;
 
     @Test
     public void testIndex() throws Exception {
@@ -42,18 +47,19 @@ public class IndexControllerTest extends AbstractControllerTest {
     }
 
     @Test
+    @Transactional
     public void addCommentForGoods_textNotEmpty_authenticationClient() throws Exception {
         Client client = clientDao.saveAndFlush(Client.createSimple());
 
         mockMvc.perform(post("/goods/1")
                 .param("text", "test")
-                .sessionAttr("client", client)
+                .param("client.id", String.valueOf(client.getId()))
         )
-                .andExpect(status().isOk())
-                .andExpect(view().name("index/template"))
-                .andExpect(model().attributeExists("content"))
-                .andExpect(model().attributeExists("goods"))
-                .andExpect(model().attribute("goods", hasProperty("comments", hasSize(1))));
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/goods/1"));
+
+        Goods goods = goodsDao.findOne(1L);
+        assertEquals(1, goods.getComments().size());
     }
 
     @Test
@@ -62,13 +68,14 @@ public class IndexControllerTest extends AbstractControllerTest {
 
         mockMvc.perform(post("/goods/1")
                 .param("text", "")
-                .sessionAttr("client", client)
+                .param("client.id", String.valueOf(client.getId()))
         )
                 .andExpect(status().isOk())
                 .andExpect(view().name("index/template"))
                 .andExpect(model().attributeExists("content"))
                 .andExpect(model().attributeExists("goods"))
-                .andExpect(model().attribute("text", "Text empty"))
+                .andExpect(model().attributeExists("comment"))
+                .andExpect(model().attributeHasErrors("comment"))
                 .andExpect(model().attribute("goods", hasProperty("comments", hasSize(0))));
     }
 }

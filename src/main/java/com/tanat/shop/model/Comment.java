@@ -1,8 +1,10 @@
 package com.tanat.shop.model;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Calendar;
 
 @Entity
@@ -14,7 +16,8 @@ public class Comment {
 
     @Lob
     @NotBlank(message = "Не заполнен текст комментария")
-    @Column(nullable = false)
+    @Length(max = 10000, message = "Текст комментария не должен превышать 10000 символов")
+    @Column(nullable = false, length = 10000)
     private String text;
 
     @Temporal(TemporalType.TIMESTAMP)

@@ -31,15 +31,18 @@
     </div>
     <div class="col-xs-12 comments">
         <c:forEach var="comment" items="${goods.comments}">
-            <div class="col-xs-1 text-center">
-                Foto
-            </div>
-            <div class="col-xs-11">
-                <div class="col-xs-12">
-                    <p>${comment.text}</p>
+            <div class="col-xs-12 comment">
+                <div class="col-xs-1 row text-center">
+                    <img class="img-circle" width="50" src="<c:url value="/resources/img/anonymous.png"/>" alt="Фото">
                 </div>
-                <div class="col-xs-12">
-                    <fmt:formatDate value="${comment.date.time}" type="date" pattern="dd.MM.yyyy HH:MM"/>
+                <div class="col-xs-11">
+                    <div class="col-xs-12">
+                        ${comment.text}
+                    </div>
+                    <div class="col-xs-12 row text-muted small ">
+                        <i class="glyphicon glyphicon-user"></i> ${comment.client.fio}&nbsp;&nbsp;
+                        <i class="glyphicon glyphicon-time"></i> <fmt:formatDate value="${comment.date.time}" type="date" pattern="dd.MM.yyyy HH:MM"/>
+                    </div>
                 </div>
             </div>
         </c:forEach>
@@ -53,9 +56,11 @@
 
     <div class="col-xs-12">
         <c:if test="${not empty client}">
-            <spring:form method="post">
+            <spring:form modelAttribute="comment" method="post">
                 <div class="form-group">
-                    <textarea name="text" data-provide="markdown" rows="10"></textarea>
+                    <spring:textarea path="text" data-provide="markdown" rows="10"></spring:textarea>
+                    <spring:errors path="text" cssClass="text-danger"/>
+                    <input type="hidden" name="client.id" value="${client.id}"/>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-default">Отправить</button>

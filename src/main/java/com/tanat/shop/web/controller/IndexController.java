@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -105,24 +107,25 @@ public class IndexController extends AbstractController {
         LOG.debug("Render page goods {}", id);
 
         model.addAttribute("goods", goodsService.getByIdAndAllComments(id));
+        model.addAttribute("comment", new Comment());
 
         return getView(model, "showGoods");
     }
 
     @RequestMapping(value = "/goods/{goodsId}", method = RequestMethod.POST)
-    public String addCommentForGoods(@PathVariable Long goodsId, @RequestParam String text, HttpSession session, Model model) {
+    public String addCommentForGoods(@PathVariable Long goodsId, @Validated Comment comment, BindingResult bindingResult, Model model) {
         LOG.debug("Add comment for goods {}", goodsId);
 
-        if (text.trim().equals("")) {
+        if (bindingResult.hasErrors()) {
             model.addAttribute("goods", goodsService.getByIdAndAllComments(goodsId));
-            model.addAttribute("text", "Text empty");
+            model.addAttribute("comment", comment);
             return getView(model, "showGoods");
         }
 
-        Goods goods = goodsService.addCommentForGoods(new Comment(text, (Client) session.getAttribute("client")), goodsId);
+        Goods goods = goodsService.addCommentForGoods(comment, goodsId);
         model.addAttribute("goods", goods);
 
-        return getView(model, "showGoods");
+        return "redirect:/goods/" + goodsId;
     }
 
 }
