@@ -1,17 +1,14 @@
 package com.tanat.shop.util;
 
 import com.tanat.shop.dao.CategoryDao;
-import com.tanat.shop.dao.ClientDao;
 import com.tanat.shop.dao.GoodsDao;
 import com.tanat.shop.model.Category;
-import com.tanat.shop.model.Client;
 import com.tanat.shop.model.Goods;
 import com.tanat.shop.model.Image;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Компонент для иницыализации БД

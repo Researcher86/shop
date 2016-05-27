@@ -1,7 +1,6 @@
 package com.tanat.shop.web.controller;
 
 import com.tanat.shop.model.Category;
-import com.tanat.shop.model.Client;
 import com.tanat.shop.model.Comment;
 import com.tanat.shop.model.Goods;
 import com.tanat.shop.service.CategoryService;
@@ -14,8 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpSession;
 
 /**
  * Контроллер главной страницы магазина
