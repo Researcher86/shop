@@ -10,34 +10,26 @@
             <th class="text-center">Количество</th>
             <th class="text-center">Сумма</th>
             <th class="text-center"></th>
-            <tr>
-                <td>1</td>
-                <td>Бумага</td>
-                <td>5555</td>
-                <td style="width: 150px">
-                    <input class="form-control text-center" type="number">
-                </td>
-                <td>565656</td>
-                <td>
-                    <a href="javascript:void(0)">Удалить</a>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Бумага</td>
-                <td>5555</td>
-                <td style="width: 100px">
-                    <input class="form-control text-center" type="number">
-                </td>
-                <td>565656</td>
-                <td>
-                    <a href="javascript:void(0)">Удалить</a>
-                </td>
-            </tr>
+
+            <c:forEach var="order" items="${cart.orders}" varStatus="count">
+                <tr>
+                    <td>${count.count}</td>
+                    <td>${order.goods.name}</td>
+                    <td>${order.goods.price}</td>
+                    <td style="width: 150px">
+                        <input class="form-control text-center" type="number" value="${order.goodsCount}">
+                    </td>
+                    <td>${order.totalPrice}</td>
+                    <td>
+                        <a href="javascript:void(0)">Удалить</a>
+                    </td>
+                </tr>
+            </c:forEach>
+
             <tr class="warning">
                 <td colspan="3"></td>
                 <td><strong>К оплате:</strong></td>
-                <td><strong>999999</strong></td>
+                <td><strong>${cart.totalPrice}</strong></td>
                 <td></td>
             </tr>
         </table>
