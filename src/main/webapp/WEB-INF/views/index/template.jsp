@@ -43,7 +43,7 @@
                     <strong>0</strong><span> товаров</span><br>
                     <span>на сумму </span><strong>0 тг.</strong>
 
-                    <a href="javascript:void(0);" class="yen-bs-count_link" title="Корзина">
+                    <a href="<c:url value="/cart"/>" class="yen-bs-count_link" title="Корзина">
                         <div class="icon"></div>
                     </a>
                 </div>
