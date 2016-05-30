@@ -3,6 +3,8 @@ package com.tanat.shop.model;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "carts")
@@ -59,5 +61,27 @@ public class Cart {
         }
 
         return result;
+    }
+
+    public void deleteGoods(Long goodsId) {
+        orders = orders.stream().filter(o -> o.getGoods().getId() != goodsId).collect(Collectors.toList());
+    }
+
+    private Optional<Order> findOrderByGoods(Long goodsId) {
+        return orders.stream().filter(o -> o.getGoods().getId() == goodsId).findFirst();
+    }
+
+    public Order findOrderByGoodsId(Long goodsId) {
+
+        Optional<Order> order = findOrderByGoods(goodsId);
+        if (order.isPresent()) {
+            return order.get();
+        } else {
+            throw new RuntimeException("Order contain goods " + goodsId + " not found");
+        }
+    }
+
+    public boolean goodsExists(Long goodsId) {
+        return findOrderByGoods(goodsId).isPresent();
     }
 }

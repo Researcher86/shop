@@ -39,6 +39,22 @@ public class Order {
         return goodsCount;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setGoods(Goods goods) {
+        this.goods = goods;
+    }
+
+    public void setGoodsCount(int goodsCount) {
+        this.goodsCount = goodsCount;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
     public int getTotalPrice() {
         return goods.getPrice() * goodsCount;
     }

@@ -3,7 +3,7 @@
 
 <div class="col-xs-12">
     <c:if test="${true}">
-        <table class="table table-bordered table-hover text-center input-sm">
+        <table id="cartItems" class="table table-bordered table-hover text-center input-sm">
             <th class="text-center">№</th>
             <th class="text-center">Наименование</th>
             <th class="text-center">Стоимость</th>
@@ -17,7 +17,7 @@
                     <td>${order.goods.name}</td>
                     <td>${order.goods.price}</td>
                     <td style="width: 150px">
-                        <input class="form-control text-center" type="number" value="${order.goodsCount}">
+                        <input class="form-control text-center" type="number" value="${order.goodsCount}" goodsId="${order.goods.id}">
                     </td>
                     <td>${order.totalPrice}</td>
                     <td>

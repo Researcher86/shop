@@ -6,12 +6,16 @@ import com.tanat.shop.service.GoodsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Контроллер для обработки запросов к корзине
@@ -42,5 +46,28 @@ public class CartController {
         model.addAttribute("content", "../cart/index.jsp");
 
         return "index/template";
+    }
+
+    @RequestMapping(value = "update", method = RequestMethod.POST)
+    public ResponseEntity<String> update(@RequestParam Long goodsId, @RequestParam int quality, HttpSession httpSession) {
+        Cart cart = (Cart) httpSession.getAttribute("cart");
+
+        if (quality < 0) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        try {
+            Order order = cart.findOrderByGoodsId(goodsId);
+            if (quality == 0) {
+                cart.deleteGoods(goodsId);
+            } else {
+                order.setGoodsCount(quality);
+            }
+
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
     }
 }
