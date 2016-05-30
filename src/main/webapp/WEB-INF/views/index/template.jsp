@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="<c:url value="/resources/css/index.css"/>">
 
     <link rel="icon" href="<c:url value="/resources/img/eshop_icon.png"/>">
+
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
 </head>
 <body>
 
@@ -84,6 +88,7 @@
 <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 <script src="<c:url value="/resources/js/bootstrap-markdown.js"/>"></script>
 <script src="<c:url value="/resources/js/bootstrap-markdown.ru.js"/>"></script>
+<script src="<c:url value="/resources/js/main.js"/>"></script>
 </body>
 </html>
 
