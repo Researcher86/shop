@@ -10,12 +10,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * Контроллер для обработки запросов к корзине
@@ -34,7 +32,7 @@ public class CartController {
     public String index(Model model) {
         LOG.debug("Render index page");
 
-        if(!model.containsAttribute("cart")) {
+        if (!model.containsAttribute("cart")) {
             Cart cart = new Cart();
 
             cart.addOrder(goodsService.getById(1L), 2);
@@ -48,9 +46,13 @@ public class CartController {
         return "index/template";
     }
 
-    @RequestMapping(value = "update", method = RequestMethod.POST)
-    public ResponseEntity<String> update(@RequestParam Long goodsId, @RequestParam int quality, HttpSession httpSession) {
+    @RequestMapping(value = "/goods", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateOrder(@RequestBody MultiValueMap<String, String> body, HttpSession httpSession) {
+        LOG.debug("Update order");
         Cart cart = (Cart) httpSession.getAttribute("cart");
+
+        Long goodsId = Long.parseLong(body.getFirst("goodsId"));
+        int quality = Integer.parseInt(body.getFirst("quality"));
 
         if (quality < 0) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -68,6 +70,16 @@ public class CartController {
         } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+
+    }
+
+    @RequestMapping(value = "/goods/{goodsId}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteOrder(@PathVariable Long goodsId, HttpSession httpSession) {
+        Cart cart = (Cart) httpSession.getAttribute("cart");
+
+        cart.deleteGoods(goodsId);
+
+        return new ResponseEntity<>(HttpStatus.OK);
 
     }
 }

@@ -9,8 +9,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
@@ -59,9 +58,11 @@ public class CartControllerTest extends AbstractControllerTest {
         cart.addOrder(goodsService.getById(1L), 2);
         cart.addOrder(goodsService.getById(2L), 1);
 
-        mockMvc.perform(post("/cart/update")
-                .param("goodsId", "1")
-                .param("quality", "10")
+        mockMvc.perform(put("/cart/goods")
+                .contentType("application/x-www-form-urlencoded")
+                .content("goodsId=1&quality=10")
+//                .param("goodsId", "1")
+//                .param("quality", "10")
                 .sessionAttr("cart", cart)
         )
                 .andExpect(status().isOk())
@@ -75,14 +76,30 @@ public class CartControllerTest extends AbstractControllerTest {
         cart.addOrder(goodsService.getById(1L), 2);
         cart.addOrder(goodsService.getById(2L), 1);
 
-        mockMvc.perform(post("/cart/update")
-                .param("goodsId", "1")
-                .param("quality", "-1")
+        mockMvc.perform(put("/cart/goods")
+                 .contentType("application/x-www-form-urlencoded")
+                 .content("goodsId=1&quality=-1")
+//                .param("goodsId", "1")
+//                .param("quality", "-1")
                 .sessionAttr("cart", cart)
         )
                 .andExpect(status().isBadRequest())
                 .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(2))))
                 .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(55))));
+    }
+
+    @Test
+    public void deleteOrder() throws Exception {
+        Cart cart = new Cart();
+        cart.addOrder(goodsService.getById(1L), 2);
+        cart.addOrder(goodsService.getById(2L), 1);
+
+        mockMvc.perform(delete("/cart/goods/1")
+                .sessionAttr("cart", cart)
+        )
+                .andExpect(status().isOk())
+                .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(1))))
+                .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(45))));
     }
 
 }
