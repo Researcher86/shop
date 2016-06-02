@@ -17,28 +17,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Created by Comp on 30.05.2016.
  */
 public class CartControllerTest extends AbstractControllerTest {
-//    public static class TestUtil {
-//
-//        public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
-//
-////        private static final String CHARACTER = "a";
-////
-////        public static byte[] convertObjectToJsonBytes(Object object) throws IOException {
-////            ObjectMapper mapper = new ObjectMapper();
-////            mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-////            return mapper.writeValueAsBytes(object);
-////        }
-////
-////        public static String createStringWithLength(int length) {
-////            StringBuilder builder = new StringBuilder();
-////
-////            for (int index = 0; index < length; index++) {
-////                builder.append(CHARACTER);
-////            }
-////
-////            return builder.toString();
-////        }
-//    }
 
     @Autowired
     private GoodsService goodsService;
