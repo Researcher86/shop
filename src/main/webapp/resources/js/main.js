@@ -48,4 +48,20 @@ $(document).ready(function () {
             }
         });
     });
+
+    $("button.buy").click(function (e) {
+        $.ajax({
+            type: "POST",
+            url: '/cart/goods',
+            data: {goodsId: $(this).attr("goodsId"), quality: 1},
+            timeout: 3000,
+            success: function (data, status, xhr) { // вешаем свой обработчик на функцию success
+                location.reload();
+            },
+            error: function (xhr, status, error) {
+                alert("Error");
+                location.reload();
+            }
+        });
+    });
 });

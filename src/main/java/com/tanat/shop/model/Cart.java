@@ -50,7 +50,14 @@ public class Cart {
     }
 
     public void addOrder(Goods goods, int amount) {
-        orders.add(new Order(goods, amount, this));
+        Optional<Order> order = findOrderByGoods(goods.getId());
+
+        if (order.isPresent()) {
+            Order temp = order.get();
+            temp.setGoodsCount(temp.getGoodsCount() + amount);
+        } else {
+            orders.add(new Order(goods, amount, this));
+        }
     }
 
     public int getTotalPrice() {

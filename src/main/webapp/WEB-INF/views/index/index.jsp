@@ -80,11 +80,9 @@
                     </div>
 
                     <div>
-                        <a href="javascript:void(0);">
-                            <button class="btn btn-danger">
-                                <span class="glyphicon glyphicon-shopping-cart"></span> Купить
-                            </button>
-                        </a>
+                        <button class="buy btn btn-danger" goodsId="${goods.id}">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> Купить
+                        </button>
                     </div>
                 </td>
             </tr>

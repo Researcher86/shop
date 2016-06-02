@@ -25,11 +25,7 @@ public class GoodsService {
     }
 
     public Goods getById(Long id) {
-        Goods goods = goodsDao.findOne(id);
-        if (goods == null) {
-            throw new AppException("Товар не найден id = " + id);
-        }
-        return goods;
+        return goodsDao.findOne(id);
     }
 
     @Transactional

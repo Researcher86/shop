@@ -1,6 +1,7 @@
 package com.tanat.shop.web.controller;
 
 import com.tanat.shop.model.Cart;
+import com.tanat.shop.model.Goods;
 import com.tanat.shop.model.Order;
 import com.tanat.shop.service.GoodsService;
 import org.slf4j.Logger;
@@ -28,28 +29,49 @@ public class CartController {
     @Autowired
     private GoodsService goodsService;
 
+    @ModelAttribute
+    public Cart getCart() {
+        LOG.debug("Create Cart");
+
+        Cart cart = new Cart();
+
+        cart.addOrder(goodsService.getById(1L), 2);
+        cart.addOrder(goodsService.getById(2L), 1);
+
+        return cart;
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
         LOG.debug("Render index page");
-
-        if (!model.containsAttribute("cart")) {
-            Cart cart = new Cart();
-
-            cart.addOrder(goodsService.getById(1L), 2);
-            cart.addOrder(goodsService.getById(2L), 1);
-
-            model.addAttribute("cart", cart);
-        }
 
         model.addAttribute("content", "../cart/index.jsp");
 
         return "index/template";
     }
 
+    @RequestMapping(value = "/goods", method = RequestMethod.POST)
+    public ResponseEntity<String> addGoods(@RequestParam Long goodsId, @RequestParam int quality, @ModelAttribute Cart cart) {
+        LOG.debug("Add goods = {}, quality = {} to cart", goodsId, quality);
+
+        Goods goods = goodsService.getById(goodsId);
+
+        if (goods == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        if (quality <= 0) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        cart.addOrder(goods, quality);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/goods", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateOrder(@RequestBody MultiValueMap<String, String> body, HttpSession httpSession) {
+    public ResponseEntity<String> updateOrder(@RequestBody MultiValueMap<String, String> body, @ModelAttribute Cart cart) {
         LOG.debug("Update order");
-        Cart cart = (Cart) httpSession.getAttribute("cart");
 
         Long goodsId = Long.parseLong(body.getFirst("goodsId"));
         int quality = Integer.parseInt(body.getFirst("quality"));
@@ -74,8 +96,8 @@ public class CartController {
     }
 
     @RequestMapping(value = "/goods/{goodsId}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deleteOrder(@PathVariable Long goodsId, HttpSession httpSession) {
-        Cart cart = (Cart) httpSession.getAttribute("cart");
+    public ResponseEntity<String> deleteOrder(@PathVariable Long goodsId, @ModelAttribute Cart cart) {
+        LOG.debug("Delete goods = {}", goodsId);
 
         cart.deleteGoods(goodsId);
 
