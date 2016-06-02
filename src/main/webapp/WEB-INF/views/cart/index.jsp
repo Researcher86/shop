@@ -2,6 +2,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="col-xs-12">
+    <c:if test="${empty cart.orders}">
+        <div class="text-center">
+            <h2>Моя корзина</h2>
+            <p>
+                Ваша корзина сейчас пуста. <br>
+                Воспользуйтесь нашим каталогом, чтобы ее заполнить. <br>
+                Помните, что полная корзина олицетворяет изобилие!
+            </p>
+        </div>
+    </c:if>
     <c:if test="${not empty cart.orders}">
         <table id="cartItems" class="table table-bordered table-hover text-center input-sm">
             <th class="text-center">№</th>
@@ -35,16 +45,6 @@
         </table>
         <div>
             <button class="btn btn-default pull-right">Оформить заказ</button>
-        </div>
-    </c:if>
-    <c:if test="${empty goods.orders}">
-        <div class="text-center">
-            <h2>Моя корзина</h2>
-            <p>
-                Ваша корзина сейчас пуста. <br>
-                Воспользуйтесь нашим каталогом, чтобы ее заполнить. <br>
-                Помните, что полная корзина олицетворяет изобилие!
-            </p>
         </div>
     </c:if>
 </div>
