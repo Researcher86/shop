@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap-markdown.min.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/index.css"/>">
 
-    <link rel="icon" href="<c:url value="/resources/img/eshop_icon.png"/>">
+    <link rel="icon" href="<c:url value="/resources/img/eshop_icon.png"/>" type="image/x-icon">
+    <link rel="shortcut icon" href="<c:url value="/resources/img/eshop_icon.png"/>" type="image/x-icon">
 
     <meta name="_csrf" content="${_csrf.token}"/>
     <!-- default header name is X-CSRF-TOKEN -->
