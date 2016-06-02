@@ -32,13 +32,7 @@ public class CartController {
     @ModelAttribute
     public Cart getCart() {
         LOG.debug("Create Cart");
-
-        Cart cart = new Cart();
-
-        cart.addOrder(goodsService.getById(1L), 2);
-        cart.addOrder(goodsService.getById(2L), 1);
-
-        return cart;
+        return new Cart();
     }
 
     @RequestMapping(method = RequestMethod.GET)
