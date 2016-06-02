@@ -1,8 +1,10 @@
 package com.tanat.shop.util;
 
 import com.tanat.shop.dao.CategoryDao;
+import com.tanat.shop.dao.ClientDao;
 import com.tanat.shop.dao.GoodsDao;
 import com.tanat.shop.model.Category;
+import com.tanat.shop.model.Client;
 import com.tanat.shop.model.Goods;
 import com.tanat.shop.model.Image;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class InitDatabase implements ApplicationListener<ContextRefreshedEvent> 
 
     @Autowired
     private GoodsDao goodsDao;
+
+    @Autowired
+    private ClientDao clientDao;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -57,6 +62,8 @@ public class InitDatabase implements ApplicationListener<ContextRefreshedEvent> 
 
             categoryDao.saveAndFlush(new Category("Линейка"));
             categoryDao.saveAndFlush(new Category("Папка"));
+
+            clientDao.saveAndFlush(new Client("Test", "Test", "Test", "test@test.com", "test"));
        }
     }
 }

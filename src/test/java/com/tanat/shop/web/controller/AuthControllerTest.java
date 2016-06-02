@@ -79,7 +79,7 @@ public class AuthControllerTest extends AbstractControllerTest {
                 .param("fio", "Альпенов Танат Маратович")
                 .param("phone", "123456654321")
                 .param("address", "Kostanay")
-                .param("email", "test@test.com")
+                .param("email", "test@test.ru")
                 .param("password", "123")
         )
                 .andExpect(status().is3xxRedirection())
