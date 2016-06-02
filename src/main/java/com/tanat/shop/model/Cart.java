@@ -70,6 +70,16 @@ public class Cart {
         return result;
     }
 
+    public int getGoodsCount() {
+        int result = 0;
+
+        for (Order order : orders) {
+            result += order.getGoodsCount();
+        }
+
+        return result;
+    }
+
     public void deleteGoods(Long goodsId) {
         orders = orders.stream().filter(o -> o.getGoods().getId() != goodsId).collect(Collectors.toList());
     }

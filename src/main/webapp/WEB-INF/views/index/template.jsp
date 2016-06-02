@@ -44,9 +44,9 @@
 
             <div class="col-xs-3">
                 <div class="cart text-left">
-                    <a href="javascript:void(0);" class="yen-bs-count_link">В корзине</a>
-                    <strong>0</strong><span> товаров</span><br>
-                    <span>на сумму </span><strong>0 тг.</strong>
+                    <a href="<c:url value="/cart"/>" class="yen-bs-count_link">В корзине</a>
+                    <strong><c:out value="${empty cart.goodsCount ? 0 : cart.goodsCount}"/></strong><span> товаров</span><br>
+                    <span>на сумму </span><strong>${empty cart.totalPrice ? 0 : cart.totalPrice} тг.</strong>
 
                     <a href="<c:url value="/cart"/>" class="yen-bs-count_link" title="Корзина">
                         <div class="icon"></div>
