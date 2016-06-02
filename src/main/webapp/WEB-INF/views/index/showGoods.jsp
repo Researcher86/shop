@@ -13,11 +13,9 @@
         <h5>${goods.category.name}</h5>
         <h5>${goods.description}</h5>
         <strong>Код товара: </strong><span>15364</span>
-        <a href="javascript:void(0);">
-            <button class="btn btn-danger">
-                <span class="glyphicon glyphicon-shopping-cart"></span> Купить
-            </button>
-        </a>
+        <button class="buy btn btn-danger" goodsId="${goods.id}">
+            <span class="glyphicon glyphicon-shopping-cart"></span> Купить
+        </button>
     </div>
     <div class="col-xs-12">
         <br>

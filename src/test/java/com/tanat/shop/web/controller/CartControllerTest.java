@@ -6,11 +6,10 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.Matchers.hasProperty;
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
 /**
  * Тестируем контроллер корзины
@@ -53,8 +52,8 @@ public class CartControllerTest extends AbstractControllerTest {
         cart.addOrder(goodsService.getById(2L), 1);
 
         mockMvc.perform(put("/cart/goods")
-                 .contentType("application/x-www-form-urlencoded")
-                 .content("goodsId=1&quality=-1")
+                .contentType("application/x-www-form-urlencoded")
+                .content("goodsId=1&quality=-1")
                 .sessionAttr("cart", cart)
         )
                 .andExpect(status().isBadRequest())
@@ -76,4 +75,39 @@ public class CartControllerTest extends AbstractControllerTest {
                 .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(45))));
     }
 
+    @Test
+    public void addGoodsInCart() throws Exception {
+        mockMvc.perform(post("/cart/goods")
+                .param("goodsId", "3")
+                .param("quality", "1")
+                .sessionAttr("cart", new Cart())
+        )
+                .andExpect(status().isOk())
+                .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(1))))
+                .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(45))));
+    }
+
+    @Test
+    public void addIncorrectGoodsInCart() throws Exception {
+        mockMvc.perform(post("/cart/goods")
+                .param("goodsId", "-3")
+                .param("quality", "1")
+                .sessionAttr("cart", new Cart())
+        )
+                .andExpect(status().is4xxClientError())
+                .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(0))))
+                .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(0))));
+    }
+
+    @Test
+    public void addIncorrectQualityInCart() throws Exception {
+        mockMvc.perform(post("/cart/goods")
+                .param("goodsId", "3")
+                .param("quality", "-1")
+                .sessionAttr("cart", new Cart())
+        )
+                .andExpect(status().isBadRequest())
+                .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(0))))
+                .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(0))));
+    }
 }
