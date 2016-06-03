@@ -45,10 +45,10 @@ public class CartService {
             throw new AppException("Incorrect amount = " + amount);
         }
 
-        Order order = cart.findOrderByGoodsId(goodsId);
         if (amount == 0) {
             cart.deleteGoods(goodsId);
         } else {
+            Order order = cart.findOrderByGoodsId(goodsId);
             order.setGoodsCount(amount);
         }
     }
