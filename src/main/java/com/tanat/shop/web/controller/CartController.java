@@ -56,6 +56,7 @@ public class CartController {
 
         try {
             cartService.addOrder(cart, goods, amount);
+
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
