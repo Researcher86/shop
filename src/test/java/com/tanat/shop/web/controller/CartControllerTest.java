@@ -30,14 +30,14 @@ public class CartControllerTest extends AbstractControllerTest {
     }
 
     @Test
-    public void updateQuality() throws Exception {
+    public void updateAmount() throws Exception {
         Cart cart = new Cart();
         cart.addOrder(goodsService.getById(1L), 2);
         cart.addOrder(goodsService.getById(2L), 1);
 
         mockMvc.perform(put("/cart/goods")
                 .contentType("application/x-www-form-urlencoded")
-                .content("goodsId=1&quality=10")
+                .content("goodsId=1&amount=10")
                 .sessionAttr("cart", cart)
         )
                 .andExpect(status().isOk())
@@ -46,14 +46,14 @@ public class CartControllerTest extends AbstractControllerTest {
     }
 
     @Test
-    public void updateIncorrectQuality() throws Exception {
+    public void updateIncorrectAmount() throws Exception {
         Cart cart = new Cart();
         cart.addOrder(goodsService.getById(1L), 2);
         cart.addOrder(goodsService.getById(2L), 1);
 
         mockMvc.perform(put("/cart/goods")
                 .contentType("application/x-www-form-urlencoded")
-                .content("goodsId=1&quality=-1")
+                .content("goodsId=1&amount=-1")
                 .sessionAttr("cart", cart)
         )
                 .andExpect(status().isBadRequest())
@@ -79,7 +79,7 @@ public class CartControllerTest extends AbstractControllerTest {
     public void addGoodsInCart() throws Exception {
         mockMvc.perform(post("/cart/goods")
                 .param("goodsId", "3")
-                .param("quality", "1")
+                .param("amount", "1")
                 .sessionAttr("cart", new Cart())
         )
                 .andExpect(status().isOk())
@@ -91,7 +91,7 @@ public class CartControllerTest extends AbstractControllerTest {
     public void addIncorrectGoodsInCart() throws Exception {
         mockMvc.perform(post("/cart/goods")
                 .param("goodsId", "-3")
-                .param("quality", "1")
+                .param("amount", "1")
                 .sessionAttr("cart", new Cart())
         )
                 .andExpect(status().is4xxClientError())
@@ -100,10 +100,10 @@ public class CartControllerTest extends AbstractControllerTest {
     }
 
     @Test
-    public void addIncorrectQualityInCart() throws Exception {
+    public void addIncorrectAmountInCart() throws Exception {
         mockMvc.perform(post("/cart/goods")
                 .param("goodsId", "3")
-                .param("quality", "-1")
+                .param("amount", "-1")
                 .sessionAttr("cart", new Cart())
         )
                 .andExpect(status().isBadRequest())

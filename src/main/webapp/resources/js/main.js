@@ -22,7 +22,7 @@ $(document).ready(function () {
             type: "PUT",
             url: '/cart/goods',
             // dataType: "json", // тип загружаемых данных
-            data: {goodsId: $(this).attr("goodsId"), quality: $(this).val()},
+            data: {goodsId: $(this).attr("goodsId"), amount: $(this).val()},
             timeout: 3000,
             success: function (data, status, xhr) { // вешаем свой обработчик на функцию success
                 location.reload();
@@ -53,7 +53,7 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: '/cart/goods',
-            data: {goodsId: $(this).attr("goodsId"), quality: 1},
+            data: {goodsId: $(this).attr("goodsId"), amount: 1},
             timeout: 3000,
             success: function (data, status, xhr) { // вешаем свой обработчик на функцию success
                 location.reload();

@@ -3,6 +3,7 @@ package com.tanat.shop.web.controller;
 import com.tanat.shop.model.Cart;
 import com.tanat.shop.model.Goods;
 import com.tanat.shop.model.Order;
+import com.tanat.shop.service.CartService;
 import com.tanat.shop.service.GoodsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,10 +30,13 @@ public class CartController {
     @Autowired
     private GoodsService goodsService;
 
+    @Autowired
+    private CartService cartService;
+
     @ModelAttribute
     public Cart getCart() {
         LOG.debug("Create Cart");
-        return new Cart();
+        return cartService.create();
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -45,22 +49,17 @@ public class CartController {
     }
 
     @RequestMapping(value = "/goods", method = RequestMethod.POST)
-    public ResponseEntity<String> addGoods(@RequestParam Long goodsId, @RequestParam int quality, @ModelAttribute Cart cart) {
-        LOG.debug("Add goods = {}, quality = {} to cart", goodsId, quality);
+    public ResponseEntity<String> addOrder(@RequestParam Long goodsId, @RequestParam int amount, @ModelAttribute Cart cart) {
+        LOG.debug("Add goods = {}, amount = {} to cart", goodsId, amount);
 
         Goods goods = goodsService.getById(goodsId);
 
-        if (goods == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
-        if (quality <= 0) {
+        try {
+            cartService.addOrder(cart, goods, amount);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
-        cart.addOrder(goods, quality);
-
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/goods", method = RequestMethod.PUT)
@@ -68,32 +67,22 @@ public class CartController {
         LOG.debug("Update order");
 
         Long goodsId = Long.parseLong(body.getFirst("goodsId"));
-        int quality = Integer.parseInt(body.getFirst("quality"));
-
-        if (quality < 0) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+        int amount = Integer.parseInt(body.getFirst("amount"));
 
         try {
-            Order order = cart.findOrderByGoodsId(goodsId);
-            if (quality == 0) {
-                cart.deleteGoods(goodsId);
-            } else {
-                order.setGoodsCount(quality);
-            }
+            cartService.updateOrder(cart, goodsId, amount);
 
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
     }
 
     @RequestMapping(value = "/goods/{goodsId}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteOrder(@PathVariable Long goodsId, @ModelAttribute Cart cart) {
         LOG.debug("Delete goods = {}", goodsId);
 
-        cart.deleteGoods(goodsId);
+        cartService.deleteGoods(cart, goodsId);
 
         return new ResponseEntity<>(HttpStatus.OK);
 

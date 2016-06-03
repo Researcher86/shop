@@ -50,6 +50,14 @@ public class Cart {
     }
 
     public void addOrder(Goods goods, int amount) {
+        if (goods == null) {
+            throw new RuntimeException("Goods is null");
+        }
+
+        if (amount <= 0) {
+            throw new RuntimeException("Incorrect amount");
+        }
+
         Optional<Order> order = findOrderByGoods(goods.getId());
 
         if (order.isPresent()) {
