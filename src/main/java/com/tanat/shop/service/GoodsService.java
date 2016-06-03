@@ -2,7 +2,6 @@ package com.tanat.shop.service;
 
 import com.tanat.shop.dao.CategoryDao;
 import com.tanat.shop.dao.GoodsDao;
-import com.tanat.shop.exception.AppException;
 import com.tanat.shop.model.Category;
 import com.tanat.shop.model.Comment;
 import com.tanat.shop.model.Goods;

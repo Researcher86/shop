@@ -2,7 +2,6 @@ package com.tanat.shop.web.controller;
 
 import com.tanat.shop.model.Cart;
 import com.tanat.shop.model.Goods;
-import com.tanat.shop.model.Order;
 import com.tanat.shop.service.CartService;
 import com.tanat.shop.service.GoodsService;
 import org.slf4j.Logger;
@@ -14,8 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpSession;
 
 /**
  * Контроллер для обработки запросов к корзине
