@@ -32,8 +32,7 @@ public class CartControllerTest extends AbstractControllerTest {
     @Test
     public void updateAmount() throws Exception {
         Cart cart = new Cart();
-        cart.addOrder(goodsService.getById(1L), 2);
-        cart.addOrder(goodsService.getById(2L), 1);
+        cart.addOrder(goodsService.getById(1L), 1);
 
         mockMvc.perform(put("/cart/goods")
                 .contentType("application/x-www-form-urlencoded")
@@ -41,15 +40,14 @@ public class CartControllerTest extends AbstractControllerTest {
                 .sessionAttr("cart", cart)
         )
                 .andExpect(status().isOk())
-                .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(2))))
-                .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(95))));
+                .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(1))))
+                .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(50))));
     }
 
     @Test
     public void updateIncorrectAmount() throws Exception {
         Cart cart = new Cart();
-        cart.addOrder(goodsService.getById(1L), 2);
-        cart.addOrder(goodsService.getById(2L), 1);
+        cart.addOrder(goodsService.getById(1L), 1);
 
         mockMvc.perform(put("/cart/goods")
                 .contentType("application/x-www-form-urlencoded")
@@ -57,8 +55,8 @@ public class CartControllerTest extends AbstractControllerTest {
                 .sessionAttr("cart", cart)
         )
                 .andExpect(status().isBadRequest())
-                .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(2))))
-                .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(55))));
+                .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(1))))
+                .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(5))));
     }
 
     @Test
@@ -80,7 +78,6 @@ public class CartControllerTest extends AbstractControllerTest {
         mockMvc.perform(post("/cart/goods")
                 .param("goodsId", "3")
                 .param("amount", "1")
-                .sessionAttr("cart", new Cart())
         )
                 .andExpect(status().isOk())
                 .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(1))))
@@ -92,7 +89,6 @@ public class CartControllerTest extends AbstractControllerTest {
         mockMvc.perform(post("/cart/goods")
                 .param("goodsId", "-3")
                 .param("amount", "1")
-                .sessionAttr("cart", new Cart())
         )
                 .andExpect(status().is4xxClientError())
                 .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(0))))
@@ -104,7 +100,6 @@ public class CartControllerTest extends AbstractControllerTest {
         mockMvc.perform(post("/cart/goods")
                 .param("goodsId", "3")
                 .param("amount", "-1")
-                .sessionAttr("cart", new Cart())
         )
                 .andExpect(status().isBadRequest())
                 .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(0))))
