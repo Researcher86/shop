@@ -41,7 +41,7 @@ public class CartController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
-        LOG.debug("Render index page");
+        LOG.debug("Render cart index page");
 
         model.addAttribute("content", "../cart/index.jsp");
 
