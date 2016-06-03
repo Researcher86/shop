@@ -1,6 +1,7 @@
 package com.tanat.shop.service;
 
 import com.tanat.shop.dao.CartDao;
+import com.tanat.shop.exception.AppException;
 import com.tanat.shop.model.Cart;
 import com.tanat.shop.model.Client;
 import com.tanat.shop.model.Goods;
@@ -41,7 +42,7 @@ public class CartService {
 
     public void updateOrder(Cart cart, Long goodsId, int amount) {
         if (amount < 0) {
-            throw new RuntimeException("Incorrect amount = " + amount);
+            throw new AppException("Incorrect amount = " + amount);
         }
 
         Order order = cart.findOrderByGoodsId(goodsId);

@@ -1,5 +1,7 @@
 package com.tanat.shop.model;
 
+import com.tanat.shop.exception.AppException;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,11 +53,11 @@ public class Cart {
 
     public void addOrder(Goods goods, int amount) {
         if (goods == null) {
-            throw new RuntimeException("Goods is null");
+            throw new AppException("Goods is null");
         }
 
         if (amount <= 0) {
-            throw new RuntimeException("Incorrect amount");
+            throw new AppException("Incorrect amount");
         }
 
         Optional<Order> order = findOrderByGoods(goods.getId());
@@ -102,11 +104,7 @@ public class Cart {
         if (order.isPresent()) {
             return order.get();
         } else {
-            throw new RuntimeException("Order contain goods " + goodsId + " not found");
+            throw new AppException("Order contain goods " + goodsId + " not found");
         }
-    }
-
-    public boolean goodsExists(Long goodsId) {
-        return findOrderByGoods(goodsId).isPresent();
     }
 }
