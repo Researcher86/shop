@@ -1,5 +1,6 @@
 package com.tanat.shop.web.controller;
 
+import com.tanat.shop.exception.AppException;
 import com.tanat.shop.model.Cart;
 import com.tanat.shop.model.Goods;
 import com.tanat.shop.service.CartService;
@@ -55,7 +56,7 @@ public class CartController {
             cartService.addOrder(cart, goods, amount);
 
             return new ResponseEntity<>(HttpStatus.OK);
-        } catch (Exception e) {
+        } catch (AppException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
@@ -71,7 +72,7 @@ public class CartController {
             cartService.updateOrder(cart, goodsId, amount);
 
             return new ResponseEntity<>(HttpStatus.OK);
-        } catch (RuntimeException e) {
+        } catch (AppException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
