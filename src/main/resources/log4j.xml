@@ -30,30 +30,22 @@
 
 
     <logger name="com.tanat.shop">
-        <level value="debug"/>
-        <appender-ref ref="console"/>
-        <appender-ref ref="file"/>
+        <level value="DEBUG"/>
         <appender-ref ref="SYSLOG"/>
     </logger>
 
-    <logger name="org.springframework" additivity="false">
+    <logger name="org.springframework">
         <level value="WARN"/>
-        <appender-ref ref="console"/>
-        <appender-ref ref="file"/>
     </logger>
 
-    <logger name="org.hibernate" additivity="false">
+    <logger name="org.hibernate">
         <level value="WARN"/>
-        <appender-ref ref="console"/>
-        <appender-ref ref="file"/>
     </logger>
 
     <!-- Root Logger -->
     <root>
-        <priority value="warn"/>
         <appender-ref ref="console"/>
-        <!--<appender-ref ref="file"/>-->
-        <!--<appender-ref ref="SYSLOG"/>-->
+        <appender-ref ref="file"/>
     </root>
 
 </log4j:configuration>
