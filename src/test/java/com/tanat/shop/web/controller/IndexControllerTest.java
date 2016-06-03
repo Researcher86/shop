@@ -1,9 +1,9 @@
 package com.tanat.shop.web.controller;
 
-import com.tanat.shop.dao.ClientDao;
-import com.tanat.shop.dao.GoodsDao;
 import com.tanat.shop.model.Client;
 import com.tanat.shop.model.Goods;
+import com.tanat.shop.service.ClientService;
+import com.tanat.shop.service.GoodsService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,10 +22,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class IndexControllerTest extends AbstractControllerTest {
 
     @Autowired
-    private ClientDao clientDao;
+    private ClientService clientService;
 
     @Autowired
-    private GoodsDao goodsDao;
+    private GoodsService goodsService;
 
     @Test
     public void testIndex() throws Exception {
@@ -49,7 +49,7 @@ public class IndexControllerTest extends AbstractControllerTest {
     @Test
     @Transactional
     public void addCommentForGoods_textNotEmpty_authenticationClient() throws Exception {
-        Client client = clientDao.saveAndFlush(Client.createSimple());
+        Client client = clientService.save(Client.createSimple());
 
         mockMvc.perform(post("/goods/1")
                 .param("text", "test")
@@ -58,13 +58,13 @@ public class IndexControllerTest extends AbstractControllerTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/goods/1"));
 
-        Goods goods = goodsDao.findOne(1L);
+        Goods goods = goodsService.getById(1L);
         assertEquals(1, goods.getComments().size());
     }
 
     @Test
     public void addCommentForGoods_textEmpty_authenticationClient() throws Exception {
-        Client client = clientDao.saveAndFlush(Client.createSimple());
+        Client client = clientService.save(Client.createSimple());
 
         mockMvc.perform(post("/goods/1")
                 .param("text", "")

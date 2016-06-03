@@ -16,9 +16,6 @@ public class GoodsService {
     @Autowired
     private GoodsDao goodsDao;
 
-    @Autowired
-    private CategoryDao categoriesDao;
-
     public List<Goods> getAll() {
         return goodsDao.findAll();
     }

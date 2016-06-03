@@ -20,8 +20,8 @@ public class ClientService {
         return clientDao.findOne(id);
     }
 
-    public void save(Client client) {
-        clientDao.saveAndFlush(client);
+    public Client save(Client client) {
+        return clientDao.saveAndFlush(client);
     }
 
     public Client findByEmail(String email) {
