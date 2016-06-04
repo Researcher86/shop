@@ -15,6 +15,7 @@
     <c:if test="${not empty cart.orders}">
         <table id="cartItems" class="table table-bordered table-hover text-center input-sm">
             <th class="text-center">№</th>
+            <th class="text-center">Изображение</th>
             <th class="text-center">Наименование</th>
             <th class="text-center">Стоимость</th>
             <th class="text-center">Количество</th>
@@ -24,20 +25,23 @@
             <c:forEach var="order" items="${cart.orders}" varStatus="count">
                 <tr>
                     <td>${count.count}</td>
+                    <td style="width: 30px">
+                        <img src="data:image/${order.goods.image.ext};base64,${order.goods.image.base64}" height="30" border="0" alt="">
+                    </td>
                     <td>${order.goods.name}</td>
                     <td>${order.goods.price}</td>
                     <td style="width: 150px">
                         <input class="form-control text-center" type="number" value="${order.goodsCount}" goodsId="${order.goods.id}">
                     </td>
                     <td>${order.totalPrice}</td>
-                    <td>
+                    <td style="width: 30px">
                         <button class="btn btn-danger btn-sm" goodsId="${order.goods.id}"><i class="glyphicon glyphicon-trash"></i> Удалить</button>
                     </td>
                 </tr>
             </c:forEach>
 
             <tr class="warning">
-                <td colspan="3"></td>
+                <td colspan="4"></td>
                 <td><strong>К оплате:</strong></td>
                 <td><strong>${cart.totalPrice}</strong></td>
                 <td></td>
