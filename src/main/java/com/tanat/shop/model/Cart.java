@@ -71,23 +71,11 @@ public class Cart {
     }
 
     public int getTotalPrice() {
-        int result = 0;
-
-        for (Order order : orders) {
-            result += order.getTotalPrice();
-        }
-
-        return result;
+        return orders.stream().mapToInt(Order::getTotalPrice).sum();
     }
 
     public int getGoodsCount() {
-        int result = 0;
-
-        for (Order order : orders) {
-            result += order.getGoodsCount();
-        }
-
-        return result;
+        return orders.stream().mapToInt(Order::getGoodsCount).sum();
     }
 
     public void deleteGoods(Long goodsId) {
