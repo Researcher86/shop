@@ -16,7 +16,7 @@
         <table id="cartItems" class="table table-bordered table-hover text-center input-sm">
             <th class="text-center">№</th>
             <th class="text-center">Изображение</th>
-            <th class="text-center">Наименование</th>
+            <th class="text-left" style="width: 500px">Наименование</th>
             <th class="text-center">Стоимость</th>
             <th class="text-center">Количество</th>
             <th class="text-center">Сумма</th>
@@ -25,16 +25,16 @@
             <c:forEach var="order" items="${cart.orders}" varStatus="count">
                 <tr>
                     <td>${count.count}</td>
-                    <td style="width: 30px">
+                    <td>
                         <img src="data:image/${order.goods.image.ext};base64,${order.goods.image.base64}" height="30" border="0" alt="">
                     </td>
-                    <td>${order.goods.name}</td>
+                    <td class="text-left">${order.goods.name}</td>
                     <td>${order.goods.price}</td>
-                    <td style="width: 150px">
-                        <input class="form-control text-center" type="number" value="${order.goodsCount}" goodsId="${order.goods.id}">
+                    <td style="width: 120px">
+                        <input class="form-control text-center input-sm" type="number" value="${order.goodsCount}" goodsId="${order.goods.id}">
                     </td>
                     <td>${order.totalPrice}</td>
-                    <td style="width: 30px">
+                    <td>
                         <button class="btn btn-danger btn-sm" goodsId="${order.goods.id}"><i class="glyphicon glyphicon-trash"></i> Удалить</button>
                     </td>
                 </tr>
