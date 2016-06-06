@@ -31,7 +31,7 @@
                     <td class="text-left">${order.goods.name}</td>
                     <td>${order.goods.price}</td>
                     <td style="width: 120px">
-                        <input class="form-control text-center input-sm" type="number" value="${order.goodsCount}" goodsId="${order.goods.id}">
+                        <input class="form-control text-center input-sm" type="number" value="${order.amount}" goodsId="${order.goods.id}">
                     </td>
                     <td>${order.totalPrice}</td>
                     <td>

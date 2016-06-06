@@ -63,8 +63,9 @@ public class Cart {
         Optional<Order> order = findOrderByGoods(goods.getId());
 
         if (order.isPresent()) {
+
             Order temp = order.get();
-            temp.setGoodsCount(temp.getGoodsCount() + amount);
+            temp.addAmount(amount);
         } else {
             orders.add(new Order(goods, amount, this));
         }
@@ -74,8 +75,8 @@ public class Cart {
         return orders.stream().mapToInt(Order::getTotalPrice).sum();
     }
 
-    public int getGoodsCount() {
-        return orders.stream().mapToInt(Order::getGoodsCount).sum();
+    public int getTotalAmount() {
+        return orders.stream().mapToInt(Order::getAmount).sum();
     }
 
     public void deleteGoods(Long goodsId) {

@@ -12,7 +12,7 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "goods_id")
     private Goods goods;
-    private int goodsCount;
+    private int amount;
 
     @ManyToOne
     @JoinColumn(name = "cart_id")
@@ -21,9 +21,9 @@ public class Order {
     public Order() {
     }
 
-    public Order(Goods goods, int goodsCount, Cart cart) {
+    public Order(Goods goods, int amount, Cart cart) {
         this.goods = goods;
-        this.goodsCount = goodsCount;
+        this.amount = amount;
         this.cart = cart;
     }
 
@@ -35,8 +35,8 @@ public class Order {
         return goods;
     }
 
-    public int getGoodsCount() {
-        return goodsCount;
+    public int getAmount() {
+        return amount;
     }
 
     public void setId(Long id) {
@@ -47,8 +47,8 @@ public class Order {
         this.goods = goods;
     }
 
-    public void setGoodsCount(int goodsCount) {
-        this.goodsCount = goodsCount;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public void setCart(Cart cart) {
@@ -56,7 +56,11 @@ public class Order {
     }
 
     public int getTotalPrice() {
-        return goods.getPrice() * goodsCount;
+        return goods.getPrice() * amount;
+    }
+
+    public void addAmount(int amount) {
+        this.amount += amount;
     }
 
 }

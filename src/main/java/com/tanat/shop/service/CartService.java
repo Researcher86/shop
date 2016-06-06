@@ -49,7 +49,7 @@ public class CartService {
             cart.deleteGoods(goodsId);
         } else {
             Order order = cart.findOrderByGoodsId(goodsId);
-            order.setGoodsCount(amount);
+            order.setAmount(amount);
         }
     }
 
