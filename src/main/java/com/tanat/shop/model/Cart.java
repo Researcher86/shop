@@ -63,7 +63,6 @@ public class Cart {
         Optional<Order> order = findOrderByGoods(goods.getId());
 
         if (order.isPresent()) {
-
             Order temp = order.get();
             temp.addAmount(amount);
         } else {
