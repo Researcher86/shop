@@ -8,6 +8,8 @@ import com.tanat.shop.service.GoodsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -45,11 +47,43 @@ public class IndexController extends AbstractController {
     public String index(Model model) {
         LOG.debug("Render index page");
 
+        Page<Goods> page = goodsService.getGoodsLog(1);
+
+        int current = page.getNumber() + 1;
+        int begin = Math.max(1, current - 5);
+        int end = Math.min(begin + 5, page.getTotalPages());
+
+        model.addAttribute("goodsLog", page);
+        model.addAttribute("beginIndex", begin);
+        model.addAttribute("endIndex", end);
+        model.addAttribute("currentIndex", current);
+
         model.addAttribute(CATEGORIES, categoryService.getAll());
-        model.addAttribute(GOODS_LIST, goodsService.getAll());
+        model.addAttribute(GOODS_LIST, page.getContent());
+
 
         return getView(model, PAGE_INDEX);
     }
+
+    @RequestMapping(value = "/pages/{pageNumber}", method = RequestMethod.GET)
+    public String page(@PathVariable Integer pageNumber, Model model) {
+        Page<Goods> page = goodsService.getGoodsLog(pageNumber);
+
+        int current = page.getNumber() + 1;
+        int begin = Math.max(1, current - 5);
+        int end = Math.min(begin + 5, page.getTotalPages());
+
+        model.addAttribute("goodsLog", page);
+        model.addAttribute("beginIndex", begin);
+        model.addAttribute("endIndex", end);
+        model.addAttribute("currentIndex", current);
+
+        model.addAttribute(CATEGORIES, categoryService.getAll());
+        model.addAttribute(GOODS_LIST, page.getContent());
+
+        return getView(model, PAGE_INDEX);
+    }
+
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String search(@RequestParam String str, Model model) {

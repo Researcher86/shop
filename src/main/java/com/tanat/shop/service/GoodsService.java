@@ -5,6 +5,10 @@ import com.tanat.shop.model.Category;
 import com.tanat.shop.model.Comment;
 import com.tanat.shop.model.Goods;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +16,7 @@ import java.util.List;
 
 @Service
 public class GoodsService {
+    public static final int PAGE_SIZE = 1;
     @Autowired
     private GoodsDao goodsDao;
 
@@ -55,5 +60,14 @@ public class GoodsService {
         Goods storeGoods = goodsDao.save(goods);
         storeGoods.getComments().size();
         return storeGoods;
+    }
+
+    public Page<Goods> getGoodsLog(Integer pageNumber) {
+        PageRequest request = new PageRequest(pageNumber - 1, PAGE_SIZE);
+        return goodsDao.findAll(request);
+    }
+
+    public Page<Goods> getGoodsLog2(Pageable p) {
+        return goodsDao.findAll(p);
     }
 }
