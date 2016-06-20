@@ -53,6 +53,7 @@
                 classpath:spring/mvc.xml
                 classpath:spring/applicationContext.xml
                 classpath:spring/HSQL_DB.xml
+                <!--classpath:spring/MySQL_DB.xml-->
             </param-value>
         </init-param>
     </servlet>

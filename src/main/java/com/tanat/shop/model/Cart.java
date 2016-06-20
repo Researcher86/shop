@@ -1,6 +1,7 @@
 package com.tanat.shop.model;
 
 import com.tanat.shop.exception.AppException;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class Cart {
     @JoinColumn(name = "client_id")
     private Client client;
 
+    @NotBlank(message = "Не заполнено поле адрес доставки")
     private String shippingAddress;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "cart")
@@ -37,6 +39,10 @@ public class Cart {
 
     public Client getClient() {
         return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public String getShippingAddress() {

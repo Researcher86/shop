@@ -2,6 +2,7 @@ package com.tanat.shop.web.controller;
 
 import com.tanat.shop.exception.AppException;
 import com.tanat.shop.model.Cart;
+import com.tanat.shop.model.Client;
 import com.tanat.shop.model.Goods;
 import com.tanat.shop.service.CartService;
 import com.tanat.shop.service.GoodsService;
@@ -13,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -21,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Controller
 @RequestMapping(value = "/cart")
-@SessionAttributes({"cart"})
+@SessionAttributes({"cart", "client"})
 public class CartController {
     private static final Logger LOG = LoggerFactory.getLogger(CartController.class);
 
@@ -84,6 +87,28 @@ public class CartController {
         cartService.deleteGoods(cart, goodsId);
 
         return new ResponseEntity<>(HttpStatus.OK);
+    }
 
+    @RequestMapping(value = "/checkout", method = RequestMethod.GET)
+    public String checkoutInfo(Model model) {
+        model.addAttribute("content", "../cart/checkout.jsp");
+        return "index/template";
+    }
+
+    @RequestMapping(value = "/checkout", method = RequestMethod.POST)
+    public String checkoutSave(@ModelAttribute Client client, @Validated @ModelAttribute Cart cart, BindingResult bindingResult, Model model) {
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("content", "../cart/checkout.jsp");
+        } else {
+            cart.setClient(client);
+
+            cartService.save(cart);
+
+            model.addAttribute("cart", new Cart());
+            model.addAttribute("orderNumber", cart.getId());
+            model.addAttribute("content", "../cart/checkoutSuccess.jsp");
+        }
+        return "index/template";
     }
 }

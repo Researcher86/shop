@@ -115,6 +115,18 @@ header .headerMenu{
     font-size: 13px;
 }
 
+.checkout>div{
+    margin-bottom: 5px;
+}
+
+.checkout textarea{
+    resize: none;
+}
+
+.checkout div button[type=submit]{
+    margin-top: 10px;
+}
+
 /*=========================Footer==========================*/
 html {
     position: relative;

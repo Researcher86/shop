@@ -1,6 +1,7 @@
 package com.tanat.shop.web.controller;
 
 import com.tanat.shop.model.Cart;
+import com.tanat.shop.model.Client;
 import com.tanat.shop.service.GoodsService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,4 +106,31 @@ public class CartControllerTest extends AbstractControllerTest {
                 .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(0))))
                 .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(0))));
     }
+
+    @Test
+    public void checkoutInfo() throws Exception {
+        mockMvc.perform(get("/cart/checkout"))
+                .andExpect(status().isOk())
+                .andExpect(model().attribute("content", "../cart/checkout.jsp"))
+                .andExpect(view().name("index/template"));
+    }
+
+    @Test
+    public void checkoutData() throws Exception {
+        Client client = Client.createSimple();
+        client.setId(1L);
+
+        Cart cart = new Cart();
+
+        mockMvc.perform(post("/cart/checkout")
+                .sessionAttr("client", client)
+                .sessionAttr("cart", cart)
+                .param("shippingAddress", "test")
+        )
+                .andExpect(status().isOk())
+                .andExpect(model().attribute("content", "../cart/checkoutSuccess.jsp"))
+                .andExpect(view().name("index/template"));
+    }
+
+
 }
