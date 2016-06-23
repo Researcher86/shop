@@ -16,7 +16,6 @@ import java.util.List;
 
 @Service
 public class GoodsService {
-    public static final int PAGE_SIZE = 1;
     @Autowired
     private GoodsDao goodsDao;
 
@@ -62,15 +61,15 @@ public class GoodsService {
         return storeGoods;
     }
 
-    public Page<Goods> getGoodsLog(Integer pageNumber) {
-        return goodsDao.findAll(new PageRequest(pageNumber - 1, PAGE_SIZE));
+    public Page<Goods> getGoodsLog(Integer pageNumber, Integer pageSize) {
+        return goodsDao.findAll(new PageRequest(pageNumber - 1, pageSize));
     }
 
     public Page<Goods> getGoodsLog2(Pageable p) {
         return goodsDao.findAll(p);
     }
 
-    public Page<Goods> getGoodsLogByCategory(Integer pageNumber, Long id) {
-        return goodsDao.findGoodsByCategory(id, new PageRequest(pageNumber - 1, PAGE_SIZE));
+    public Page<Goods> getGoodsLogByCategory(Integer pageNumber, Integer pageSize, Long id) {
+        return goodsDao.findGoodsByCategory(id, new PageRequest(pageNumber - 1, pageSize));
     }
 }

@@ -32,6 +32,7 @@ public class IndexController extends AbstractController {
     private static final String PAGE_SHIPPING = "shipping";
     private static final String PAGE_CONTACTS = "contacts";
     private static final String PAGE_PRICE_LIST = "priceList";
+    private static final int PAGE_SIZE = 5;
 
     @Autowired
     private GoodsService goodsService;
@@ -47,7 +48,7 @@ public class IndexController extends AbstractController {
     public String index(Model model) {
         LOG.debug("Render index page");
 
-        Page<Goods> page = goodsService.getGoodsLog(1);
+        Page<Goods> page = goodsService.getGoodsLog(1, PAGE_SIZE);
         addPagination(model, page);
 
         return getView(model, PAGE_INDEX);
@@ -68,7 +69,7 @@ public class IndexController extends AbstractController {
     public String pageGoods(@PathVariable Integer pageNumber, Model model) {
         LOG.debug("Page goods");
 
-        Page<Goods> page = goodsService.getGoodsLog(pageNumber);
+        Page<Goods> page = goodsService.getGoodsLog(pageNumber, PAGE_SIZE);
         addPagination(model, page);
 
         return getView(model, PAGE_INDEX);
@@ -78,7 +79,7 @@ public class IndexController extends AbstractController {
     public String showCategory(@PathVariable Long id, Model model) {
         LOG.debug("Render page goods by category {}", id);
 
-        Page<Goods> page = goodsService.getGoodsLogByCategory(1, id);
+        Page<Goods> page = goodsService.getGoodsLogByCategory(1, PAGE_SIZE, id);
 
         addPagination(model, page);
 
@@ -89,7 +90,7 @@ public class IndexController extends AbstractController {
     public String pageCategoryGoods(@PathVariable Long id, @PathVariable Integer pageNumber, Model model) {
         LOG.debug("Page category goods");
 
-        Page<Goods> page = goodsService.getGoodsLogByCategory(pageNumber, id);
+        Page<Goods> page = goodsService.getGoodsLogByCategory(pageNumber, PAGE_SIZE, id);
         addPagination(model, page);
 
         return getView(model, PAGE_INDEX);
