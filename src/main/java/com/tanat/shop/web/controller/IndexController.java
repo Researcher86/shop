@@ -80,7 +80,6 @@ public class IndexController extends AbstractController {
         LOG.debug("Render page goods by category {}", id);
 
         Page<Goods> page = goodsService.getGoodsLogByCategory(1, PAGE_SIZE, id);
-
         addPagination(model, page);
 
         return getView(model, PAGE_INDEX);
