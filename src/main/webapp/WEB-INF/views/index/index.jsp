@@ -90,50 +90,52 @@
         </c:forEach>
     </table>
 
+    <c:if test="${goodsLog.totalPages > 0}">
+        <nav class="text-right">
+            <c:set var="currentUrl"
+                   value="/${requestScope['javax.servlet.forward.request_uri'].replaceAll('/pages/[0-9]+', '')}"/>
+            <c:set var="baseURL" value="${currentUrl.replaceAll('/{2,}', '/')}"/>
 
-    <nav class="text-right">
-        <c:set var="currentUrl" value="/${requestScope['javax.servlet.forward.request_uri'].replaceAll('/pages/[0-9]+', '')}" />
-        <c:set var="baseURL" value="${currentUrl.replaceAll('/{2,}', '/')}" />
+            <c:url var="firstUrl" value="/pages/1" context="${baseURL}"/>
+            <c:url var="lastUrl" value="/pages/${goodsLog.totalPages}" context="${baseURL}"/>
+            <c:url var="prevUrl" value="/pages/${currentIndex - 1}" context="${baseURL}"/>
+            <c:url var="nextUrl" value="/pages/${currentIndex + 1}" context="${baseURL}"/>
 
-        <c:url var="firstUrl" value="/pages/1" context="${baseURL}"/>
-        <c:url var="lastUrl" value="/pages/${goodsLog.totalPages}" context="${baseURL}" />
-        <c:url var="prevUrl" value="/pages/${currentIndex - 1}" context="${baseURL}" />
-        <c:url var="nextUrl" value="/pages/${currentIndex + 1}" context="${baseURL}" />
-
-        <ul class="pagination pagination-sm">
-            <c:choose>
-                <c:when test="${currentIndex == 1}">
-                    <li class="disabled"><a href="#">&laquo;</a></li>
-                    <li class="disabled"><a href="#">&lt;</a></li>
-                </c:when>
-                <c:otherwise>
-                    <li><a href="${firstUrl}">&laquo;</a></li>
-                    <li><a href="${prevUrl}">&lt;</a></li>
-                </c:otherwise>
-            </c:choose>
-            <c:forEach var="i" begin="${beginIndex}" end="${endIndex}">
-                <c:url var="pageUrl" value="/pages/${i}" context="${baseURL}" />
+            <ul class="pagination pagination-sm">
                 <c:choose>
-                    <c:when test="${i == currentIndex}">
-                        <li class="active"><a href="${pageUrl}"><c:out value="${i}" /></a></li>
+                    <c:when test="${currentIndex == 1}">
+                        <li class="disabled"><a href="#">&laquo;</a></li>
+                        <li class="disabled"><a href="#">&lt;</a></li>
                     </c:when>
                     <c:otherwise>
-                        <li><a href="${pageUrl}"><c:out value="${i}" /></a></li>
+                        <li><a href="${firstUrl}">&laquo;</a></li>
+                        <li><a href="${prevUrl}">&lt;</a></li>
                     </c:otherwise>
                 </c:choose>
-            </c:forEach>
-            <c:choose>
-                <c:when test="${currentIndex == goodsLog.totalPages}">
-                    <li class="disabled"><a href="#">&gt;</a></li>
-                    <li class="disabled"><a href="#">&raquo;</a></li>
-                </c:when>
-                <c:otherwise>
-                    <li><a href="${nextUrl}">&gt;</a></li>
-                    <li><a href="${lastUrl}">&raquo;</a></li>
-                </c:otherwise>
-            </c:choose>
-        </ul>
-    </nav>
+                <c:forEach var="i" begin="${beginIndex}" end="${endIndex}">
+                    <c:url var="pageUrl" value="/pages/${i}" context="${baseURL}"/>
+                    <c:choose>
+                        <c:when test="${i == currentIndex}">
+                            <li class="active"><a href="${pageUrl}"><c:out value="${i}"/></a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li><a href="${pageUrl}"><c:out value="${i}"/></a></li>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+                <c:choose>
+                    <c:when test="${currentIndex == goodsLog.totalPages}">
+                        <li class="disabled"><a href="#">&gt;</a></li>
+                        <li class="disabled"><a href="#">&raquo;</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li><a href="${nextUrl}">&gt;</a></li>
+                        <li><a href="${lastUrl}">&raquo;</a></li>
+                    </c:otherwise>
+                </c:choose>
+            </ul>
+        </nav>
+    </c:if>
 
 </div>
 
