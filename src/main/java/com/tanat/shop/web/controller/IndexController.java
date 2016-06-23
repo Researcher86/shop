@@ -48,19 +48,7 @@ public class IndexController extends AbstractController {
         LOG.debug("Render index page");
 
         Page<Goods> page = goodsService.getGoodsLog(1);
-
-        int current = page.getNumber() + 1;
-        int begin = Math.max(1, current - 5);
-        int end = Math.min(begin + 5, page.getTotalPages());
-
-        model.addAttribute("goodsLog", page);
-        model.addAttribute("beginIndex", begin);
-        model.addAttribute("endIndex", end);
-        model.addAttribute("currentIndex", current);
-
-        model.addAttribute(CATEGORIES, categoryService.getAll());
-        model.addAttribute(GOODS_LIST, page.getContent());
-
+        addPagination(model, page);
 
         return getView(model, PAGE_INDEX);
     }
@@ -77,20 +65,11 @@ public class IndexController extends AbstractController {
 
 
     @RequestMapping(value = "/pages/{pageNumber}", method = RequestMethod.GET)
-    public String pageGoodsAll(@PathVariable Integer pageNumber, Model model) {
+    public String pageGoods(@PathVariable Integer pageNumber, Model model) {
+        LOG.debug("Page goods");
+
         Page<Goods> page = goodsService.getGoodsLog(pageNumber);
-
-        int current = page.getNumber() + 1;
-        int begin = Math.max(1, current - 5);
-        int end = Math.min(begin + 5, page.getTotalPages());
-
-        model.addAttribute("goodsLog", page);
-        model.addAttribute("beginIndex", begin);
-        model.addAttribute("endIndex", end);
-        model.addAttribute("currentIndex", current);
-
-        model.addAttribute(CATEGORIES, categoryService.getAll());
-        model.addAttribute(GOODS_LIST, page.getContent());
+        addPagination(model, page);
 
         return getView(model, PAGE_INDEX);
     }
@@ -101,25 +80,22 @@ public class IndexController extends AbstractController {
 
         Page<Goods> page = goodsService.getGoodsLogByCategory(1, id);
 
-        int current = page.getNumber() + 1;
-        int begin = Math.max(1, current - 5);
-        int end = Math.min(begin + 5, page.getTotalPages());
-
-        model.addAttribute("goodsLog", page);
-        model.addAttribute("beginIndex", begin);
-        model.addAttribute("endIndex", end);
-        model.addAttribute("currentIndex", current);
-
-        model.addAttribute(CATEGORIES, categoryService.getAll());
-        model.addAttribute(GOODS_LIST, page.getContent());
+        addPagination(model, page);
 
         return getView(model, PAGE_INDEX);
     }
 
     @RequestMapping(value = "/categories/{id}/pages/{pageNumber}", method = RequestMethod.GET)
-    public String pageGoodsCategory(@PathVariable Long id, @PathVariable Integer pageNumber, Model model) {
-        Page<Goods> page = goodsService.getGoodsLogByCategory(pageNumber, id);
+    public String pageCategoryGoods(@PathVariable Long id, @PathVariable Integer pageNumber, Model model) {
+        LOG.debug("Page category goods");
 
+        Page<Goods> page = goodsService.getGoodsLogByCategory(pageNumber, id);
+        addPagination(model, page);
+
+        return getView(model, PAGE_INDEX);
+    }
+
+    private void addPagination(Model model, Page<Goods> page) {
         int current = page.getNumber() + 1;
         int begin = Math.max(1, current - 5);
         int end = Math.min(begin + 5, page.getTotalPages());
@@ -131,8 +107,6 @@ public class IndexController extends AbstractController {
 
         model.addAttribute(CATEGORIES, categoryService.getAll());
         model.addAttribute(GOODS_LIST, page.getContent());
-
-        return getView(model, PAGE_INDEX);
     }
 
     @RequestMapping(value = "/aboutCompany", method = RequestMethod.GET)
