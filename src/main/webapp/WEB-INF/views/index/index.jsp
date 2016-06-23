@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="col-xs-3 goodsCatalog">
@@ -91,10 +92,13 @@
 
 
     <nav class="text-right">
-        <c:url var="firstUrl" value="/pages/1" />
-        <c:url var="lastUrl" value="/pages/${goodsLog.totalPages}" />
-        <c:url var="prevUrl" value="/pages/${currentIndex - 1}" />
-        <c:url var="nextUrl" value="/pages/${currentIndex + 1}" />
+        <c:set var="currentUrl" value="/${requestScope['javax.servlet.forward.request_uri'].replaceAll('/pages/[0-9]+', '')}" />
+        <c:set var="baseURL" value="${currentUrl.replaceAll('/{2,}', '/')}" />
+
+        <c:url var="firstUrl" value="/pages/1" context="${baseURL}"/>
+        <c:url var="lastUrl" value="/pages/${goodsLog.totalPages}" context="${baseURL}" />
+        <c:url var="prevUrl" value="/pages/${currentIndex - 1}" context="${baseURL}" />
+        <c:url var="nextUrl" value="/pages/${currentIndex + 1}" context="${baseURL}" />
 
         <ul class="pagination pagination-sm">
             <c:choose>
@@ -108,7 +112,7 @@
                 </c:otherwise>
             </c:choose>
             <c:forEach var="i" begin="${beginIndex}" end="${endIndex}">
-                <c:url var="pageUrl" value="/pages/${i}" />
+                <c:url var="pageUrl" value="/pages/${i}" context="${baseURL}" />
                 <c:choose>
                     <c:when test="${i == currentIndex}">
                         <li class="active"><a href="${pageUrl}"><c:out value="${i}" /></a></li>

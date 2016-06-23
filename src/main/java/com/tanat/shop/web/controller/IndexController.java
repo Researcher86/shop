@@ -65,8 +65,19 @@ public class IndexController extends AbstractController {
         return getView(model, PAGE_INDEX);
     }
 
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public String search(@RequestParam String str, Model model) {
+        LOG.debug("Render result page, search goods by {}", str);
+
+        model.addAttribute(CATEGORIES, categoryService.getAll());
+        model.addAttribute(GOODS_LIST, goodsService.findByName(str));
+
+        return getView(model, PAGE_INDEX);
+    }
+
+
     @RequestMapping(value = "/pages/{pageNumber}", method = RequestMethod.GET)
-    public String page(@PathVariable Integer pageNumber, Model model) {
+    public String pageGoodsAll(@PathVariable Integer pageNumber, Model model) {
         Page<Goods> page = goodsService.getGoodsLog(pageNumber);
 
         int current = page.getNumber() + 1;
@@ -84,23 +95,42 @@ public class IndexController extends AbstractController {
         return getView(model, PAGE_INDEX);
     }
 
+    @RequestMapping(value = "/categories/{id}", method = RequestMethod.GET)
+    public String showCategory(@PathVariable Long id, Model model) {
+        LOG.debug("Render page goods by category {}", id);
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
-    public String search(@RequestParam String str, Model model) {
-        LOG.debug("Render result page, search goods by {}", str);
+        Page<Goods> page = goodsService.getGoodsLogByCategory(1, id);
+
+        int current = page.getNumber() + 1;
+        int begin = Math.max(1, current - 5);
+        int end = Math.min(begin + 5, page.getTotalPages());
+
+        model.addAttribute("goodsLog", page);
+        model.addAttribute("beginIndex", begin);
+        model.addAttribute("endIndex", end);
+        model.addAttribute("currentIndex", current);
 
         model.addAttribute(CATEGORIES, categoryService.getAll());
-        model.addAttribute(GOODS_LIST, goodsService.findByName(str));
+        model.addAttribute(GOODS_LIST, page.getContent());
 
         return getView(model, PAGE_INDEX);
     }
 
-    @RequestMapping(value = "/categories/{id}", method = RequestMethod.GET)
-    public String showCategory(@ModelAttribute Category category, Model model) {
-        LOG.debug("Render page goods by category {}", category.getId());
+    @RequestMapping(value = "/categories/{id}/pages/{pageNumber}", method = RequestMethod.GET)
+    public String pageGoodsCategory(@PathVariable Long id, @PathVariable Integer pageNumber, Model model) {
+        Page<Goods> page = goodsService.getGoodsLogByCategory(pageNumber, id);
+
+        int current = page.getNumber() + 1;
+        int begin = Math.max(1, current - 5);
+        int end = Math.min(begin + 5, page.getTotalPages());
+
+        model.addAttribute("goodsLog", page);
+        model.addAttribute("beginIndex", begin);
+        model.addAttribute("endIndex", end);
+        model.addAttribute("currentIndex", current);
 
         model.addAttribute(CATEGORIES, categoryService.getAll());
-        model.addAttribute(GOODS_LIST, goodsService.findByCategory(category));
+        model.addAttribute(GOODS_LIST, page.getContent());
 
         return getView(model, PAGE_INDEX);
     }

@@ -78,4 +78,14 @@ public class IndexControllerTest extends AbstractControllerTest {
                 .andExpect(model().attributeHasErrors("comment"))
                 .andExpect(model().attribute("goods", hasProperty("comments", hasSize(0))));
     }
+
+    @Test
+    public void getGoodsPageByCategory() throws Exception {
+        mockMvc.perform(get("/categories/1/pages/1"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("index/template"))
+                .andExpect(model().attributeExists("content"))
+                .andExpect(model().attributeExists("categories"))
+                .andExpect(model().attribute("goodsList", hasSize(1)));
+    }
 }

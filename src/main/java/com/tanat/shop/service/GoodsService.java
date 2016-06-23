@@ -63,11 +63,14 @@ public class GoodsService {
     }
 
     public Page<Goods> getGoodsLog(Integer pageNumber) {
-        PageRequest request = new PageRequest(pageNumber - 1, PAGE_SIZE);
-        return goodsDao.findAll(request);
+        return goodsDao.findAll(new PageRequest(pageNumber - 1, PAGE_SIZE));
     }
 
     public Page<Goods> getGoodsLog2(Pageable p) {
         return goodsDao.findAll(p);
+    }
+
+    public Page<Goods> getGoodsLogByCategory(Integer pageNumber, Long id) {
+        return goodsDao.findGoodsByCategory(id, new PageRequest(pageNumber - 1, PAGE_SIZE));
     }
 }
