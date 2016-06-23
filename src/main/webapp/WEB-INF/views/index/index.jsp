@@ -103,11 +103,11 @@
             <ul class="pagination pagination-sm">
                 <c:choose>
                     <c:when test="${currentIndex == 1}">
-                        <li class="disabled"><a href="#">&laquo;</a></li>
+                        <li class="disabled"><a href="#">&Lt;</a></li>
                         <li class="disabled"><a href="#">&lt;</a></li>
                     </c:when>
                     <c:otherwise>
-                        <li><a href="${firstUrl}">&laquo;</a></li>
+                        <li><a href="${firstUrl}">&Lt;</a></li>
                         <li><a href="${prevUrl}">&lt;</a></li>
                     </c:otherwise>
                 </c:choose>
@@ -125,11 +125,11 @@
                 <c:choose>
                     <c:when test="${currentIndex == goodsLog.totalPages}">
                         <li class="disabled"><a href="#">&gt;</a></li>
-                        <li class="disabled"><a href="#">&raquo;</a></li>
+                        <li class="disabled"><a href="#">&Gt;</a></li>
                     </c:when>
                     <c:otherwise>
                         <li><a href="${nextUrl}">&gt;</a></li>
-                        <li><a href="${lastUrl}">&raquo;</a></li>
+                        <li><a href="${lastUrl}">&Gt;</a></li>
                     </c:otherwise>
                 </c:choose>
             </ul>
