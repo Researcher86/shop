@@ -92,8 +92,7 @@
 
     <c:if test="${goodsLog.totalPages > 0}">
         <nav class="text-right">
-            <c:set var="currentUrl"
-                   value="/${requestScope['javax.servlet.forward.request_uri'].replaceAll('/pages/[0-9]+', '')}"/>
+            <c:set var="currentUrl" value="/${requestScope['javax.servlet.forward.request_uri'].replaceAll('/pages/[0-9]+', '')}"/>
             <c:set var="baseURL" value="${currentUrl.replaceAll('/{2,}', '/')}"/>
 
             <c:url var="firstUrl" value="/pages/1" context="${baseURL}"/>
