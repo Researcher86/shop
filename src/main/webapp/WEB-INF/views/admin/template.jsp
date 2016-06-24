@@ -10,12 +10,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" href="<c:url value="/img/admin.png"/>" type="image/x-icon">
-    <link rel="shortcut icon" href="<c:url value="/img/admin.png"/>" type="image/x-icon">
+    <link rel="icon" href="<c:url value="/public/img/admin.png"/>" type="image/x-icon">
+    <link rel="shortcut icon" href="<c:url value="/public/img/admin.png"/>" type="image/x-icon">
 
-    <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
-    <link rel="stylesheet" href="<c:url value="/css/bootstrap-markdown.min.css"/>">
-    <link rel="stylesheet" href="<c:url value="/css/admin.css"/>">
+    <link rel="stylesheet" href="<c:url value="/public/css/bootstrap.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="/public/css/bootstrap-markdown.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="/public/css/admin.css"/>">
 
     <meta name="_csrf" content="${_csrf.token}"/>
     <!-- default header name is X-CSRF-TOKEN -->
@@ -35,7 +35,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                <img width="24" title="E-Shop" alt="Brand" src="<c:url value="/img/eshop_icon.png"/>">
+                <img width="24" title="E-Shop" alt="Brand" src="<c:url value="/public/img/eshop_icon.png"/>">
             </a>
         </div>
 
@@ -78,10 +78,10 @@
     </div>
 </footer>
 
-<script src="<c:url value="/js/jquery-2.1.4.min.js"/>"></script>
-<script src="<c:url value="/js/bootstrap.min.js"/>"></script>
-<script src="<c:url value="/js/bootstrap-markdown.js"/>"></script>
-<script src="<c:url value="/js/bootstrap-markdown.ru.js"/>"></script>
-<script src="<c:url value="/js/admin.js"/>"></script>
+<script src="<c:url value="/public/js/jquery-2.1.4.min.js"/>"></script>
+<script src="<c:url value="/public/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value="/public/js/bootstrap-markdown.js"/>"></script>
+<script src="<c:url value="/public/js/bootstrap-markdown.ru.js"/>"></script>
+<script src="<c:url value="/public/js/admin.js"/>"></script>
 </body>
 </html>
