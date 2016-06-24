@@ -14,14 +14,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class AdminControllerTest extends AbstractControllerTest {
 
     @Test
-    public void testIndex() throws Exception {
-        mockMvc.perform(get("/admin"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("admin/template"))
-                .andExpect(model().attributeExists("categories"));
-    }
-
-    @Test
     public void showCategories() throws Exception {
         mockMvc.perform(get("/admin/categories"))
                 .andExpect(status().isOk())
