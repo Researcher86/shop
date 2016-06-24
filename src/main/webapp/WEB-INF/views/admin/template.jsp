@@ -1,19 +1,87 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Tanat
-  Date: 01.12.2015
-  Time: 11:09
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>E-Shop Admin page</title>
-    <link rel="icon" href="<c:url value="/resources/img/admin.png"/>">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="<c:url value="/img/admin.png"/>" type="image/x-icon">
+    <link rel="shortcut icon" href="<c:url value="/img/admin.png"/>" type="image/x-icon">
+
+    <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="/css/bootstrap-markdown.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="/css/admin.css"/>">
+
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
 </head>
+
 <body>
-<jsp:include page="${content}"/>
+
+<div class="container">
+    <nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <img width="24" title="E-Shop" alt="Brand" src="<c:url value="/img/eshop_icon.png"/>">
+            </a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <form action="<c:url value="/admin/logout"/>" method="post" id="logoutForm">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Выход</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="<c:url value="/admin/categories"/>"><i class="glyphicon glyphicon-menu-hamburger"></i> Категории<span class="sr-only">(current)</span></a></li>
+                <li><a href="#"><i class="glyphicon glyphicon-apple"></i> Товары</a></li>
+                <li><a href="#"><i class="glyphicon glyphicon-piggy-bank"></i> Заказы</a></li>
+                <li><a href="#"><i class="glyphicon glyphicon-user"></i> Клиенты</a></li>
+                <li><a href="#"><i class="glyphicon glyphicon-comment"></i> Комментарии</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-10">
+            <jsp:include page="${content}"/>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        E-Shop 2015
+    </div>
+</footer>
+
+<script src="<c:url value="/js/jquery-2.1.4.min.js"/>"></script>
+<script src="<c:url value="/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value="/js/bootstrap-markdown.js"/>"></script>
+<script src="<c:url value="/js/bootstrap-markdown.ru.js"/>"></script>
+<script src="<c:url value="/js/admin.js"/>"></script>
 </body>
 </html>
-

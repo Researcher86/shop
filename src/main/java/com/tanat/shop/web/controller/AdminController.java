@@ -32,15 +32,6 @@ public class AdminController extends AbstractController {
         super("admin");
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String index(Model model) {
-        LOG.debug("Render index page");
-
-        model.addAttribute("categories", categoryService.getAll());
-
-        return getView(model, "index");
-    }
-
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout) {
         LOG.debug("Render login page");
@@ -48,15 +39,31 @@ public class AdminController extends AbstractController {
         ModelAndView model = new ModelAndView("admin/login");
         if (error != null) {
             LOG.debug("Invalid username or password!");
-            model.addObject("error", "Invalid username or password!");
+            model.addObject("error", "Неверный логин или пароль!");
         }
 
         if (logout != null) {
             LOG.debug("User logout");
-            model.addObject("msg", "You've been logged out successfully.");
+            model.addObject("msg", "Вы успешно вышли из системы.");
         }
 
         return model;
     }
 
+    @RequestMapping(method = RequestMethod.GET)
+    public String index(Model model) {
+        LOG.debug("Admin panel render index page");
+
+
+        return getView(model, "index");
+    }
+
+    @RequestMapping(value = "/categories", method = RequestMethod.GET)
+    public String categoriesList(Model model) {
+        LOG.debug("Admin panel render categories list page");
+
+        model.addAttribute("categories", categoryService.getAll());
+
+        return getView(model, "categories");
+    }
 }

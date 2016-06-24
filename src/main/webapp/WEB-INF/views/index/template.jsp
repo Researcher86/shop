@@ -11,12 +11,12 @@
 <html>
 <head>
     <title>E-Shop</title>
-    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>">
-    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap-markdown.min.css"/>">
-    <link rel="stylesheet" href="<c:url value="/resources/css/index.css"/>">
+    <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="/css/bootstrap-markdown.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="/css/index.css"/>">
 
-    <link rel="icon" href="<c:url value="/resources/img/eshop_icon.png"/>" type="image/x-icon">
-    <link rel="shortcut icon" href="<c:url value="/resources/img/eshop_icon.png"/>" type="image/x-icon">
+    <link rel="icon" href="<c:url value="/img/eshop_icon.png"/>" type="image/x-icon">
+    <link rel="shortcut icon" href="<c:url value="/img/eshop_icon.png"/>" type="image/x-icon">
 
     <meta name="_csrf" content="${_csrf.token}"/>
     <!-- default header name is X-CSRF-TOKEN -->
@@ -85,11 +85,11 @@
     </div>
 </footer>
 
-<script src="<c:url value="/resources/js/jquery-2.1.4.min.js"/>"></script>
-<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
-<script src="<c:url value="/resources/js/bootstrap-markdown.js"/>"></script>
-<script src="<c:url value="/resources/js/bootstrap-markdown.ru.js"/>"></script>
-<script src="<c:url value="/resources/js/main.js"/>"></script>
+<script src="<c:url value="/js/jquery-2.1.4.min.js"/>"></script>
+<script src="<c:url value="/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value="/js/bootstrap-markdown.js"/>"></script>
+<script src="<c:url value="/js/bootstrap-markdown.ru.js"/>"></script>
+<script src="<c:url value="/js/main.js"/>"></script>
 </body>
 </html>
 

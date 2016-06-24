@@ -10,7 +10,8 @@
         <div class="panel-body">
             <span class="text-danger">${error}</span>
             <c:if test="${empty client}">
-                <spring:form action="/auth/login" method="post">
+                <c:url var="login" value="/auth/login"/>
+                <spring:form action="${login}" method="post">
                     <div class="form-group">
                         <input class="form-control" type="email" name="email" placeholder="Почтовый ящик">
                         <input class="form-control" type="password" name="password" placeholder="Пароль">

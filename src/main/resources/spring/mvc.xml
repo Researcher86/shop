@@ -9,7 +9,7 @@
     <context:component-scan base-package="com.tanat.shop.web"/>
 
     <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-    <mvc:resources location="/resources/" mapping="/resources/**"/>
+    <mvc:resources location="/resources/" mapping="/**"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>

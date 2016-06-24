@@ -22,20 +22,10 @@ public class AdminControllerTest extends AbstractControllerTest {
     }
 
     @Test
-    public void testLogin() throws Exception {
-//        mockMvc = webAppContextSetup(this.wac).apply(springSecurity()).build();
-//        mockMvc.perform(get("/admin/login")
-//              .
-//        );
-    }
-
-    @Test
-    public void testIncorrectLogin() throws Exception {
-
-    }
-
-    @Test
-    public void testLogout() throws Exception {
-
+    public void showCategories() throws Exception {
+        mockMvc.perform(get("/admin/categories"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("admin/template"))
+                .andExpect(model().attributeExists("categories"));
     }
 }

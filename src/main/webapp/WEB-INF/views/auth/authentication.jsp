@@ -6,7 +6,8 @@
     <div class="col-xs-3"></div>
     <div class="col-xs-6">
         <span class="text-danger">${error}</span>
-        <spring:form action="/auth/login" method="post">
+        <c:url var="login" value="/auth/login"/>
+        <spring:form action="${login}" method="post">
             <div class="form-group">
                 <input class="form-control" type="email" name="email" placeholder="Почтовый ящик">
                 <input class="form-control" type="password" name="password" placeholder="Пароль">

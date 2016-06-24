@@ -3,16 +3,16 @@
 <html>
 <head>
     <title>Login Page</title>
-    <link rel="icon" href="<c:url value="/resources/img/eshop_icon.png"/>">
-    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>">
-    <link rel="stylesheet" href="<c:url value="/resources/css/login.css"/>">
+    <link rel="icon" href="<c:url value="/img/eshop_icon.png"/>">
+    <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="/css/login.css"/>">
 </head>
 <body onload="document.loginForm.username.focus();">
 
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h3><img src="<c:url value="/resources/img/login-icon.png"/>" height="32"> Авторизация</h3>
+            <h3><img src="<c:url value="/img/login-icon.png"/>" height="32"> Авторизация</h3>
             <hr>
             <form name="loginForm" method="POST">
                 <c:if test="${not empty error}">
@@ -55,7 +55,7 @@
         </div>
     </div>
 </div>
-<script src="<c:url value="/resources/js/jquery-2.1.4.min.js"/>"></script>
-<script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value="/js/jquery-2.1.4.min.js"/>"></script>
+<script src="<c:url value="/js/bootstrap.min.js"/>"></script>
 </body>
 </html>
