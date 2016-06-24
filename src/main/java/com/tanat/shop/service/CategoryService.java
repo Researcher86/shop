@@ -34,4 +34,10 @@ public class CategoryService {
         categoryDao.saveAndFlush(category);
     }
 
+    public void delete(Long id) {
+        if (getById(id).getGoodsList().size() > 0) {
+            throw new AppException("Невозможно удалить категорию. На данную категорию ссылаются товары");
+        }
+        categoryDao.delete(id);
+    }
 }

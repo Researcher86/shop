@@ -15,10 +15,10 @@
             <td>${category.name}</td>
             <td style="text-align: center">${category.goodsList.size()}</td>
             <td>
-                <button class="btn btn-xs btn-default" title="Редактировать">
+                <a href="<c:url value="/admin/categories/${category.id}"/>" class="btn btn-xs btn-default" title="Редактировать">
                     <i class="glyphicon glyphicon-pencil"></i>
-                </button>
-                <button class="btn btn-xs btn-danger" title="Удалить">
+                </a>
+                <button goodsId="${category.id}" class="btn btn-xs btn-danger deleteCategoryButton" title="Удалить">
                     <i class="glyphicon glyphicon-trash"></i>
                 </button>
             </td>

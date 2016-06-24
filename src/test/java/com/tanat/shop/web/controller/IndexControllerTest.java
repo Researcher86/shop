@@ -47,7 +47,6 @@ public class IndexControllerTest extends AbstractControllerTest {
     }
 
     @Test
-    @Transactional
     public void addCommentForGoods_textNotEmpty_authenticationClient() throws Exception {
         Client client = clientService.save(Client.createSimple());
 
