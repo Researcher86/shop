@@ -3,6 +3,9 @@
 }
 
 
+.categoriesTable td:first-child, .categoriesTable td:last-child{
+    width: 70px;
+}
 
 /*=========================Footer==========================*/
 html {

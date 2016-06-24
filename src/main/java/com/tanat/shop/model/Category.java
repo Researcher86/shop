@@ -13,7 +13,7 @@ public class Category {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private List<Goods> goodsList = new ArrayList<>();
 
     public Category() {
