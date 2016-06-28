@@ -6,7 +6,6 @@ import com.tanat.shop.service.ClientService;
 import com.tanat.shop.service.GoodsService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.hasSize;
