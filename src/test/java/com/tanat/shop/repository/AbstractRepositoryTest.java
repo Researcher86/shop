@@ -7,7 +7,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Настройки для слоя DAO
+ * Настройки для слоя Repository
  * Created by Tanat on 12.11.2015.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
