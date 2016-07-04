@@ -16,6 +16,6 @@ public interface GoodsRepository extends JpaRepository<Goods, Long> {
 
     List<Goods> findByCategory(Category category);
 
-    @Query("from Goods g where g.category.id = :id")
-    Page<Goods> findGoodsByCategory(@Param("id") Long id, Pageable pageable);
+    @Query("from Goods g where g.category.id = :categoryId")
+    Page<Goods> findGoodsByCategory(@Param("categoryId") Long categoryId, Pageable pageable);
 }

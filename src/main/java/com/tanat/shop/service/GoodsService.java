@@ -7,7 +7,6 @@ import com.tanat.shop.model.Goods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,17 +17,13 @@ public class GoodsService {
     @Autowired
     private GoodsRepository goodsRepository;
 
-    public List<Goods> getAll() {
-        return goodsRepository.findAll();
-    }
-
     public Goods getById(Long id) {
         return goodsRepository.findOne(id);
     }
 
     @Transactional
     public Goods getByIdAndAllComments(Long id) {
-        Goods goods = getById(id);
+        Goods goods = goodsRepository.findOne(id);
         goods.getComments().size();
         return goods;
     }
@@ -45,10 +40,6 @@ public class GoodsService {
         return goodsRepository.findByNameLike("%" + str + "%");
     }
 
-    public List<Goods> findByCategory(Category category) {
-        return goodsRepository.findByCategory(category);
-    }
-
     @Transactional
     public Goods addCommentForGoods(Comment comment, Long id) {
         Goods goods = goodsRepository.findOne(id);
@@ -60,7 +51,7 @@ public class GoodsService {
         return goodsRepository.findAll(new PageRequest(pageNumber - 1, pageSize));
     }
 
-    public Page<Goods> getGoodsLogByCategory(Integer pageNumber, Integer pageSize, Long id) {
-        return goodsRepository.findGoodsByCategory(id, new PageRequest(pageNumber - 1, pageSize));
+    public Page<Goods> getGoodsLogByCategory(Integer pageNumber, Integer pageSize, Long categoryId) {
+        return goodsRepository.findGoodsByCategory(categoryId, new PageRequest(pageNumber - 1, pageSize));
     }
 }
