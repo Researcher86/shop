@@ -52,20 +52,12 @@ public class GoodsService {
     @Transactional
     public Goods addCommentForGoods(Comment comment, Long id) {
         Goods goods = goodsRepository.findOne(id);
-        goods.getComments().size();
         goods.addComments(comment);
-
-        Goods storeGoods = goodsRepository.save(goods);
-        storeGoods.getComments().size();
-        return storeGoods;
+        return goods;
     }
 
     public Page<Goods> getGoodsLog(Integer pageNumber, Integer pageSize) {
         return goodsRepository.findAll(new PageRequest(pageNumber - 1, pageSize));
-    }
-
-    public Page<Goods> getGoodsLog2(Pageable p) {
-        return goodsRepository.findAll(p);
     }
 
     public Page<Goods> getGoodsLogByCategory(Integer pageNumber, Integer pageSize, Long id) {
