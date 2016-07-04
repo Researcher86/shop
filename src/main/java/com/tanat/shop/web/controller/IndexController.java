@@ -1,5 +1,6 @@
 package com.tanat.shop.web.controller;
 
+import com.tanat.shop.model.Category;
 import com.tanat.shop.model.Comment;
 import com.tanat.shop.model.Goods;
 import com.tanat.shop.service.CategoryService;
@@ -12,10 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Контроллер главной страницы магазина
@@ -27,7 +27,6 @@ public class IndexController extends AbstractController {
 
     private static final String PAGE_INDEX = "index";
     private static final String VIEW_FOLDER = "index";
-    private static final String CATEGORIES = "categories";
     private static final String GOODS_LIST = "goodsList";
     private static final String PAGE_ABOUT_COMPANY = "aboutCompany";
     private static final String PAGE_SHIPPING = "shipping";
@@ -45,6 +44,11 @@ public class IndexController extends AbstractController {
         super(VIEW_FOLDER);
     }
 
+    @ModelAttribute("categories")
+    public List<Category> getCategories() {
+        return categoryService.getAll();
+    }
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model model) {
         LOG.debug("Render index page");
@@ -59,12 +63,10 @@ public class IndexController extends AbstractController {
     public String search(@RequestParam String str, Model model) {
         LOG.debug("Render result page, search goods by {}", str);
 
-        model.addAttribute(CATEGORIES, categoryService.getAll());
         model.addAttribute(GOODS_LIST, goodsService.findByName(str));
 
         return getView(model, PAGE_INDEX);
     }
-
 
     @RequestMapping(value = "/pages/{pageNumber}", method = RequestMethod.GET)
     public String pageGoods(@PathVariable Integer pageNumber, Model model) {
@@ -106,7 +108,6 @@ public class IndexController extends AbstractController {
         model.addAttribute("endIndex", end);
         model.addAttribute("currentIndex", current);
 
-        model.addAttribute(CATEGORIES, categoryService.getAll());
         model.addAttribute(GOODS_LIST, page.getContent());
     }
 
@@ -158,8 +159,7 @@ public class IndexController extends AbstractController {
             return getView(model, "showGoods");
         }
 
-        Goods goods = goodsService.addCommentForGoods(comment, goodsId);
-        model.addAttribute("goods", goods);
+        goodsService.addCommentForGoods(comment, goodsId);
 
         return "redirect:/goods/" + goodsId;
     }
