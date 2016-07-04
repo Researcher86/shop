@@ -1,4 +1,4 @@
-package com.tanat.shop.dao;
+package com.tanat.shop.repository;
 
 import com.tanat.shop.model.Cart;
 import com.tanat.shop.model.Client;
@@ -13,17 +13,17 @@ import static org.junit.Assert.*;
  * Тестируем слой DAO корзины
  * Created by Tanat on 12.11.2015.
  */
-public class CartDaoTest extends AbstractDaoTest {
+public class CartRepositoryTest extends AbstractRepositoryTest {
 
     public static final String SHIPPING_ADDRESS = "Не знаю куда";
     @Autowired
-    private CartDao cartDao;
+    private CartRepository cartRepository;
 
     @Autowired
-    private ClientDao clientDao;
+    private ClientRepository clientRepository;
 
     @Autowired
-    private GoodsDao goodsDao;
+    private GoodsRepository goodsRepository;
     private Client client;
     private Cart cart;
 
@@ -31,28 +31,28 @@ public class CartDaoTest extends AbstractDaoTest {
     public void setUp() throws Exception {
         client = Client.createSimple();
         cart = new Cart(client);
-        clientDao.saveAndFlush(client);
+        clientRepository.saveAndFlush(client);
     }
 
     @Test
     public void testSave() throws Exception {
         cart.setShippingAddress(SHIPPING_ADDRESS);
 
-        cartDao.saveAndFlush(cart);
+        cartRepository.saveAndFlush(cart);
 
-        assertNotNull(cartDao.findOne(cart.getId()));
-        assertNotNull(cartDao.findOne(cart.getId()).getClient());
+        assertNotNull(cartRepository.findOne(cart.getId()));
+        assertNotNull(cartRepository.findOne(cart.getId()).getClient());
     }
 
     @Test
     public void testDelete() throws Exception {
         cart.setShippingAddress(SHIPPING_ADDRESS);
 
-        cartDao.saveAndFlush(cart);
-        cartDao.delete(cart);
+        cartRepository.saveAndFlush(cart);
+        cartRepository.delete(cart);
 
-        assertNull(cartDao.findOne(cart.getId()));
-        assertNotNull(clientDao.findOne(client.getId()));
+        assertNull(cartRepository.findOne(cart.getId()));
+        assertNotNull(clientRepository.findOne(client.getId()));
     }
 
     @Test
@@ -63,20 +63,20 @@ public class CartDaoTest extends AbstractDaoTest {
         cart.addOrder(goods, 5);
         cart.addOrder(goods, 5);
 
-        goodsDao.saveAndFlush(goods);
-        cartDao.saveAndFlush(cart);
+        goodsRepository.saveAndFlush(goods);
+        cartRepository.saveAndFlush(cart);
 
-        assertNotNull(cartDao.findOne(cart.getId()).getOrders());
-        assertEquals(1, cartDao.findOne(cart.getId()).getOrders().size());
-        assertEquals(50, cartDao.findOne(cart.getId()).getTotalPrice());
+        assertNotNull(cartRepository.findOne(cart.getId()).getOrders());
+        assertEquals(1, cartRepository.findOne(cart.getId()).getOrders().size());
+        assertEquals(50, cartRepository.findOne(cart.getId()).getTotalPrice());
     }
 
     @Test
     public void testFindByClient() throws Exception {
         cart.setShippingAddress(SHIPPING_ADDRESS);
 
-        cartDao.saveAndFlush(cart);
+        cartRepository.saveAndFlush(cart);
 
-        assertNotNull(cartDao.findByClient(client));
+        assertNotNull(cartRepository.findByClient(client));
     }
 }

@@ -38,5 +38,5 @@
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <!--Включаем поддержку Spring Data-->
-    <jpa:repositories base-package="com.tanat.shop.dao" entity-manager-factory-ref="emf"/>
+    <jpa:repositories base-package="com.tanat.shop.repository" entity-manager-factory-ref="emf"/>
 </beans>

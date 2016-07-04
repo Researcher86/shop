@@ -1,4 +1,4 @@
-package com.tanat.shop.dao;
+package com.tanat.shop.repository;
 
 import com.tanat.shop.model.Cart;
 import com.tanat.shop.model.Client;
@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CartDao extends JpaRepository<Cart, Long> {
+public interface CartRepository extends JpaRepository<Cart, Long> {
     List<Cart> findByClient(Client client);
 }

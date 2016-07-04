@@ -1,6 +1,6 @@
 package com.tanat.shop.service;
 
-import com.tanat.shop.dao.CartDao;
+import com.tanat.shop.repository.CartRepository;
 import com.tanat.shop.exception.AppException;
 import com.tanat.shop.model.Cart;
 import com.tanat.shop.model.Client;
@@ -14,22 +14,22 @@ import java.util.List;
 @Service
 public class CartService {
     @Autowired
-    private CartDao cartDao;
+    private CartRepository cartRepository;
 
     public Cart create() {
         return new Cart();
     }
 
     public List<Cart> getAll() {
-        return cartDao.findAll();
+        return cartRepository.findAll();
     }
 
     public Cart getById(Long id) {
-        return cartDao.findOne(id);
+        return cartRepository.findOne(id);
     }
 
     public List<Cart> getByClient(Client client) {
-        return cartDao.findByClient(client);
+        return cartRepository.findByClient(client);
     }
 
     public void addOrder(Cart cart, Goods goods, int amount) {
@@ -37,7 +37,7 @@ public class CartService {
     }
 
     public void save(Cart cart) {
-        cartDao.saveAndFlush(cart);
+        cartRepository.saveAndFlush(cart);
     }
 
     public void updateOrder(Cart cart, Long goodsId, int amount) {

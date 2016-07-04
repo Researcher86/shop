@@ -1,4 +1,4 @@
-package com.tanat.shop.dao;
+package com.tanat.shop.repository;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -16,5 +16,5 @@ import org.springframework.transaction.annotation.Transactional;
 })
 @Transactional
 @TransactionConfiguration(defaultRollback = true)
-public abstract class AbstractDaoTest {
+public abstract class AbstractRepositoryTest {
 }

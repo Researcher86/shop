@@ -1,6 +1,6 @@
 package com.tanat.shop.service;
 
-import com.tanat.shop.dao.CategoryDao;
+import com.tanat.shop.repository.CategoryRepository;
 import com.tanat.shop.exception.AppException;
 import com.tanat.shop.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +12,15 @@ import java.util.List;
 @Service
 public class CategoryService {
     @Autowired
-    private CategoryDao categoryDao;
+    private CategoryRepository categoryRepository;
 
     public List<Category> getAll() {
-        return categoryDao.findAll();
+        return categoryRepository.findAll();
     }
 
     @Transactional
     public Category getById(Long id) {
-        Category category = categoryDao.findOne(id);
+        Category category = categoryRepository.findOne(id);
         if (category == null) {
             throw new AppException("Категория товара не найдена id = " + id);
         }
@@ -31,13 +31,13 @@ public class CategoryService {
     }
 
     public void save(Category category) {
-        categoryDao.saveAndFlush(category);
+        categoryRepository.saveAndFlush(category);
     }
 
     public void delete(Long id) {
         if (getById(id).getGoodsList().size() > 0) {
             throw new AppException("Невозможно удалить категорию. На данную категорию ссылаются товары");
         }
-        categoryDao.delete(id);
+        categoryRepository.delete(id);
     }
 }

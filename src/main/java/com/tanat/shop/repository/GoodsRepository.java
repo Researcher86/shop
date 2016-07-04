@@ -1,4 +1,4 @@
-package com.tanat.shop.dao;
+package com.tanat.shop.repository;
 
 import com.tanat.shop.model.Category;
 import com.tanat.shop.model.Goods;
@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface GoodsDao extends JpaRepository<Goods, Long> {
+public interface GoodsRepository extends JpaRepository<Goods, Long> {
 
     List<Goods> findByNameLike(String name);
 

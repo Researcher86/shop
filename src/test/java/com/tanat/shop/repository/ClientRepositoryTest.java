@@ -1,4 +1,4 @@
-package com.tanat.shop.dao;
+package com.tanat.shop.repository;
 
 import com.tanat.shop.model.Client;
 import org.junit.Before;
@@ -12,10 +12,10 @@ import static org.junit.Assert.*;
  * Тестируем слой DAO клиентов
  * Created by Tanat on 12.11.2015.
  */
-public class ClientDaoTest extends AbstractDaoTest {
+public class ClientRepositoryTest extends AbstractRepositoryTest {
 
     @Autowired
-    private ClientDao clientDao;
+    private ClientRepository clientRepository;
     private Client client;
 
     @Before
@@ -25,9 +25,9 @@ public class ClientDaoTest extends AbstractDaoTest {
 
     @Test
     public void testSave() throws Exception {
-        clientDao.saveAndFlush(client);
+        clientRepository.saveAndFlush(client);
 
-        Client storeClient = clientDao.findOne(client.getId());
+        Client storeClient = clientRepository.findOne(client.getId());
 
 //        assertSame(client, storeClient); //TODO: Научится сравнивать объекты
 
@@ -40,28 +40,28 @@ public class ClientDaoTest extends AbstractDaoTest {
 
     @Test
     public void testDelete() throws Exception {
-        clientDao.saveAndFlush(client);
+        clientRepository.saveAndFlush(client);
 
-        clientDao.delete(client);
+        clientRepository.delete(client);
 
-        Client storeClient = clientDao.findOne(client.getId());
+        Client storeClient = clientRepository.findOne(client.getId());
         assertNull(storeClient);
     }
 
     @Test
     public void testFindByEmail() throws Exception {
-        clientDao.saveAndFlush(client);
+        clientRepository.saveAndFlush(client);
 
-        Client storeClient = clientDao.findByEmail(client.getEmail());
+        Client storeClient = clientRepository.findByEmail(client.getEmail());
 
         assertNotNull(storeClient);
     }
 
     @Test
     public void testFindByEmailAndPassword() throws Exception {
-        clientDao.saveAndFlush(client);
+        clientRepository.saveAndFlush(client);
 
-        Client storeClient = clientDao.findByEmailAndPassword(client.getEmail(), client.getPassword());
+        Client storeClient = clientRepository.findByEmailAndPassword(client.getEmail(), client.getPassword());
 
         assertNotNull(storeClient);
     }

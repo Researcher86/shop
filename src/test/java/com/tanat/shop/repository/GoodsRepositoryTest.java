@@ -1,4 +1,4 @@
-package com.tanat.shop.dao;
+package com.tanat.shop.repository;
 
 import com.tanat.shop.model.*;
 import org.junit.Before;
@@ -13,16 +13,16 @@ import static org.junit.Assert.*;
  * Тестируем слой DAO товаров
  * Created by Tanat on 12.11.2015.
  */
-public class GoodsDaoTest extends AbstractDaoTest {
+public class GoodsRepositoryTest extends AbstractRepositoryTest {
 
     @Autowired
-    private GoodsDao goodsDao;
+    private GoodsRepository goodsRepository;
 
     @Autowired
-    private CategoryDao categoryDao;
+    private CategoryRepository categoryRepository;
 
     @Autowired
-    private ClientDao clientDao;
+    private ClientRepository clientRepository;
     private Goods goods;
 
     @Before
@@ -32,37 +32,37 @@ public class GoodsDaoTest extends AbstractDaoTest {
 
     @Test
     public void testSave() throws Exception {
-        goodsDao.saveAndFlush(goods);
+        goodsRepository.saveAndFlush(goods);
 
-        assertNotNull(goodsDao.findOne(goods.getId()));
+        assertNotNull(goodsRepository.findOne(goods.getId()));
     }
 
     @Test
     public void testDelete() throws Exception {
-        goodsDao.saveAndFlush(goods);
+        goodsRepository.saveAndFlush(goods);
 
-        goodsDao.delete(goods);
+        goodsRepository.delete(goods);
 
-        assertNull(goodsDao.findOne(goods.getId()));
+        assertNull(goodsRepository.findOne(goods.getId()));
     }
 
     @Test
     public void testFindLike() throws Exception {
-        goodsDao.saveAndFlush(goods);
+        goodsRepository.saveAndFlush(goods);
 
-        assertNotNull(goodsDao.findByNameLike(goods.getName() + "%"));
+        assertNotNull(goodsRepository.findByNameLike(goods.getName() + "%"));
     }
 
     @Test
     public void testAddComment() throws Exception {
         Client client = Client.createSimple();
-        clientDao.saveAndFlush(client);
+        clientRepository.saveAndFlush(client);
 
         goods.addComments(new Comment("Супер!", client));
         goods.addComments(new Comment("Супер!2", client));
-        goodsDao.saveAndFlush(goods);
+        goodsRepository.saveAndFlush(goods);
 
-        List<Comment> comments = goodsDao.findOne(goods.getId()).getComments();
+        List<Comment> comments = goodsRepository.findOne(goods.getId()).getComments();
 
         assertFalse(comments.isEmpty());
         assertEquals(2, comments.size());
@@ -74,21 +74,21 @@ public class GoodsDaoTest extends AbstractDaoTest {
         Image image = Image.load("bumaga.png");
         goods.setImage(image);
 
-        goodsDao.saveAndFlush(goods);
+        goodsRepository.saveAndFlush(goods);
 
-        Image storeImage = goodsDao.findOne(goods.getId()).getImage();
+        Image storeImage = goodsRepository.findOne(goods.getId()).getImage();
         assertEquals(image.getBase64(), storeImage.getBase64());
     }
 
     @Test
     public void testFindByCategory() throws Exception {
         Category category = new Category("Test");
-        categoryDao.saveAndFlush(category);
+        categoryRepository.saveAndFlush(category);
 
         goods.setCategory(category);
-        goodsDao.saveAndFlush(goods);
+        goodsRepository.saveAndFlush(goods);
 
-        List<Goods> byCategory = goodsDao.findByCategory(category);
+        List<Goods> byCategory = goodsRepository.findByCategory(category);
 
         assertNotNull(byCategory);
         assertFalse(byCategory.isEmpty());
