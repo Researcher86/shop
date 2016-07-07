@@ -107,7 +107,7 @@ public class AdminController extends AbstractController {
             categoryService.delete(id);
         } catch (AppException e) {
             HttpHeaders responseHeaders = new HttpHeaders();
-            responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+            responseHeaders.add("Content-Type", "text/plain; charset=utf-8");
 
             return new ResponseEntity<>(e.getMessage(), responseHeaders, HttpStatus.BAD_REQUEST);
         }
