@@ -10,6 +10,17 @@
         <property name="url" value="jdbc:mysql://127.0.0.1/eshop?useUnicode=yes&amp;characterEncoding=UTF-8"/>
         <property name="username" value="root"/>
         <property name="password" value=""/>
+
+        <property name="validationQuery" value="SELECT 1" />
+        <property name="maxActive" value="5" />
+        <property name="minIdle" value="1" />
+        <property name="maxWait" value="20000" />
+        <property name="initialSize" value="2" />
+        <property name="maxIdle" value="5" />
+        <property name="testOnBorrow" value="true" />
+        <property name="removeAbandoned" value="true" />
+        <property name="testOnConnect" value="true" />
+        <property name="testWhileIdle" value="true" />
     </bean>
 
     <!--Настраиваем спринговскую обертку над JPA и Hibernate-->
