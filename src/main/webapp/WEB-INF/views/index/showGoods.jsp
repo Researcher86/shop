@@ -31,7 +31,7 @@
         <c:forEach var="comment" items="${goods.comments}">
             <div class="col-xs-12 comment">
                 <div class="col-xs-1 row text-center">
-                    <img class="img-circle" width="50" src="<c:url value="/public/img/anonymous.png"/>" alt="Фото">
+                    <img class="img-circle" width="50" src="<c:url value="/resources/img/anonymous.png"/>" alt="Фото">
                 </div>
                 <div class="col-xs-11">
                     <div class="col-xs-12">
