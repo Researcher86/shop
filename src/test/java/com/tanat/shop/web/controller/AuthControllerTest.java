@@ -9,6 +9,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
@@ -23,6 +24,7 @@ public class AuthControllerTest extends AbstractControllerTest {
     @Test
     public void testLoginForm() throws Exception {
         mockMvc.perform(get("/auth/login"))
+                .andDo(print())
                 .andExpect(request().sessionAttribute("client", nullValue()))
                 .andExpect(request().sessionAttribute("error", nullValue()))
                 .andExpect(status().isOk())
@@ -38,6 +40,7 @@ public class AuthControllerTest extends AbstractControllerTest {
                 .param("email", "researcher86@mail.ru")
                 .param("password", "123456")
         )
+                .andDo(print())
                 .andExpect(request().sessionAttribute("client", notNullValue()))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/"));
@@ -49,6 +52,7 @@ public class AuthControllerTest extends AbstractControllerTest {
                 .param("email", "test")
                 .param("password", "test")
         )
+                .andDo(print())
                 .andExpect(request().sessionAttribute("client", nullValue()))
                 .andExpect(status().isOk())
                 .andExpect(model().attributeExists("content"))
@@ -60,6 +64,7 @@ public class AuthControllerTest extends AbstractControllerTest {
         mockMvc.perform(get("/auth/logout")
                 .sessionAttr("client", new Client("test", "test", "test", "test@gmail.com", "test"))
         )
+                .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/"));
     }
@@ -67,6 +72,7 @@ public class AuthControllerTest extends AbstractControllerTest {
     @Test
     public void testRegistrationClientForm() throws Exception {
         mockMvc.perform(get("/auth/registration"))
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(model().attribute("content", "../auth/registration.jsp"))
                 .andExpect(view().name("/index/template"));
@@ -81,6 +87,7 @@ public class AuthControllerTest extends AbstractControllerTest {
                 .param("email", "test@test.ru")
                 .param("password", "123")
         )
+                .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/"));
     }
@@ -94,6 +101,7 @@ public class AuthControllerTest extends AbstractControllerTest {
                 .param("email", "")
                 .param("password", "")
         )
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(model().attribute("content", "../auth/registration.jsp"))
                 .andExpect(view().name("/index/template"));

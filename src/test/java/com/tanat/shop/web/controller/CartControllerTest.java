@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
@@ -24,6 +25,7 @@ public class CartControllerTest extends AbstractControllerTest {
     @Test
     public void index() throws Exception {
         mockMvc.perform(get("/cart"))
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("index/template"))
                 .andExpect(model().attributeExists("content"))
@@ -40,6 +42,7 @@ public class CartControllerTest extends AbstractControllerTest {
                 .content("goodsId=1&amount=10")
                 .sessionAttr("cart", cart)
         )
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(1))))
                 .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(50))));
@@ -55,6 +58,7 @@ public class CartControllerTest extends AbstractControllerTest {
                 .content("goodsId=1&amount=-1")
                 .sessionAttr("cart", cart)
         )
+                .andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(1))))
                 .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(5))));
@@ -69,6 +73,7 @@ public class CartControllerTest extends AbstractControllerTest {
         mockMvc.perform(delete("/cart/goods/1")
                 .sessionAttr("cart", cart)
         )
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(1))))
                 .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(45))));
@@ -80,6 +85,7 @@ public class CartControllerTest extends AbstractControllerTest {
                 .param("goodsId", "3")
                 .param("amount", "1")
         )
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(1))))
                 .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(45))));
@@ -91,6 +97,7 @@ public class CartControllerTest extends AbstractControllerTest {
                 .param("goodsId", "-3")
                 .param("amount", "1")
         )
+                .andDo(print())
                 .andExpect(status().is4xxClientError())
                 .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(0))))
                 .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(0))));
@@ -102,6 +109,7 @@ public class CartControllerTest extends AbstractControllerTest {
                 .param("goodsId", "3")
                 .param("amount", "-1")
         )
+                .andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(0))))
                 .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(0))));
@@ -110,6 +118,7 @@ public class CartControllerTest extends AbstractControllerTest {
     @Test
     public void checkoutInfo() throws Exception {
         mockMvc.perform(get("/cart/checkout"))
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(model().attribute("content", "../cart/checkout.jsp"))
                 .andExpect(view().name("index/template"));
@@ -127,6 +136,7 @@ public class CartControllerTest extends AbstractControllerTest {
                 .sessionAttr("cart", cart)
                 .param("shippingAddress", "test")
         )
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(model().attribute("content", "../cart/checkoutSuccess.jsp"))
                 .andExpect(view().name("index/template"));

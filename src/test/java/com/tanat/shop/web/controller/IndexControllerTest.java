@@ -12,6 +12,7 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
@@ -29,6 +30,7 @@ public class IndexControllerTest extends AbstractControllerTest {
     @Test
     public void testIndex() throws Exception {
         mockMvc.perform(get("/"))
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("index/template"))
                 .andExpect(model().attributeExists("content"))
@@ -39,6 +41,7 @@ public class IndexControllerTest extends AbstractControllerTest {
     @Test
     public void showGoods() throws Exception {
         mockMvc.perform(get("/goods/1"))
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("index/template"))
                 .andExpect(model().attributeExists("content"))
@@ -53,6 +56,7 @@ public class IndexControllerTest extends AbstractControllerTest {
                 .param("text", "test")
                 .param("client.id", String.valueOf(client.getId()))
         )
+                .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/goods/1"));
 
@@ -68,6 +72,7 @@ public class IndexControllerTest extends AbstractControllerTest {
                 .param("text", "")
                 .param("client.id", String.valueOf(client.getId()))
         )
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("index/template"))
                 .andExpect(model().attributeExists("content"))
@@ -80,6 +85,7 @@ public class IndexControllerTest extends AbstractControllerTest {
     @Test
     public void getGoodsPageByCategory() throws Exception {
         mockMvc.perform(get("/categories/1/pages/1"))
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("index/template"))
                 .andExpect(model().attributeExists("content"))

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
@@ -22,6 +23,7 @@ public class AdminControllerTest extends AbstractControllerTest {
     @Test
     public void showCategories() throws Exception {
         mockMvc.perform(get("/admin/categories"))
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("admin/template"))
                 .andExpect(model().attributeExists("categories"));
@@ -30,6 +32,7 @@ public class AdminControllerTest extends AbstractControllerTest {
     @Test
     public void categoryForm() throws Exception {
         mockMvc.perform(get("/admin/categories/1"))
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("admin/template"))
                 .andExpect(model().attributeExists("category"))
@@ -41,6 +44,7 @@ public class AdminControllerTest extends AbstractControllerTest {
         mockMvc.perform(post("/admin/categories/1")
                 .param("name", "Test")
         )
+                .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/admin/categories/1"));
 
@@ -52,13 +56,13 @@ public class AdminControllerTest extends AbstractControllerTest {
 
     @Test(expected = AppException.class)
     public void deleteCategoryEmptyGoodsList() throws Exception {
-        mockMvc.perform(delete("/admin/categories/5")).andExpect(status().isOk());
+        mockMvc.perform(delete("/admin/categories/5")).andDo(print()).andExpect(status().isOk());
 
         categoryService.getById(5L);
     }
 
     @Test
     public void deleteCategoryNoEmptyGoodsList() throws Exception {
-        mockMvc.perform(delete("/admin/categories/1")).andExpect(status().isBadRequest());
+        mockMvc.perform(delete("/admin/categories/1")).andDo(print()).andExpect(status().isBadRequest());
     }
 }
