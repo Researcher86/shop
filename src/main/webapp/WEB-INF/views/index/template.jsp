@@ -21,10 +21,7 @@
     <meta name="_csrf" content="${_csrf.token}"/>
     <!-- default header name is X-CSRF-TOKEN -->
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
-
-    <script type="text/javascript">
-        var baseURL = <c:url value="/"/>
-    </script>
+    <meta name="baseURL" content="<c:url value="/"/>"/>
 </head>
 <body>
 
