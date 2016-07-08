@@ -11,7 +11,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "PUT",
-            url: '/cart/goods',
+            url: baseURL + 'cart/goods',
             // dataType: "json", // тип загружаемых данных
             data: {goodsId: $(this).attr("goodsId"), amount: $(this).val()},
             timeout: 3000,
@@ -28,7 +28,7 @@ $(document).ready(function () {
     $("#cartItems button").click(function (e) {
         $.ajax({
             type: "DELETE",
-            url: '/cart/goods/' + $(this).attr("goodsId"),
+            url: baseURL + 'cart/goods/' + $(this).attr("goodsId"),
             timeout: 3000,
             success: function (data, status, xhr) { // вешаем свой обработчик на функцию success
                 location.reload();
@@ -43,7 +43,7 @@ $(document).ready(function () {
     $("button.buy").click(function (e) {
         $.ajax({
             type: "POST",
-            url: '/cart/goods',
+            url: baseURL + 'cart/goods',
             data: {goodsId: $(this).attr("goodsId"), amount: 1},
             timeout: 3000,
             success: function (data, status, xhr) { // вешаем свой обработчик на функцию success
