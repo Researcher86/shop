@@ -90,6 +90,7 @@
 <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 <script src="<c:url value="/resources/js/bootstrap-markdown.js"/>"></script>
 <script src="<c:url value="/resources/js/bootstrap-markdown.ru.js"/>"></script>
+<script src="<c:url value="/resources/js/settings.js"/>"></script>
 <script src="<c:url value="/resources/js/main.js"/>"></script>
 </body>
 </html>
