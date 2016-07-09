@@ -32,7 +32,8 @@
 
             <div class="col-xs-6">
                 <div class="search">
-                    <spring:form action="/" method="post">
+                    <c:url value="/" var="search"/>
+                    <spring:form action="${search}" method="post">
                         <div class="input-group has-error">
                             <input type="text" class="form-control" name="str" placeholder="Поиск">
                             <span class="input-group-btn">
