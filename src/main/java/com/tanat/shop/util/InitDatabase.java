@@ -1,23 +1,23 @@
 package com.tanat.shop.util;
 
-import com.tanat.shop.repository.CategoryRepository;
-import com.tanat.shop.repository.ClientRepository;
-import com.tanat.shop.repository.GoodsRepository;
 import com.tanat.shop.model.Category;
 import com.tanat.shop.model.Client;
 import com.tanat.shop.model.Goods;
 import com.tanat.shop.model.Image;
+import com.tanat.shop.repository.CategoryRepository;
+import com.tanat.shop.repository.ClientRepository;
+import com.tanat.shop.repository.GoodsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 
 /**
  * Компонент для иницыализации БД
  * Created by Tanat on 16.11.2015.
  */
 @Component
-public class InitDatabase implements ApplicationListener<ContextRefreshedEvent> {
+public class InitDatabase {
     @Autowired
     private CategoryRepository categoryRepository;
 
@@ -27,8 +27,8 @@ public class InitDatabase implements ApplicationListener<ContextRefreshedEvent> 
     @Autowired
     private ClientRepository clientRepository;
 
-    @Override
-    public void onApplicationEvent(ContextRefreshedEvent event) {
+    @PostConstruct
+    public void init() {
         Category category2 = new Category("Ручка");
         categoryRepository.saveAndFlush(category2);
 
