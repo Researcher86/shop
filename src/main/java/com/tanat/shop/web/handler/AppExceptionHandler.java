@@ -20,7 +20,7 @@ public class AppExceptionHandler {
     // subclassing ExceptionHandlerExceptionResolver (see below).
     @ExceptionHandler(Exception.class)
     public ModelAndView handle500Error(HttpServletRequest req, Exception exception) {
-        logger.error("Request: " + req.getRequestURL() + " raised " + exception);
+        logger.error("Request: {} raised {}", req.getRequestURL(), exception);
 
         ModelAndView mav = new ModelAndView();
         mav.addObject("exceptionName", exception.getClass().getCanonicalName());
@@ -32,7 +32,7 @@ public class AppExceptionHandler {
 
     @ExceptionHandler(AppException.class)
     public ModelAndView handleAppError(HttpServletRequest req, AppException exception) {
-        logger.error("Request: " + req.getRequestURL() + " raised " + exception);
+        logger.error("Request: {} raised {}", req.getRequestURL(), exception);
 
         ModelAndView mav = new ModelAndView();
         mav.addObject("exceptionName", exception.getClass().getCanonicalName());

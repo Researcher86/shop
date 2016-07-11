@@ -62,7 +62,7 @@ public class AuthController {
             LOG.debug("Client logout, email: {}, password: {}", client.getEmail(), client.getPassword());
             httpSession.setAttribute("client", null);
         } else {
-            LOG.debug("Client not login", client.getEmail(), client.getPassword());
+            LOG.warn("Client is null");
         }
 
         return "redirect:/";

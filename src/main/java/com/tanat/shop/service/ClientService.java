@@ -1,7 +1,7 @@
 package com.tanat.shop.service;
 
-import com.tanat.shop.repository.ClientRepository;
 import com.tanat.shop.model.Client;
+import com.tanat.shop.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

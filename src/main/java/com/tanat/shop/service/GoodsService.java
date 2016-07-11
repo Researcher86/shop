@@ -1,9 +1,8 @@
 package com.tanat.shop.service;
 
-import com.tanat.shop.repository.GoodsRepository;
-import com.tanat.shop.model.Category;
 import com.tanat.shop.model.Comment;
 import com.tanat.shop.model.Goods;
+import com.tanat.shop.repository.GoodsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

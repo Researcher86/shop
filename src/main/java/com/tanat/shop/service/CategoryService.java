@@ -1,8 +1,8 @@
 package com.tanat.shop.service;
 
-import com.tanat.shop.repository.CategoryRepository;
 import com.tanat.shop.exception.AppException;
 import com.tanat.shop.model.Category;
+import com.tanat.shop.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,7 +35,7 @@ public class CategoryService {
     }
 
     public void delete(Long id) {
-        if (getById(id).getGoodsList().size() > 0) {
+        if (!getById(id).getGoodsList().isEmpty()) {
             throw new AppException("Невозможно удалить категорию. На данную категорию ссылаются товары");
         }
         categoryRepository.delete(id);

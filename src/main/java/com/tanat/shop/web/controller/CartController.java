@@ -60,6 +60,7 @@ public class CartController {
 
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (AppException e) {
+            LOG.error("Error add order to cart", e);
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
@@ -76,6 +77,7 @@ public class CartController {
 
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (AppException e) {
+            LOG.error("Error update order to cart", e);
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }

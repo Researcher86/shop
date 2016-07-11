@@ -27,7 +27,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping(value = "/admin")
 public class AdminController extends AbstractController {
 
-    private static Logger LOG = LoggerFactory.getLogger(AdminController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AdminController.class);
 
     @Autowired
     private GoodsService goodsService;
@@ -106,6 +106,7 @@ public class AdminController extends AbstractController {
         try {
             categoryService.delete(id);
         } catch (AppException e) {
+            LOG.error("Error delete category", e);
             HttpHeaders responseHeaders = new HttpHeaders();
             responseHeaders.add("Content-Type", "text/plain; charset=utf-8");
 
