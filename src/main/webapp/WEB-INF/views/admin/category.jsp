@@ -5,17 +5,7 @@
 <h3 class="page-header">Редактировать категорию</h3>
 
 <div class="col-xs-6">
-    <spring:form method="post" cssClass="navbar-form">
-        <div class="form-group-sm">
-            <input class="form-control" type="text" name="name" value="${category.name}">
-            <button class="btn btn-sm btn-default" type="submit">Сохранить</button>
-        </div>
-        <span class="text-danger">${error}</span>
-    </spring:form>
-</div>
-
-<div class="col-xs-6">
-    <table class="table table-hover table-bordered">
+    <table class="table table-hover table-bordered input-sm">
         <th>№</th>
         <th>Название</th>
 
@@ -25,7 +15,23 @@
                 <td>${goods.name}</td>
             </tr>
         </c:forEach>
+
+        <c:if test="${empty category.goodsList}">
+            <tr>
+                <td>1</td>
+                <td>-</td>
+            </tr>
+        </c:if>
     </table>
 </div>
 
+<div class="col-xs-6 text-center">
+    <spring:form method="post" cssClass="navbar-form" cssStyle="margin: 0">
+        <div class="form-group-sm">
+            <input class="form-control" type="text" name="name" value="${category.name}">
+            <button class="btn btn-sm btn-default" type="submit">Сохранить</button>
+        </div>
+        <span class="text-danger">${error}</span>
+    </spring:form>
+</div>
 
