@@ -1,6 +1,10 @@
 package com.tanat.shop.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,12 +16,17 @@ public class Goods {
     @GeneratedValue
     private Long id;
 
+    @NotBlank(message = "Укажите наименование товара")
     private String name;
 
-    private int price;
+    @NotNull(message = "Некорректно указана цена товара")
+    @Min(value = 1, message = "Некорректно указана цена товара")
+    private Integer price;
 
+    @NotBlank(message = "Укажите краткое описание товара")
     private String description;
 
+    @NotNull(message = "Некорректно указана категоря товара")
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
@@ -55,11 +64,11 @@ public class Goods {
         this.name = name;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 

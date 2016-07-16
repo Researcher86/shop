@@ -2,6 +2,8 @@ package com.tanat.shop.web.controller;
 
 import com.tanat.shop.exception.AppException;
 import com.tanat.shop.model.Category;
+import com.tanat.shop.model.Goods;
+import com.tanat.shop.model.Image;
 import com.tanat.shop.service.CategoryService;
 import com.tanat.shop.service.GoodsService;
 import org.slf4j.Logger;
@@ -12,12 +14,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.io.IOException;
 
 /**
  * Контроллер ртвечает за страницу админки
@@ -122,5 +126,45 @@ public class AdminController extends AbstractController {
         model.addAttribute("goodsList", goodsService.getAll());
 
         return getView(model, "goodsList");
+    }
+
+    @RequestMapping(value = "/goods/{id}", method = RequestMethod.GET)
+    public String goodsEdit(@PathVariable Long id, Model model) {
+        LOG.debug("Admin panel goods {}", id);
+
+        model.addAttribute("categories", categoryService.getAll());
+        model.addAttribute("goods", goodsService.getById(id));
+
+        return getView(model, "goods");
+    }
+
+    @RequestMapping(value = "/goods/{id}", method = RequestMethod.POST)
+    public String goodsSave(@PathVariable Long id,
+                            @RequestParam MultipartFile file,
+                            @Validated @ModelAttribute Goods goods,
+                            BindingResult bindingResult, Model model,
+                            RedirectAttributes redirectAttributes) throws IOException {
+        LOG.debug("Admin panel goods {} save", id);
+
+        Goods storeGoods = goodsService.getById(id);
+
+
+        if (bindingResult.hasErrors()) {
+            goods.setImage(storeGoods.getImage());
+            model.addAttribute("categories", categoryService.getAll());
+            return getView(model, "goods");
+        }
+
+        if (!file.isEmpty()) {
+            storeGoods.setImage(new Image(file.getBytes(), file.getContentType()));
+        }
+        storeGoods.setName(goods.getName());
+        storeGoods.setDescription(goods.getDescription());
+        storeGoods.setPrice(goods.getPrice());
+        storeGoods.setCategory(goods.getCategory());
+
+        goodsService.save(storeGoods);
+
+        return "redirect:/admin/goods";
     }
 }

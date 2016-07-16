@@ -27,7 +27,9 @@ public class CategoryRepositoryTest extends AbstractRepositoryTest {
     @Before
     public void setUp() throws Exception {
         category = new Category(CATEGORY_NAME);
+        categoryRepository.saveAndFlush(category);
         goods = Goods.createSimple();
+        goods.setCategory(category);
     }
 
     @Test

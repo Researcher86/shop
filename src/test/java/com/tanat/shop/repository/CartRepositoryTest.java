@@ -1,6 +1,7 @@
 package com.tanat.shop.repository;
 
 import com.tanat.shop.model.Cart;
+import com.tanat.shop.model.Category;
 import com.tanat.shop.model.Client;
 import com.tanat.shop.model.Goods;
 import org.junit.Before;
@@ -25,6 +26,10 @@ public class CartRepositoryTest extends AbstractRepositoryTest {
 
     @Autowired
     private GoodsRepository goodsRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     private Client client;
     private Cart cart;
 
@@ -60,6 +65,10 @@ public class CartRepositoryTest extends AbstractRepositoryTest {
     public void testAddOrder() throws Exception {
         final Goods goods = Goods.createSimple();
 
+        Category category = new Category("Test");
+        categoryRepository.saveAndFlush(category);
+
+        goods.setCategory(category);
         cart.setShippingAddress(SHIPPING_ADDRESS);
         cart.addOrder(goods, 5);
         cart.addOrder(goods, 5);

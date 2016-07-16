@@ -24,10 +24,14 @@ public class GoodsRepositoryTest extends AbstractRepositoryTest {
     @Autowired
     private ClientRepository clientRepository;
     private Goods goods;
+    private Category category;
 
     @Before
     public void setUp() throws Exception {
         goods = Goods.createSimple();
+        category = new Category("Test");
+        categoryRepository.saveAndFlush(category);
+        goods.setCategory(category);
     }
 
     @Test
