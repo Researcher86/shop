@@ -16,6 +16,7 @@ public class GoodsService {
     @Autowired
     private GoodsRepository goodsRepository;
 
+    @Transactional(readOnly = true)
     public Goods getById(Long id) {
         return goodsRepository.findOne(id);
     }
@@ -35,6 +36,7 @@ public class GoodsService {
         goodsRepository.delete(goods);
     }
 
+    @Transactional(readOnly = true)
     public List<Goods> findByName(String str) {
         return goodsRepository.findByNameLike("%" + str + "%");
     }
@@ -46,11 +48,18 @@ public class GoodsService {
         return goods;
     }
 
+    @Transactional(readOnly = true)
     public Page<Goods> getGoodsLog(Integer pageNumber, Integer pageSize) {
         return goodsRepository.findAll(new PageRequest(pageNumber - 1, pageSize));
     }
 
+    @Transactional(readOnly = true)
     public Page<Goods> getGoodsLogByCategory(Integer pageNumber, Integer pageSize, Long categoryId) {
         return goodsRepository.findGoodsByCategory(categoryId, new PageRequest(pageNumber - 1, pageSize));
+    }
+
+    @Transactional(readOnly = true)
+    public List<Goods> getAll() {
+        return goodsRepository.findAll();
     }
 }

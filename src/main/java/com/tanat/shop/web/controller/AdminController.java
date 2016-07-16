@@ -95,7 +95,6 @@ public class AdminController extends AbstractController {
             redirectAttributes.addFlashAttribute("error", "Вы указали некорректное имя категории");
         }
 
-
         return "redirect:/admin/categories/" + id;
     }
 
@@ -114,5 +113,14 @@ public class AdminController extends AbstractController {
         }
 
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/goods", method = RequestMethod.GET)
+    public String goodsList(Model model) {
+        LOG.debug("Admin panel goods list");
+
+        model.addAttribute("goodsList", goodsService.getAll());
+
+        return getView(model, "goodsList");
     }
 }

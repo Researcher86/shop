@@ -56,7 +56,7 @@
         <div class="col-sm-2">
             <ul class="nav nav-sidebar">
                 <li class="active"><a href="<c:url value="/admin/categories"/>"><i class="glyphicon glyphicon-menu-hamburger"></i> Категории<span class="sr-only">(current)</span></a></li>
-                <li><a href="#"><i class="glyphicon glyphicon-apple"></i> Товары</a></li>
+                <li><a href="<c:url value="/admin/goods"/>"><i class="glyphicon glyphicon-apple"></i> Товары</a></li>
                 <li><a href="#"><i class="glyphicon glyphicon-piggy-bank"></i> Заказы</a></li>
                 <li><a href="#"><i class="glyphicon glyphicon-user"></i> Клиенты</a></li>
                 <li><a href="#"><i class="glyphicon glyphicon-comment"></i> Комментарии</a></li>
