@@ -142,12 +142,10 @@ public class AdminController extends AbstractController {
     public String goodsSave(@PathVariable Long id,
                             @RequestParam MultipartFile file,
                             @Validated @ModelAttribute Goods goods,
-                            BindingResult bindingResult, Model model,
-                            RedirectAttributes redirectAttributes) throws IOException {
+                            BindingResult bindingResult, Model model) throws IOException {
         LOG.debug("Admin panel goods {} save", id);
 
         Goods storeGoods = goodsService.getById(id);
-
 
         if (bindingResult.hasErrors()) {
             goods.setImage(storeGoods.getImage());
@@ -158,6 +156,7 @@ public class AdminController extends AbstractController {
         if (!file.isEmpty()) {
             storeGoods.setImage(new Image(file.getBytes(), file.getContentType()));
         }
+
         storeGoods.setName(goods.getName());
         storeGoods.setDescription(goods.getDescription());
         storeGoods.setPrice(goods.getPrice());
