@@ -1,8 +1,9 @@
-package com.tanat.shop.web.controller;
+package com.tanat.shop.web.controller.admin;
 
 import com.tanat.shop.exception.AppException;
 import com.tanat.shop.model.Category;
 import com.tanat.shop.service.CategoryService;
+import com.tanat.shop.web.controller.AbstractControllerTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
