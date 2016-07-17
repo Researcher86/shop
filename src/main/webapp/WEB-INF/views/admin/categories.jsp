@@ -27,7 +27,7 @@
                 <a href="<c:url value="/admin/categories/${goods.id}"/>" class="btn btn-xs btn-default" title="Редактировать">
                     <i class="glyphicon glyphicon-pencil"></i>
                 </a>
-                <button goodsId="${goods.id}" class="btn btn-xs btn-danger deleteCategoryButton" title="Удалить">
+                <button categoryId="${goods.id}" class="btn btn-xs btn-danger deleteCategoryButton" title="Удалить">
                     <i class="glyphicon glyphicon-trash"></i>
                 </button>
             </td>

@@ -32,8 +32,8 @@ public class GoodsService {
         goodsRepository.saveAndFlush(goods);
     }
 
-    public void delete(Goods goods) {
-        goodsRepository.delete(goods);
+    public void delete(Long id) {
+        goodsRepository.delete(id);
     }
 
     @Transactional(readOnly = true)
