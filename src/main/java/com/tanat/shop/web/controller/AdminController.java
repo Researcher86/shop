@@ -78,6 +78,19 @@ public class AdminController extends AbstractController {
         return getView(model, "categories");
     }
 
+    @RequestMapping(value = "/categories", method = RequestMethod.POST)
+    public String createCategory(@RequestParam String name, RedirectAttributes redirectAttributes) {
+        LOG.debug("Admin panel create category");
+
+        if ("".equals(name.trim())) {
+            redirectAttributes.addFlashAttribute("error", "Вы указали некорректное имя категории");
+        } else {
+            categoryService.save(new Category(name.trim()));
+        }
+
+        return "redirect:/admin/categories";
+    }
+
     @RequestMapping(value = "/categories/{id}", method = RequestMethod.GET)
     public String categoryForm(@PathVariable Long id, Model model) {
         LOG.debug("Admin panel render show category {} page", id);
@@ -93,7 +106,7 @@ public class AdminController extends AbstractController {
 
         if (!"".equals(name.trim())) {
             Category category = categoryService.getById(id);
-            category.setName(name);
+            category.setName(name.trim());
             categoryService.save(category);
         } else {
             redirectAttributes.addFlashAttribute("error", "Вы указали некорректное имя категории");
