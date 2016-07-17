@@ -6,7 +6,7 @@
 
 <spring:form method="post" cssClass="navbar-form" cssStyle="padding: 0">
     <div class="form-group-sm">
-        <input class="form-control" type="text" name="name" value="${category.name}">
+        <input class="form-control" type="text" name="name" value="${category.name}" placeholder="Название">
         <button class="btn btn-sm btn-default" type="submit">Добавить</button>
     </div>
     <span class="text-danger">${error}</span>
