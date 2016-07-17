@@ -151,6 +151,36 @@ public class AdminController extends AbstractController {
         return getView(model, "goods");
     }
 
+    @RequestMapping(value = "/goods/create", method = RequestMethod.GET)
+    public String goodsCreate(Model model) {
+        LOG.debug("Admin panel create goods");
+
+        model.addAttribute("categories", categoryService.getAll());
+        model.addAttribute("goods", new Goods());
+
+        return getView(model, "goods");
+    }
+
+    @RequestMapping(value = "/goods/create", method = RequestMethod.POST)
+    public String goodsCreate(@RequestParam MultipartFile file,
+                            @Validated @ModelAttribute Goods goods,
+                            BindingResult bindingResult, Model model) throws IOException {
+        LOG.debug("Admin panel new goods save");
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("categories", categoryService.getAll());
+            return getView(model, "goods");
+        }
+
+        if (!file.isEmpty()) {
+            goods.setImage(new Image(file.getBytes(), file.getContentType()));
+        }
+
+        goodsService.save(goods);
+
+        return "redirect:/admin/goods";
+    }
+
     @RequestMapping(value = "/goods/{id}", method = RequestMethod.POST)
     public String goodsSave(@PathVariable Long id,
                             @RequestParam MultipartFile file,

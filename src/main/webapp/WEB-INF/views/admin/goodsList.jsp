@@ -3,6 +3,10 @@
 
 <h3 class="page-header">Товары</h3>
 
+<a href="<c:url value="/admin/goods/create"/>" class="btn btn-sm btn-success pull-right" style="margin-bottom: 5px">
+    <i class="glyphicon glyphicon-plus"></i>
+</a>
+
 <table class="table table-hover table-bordered categoriesTable">
     <th>№</th>
     <th>Название</th>
