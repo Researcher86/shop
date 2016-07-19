@@ -25,7 +25,7 @@ public class InitDatabase {
     private ClientRepository clientRepository;
 
     @PostConstruct
-    public void init() {
+    public void init() throws InterruptedException {
         Client client = new Client("Test", "Test", "Test", "test@test.com", "test");
         clientRepository.saveAndFlush(client);
 
@@ -35,6 +35,7 @@ public class InitDatabase {
         Goods goods = new Goods("Ручка", 5, "Обычная", Image.load("pencel.jpg"));
         goods.setCategory(category2);
         goods.addComments(new Comment("Text comment", client));
+        goods.addComments(new Comment("Text comment2", client));
         goodsRepository.saveAndFlush(goods);
 
         category2 = new Category("Дырокол");
