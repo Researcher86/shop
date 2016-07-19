@@ -1,9 +1,6 @@
 package com.tanat.shop.util;
 
-import com.tanat.shop.model.Category;
-import com.tanat.shop.model.Client;
-import com.tanat.shop.model.Goods;
-import com.tanat.shop.model.Image;
+import com.tanat.shop.model.*;
 import com.tanat.shop.repository.CategoryRepository;
 import com.tanat.shop.repository.ClientRepository;
 import com.tanat.shop.repository.GoodsRepository;
@@ -29,11 +26,15 @@ public class InitDatabase {
 
     @PostConstruct
     public void init() {
+        Client client = new Client("Test", "Test", "Test", "test@test.com", "test");
+        clientRepository.saveAndFlush(client);
+
         Category category2 = new Category("Ручка");
         categoryRepository.saveAndFlush(category2);
 
         Goods goods = new Goods("Ручка", 5, "Обычная", Image.load("pencel.jpg"));
         goods.setCategory(category2);
+        goods.addComments(new Comment("Text comment", client));
         goodsRepository.saveAndFlush(goods);
 
         category2 = new Category("Дырокол");
@@ -61,7 +62,5 @@ public class InitDatabase {
 
         categoryRepository.saveAndFlush(new Category("Линейка"));
         categoryRepository.saveAndFlush(new Category("Папка"));
-
-        clientRepository.saveAndFlush(new Client("Test", "Test", "Test", "test@test.com", "test"));
     }
 }

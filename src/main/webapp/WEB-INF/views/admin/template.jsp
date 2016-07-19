@@ -59,7 +59,7 @@
                 <li><a href="<c:url value="/admin/goods"/>"><i class="glyphicon glyphicon-apple"></i> Товары</a></li>
                 <li><a href="#"><i class="glyphicon glyphicon-piggy-bank"></i> Заказы</a></li>
                 <li><a href="#"><i class="glyphicon glyphicon-user"></i> Клиенты</a></li>
-                <li><a href="#"><i class="glyphicon glyphicon-comment"></i> Комментарии</a></li>
+                <li><a href="<c:url value="/admin/comments"/>"><i class="glyphicon glyphicon-comment"></i> Комментарии</a></li>
             </ul>
         </div>
         <div class="col-sm-10">
