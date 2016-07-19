@@ -12,7 +12,7 @@
     <span class="text-danger">${error}</span>
 </spring:form>
 
-<table class="table table-hover table-bordered categoriesTable">
+<table class="table table-hover input-sm table-bordered categoriesTable">
     <th>№</th>
     <th>Название</th>
     <th style="width: 150px;text-align: center">Кол-во товаров</th>

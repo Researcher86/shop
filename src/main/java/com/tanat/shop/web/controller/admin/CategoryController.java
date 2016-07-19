@@ -29,7 +29,7 @@ public class CategoryController extends AbstractController {
     private static final Logger LOG = LoggerFactory.getLogger(CategoryController.class);
 
     @Autowired
-    private CategoryService categoryService;
+    private CategoryService service;
 
     public CategoryController() {
         super("admin");
@@ -39,7 +39,7 @@ public class CategoryController extends AbstractController {
     public String categoriesList(Model model) {
         LOG.debug("Admin panel categories list");
 
-        model.addAttribute("categories", categoryService.getAll());
+        model.addAttribute("categories", service.getAll());
 
         return getView(model, "categories");
     }
@@ -51,7 +51,7 @@ public class CategoryController extends AbstractController {
         if ("".equals(name.trim())) {
             redirectAttributes.addFlashAttribute("error", "Вы указали некорректное имя категории");
         } else {
-            categoryService.save(new Category(name.trim()));
+            service.save(new Category(name.trim()));
         }
 
         return "redirect:/admin/categories";
@@ -61,7 +61,7 @@ public class CategoryController extends AbstractController {
     public String categoryFormEdit(@PathVariable Long id, Model model) {
         LOG.debug("Admin panel form edit category {} page", id);
 
-        model.addAttribute("category", categoryService.getById(id));
+        model.addAttribute("category", service.getById(id));
 
         return getView(model, "category");
     }
@@ -71,9 +71,9 @@ public class CategoryController extends AbstractController {
         LOG.debug("Admin panel render show category {} page", id);
 
         if (!"".equals(name.trim())) {
-            Category category = categoryService.getById(id);
+            Category category = service.getById(id);
             category.setName(name.trim());
-            categoryService.save(category);
+            service.save(category);
         } else {
             redirectAttributes.addFlashAttribute("error", "Вы указали некорректное имя категории");
         }
@@ -86,7 +86,7 @@ public class CategoryController extends AbstractController {
         LOG.debug("Admin panel delete category {}", id);
 
         try {
-            categoryService.delete(id);
+            service.delete(id);
         } catch (AppException e) {
             LOG.error("Error delete category", e);
             HttpHeaders responseHeaders = new HttpHeaders();
