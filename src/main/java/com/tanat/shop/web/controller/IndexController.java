@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -149,23 +150,28 @@ public class IndexController extends AbstractController {
     public String showGoods(@PathVariable Long id, Model model) {
         LOG.debug("Render page goods {}", id);
 
-        model.addAttribute("goods", goodsService.getByIdAndAllComments(id));
+        model.addAttribute("goods", goodsService.getByIdAndAllActiveComments(id));
         model.addAttribute("comment", new Comment());
 
         return getView(model, "showGoods");
     }
 
     @RequestMapping(value = "/goods/{goodsId}", method = RequestMethod.POST)
-    public String addCommentForGoods(@PathVariable Long goodsId, @Validated Comment comment, BindingResult bindingResult, Model model) {
+    public String addCommentForGoods(@PathVariable Long goodsId,
+                                     @Validated Comment comment,
+                                     BindingResult bindingResult,
+                                     RedirectAttributes redirectAttributes,
+                                     Model model) {
         LOG.debug("Add comment for goods {}", goodsId);
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("goods", goodsService.getByIdAndAllComments(goodsId));
+            model.addAttribute("goods", goodsService.getByIdAndAllActiveComments(goodsId));
             model.addAttribute("comment", comment);
             return getView(model, "showGoods");
         }
 
         goodsService.addCommentForGoods(comment, goodsId);
+        redirectAttributes.addFlashAttribute("msg", "Комментарий отправлен на проверку администратору.");
 
         return "redirect:/goods/" + goodsId;
     }

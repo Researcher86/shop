@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class GoodsService {
@@ -22,9 +23,16 @@ public class GoodsService {
     }
 
     @Transactional
-    public Goods getByIdAndAllComments(Long id) {
+    public Goods getByIdAndAllActiveComments(Long id) {
         Goods goods = goodsRepository.findOne(id);
         goods.getComments().size();
+
+        List<Comment> activeComments = goods.getComments().stream()
+                .filter(comment -> comment.isActive())
+                .collect(Collectors.toList());
+
+        goods.setComments(activeComments);
+
         return goods;
     }
 

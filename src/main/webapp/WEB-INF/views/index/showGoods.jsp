@@ -22,6 +22,7 @@
     </div>
     <div class="col-xs-12">
         <h3>Комментарии: <span class="badge">${goods.comments.size()}</span></h3>
+        <h4 class="text-success">${msg}</h4>
     </div>
 
     <div class="col-xs-12">
