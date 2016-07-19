@@ -1,11 +1,15 @@
 package com.tanat.shop.web.controller.admin;
 
+import com.tanat.shop.exception.AppException;
 import com.tanat.shop.model.Comment;
 import com.tanat.shop.service.CommentService;
 import com.tanat.shop.web.controller.AbstractController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -68,6 +72,23 @@ public class CommentController extends AbstractController {
         service.save(storeComment);
 
         return "redirect:/admin/comments";
+    }
+
+    @RequestMapping(value = "/comments/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> commentDelete(@PathVariable Long id) {
+        LOG.debug("Admin panel delete comment {}", id);
+
+        try {
+            service.delete(id);
+        } catch (AppException e) {
+            LOG.error("Error delete comment", e);
+            HttpHeaders responseHeaders = new HttpHeaders();
+            responseHeaders.add("Content-Type", "text/plain; charset=utf-8");
+
+            return new ResponseEntity<>(e.getMessage(), responseHeaders, HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

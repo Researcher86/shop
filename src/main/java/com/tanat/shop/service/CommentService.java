@@ -1,5 +1,6 @@
 package com.tanat.shop.service;
 
+import com.tanat.shop.exception.AppException;
 import com.tanat.shop.model.Comment;
 import com.tanat.shop.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,12 @@ public class CommentService {
 
     public void save(Comment comment) {
         repository.saveAndFlush(comment);
+    }
+
+    public void delete(Long id) {
+        if (getById(id) == null) {
+            throw new AppException("Произошла ошибка при удалении! Комментарий ненайден.");
+        }
+        repository.delete(id);
     }
 }

@@ -29,4 +29,19 @@ $(document).ready(function () {
             }
         });
     });
+
+    $(".deleteCommentButton").click(function (e) {
+        $.ajax({
+            type: "DELETE",
+            url: 'admin/comments/' + $(this).attr("commentId"),
+            timeout: 3000,
+            success: function (data, status, xhr) { // вешаем свой обработчик на функцию success
+                location.reload();
+            },
+            error: function (xhr, status, error) {
+                alert(xhr.responseText);
+                // location.reload();
+            }
+        });
+    });
 });
