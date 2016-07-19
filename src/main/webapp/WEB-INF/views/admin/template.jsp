@@ -35,7 +35,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="<c:url value="/"/>">
                 <img width="24" title="E-Shop" alt="Brand" src="<c:url value="/resources/img/eshop_icon.png"/>">
             </a>
         </div>
