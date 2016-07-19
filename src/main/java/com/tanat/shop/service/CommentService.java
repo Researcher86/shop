@@ -18,4 +18,13 @@ public class CommentService {
     public List<Comment> getAll() {
         return repository.findAll(new Sort(Sort.Direction.DESC, "date"));
     }
+
+    @Transactional(readOnly = true)
+    public Comment getById(Long id) {
+        return repository.findOne(id);
+    }
+
+    public void save(Comment comment) {
+        repository.saveAndFlush(comment);
+    }
 }

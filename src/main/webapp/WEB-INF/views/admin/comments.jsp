@@ -8,6 +8,7 @@
 <table class="table table-hover input-sm table-bordered commentsTable">
     <th>№</th>
     <th>Текст</th>
+    <th>Автор</th>
     <th style="width: 150px;text-align: center">Дата</th>
     <th></th>
 
@@ -15,6 +16,7 @@
         <tr>
             <td>${count.count}</td>
             <td>${comment.text}</td>
+            <td>${comment.client.fio}</td>
             <td style="text-align: center">
                <fmt:formatDate value="${comment.date.time}" type="date" pattern="dd.MM.yyyy HH:MM"/>
             </td>
