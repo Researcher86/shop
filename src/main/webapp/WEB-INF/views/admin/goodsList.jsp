@@ -13,6 +13,15 @@
     <th style="width: 150px;text-align: center">Категория</th>
     <th></th>
 
+    <c:if test="${empty goodsList}">
+        <tr>
+            <td>1</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+    </c:if>
+
     <c:forEach var="goods" items="${goodsList}" varStatus="count">
         <tr>
             <td>${count.count}</td>

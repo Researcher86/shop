@@ -12,6 +12,16 @@
     <th style="width: 150px;text-align: center">Дата</th>
     <th></th>
 
+    <c:if test="${empty comments}">
+        <tr>
+            <td>1</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+    </c:if>
+
     <c:forEach var="comment" items="${comments}" varStatus="count">
         <tr>
             <td>${count.count}</td>

@@ -18,6 +18,15 @@
     <th style="width: 150px;text-align: center">Кол-во товаров</th>
     <th></th>
 
+    <c:if test="${empty categories}">
+        <tr>
+            <td>1</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+    </c:if>
+
     <c:forEach var="goods" items="${categories}" varStatus="count">
         <tr>
             <td>${count.count}</td>
