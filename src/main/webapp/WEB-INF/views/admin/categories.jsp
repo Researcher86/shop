@@ -31,7 +31,7 @@
         <tr>
             <td>${count.count}</td>
             <td>${goods.name}</td>
-            <td style="text-align: center">${goods.goodsList.size()}</td>
+            <td class="text-center">${goods.goodsList.size()}</td>
             <td>
                 <a href="<c:url value="/admin/categories/${goods.id}"/>" class="btn btn-xs btn-default" title="Редактировать">
                     <i class="glyphicon glyphicon-pencil"></i>

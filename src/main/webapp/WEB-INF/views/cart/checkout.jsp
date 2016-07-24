@@ -2,53 +2,38 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<div class="col-xs-12">
-    <h3 class="text-center">Оформление заказа</h3>
-    <c:if test="${empty client}">
-        <h5>Только авторизованные пользователи могут оформлять заказ</h5>
-        <h4><a href="<c:url value="/auth/login"/>">Авторизоваться</a></h4>
-    </c:if>
-    <c:if test="${not empty client}">
-        <spring:form modelAttribute="cart" method="post" cssClass="checkout">
-            <div class="col-xs-6 text-right">
-                <strong>Ф.И.О.</strong>
-            </div>
-            <div class="col-xs-5 text-left">
-                 ${client.fio}
-            </div>
+<h3 class="text-center">Оформление заказа</h3>
+<c:if test="${empty client}">
+    <h5>Только авторизованные пользователи могут оформлять заказ</h5>
+    <h4><a href="<c:url value="/auth/login"/>">Авторизоваться</a></h4>
+</c:if>
+<c:if test="${not empty client}">
+    <spring:form modelAttribute="cart" method="post" cssClass="checkout">
+        <dl class="dl-horizontal col-xs-6 col-xs-offset-3">
+            <dt>Ф.И.О.</dt>
+            <dd>${client.fio}</dd>
 
-            <div class="col-xs-6 text-right">
-                <strong>Адрес</strong>
-            </div>
-            <div class="col-xs-5 text-left">
-                 ${client.address}
-            </div>
+            <dt>Адрес</dt>
+            <dd>${client.address}</dd>
 
-            <div class="col-xs-6 text-right">
-                <strong>Телефон</strong>
-            </div>
-            <div class="col-xs-5 text-left">
-                ${client.phone}
-            </div>
+            <dt>Телефон</dt>
+            <dd>${client.phone}</dd>
 
-            <div class="col-xs-6 text-right">
-                <strong>Адрес доставки</strong>
-            </div>
-            <div class="col-xs-5 text-left">
+            <dt>Адрес доставки</dt>
+            <dd>
                 <spring:textarea cssClass="form-control input-sm" path="shippingAddress" cols="30" rows="3"></spring:textarea>
                 <span class="text-danger"><spring:errors path="shippingAddress"/></span>
-            </div>
+            </dd>
 
-            <div class="col-xs-6 text-right">
-                <strong>К оплате</strong>
-            </div>
-            <div class="col-xs-5 text-left">
-                ${cart.totalPrice}
-            </div>
+            <dt>К оплате</dt>
+            <dd>${cart.totalPrice}</dd>
+        </dl>
 
-            <div class="text-center">
-                <button type="submit" class="btn btn-default">Оформить заказ</button>
-            </div>
-        </spring:form>
-    </c:if>
-</div>
+        <div class="clearfix"></div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-default">Оформить заказ</button>
+        </div>
+    </spring:form>
+</c:if>
+
