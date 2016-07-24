@@ -36,6 +36,7 @@ public class Cart {
     }
 
     public Cart(Client client) {
+        this();
         this.client = client;
     }
 

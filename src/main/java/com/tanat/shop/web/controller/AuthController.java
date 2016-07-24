@@ -20,6 +20,11 @@ import javax.servlet.http.HttpSession;
 @RequestMapping(value = "/auth")
 public class AuthController {
     private static final Logger LOG = LoggerFactory.getLogger(AuthController.class);
+    public static final String INDEX_TEMPLATE = "/index/template";
+    public static final String ERROR_ATTR = "error";
+    public static final String REDIRECT_HOME = "redirect:/";
+    public static final String CLIENT = "client";
+    public static final String CONTENT = "content";
 
     private final ClientService clientService;
 
@@ -32,13 +37,13 @@ public class AuthController {
     public String loginForm(HttpSession httpSession, Model model) {
         LOG.debug("Client login form");
 
-        if (httpSession.getAttribute("error") != null) {
-            httpSession.setAttribute("error", null);
+        if (httpSession.getAttribute(ERROR_ATTR) != null) {
+            httpSession.setAttribute(ERROR_ATTR, null);
         }
 
-        model.addAttribute("content", "../auth/authentication.jsp");
+        model.addAttribute(CONTENT, "../auth/authentication.jsp");
 
-        return "/index/template";
+        return INDEX_TEMPLATE;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -48,38 +53,38 @@ public class AuthController {
         Client storeClient = clientService.findByEmailAndPassword(email, password);
 
         if (storeClient != null) {
-            httpSession.setAttribute("client", storeClient);
-            httpSession.setAttribute("error", null);
-            return "redirect:/";
+            httpSession.setAttribute(CLIENT, storeClient);
+            httpSession.setAttribute(ERROR_ATTR, null);
+            return REDIRECT_HOME;
         } else {
-            httpSession.setAttribute("error", "Incorrect email or password");
-            model.addAttribute("content", "../auth/authentication.jsp");
-            return "/index/template";
+            httpSession.setAttribute(ERROR_ATTR, "Incorrect email or password");
+            model.addAttribute(CONTENT, "../auth/authentication.jsp");
+            return INDEX_TEMPLATE;
         }
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpSession httpSession) {
-        Client client = (Client) httpSession.getAttribute("client");
+        Client client = (Client) httpSession.getAttribute(CLIENT);
 
         if (client != null) {
             LOG.debug("Client logout, email: {}, password: {}", client.getEmail(), client.getPassword());
-            httpSession.setAttribute("client", null);
+            httpSession.setAttribute(CLIENT, null);
         } else {
             LOG.warn("Client is null");
         }
 
-        return "redirect:/";
+        return REDIRECT_HOME;
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registrationForm(Model model) {
         LOG.debug("Registration client form");
 
-        model.addAttribute("client", new Client());
-        model.addAttribute("content", "../auth/registration.jsp");
+        model.addAttribute(CLIENT, new Client());
+        model.addAttribute(CONTENT, "../auth/registration.jsp");
 
-        return "/index/template";
+        return INDEX_TEMPLATE;
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
@@ -88,13 +93,13 @@ public class AuthController {
                 client.getFio(), client.getPhone(), client.getAddress(), client.getEmail(), client.getPassword());
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("content", "../auth/registration.jsp");
-            return "/index/template";
+            model.addAttribute(CONTENT, "../auth/registration.jsp");
+            return INDEX_TEMPLATE;
         }
 
         clientService.save(client);
-        httpSession.setAttribute("client", client);
+        httpSession.setAttribute(CLIENT, client);
 
-        return "redirect:/";
+        return REDIRECT_HOME;
     }
 }

@@ -22,6 +22,7 @@ public class Order {
     }
 
     public Order(Goods goods, int amount, Cart cart) {
+        this();
         this.goods = goods;
         this.amount = amount;
         this.cart = cart;

@@ -27,6 +27,8 @@ import org.springframework.web.bind.annotation.*;
 @SessionAttributes({"cart", "client"})
 public class CartController {
     private static final Logger LOG = LoggerFactory.getLogger(CartController.class);
+    public static final String INDEX_TEMPLATE = "index/template";
+    public static final String CONTENT = "content";
 
     private final GoodsService goodsService;
 
@@ -48,9 +50,9 @@ public class CartController {
     public String index(Model model) {
         LOG.debug("Render cart index page");
 
-        model.addAttribute("content", "../cart/index.jsp");
+        model.addAttribute(CONTENT, "../cart/index.jsp");
 
-        return "index/template";
+        return INDEX_TEMPLATE;
     }
 
     @RequestMapping(value = "/goods", method = RequestMethod.POST)
@@ -97,15 +99,15 @@ public class CartController {
 
     @RequestMapping(value = "/checkout", method = RequestMethod.GET)
     public String checkoutInfo(Model model) {
-        model.addAttribute("content", "../cart/checkout.jsp");
-        return "index/template";
+        model.addAttribute(CONTENT, "../cart/checkout.jsp");
+        return INDEX_TEMPLATE;
     }
 
     @RequestMapping(value = "/checkout", method = RequestMethod.POST)
     public String checkoutSave(@ModelAttribute Client client, @Validated @ModelAttribute Cart cart, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("content", "../cart/checkout.jsp");
+            model.addAttribute(CONTENT, "../cart/checkout.jsp");
         } else {
             cart.setClient(client);
 
@@ -113,8 +115,8 @@ public class CartController {
 
             model.addAttribute("cart", new Cart());
             model.addAttribute("orderNumber", cart.getId());
-            model.addAttribute("content", "../cart/checkoutSuccess.jsp");
+            model.addAttribute(CONTENT, "../cart/checkoutSuccess.jsp");
         }
-        return "index/template";
+        return INDEX_TEMPLATE;
     }
 }

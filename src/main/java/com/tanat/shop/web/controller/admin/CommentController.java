@@ -28,6 +28,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CommentController extends AbstractController {
 
     private static final Logger LOG = LoggerFactory.getLogger(CommentController.class);
+    public static final String COMMENT_LIST = "comments";
+    public static final String COMMENT = "comment";
 
     private final CommentService service;
 
@@ -41,18 +43,18 @@ public class CommentController extends AbstractController {
     public String comments(Model model) {
         LOG.debug("Admin panel comment list");
 
-        model.addAttribute("comments", service.getAll());
+        model.addAttribute(COMMENT_LIST, service.getAll());
 
-        return getView(model, "comments");
+        return getView(model, COMMENT_LIST);
     }
 
     @RequestMapping(value = "/comments/{id}", method = RequestMethod.GET)
     public String commentFormEdit(@PathVariable Long id, Model model) {
         LOG.debug("Admin panel edit comment {}", id);
 
-        model.addAttribute("comment", service.getById(id));
+        model.addAttribute(COMMENT, service.getById(id));
 
-        return getView(model, "comment");
+        return getView(model, COMMENT);
     }
 
     @RequestMapping(value = "/comments/{id}", method = RequestMethod.POST)
@@ -63,7 +65,7 @@ public class CommentController extends AbstractController {
         LOG.debug("Admin panel save comment {}", id);
 
         if (bindingResult.hasErrors()) {
-            return getView(model, "comment");
+            return getView(model, COMMENT);
         }
 
         Comment storeComment = service.getById(id);

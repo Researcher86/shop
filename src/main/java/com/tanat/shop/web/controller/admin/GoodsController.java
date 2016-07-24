@@ -1,6 +1,7 @@
 package com.tanat.shop.web.controller.admin;
 
 import com.tanat.shop.exception.AppException;
+import com.tanat.shop.model.Category;
 import com.tanat.shop.model.Goods;
 import com.tanat.shop.model.Image;
 import com.tanat.shop.service.CategoryService;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Контроллер ртвечает за страницу админки
@@ -30,6 +32,8 @@ import java.io.IOException;
 public class GoodsController extends AbstractController {
 
     private static final Logger LOG = LoggerFactory.getLogger(GoodsController.class);
+    public static final String GOODS_LIST = "goodsList";
+    public static final String GOODS = "goods";
 
     private final GoodsService goodsService;
 
@@ -42,23 +46,27 @@ public class GoodsController extends AbstractController {
         this.goodsService = goodsService;
     }
 
+    @ModelAttribute("categories")
+    public List<Category> getCategories() {
+        return categoryService.getAll();
+    }
+
     @RequestMapping(value = "/goods", method = RequestMethod.GET)
     public String goodsList(Model model) {
         LOG.debug("Admin panel goods list");
 
-        model.addAttribute("goodsList", goodsService.getAll());
+        model.addAttribute(GOODS_LIST, goodsService.getAll());
 
-        return getView(model, "goodsList");
+        return getView(model, GOODS_LIST);
     }
 
     @RequestMapping(value = "/goods/create", method = RequestMethod.GET)
     public String goodsFromCreate(Model model) {
         LOG.debug("Admin panel form create goods");
 
-        model.addAttribute("categories", categoryService.getAll());
-        model.addAttribute("goods", new Goods());
+        model.addAttribute(GOODS, new Goods());
 
-        return getView(model, "goods");
+        return getView(model, GOODS);
     }
 
     @RequestMapping(value = "/goods/create", method = RequestMethod.POST)
@@ -68,8 +76,7 @@ public class GoodsController extends AbstractController {
         LOG.debug("Admin panel create goods");
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("categories", categoryService.getAll());
-            return getView(model, "goods");
+            return getView(model, GOODS);
         }
 
         if (!file.isEmpty()) {
@@ -85,10 +92,9 @@ public class GoodsController extends AbstractController {
     public String goodsFromEdit(@PathVariable Long id, Model model) {
         LOG.debug("Admin panel from edit goods {}", id);
 
-        model.addAttribute("categories", categoryService.getAll());
-        model.addAttribute("goods", goodsService.getById(id));
+        model.addAttribute(GOODS, goodsService.getById(id));
 
-        return getView(model, "goods");
+        return getView(model, GOODS);
     }
 
     @RequestMapping(value = "/goods/{id}", method = RequestMethod.POST)
@@ -102,8 +108,7 @@ public class GoodsController extends AbstractController {
 
         if (bindingResult.hasErrors()) {
             goods.setImage(storeGoods.getImage());
-            model.addAttribute("categories", categoryService.getAll());
-            return getView(model, "goods");
+            return getView(model, GOODS);
         }
 
         if (!file.isEmpty()) {

@@ -42,6 +42,7 @@ public class Goods {
     }
 
     public Goods(String name, int price, String description, Image image) {
+        this();
         this.name = name;
         this.price = price;
         this.description = description;

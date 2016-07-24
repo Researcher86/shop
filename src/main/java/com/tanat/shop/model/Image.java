@@ -27,6 +27,7 @@ public class Image {
     }
 
     public Image(byte[] data, String ext) {
+        this();
         this.data = Arrays.copyOf(data, data.length);
         this.ext = ext;
     }

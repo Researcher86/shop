@@ -12,6 +12,9 @@ import java.nio.file.Files;
 public class ReadResourceFile {
     private static final Logger LOG = LoggerFactory.getLogger(ReadResourceFile.class);
 
+    private ReadResourceFile() {
+    }
+
     public static byte[] read(String fileName) {
         File file = null;
         try {

@@ -39,6 +39,7 @@ public class Client implements Serializable {
     }
 
     public Client(String fio, String phone, String address, String email, String password) {
+        this();
         this.fio = fio;
         this.phone = phone;
         this.address = address;

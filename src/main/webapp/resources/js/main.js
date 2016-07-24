@@ -1,50 +1,45 @@
 $(document).ready(function () {
     
-    $("#cartItems input").change(function (e) {
-
+    $("#cartItems input").change(function () {
         $.ajax({
             type: "PUT",
             url: 'cart/goods',
-            // dataType: "json", // тип загружаемых данных
             data: {goodsId: $(this).attr("goodsId"), amount: $(this).val()},
             timeout: 3000,
-            success: function (data, status, xhr) { // вешаем свой обработчик на функцию success
+            success: function () {
                 location.reload();
             },
-            error: function (xhr, status, error) {
-                // alert("Error");
-                // location.reload();
+            error: function () {
+                alert("Произошла ошибка при изменении количества товара!");
             }
         });
     });    
     
-    $("#cartItems button").click(function (e) {
+    $("#cartItems button").click(function () {
         $.ajax({
             type: "DELETE",
             url: 'cart/goods/' + $(this).attr("goodsId"),
             timeout: 3000,
-            success: function (data, status, xhr) { // вешаем свой обработчик на функцию success
+            success: function () {
                 location.reload();
             },
-            error: function (xhr, status, error) {
-                alert("Error");
-                location.reload();
+            error: function () {
+                alert("Произошла ошибка при удалении товара из корзины!");
             }
         });
     });
 
-    $("button.buy").click(function (e) {
+    $("button.buy").click(function () {
         $.ajax({
             type: "POST",
             url: 'cart/goods',
             data: {goodsId: $(this).attr("goodsId"), amount: 1},
             timeout: 3000,
-            success: function (data, status, xhr) { // вешаем свой обработчик на функцию success
+            success: function () {
                 location.reload();
             },
-            error: function (xhr, status, error) {
-                alert("Error");
-                location.reload();
+            error: function () {
+                alert("Произошла ошибка при добавлении товара в корзину!");
             }
         });
     });
