@@ -7,6 +7,7 @@ import com.tanat.shop.model.Goods;
 import com.tanat.shop.model.Order;
 import com.tanat.shop.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class CartService {
     }
 
     public List<Cart> getAll() {
-        return cartRepository.findAll();
+        return cartRepository.findAll(new Sort(Sort.Direction.DESC, "orderDate"));
     }
 
     public Cart getById(Long id) {
