@@ -5,7 +5,7 @@ import com.tanat.shop.util.ReadResourceFile;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
-import java.io.IOException;
+import java.util.Arrays;
 import java.util.Base64;
 
 @Entity
@@ -27,7 +27,7 @@ public class Image {
     }
 
     public Image(byte[] data, String ext) {
-        this.data = data;
+        this.data = Arrays.copyOf(data, data.length);
         this.ext = ext;
     }
 
@@ -36,7 +36,7 @@ public class Image {
     }
 
     public byte[] getData() {
-        return data;
+        return Arrays.copyOf(data, data.length);
     }
 
     public String getExt() {
@@ -48,10 +48,12 @@ public class Image {
     }
 
     public static Image load(String fileName) {
-        try {
-            return new Image(ReadResourceFile.read(fileName), StringUtils.getFilenameExtension(fileName));
-        } catch (IOException e) {
-            throw new ImageLoadException("Error load image", e);
+        byte[] data = ReadResourceFile.read(fileName);
+
+        if (data == null) {
+            throw new ImageLoadException("Error load image " + fileName);
         }
+
+        return new Image(data, StringUtils.getFilenameExtension(fileName));
     }
 }

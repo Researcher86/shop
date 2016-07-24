@@ -28,11 +28,12 @@ public class CategoryController extends AbstractController {
 
     private static final Logger LOG = LoggerFactory.getLogger(CategoryController.class);
 
-    @Autowired
-    private CategoryService service;
+    private final CategoryService service;
 
-    public CategoryController() {
+    @Autowired
+    public CategoryController(CategoryService service) {
         super("admin");
+        this.service = service;
     }
 
     @RequestMapping(value = "/categories", method = RequestMethod.GET)
@@ -70,9 +71,10 @@ public class CategoryController extends AbstractController {
     public String categoryEdit(@PathVariable Long id, @RequestParam String name, RedirectAttributes redirectAttributes) {
         LOG.debug("Admin panel render show category {} page", id);
 
-        if (!"".equals(name.trim())) {
+        String trimName = name.trim();
+        if (!"".equals(trimName)) {
             Category category = service.getById(id);
-            category.setName(name.trim());
+            category.setName(trimName);
             service.save(category);
         } else {
             redirectAttributes.addFlashAttribute("error", "Вы указали некорректное имя категории");

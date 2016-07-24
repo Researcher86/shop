@@ -1,5 +1,6 @@
 package com.tanat.shop.repository;
 
+import com.tanat.shop.exception.AppException;
 import com.tanat.shop.model.Category;
 import com.tanat.shop.model.Goods;
 import org.junit.Before;
@@ -55,7 +56,7 @@ public class CategoryRepositoryTest extends AbstractRepositoryTest {
         assertNull(categoryRepository.findOne(category.getId()));
     }
 
-    @Test(expected = Exception.class)
+    @Test(expected = AppException.class)
     public void testDeleteWithGoods() throws Exception {
         category.addGoods(goods);
 

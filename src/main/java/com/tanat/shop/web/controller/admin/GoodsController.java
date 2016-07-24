@@ -31,14 +31,15 @@ public class GoodsController extends AbstractController {
 
     private static final Logger LOG = LoggerFactory.getLogger(GoodsController.class);
 
-    @Autowired
-    private GoodsService goodsService;
+    private final GoodsService goodsService;
+
+    private final CategoryService categoryService;
 
     @Autowired
-    private CategoryService categoryService;
-
-    public GoodsController() {
+    public GoodsController(CategoryService categoryService, GoodsService goodsService) {
         super("admin");
+        this.categoryService = categoryService;
+        this.goodsService = goodsService;
     }
 
     @RequestMapping(value = "/goods", method = RequestMethod.GET)

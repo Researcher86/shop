@@ -12,8 +12,12 @@ import java.util.List;
 
 @Service
 public class CommentService {
+    private final CommentRepository repository;
+
     @Autowired
-    private CommentRepository repository;
+    public CommentService(CommentRepository repository) {
+        this.repository = repository;
+    }
 
     @Transactional(readOnly = true)
     public List<Comment> getAll() {
@@ -29,6 +33,7 @@ public class CommentService {
         repository.saveAndFlush(comment);
     }
 
+    @Transactional
     public void delete(Long id) {
         if (getById(id) == null) {
             throw new AppException("Произошла ошибка при удалении! Комментарий ненайден.");

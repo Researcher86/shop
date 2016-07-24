@@ -14,8 +14,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class GoodsService {
+    private final GoodsRepository goodsRepository;
+
     @Autowired
-    private GoodsRepository goodsRepository;
+    public GoodsService(GoodsRepository goodsRepository) {
+        this.goodsRepository = goodsRepository;
+    }
 
     @Transactional(readOnly = true)
     public Goods getById(Long id) {
@@ -25,7 +29,6 @@ public class GoodsService {
     @Transactional
     public Goods getByIdAndAllActiveComments(Long id) {
         Goods goods = goodsRepository.findOne(id);
-        goods.getComments().size();
 
         List<Comment> activeComments = goods.getComments().stream()
                 .filter(comment -> comment.isActive())

@@ -16,17 +16,21 @@ import javax.annotation.PostConstruct;
  */
 @Component
 public class InitDatabase {
-    @Autowired
-    private CategoryRepository categoryRepository;
+    private final CategoryRepository categoryRepository;
+
+    private final GoodsRepository goodsRepository;
+
+    private final ClientRepository clientRepository;
+
+    private final CartRepository cartRepository;
 
     @Autowired
-    private GoodsRepository goodsRepository;
-
-    @Autowired
-    private ClientRepository clientRepository;
-
-    @Autowired
-    private CartRepository cartRepository;
+    public InitDatabase(CartRepository cartRepository, ClientRepository clientRepository, CategoryRepository categoryRepository, GoodsRepository goodsRepository) {
+        this.cartRepository = cartRepository;
+        this.clientRepository = clientRepository;
+        this.categoryRepository = categoryRepository;
+        this.goodsRepository = goodsRepository;
+    }
 
     @PostConstruct
     public void init() throws InterruptedException {

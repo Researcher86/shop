@@ -28,11 +28,15 @@ import org.springframework.web.bind.annotation.*;
 public class CartController {
     private static final Logger LOG = LoggerFactory.getLogger(CartController.class);
 
-    @Autowired
-    private GoodsService goodsService;
+    private final GoodsService goodsService;
+
+    private final CartService cartService;
 
     @Autowired
-    private CartService cartService;
+    public CartController(GoodsService goodsService, CartService cartService) {
+        this.goodsService = goodsService;
+        this.cartService = cartService;
+    }
 
     @ModelAttribute
     public Cart getCart() {
@@ -69,7 +73,7 @@ public class CartController {
     public ResponseEntity<String> updateOrder(@RequestBody MultiValueMap<String, String> body, @ModelAttribute Cart cart) {
         LOG.debug("Update order");
 
-        Long goodsId = Long.parseLong(body.getFirst("goodsId"));
+        Long goodsId = Long.valueOf(body.getFirst("goodsId"));
         int amount = Integer.parseInt(body.getFirst("amount"));
 
         try {

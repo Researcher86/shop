@@ -35,14 +35,15 @@ public class IndexController extends AbstractController {
     private static final String PAGE_PRICE_LIST = "priceList";
     private static final int PAGE_SIZE = 5;
 
-    @Autowired
-    private GoodsService goodsService;
+    private final GoodsService goodsService;
+
+    private final CategoryService categoryService;
 
     @Autowired
-    private CategoryService categoryService;
-
-    public IndexController() {
+    public IndexController(CategoryService categoryService, GoodsService goodsService) {
         super(VIEW_FOLDER);
+        this.categoryService = categoryService;
+        this.goodsService = goodsService;
     }
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)

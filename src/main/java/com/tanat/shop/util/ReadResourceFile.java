@@ -1,14 +1,28 @@
 package com.tanat.shop.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.ResourceUtils;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 
 public class ReadResourceFile {
-    public static byte[] read(String fileName) throws IOException {
-        File file = ResourceUtils.getFile("classpath:img/" + fileName);
-        return Files.readAllBytes(file.toPath());
+    private static final Logger LOG = LoggerFactory.getLogger(ReadResourceFile.class);
+
+    public static byte[] read(String fileName) {
+        File file = null;
+        try {
+            file = ResourceUtils.getFile("classpath:img/" + fileName);
+            return Files.readAllBytes(file.toPath());
+        } catch (FileNotFoundException e) {
+            LOG.error("File not found", e);
+        } catch (IOException e) {
+            LOG.error("Error reading file", e);
+        }
+
+        return null;
     }
 }

@@ -29,11 +29,12 @@ public class CommentController extends AbstractController {
 
     private static final Logger LOG = LoggerFactory.getLogger(CommentController.class);
 
-    @Autowired
-    private CommentService service;
+    private final CommentService service;
 
-    public CommentController() {
+    @Autowired
+    public CommentController(CommentService service) {
         super("admin");
+        this.service = service;
     }
 
     @RequestMapping(value = "/comments", method = RequestMethod.GET)

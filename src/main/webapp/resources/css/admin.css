@@ -1,11 +1,12 @@
 .page-header{
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 
 .categoriesTable td:first-child, .categoriesTable td:last-child,
 .commentsTable td:first-child, .commentsTable td:last-child,
-.cartsTable td:first-child, .cartsTable td:last-child
+.cartsTable td:first-child, .cartsTable td:last-child,
+.clientsTable td:first-child, .clientsTable td:last-child
 {
     width: 70px;
     text-align: center;

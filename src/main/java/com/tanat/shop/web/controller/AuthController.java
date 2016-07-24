@@ -21,8 +21,12 @@ import javax.servlet.http.HttpSession;
 public class AuthController {
     private static final Logger LOG = LoggerFactory.getLogger(AuthController.class);
 
+    private final ClientService clientService;
+
     @Autowired
-    private ClientService clientService;
+    public AuthController(ClientService clientService) {
+        this.clientService = clientService;
+    }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginForm(HttpSession httpSession, Model model) {

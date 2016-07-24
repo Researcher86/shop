@@ -11,8 +11,12 @@ import java.util.List;
 
 @Service
 public class CategoryService {
+    private final CategoryRepository categoryRepository;
+
     @Autowired
-    private CategoryRepository categoryRepository;
+    public CategoryService(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
+    }
 
     public List<Category> getAll() {
         return categoryRepository.findAll();
@@ -24,9 +28,6 @@ public class CategoryService {
         if (category == null) {
             throw new AppException("Категория товара не найдена id = " + id);
         }
-
-        category.getGoodsList().size();
-
         return category;
     }
 
@@ -34,6 +35,7 @@ public class CategoryService {
         categoryRepository.saveAndFlush(category);
     }
 
+    @Transactional
     public void delete(Long id) {
         if (!getById(id).getGoodsList().isEmpty()) {
             throw new AppException("Невозможно удалить категорию. На данную категорию ссылаются товары");
