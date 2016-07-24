@@ -4,9 +4,11 @@
 
 
 .categoriesTable td:first-child, .categoriesTable td:last-child,
-.commentsTable td:first-child, .commentsTable td:last-child
+.commentsTable td:first-child, .commentsTable td:last-child,
+.cartsTable td:first-child, .cartsTable td:last-child
 {
     width: 70px;
+    text-align: center;
 }
 
 /*=========================Footer==========================*/

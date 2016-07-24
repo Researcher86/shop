@@ -1,6 +1,7 @@
 package com.tanat.shop.util;
 
 import com.tanat.shop.model.*;
+import com.tanat.shop.repository.CartRepository;
 import com.tanat.shop.repository.CategoryRepository;
 import com.tanat.shop.repository.ClientRepository;
 import com.tanat.shop.repository.GoodsRepository;
@@ -23,6 +24,9 @@ public class InitDatabase {
 
     @Autowired
     private ClientRepository clientRepository;
+
+    @Autowired
+    private CartRepository cartRepository;
 
     @PostConstruct
     public void init() throws InterruptedException {
@@ -63,5 +67,13 @@ public class InitDatabase {
 
         categoryRepository.saveAndFlush(new Category("Линейка"));
         categoryRepository.saveAndFlush(new Category("Папка"));
+
+
+        Cart cart = new Cart(client);
+        cart.addOrder(goods, 10);
+        cart.addOrder(goods, 1);
+        cart.setShippingAddress("Дощанова 133б");
+
+        cartRepository.saveAndFlush(cart);
     }
 }

@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -25,6 +26,11 @@ public class Cart {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "cart")
     private List<Order> orders = new ArrayList<>();
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar orderDate;
+
+    private boolean processed;
 
     public Cart() {
     }
@@ -100,5 +106,24 @@ public class Cart {
         } else {
             throw new AppException("Order contain goods " + goodsId + " not found");
         }
+    }
+
+    public Calendar getOrderDate() {
+        return orderDate;
+    }
+
+    @PrePersist
+    public void initOrderDate() {
+        if (!processed) {
+            orderDate = Calendar.getInstance();
+        }
+    }
+
+    public boolean isProcessed() {
+        return processed;
+    }
+
+    public void processed() {
+        this.processed = true;
     }
 }
