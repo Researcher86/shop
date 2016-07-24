@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  */
 public class CategoryRepositoryTest extends AbstractRepositoryTest {
 
-    public static final String CATEGORY_NAME = "Канцтовары";
+    private static final String CATEGORY_NAME = "Канцтовары";
 
     @Autowired
     private CategoryRepository categoryRepository;

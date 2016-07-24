@@ -46,12 +46,6 @@ public class IndexController extends AbstractController {
         this.goodsService = goodsService;
     }
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    @ResponseBody
-    public String testUtf8() {
-        return "Русский тест";
-    }
-
     @ModelAttribute("categories")
     public List<Category> getCategories() {
         return categoryService.getAll();

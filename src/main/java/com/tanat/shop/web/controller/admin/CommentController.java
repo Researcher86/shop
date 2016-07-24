@@ -28,8 +28,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CommentController extends AbstractController {
 
     private static final Logger LOG = LoggerFactory.getLogger(CommentController.class);
-    public static final String COMMENT_LIST = "comments";
-    public static final String COMMENT = "comment";
+    private static final String COMMENT_LIST = "comments";
+    private static final String COMMENT = "comment";
 
     private final CommentService service;
 

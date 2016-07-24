@@ -4,10 +4,7 @@ import com.tanat.shop.exception.AppException;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Entity
@@ -92,11 +89,11 @@ public class Cart {
     }
 
     public void deleteGoods(Long goodsId) {
-        orders = orders.stream().filter(o -> o.getGoods().getId() != goodsId).collect(Collectors.toList());
+        orders = orders.stream().filter(o -> !Objects.equals(o.getGoods().getId(), goodsId)).collect(Collectors.toList());
     }
 
     private Optional<Order> findOrderByGoods(Long goodsId) {
-        return orders.stream().filter(o -> o.getGoods().getId() == goodsId).findFirst();
+        return orders.stream().filter(o -> Objects.equals(o.getGoods().getId(), goodsId)).findFirst();
     }
 
     public Order findOrderByGoodsId(Long goodsId) {

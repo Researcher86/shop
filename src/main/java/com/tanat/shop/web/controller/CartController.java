@@ -27,8 +27,8 @@ import org.springframework.web.bind.annotation.*;
 @SessionAttributes({"cart", "client"})
 public class CartController {
     private static final Logger LOG = LoggerFactory.getLogger(CartController.class);
-    public static final String INDEX_TEMPLATE = "index/template";
-    public static final String CONTENT = "content";
+    private static final String INDEX_TEMPLATE = "index/template";
+    private static final String CONTENT = "content";
 
     private final GoodsService goodsService;
 

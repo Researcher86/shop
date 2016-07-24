@@ -32,8 +32,8 @@ import java.util.List;
 public class GoodsController extends AbstractController {
 
     private static final Logger LOG = LoggerFactory.getLogger(GoodsController.class);
-    public static final String GOODS_LIST = "goodsList";
-    public static final String GOODS = "goods";
+    private static final String GOODS_LIST = "goodsList";
+    private static final String GOODS = "goods";
 
     private final GoodsService goodsService;
 

@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  */
 public class CartRepositoryTest extends AbstractRepositoryTest {
 
-    public static final String SHIPPING_ADDRESS = "Не знаю куда";
+    private static final String SHIPPING_ADDRESS = "Не знаю куда";
 
     @Autowired
     private CartRepository cartRepository;

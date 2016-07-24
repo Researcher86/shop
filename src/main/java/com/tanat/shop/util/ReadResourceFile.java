@@ -16,7 +16,7 @@ public class ReadResourceFile {
     }
 
     public static byte[] read(String fileName) {
-        File file = null;
+        File file;
         try {
             file = ResourceUtils.getFile("classpath:img/" + fileName);
             return Files.readAllBytes(file.toPath());

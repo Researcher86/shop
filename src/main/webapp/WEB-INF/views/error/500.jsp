@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Tanat
@@ -11,7 +12,7 @@
     <title>E-Shop</title>
 </head>
 <body>
-<img src="/resources/img/robot.png">
+<img src="<c:url value="/resources/img/robot.png"/>">
 <h1>App Error!!!</h1>
 <hr>
 <h2>${msg}</h2>

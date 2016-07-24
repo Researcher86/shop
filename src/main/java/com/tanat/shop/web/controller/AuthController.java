@@ -20,11 +20,11 @@ import javax.servlet.http.HttpSession;
 @RequestMapping(value = "/auth")
 public class AuthController {
     private static final Logger LOG = LoggerFactory.getLogger(AuthController.class);
-    public static final String INDEX_TEMPLATE = "/index/template";
-    public static final String ERROR_ATTR = "error";
-    public static final String REDIRECT_HOME = "redirect:/";
-    public static final String CLIENT = "client";
-    public static final String CONTENT = "content";
+    private static final String INDEX_TEMPLATE = "/index/template";
+    private static final String ERROR_ATTR = "error";
+    private static final String REDIRECT_HOME = "redirect:/";
+    private static final String CLIENT = "client";
+    private static final String CONTENT = "content";
 
     private final ClientService clientService;
 

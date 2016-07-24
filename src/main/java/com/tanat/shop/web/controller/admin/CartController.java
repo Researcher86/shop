@@ -22,11 +22,12 @@ public class CartController extends AbstractController {
 
     private static final Logger LOG = LoggerFactory.getLogger(CartController.class);
 
-    @Autowired
-    private CartService service;
+    private final CartService service;
 
-    public CartController() {
+    @Autowired
+    public CartController(CartService service) {
         super("admin");
+        this.service = service;
     }
 
     @RequestMapping(value = "/carts", method = RequestMethod.GET)

@@ -31,7 +31,7 @@ public class GoodsService {
         Goods goods = goodsRepository.findOne(id);
 
         List<Comment> activeComments = goods.getComments().stream()
-                .filter(comment -> comment.isActive())
+                .filter(Comment::isActive)
                 .collect(Collectors.toList());
 
         goods.setComments(activeComments);
@@ -53,10 +53,9 @@ public class GoodsService {
     }
 
     @Transactional
-    public Goods addCommentForGoods(Comment comment, Long id) {
+    public void addCommentForGoods(Comment comment, Long id) {
         Goods goods = goodsRepository.findOne(id);
         goods.addComments(comment);
-        return goods;
     }
 
     @Transactional(readOnly = true)
