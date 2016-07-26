@@ -1,6 +1,5 @@
 package com.tanat.shop.model;
 
-import com.tanat.shop.exception.ImageLoadException;
 import com.tanat.shop.util.ReadResourceFile;
 import org.springframework.util.StringUtils;
 
@@ -50,11 +49,6 @@ public class Image {
 
     public static Image load(String fileName) {
         byte[] data = ReadResourceFile.read(fileName);
-
-        if (data == null) {
-            throw new ImageLoadException("Error load image " + fileName);
-        }
-
         return new Image(data, StringUtils.getFilenameExtension(fileName));
     }
 }

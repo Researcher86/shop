@@ -1,5 +1,6 @@
 package com.tanat.shop.util;
 
+import com.tanat.shop.exception.AppException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.ResourceUtils;
@@ -26,6 +27,6 @@ public class ReadResourceFile {
             LOG.error("Error reading file", e);
         }
 
-        return null;
+        throw new AppException("Error read resource");
     }
 }
