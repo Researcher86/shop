@@ -27,23 +27,19 @@
 
 <div class="container body">
     <header>
-        <div class="row text-center login">
-            <c:if test="${empty client}">
-                <div class="col-xs-1 pull-right">
-                    <a href="<c:url value="/auth/login"/>">Вход</a>
-                </div>
-                <div class="col-xs-1 pull-right">
+        <div class="row login">
+            <div class="col-xs-4 pull-right text-right">
+                <c:if test="${empty client.email}">
                     <a href="<c:url value="/auth/registration"/>">Регистрация</a>
-                </div>
-            </c:if>
-            <c:if test="${not empty client}">
-                <div class="col-xs-1 pull-right">
-                    <a href="<c:url value="/auth/logout"/>">Выход</a>
-                </div>
-                <div class="col-xs-1 pull-right">
+                    <span>|</span>
+                    <a href="<c:url value="/auth/login"/>">Вход</a>
+                </c:if>
+                <c:if test="${not empty client.email}">
                     <span>${client.email}</span>
-                </div>
-            </c:if>
+                    <span>|</span>
+                    <a href="<c:url value="/auth/logout"/>">Выход</a>
+                </c:if>
+            </div>
         </div>
         <div class="clearfix"></div>
         <div class="row">

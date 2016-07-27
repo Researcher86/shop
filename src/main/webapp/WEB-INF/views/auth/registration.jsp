@@ -2,8 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="col-xs-12">
-    <div class="col-xs-3"></div>
-    <div class="col-xs-6">
+    <div class="col-xs-4 col-xs-offset-4">
         <spring:form modelAttribute="client">
             <div class="form-group">
                 <label for="fio">Ф.И.О.</label>
@@ -30,11 +29,9 @@
                 <spring:password path="password" cssClass="form-control"/>
                 <spring:errors path="password" cssClass="text-danger"/>
             </div>
-            <div class="form-group pull-right">
-                <button type="submit" class="btn btn-default">
-                    Зарегистрироваться
-                </button>
-            </div>
+            <button type="submit" class="btn btn-default">
+                <i class="glyphicon glyphicon-ok"></i> Зарегистрироваться
+            </button>
         </spring:form>
     </div>
     <div class="col-xs-3"></div>

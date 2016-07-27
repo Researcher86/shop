@@ -3,24 +3,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="col-xs-12">
-    <div class="col-xs-3"></div>
-    <div class="col-xs-6">
+    <div class="col-xs-4 col-xs-offset-4">
         <span class="text-danger">${error}</span>
         <c:url var="login" value="/auth/login"/>
         <spring:form action="${login}" method="post">
             <div class="form-group">
-                <input class="form-control" type="email" name="email" placeholder="Почтовый ящик">
-                <input class="form-control" type="password" name="password" placeholder="Пароль">
+                <label>Почтовый ящик</label>
+                <input class="form-control" type="email" name="email">
             </div>
-            <div class="form-group row">
-                <div class="col-xs-6 text-center">
-                    <a href="<c:url value="/auth/registration"/>">Регистрация</a>
-                </div>
-                <div class="col-xs-6">
-                    <button class="form-control" type="submit">
-                        Вход
-                    </button>
-                </div>
+            <div class="form-group">
+                <label>Пароль</label>
+                <input class="form-control" type="password" name="password">
+            </div>
+            <div>
+                <button class="btn btn-default" type="submit">
+                    <span class="glyphicon glyphicon-off"></span> Вход
+                </button>
             </div>
         </spring:form>
     </div>
