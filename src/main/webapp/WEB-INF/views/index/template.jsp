@@ -85,7 +85,6 @@
                 <a href="<c:url value="/priceList"/>" class="btn btn-danger">Прайс-лист</a>
             </div>
         </div>
-
     </header>
 
     <div class="row">
@@ -102,7 +101,7 @@
 
 <footer>
     <div class="container">
-        E-Shop 2015
+        E-Shop 2015-2016
     </div>
 </footer>
 
