@@ -25,8 +25,27 @@
 </head>
 <body>
 
-<header>
-    <div class="container">
+<div class="container body">
+    <header>
+        <div class="row text-center">
+            <c:if test="${empty client}">
+                <div class="col-xs-1 pull-right">
+                    <a href="<c:url value="/auth/login"/>">Вход</a>
+                </div>
+                <div class="col-xs-1 pull-right">
+                    <a href="<c:url value="/auth/registration"/>">Регистрация</a>
+                </div>
+            </c:if>
+            <c:if test="${not empty client}">
+                <div class="col-xs-1 pull-right">
+                    <a href="<c:url value="/auth/logout"/>">Выход</a>
+                </div>
+                <div class="col-xs-1 pull-right">
+                    <span>${client.email}</span>
+                </div>
+            </c:if>
+        </div>
+        <div class="clearfix"></div>
         <div class="row">
             <div class="col-xs-3 logo"></div>
 
@@ -47,7 +66,8 @@
             <div class="col-xs-3">
                 <div class="cart text-left">
                     <a href="<c:url value="/cart"/>" class="yen-bs-count_link">В корзине</a>
-                    <strong><c:out value="${empty cart.totalAmount ? 0 : cart.totalAmount}"/></strong><span> товаров</span><br>
+                    <strong><c:out
+                            value="${empty cart.totalAmount ? 0 : cart.totalAmount}"/></strong><span> товаров</span><br>
                     <span>на сумму </span><strong>${empty cart.totalPrice ? 0 : cart.totalPrice} тг.</strong>
 
                     <a href="<c:url value="/cart"/>" class="yen-bs-count_link" title="Корзина">
@@ -65,10 +85,9 @@
                 <a href="<c:url value="/priceList"/>" class="btn btn-danger">Прайс-лист</a>
             </div>
         </div>
-    </div>
-</header>
 
-<div class="container">
+    </header>
+
     <div class="row">
         <jsp:include page="${content}"/>
         <div class="col-xs-12">

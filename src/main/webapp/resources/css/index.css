@@ -1,11 +1,25 @@
+.body{
+    /*padding: 5px;*/
+    padding: 10px;
+
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+    min-height: 100%;
+    border-radius: 3px;
+}
+
+body{
+    background-image: url("../img/bg.jpg");
+}
 
 header{
     height: 100px;
-    margin: 5px 0 100px 0;
+    margin: 0 0 120px 0;
 }
 
 header .headerMenu{
     height: 50px;
+    /*padding: 0 2px 0 2px;*/
 }
 
 .logo{
@@ -48,17 +62,9 @@ header .headerMenu{
     background: url("../img/cart.jpg") top center no-repeat;
 }
 
-.goodsCatalog .pagination {
-    margin: 0 0 25px 0;!important;
-}
-
 .goodsCatalog .active a, .goodsCatalog .active a:hover, .goodsCatalog .active a:focus{
     background-color: #c9302c;
     border-color: #c9302c;
-}
-
-.goodsCatalog table td:last-child{
-    width: 150px;
 }
 
 .goodsCatalog .goodsImg{
@@ -135,6 +141,7 @@ html {
 
 body {
     /* Margin bottom by footer height */
+    /*margin-top: 3px;*/
     margin-bottom: 40px;
 }
 
