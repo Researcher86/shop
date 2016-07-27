@@ -35,7 +35,7 @@
                     </td>
                     <td>${order.totalPrice}</td>
                     <td>
-                        <button class="btn btn-danger btn-sm" goodsId="${order.goods.id}"><i class="glyphicon glyphicon-trash"></i> Удалить</button>
+                        <button class="btn btn-danger btn-xs glyphicon glyphicon-trash" goodsId="${order.goods.id}"></button>
                     </td>
                 </tr>
             </c:forEach>
