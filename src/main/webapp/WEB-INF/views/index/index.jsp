@@ -6,6 +6,15 @@
 <div class="col-xs-3 goodsCatalog">
 
     <div class="panel panel-danger">
+        <div class="panel-heading"><i class="glyphicon glyphicon-filter"></i> Фильтр</div>
+        <div class="panel-body">
+            <div class="list-group">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-danger">
         <div class="panel-heading"><i class="glyphicon glyphicon-list-alt"></i> Категории</div>
         <div class="panel-body">
             <div class="list-group">
@@ -24,23 +33,17 @@
     <div class="row">
         <c:forEach var="goods" items="${goodsList}">
             <div class="col-xs-3 text-center">
-                <div>
-                    <img src="data:image/${goods.image.ext};base64,${goods.image.base64}" height="150"
-                         border="0" alt="">
-                </div>
+                <img src="data:image/${goods.image.ext};base64,${goods.image.base64}" height="150" border="0" alt="">
+
                 <a href="<c:url value="/goods/${goods.id}"/>">
                     <h4>${goods.name}</h4>
                 </a>
 
-                <div>
-                    <h4>${goods.price} тг.</h4>
-                </div>
+                <h4>${goods.price} тг.</h4>
 
-                <div>
-                    <button class="buy btn btn-danger" goodsId="${goods.id}">
-                        <span class="glyphicon glyphicon-shopping-cart"></span> Купить
-                    </button>
-                </div>
+                <button class="buy btn btn-danger" goodsId="${goods.id}">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Купить
+                </button>
             </div>
         </c:forEach>
     </div>
