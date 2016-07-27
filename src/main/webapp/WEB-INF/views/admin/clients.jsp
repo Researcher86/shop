@@ -25,9 +25,9 @@
     <c:forEach var="client" items="${clients}" varStatus="count">
         <tr>
             <td>${count.count}</td>
-            <td>${client.fio}</td>
-            <td>${client.phone}</td>
-            <td>${client.address}</td>
+            <td><c:out value="${client.fio}"/></td>
+            <td><c:out value="${client.phone}"/></td>
+            <td><c:out value="${client.address}"/></td>
             <td>
                 <a href="<c:url value="/admin/clients/${client.id}"/>" class="btn btn-xs btn-default" title="Подробно">
                     <i class="glyphicon glyphicon-list-alt"></i>

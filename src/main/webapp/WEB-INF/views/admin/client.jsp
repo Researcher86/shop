@@ -7,16 +7,16 @@
 
 <dl class="dl-horizontal">
     <dt>Ф.И.О.</dt>
-    <dd>${client.fio}</dd>
+    <dd><c:out value="${client.fio}"/></dd>
 
     <dt>Телефон</dt>
-    <dd>${client.phone}</dd>
+    <dd><c:out value="${client.phone}"/></dd>
 
     <dt>Адрес</dt>
-    <dd>${client.address}</dd>
+    <dd><c:out value="${client.address}"/></dd>
 
     <dt>E-mail</dt>
-    <dd>${client.email}</dd>
+    <dd><c:out value="${client.email}"/></dd>
 </dl>
 
 

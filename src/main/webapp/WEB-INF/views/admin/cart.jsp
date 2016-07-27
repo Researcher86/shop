@@ -10,7 +10,7 @@
     <dd>${cart.client.fio}</dd>
 
     <dt>Адрес доставки</dt>
-    <dd>${cart.shippingAddress}</dd>
+    <dd><c:out value="${cart.shippingAddress}"/></dd>
 
     <dt>Дата заказа</dt>
     <dd><fmt:formatDate value="${cart.orderDate.time}" type="date" pattern="dd.MM.yyyy HH:MM"/></dd>

@@ -28,7 +28,7 @@
         <tr>
             <td>${count.count}</td>
             <td>${cart.client.fio}</td>
-            <td>${cart.shippingAddress}</td>
+            <td><c:out value="${cart.shippingAddress}"/></td>
             <td class="text-center">${cart.totalPrice}</td>
             <td class="text-center">
                <fmt:formatDate value="${cart.orderDate.time}" type="date" pattern="dd.MM.yyyy HH:MM"/>
