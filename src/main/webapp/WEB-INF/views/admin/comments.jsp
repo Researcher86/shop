@@ -25,7 +25,7 @@
     <c:forEach var="comment" items="${comments}" varStatus="count">
         <tr>
             <td>${count.count}</td>
-            <td>${comment.text}</td>
+            <td><c:out value="${comment.text}"/></td>
             <td>${comment.client.fio}</td>
             <td class="text-center">
                <fmt:formatDate value="${comment.date.time}" type="date" pattern="dd.MM.yyyy HH:MM"/>

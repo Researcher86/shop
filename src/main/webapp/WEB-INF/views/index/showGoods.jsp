@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-xs-11">
                     <div class="col-xs-12">
-                        ${comment.text}
+                        <c:out value="${comment.text}"/>
                     </div>
                     <div class="col-xs-12 row text-muted small ">
                         <i class="glyphicon glyphicon-user"></i> ${comment.client.fio}&nbsp;&nbsp;
