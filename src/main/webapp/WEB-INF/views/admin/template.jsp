@@ -64,11 +64,6 @@
         </div>
         <div class="col-sm-10">
             <jsp:include page="${content}"/>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
         </div>
     </div>
 </div>

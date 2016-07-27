@@ -27,7 +27,7 @@
 
 <div class="container body">
     <header>
-        <div class="row text-center">
+        <div class="row text-center login">
             <c:if test="${empty client}">
                 <div class="col-xs-1 pull-right">
                     <a href="<c:url value="/auth/login"/>">Вход</a>
@@ -89,13 +89,6 @@
 
     <div class="row">
         <jsp:include page="${content}"/>
-        <div class="col-xs-12">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-        </div>
     </div>
 </div>
 

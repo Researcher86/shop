@@ -1,11 +1,17 @@
 .body{
-    /*padding: 5px;*/
-    padding: 10px;
+    padding: 10px 10px 50px 10px;
 
     background-color: white;
     box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
     min-height: 100%;
-    border-radius: 3px;
+    border-radius: 5px;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+.body .login{
+    padding: 5px;
 }
 
 body{
@@ -14,7 +20,7 @@ body{
 
 header{
     height: 100px;
-    margin: 0 0 110px 0;
+    margin: 0 0 130px 0;
 }
 
 header .headerMenu{
@@ -138,5 +144,6 @@ footer {
     height: 40px;
     background-color: #f5f5f5;
     padding-top: 10px;
+    border-top: 1px solid #ccc;
 }
 /*=========================Footer==========================*/

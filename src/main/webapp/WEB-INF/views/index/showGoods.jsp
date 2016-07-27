@@ -28,30 +28,6 @@
     <div class="col-xs-12">
         <hr>
     </div>
-    <div class="col-xs-12 comments">
-        <c:forEach var="comment" items="${goods.comments}">
-            <div class="col-xs-12 comment">
-                <div class="col-xs-1 row text-center">
-                    <img class="img-circle" width="50" src="<c:url value="/resources/img/anonymous.png"/>" alt="Фото">
-                </div>
-                <div class="col-xs-11">
-                    <div class="col-xs-12">
-                        <c:out value="${comment.text}"/>
-                    </div>
-                    <div class="col-xs-12 row text-muted small ">
-                        <i class="glyphicon glyphicon-user"></i> ${comment.client.fio}&nbsp;&nbsp;
-                        <i class="glyphicon glyphicon-time"></i> <fmt:formatDate value="${comment.date.time}" type="date" pattern="dd.MM.yyyy HH:MM"/>
-                    </div>
-                </div>
-            </div>
-        </c:forEach>
-    </div>
-
-    <c:if test="${goods.comments.size() != 0}">
-        <div class="col-xs-12">
-            <hr>
-        </div>
-    </c:if>
 
     <div class="col-xs-12">
         <c:if test="${not empty client}">
@@ -70,5 +46,30 @@
             <h5>Только авторизованные пользователи могут оставлять комментарии</h5>
             <h4><a href="<c:url value="/auth/login"/>">Авторизоваться</a></h4>
         </c:if>
+    </div>
+
+    <c:if test="${goods.comments.size() != 0}">
+        <div class="col-xs-12">
+            <hr>
+        </div>
+    </c:if>
+
+    <div class="col-xs-12 comments">
+        <c:forEach var="comment" items="${goods.comments}">
+            <div class="col-xs-12 comment">
+                <div class="col-xs-1 row text-center">
+                    <img class="img-circle" width="50" src="<c:url value="/resources/img/anonymous.png"/>" alt="Фото">
+                </div>
+                <div class="col-xs-11">
+                    <div class="col-xs-12">
+                        <c:out value="${comment.text}"/>
+                    </div>
+                    <div class="col-xs-12 row text-muted small ">
+                        <i class="glyphicon glyphicon-user"></i> ${comment.client.fio}&nbsp;&nbsp;
+                        <i class="glyphicon glyphicon-time"></i> <fmt:formatDate value="${comment.date.time}" type="date" pattern="dd.MM.yyyy HH:MM"/>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
     </div>
 </div>
