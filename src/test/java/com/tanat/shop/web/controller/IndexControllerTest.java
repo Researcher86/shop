@@ -52,15 +52,15 @@ public class IndexControllerTest extends AbstractControllerTest {
     public void addCommentForGoods_textNotEmpty_authenticationClient() throws Exception {
         Client client = clientService.save(Client.createSimple());
 
-        mockMvc.perform(post("/goods/1")
+        mockMvc.perform(post("/goods/2")
                 .param("text", "test")
                 .param("client.id", String.valueOf(client.getId()))
         )
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/goods/1"));
+                .andExpect(redirectedUrl("/goods/2"));
 
-        Goods goods = goodsService.getById(1L);
+        Goods goods = goodsService.getById(2L);
         assertEquals(1, goods.getComments().size());
     }
 
@@ -68,7 +68,7 @@ public class IndexControllerTest extends AbstractControllerTest {
     public void addCommentForGoods_textEmpty_authenticationClient() throws Exception {
         Client client = clientService.save(Client.createSimple());
 
-        mockMvc.perform(post("/goods/1")
+        mockMvc.perform(post("/goods/2")
                 .param("text", "")
                 .param("client.id", String.valueOf(client.getId()))
         )
