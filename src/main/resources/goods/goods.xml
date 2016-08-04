@@ -53,107 +53,51 @@
         </category>
         <category title="Планшеты">
             <goods title="NextTab B5230 Black" price="24900"
-                   description="- 7 дюйм, 1024х600;
-                                - Android 5.1;
-                                - Процессор: 4 ядра;
-                                - Внутренняя память 8 Гб;
-                                - Мобильная связь: 3G, LTE;
-                                - Цвет черный."
+                   description="- 7 дюйм, 1024х600;&#xA;- Android 5.1;&#xA;- Процессор: 4 ядра;&#xA;- Внутренняя память 8 Гб;&#xA;- Мобильная связь: 3G, LTE;&#xA;- Цвет черный."
                    image="goods/img/tablets/nexttab-b5230-black.jpg"
             />
             <goods title="Samsung Galaxy Tab3 Lite Plus SM-T113 White" price="35900"
-                   description="- 7 дюйм, 1024x600;
-                                - Android;
-                                - Процессор: 4 ядра;
-                                - Внутренняя память 8 Гб;
-                                - Цвет белый."
+                   description="- 7 дюйм, 1024x600;&#xA;- Android;&#xA;- Процессор: 4 ядра;&#xA;- Внутренняя память 8 Гб;&#xA;- Цвет белый."
                    image="goods/img/tablets/samsung-galaxy-tab3-lite-plus-sm-t113-white.jpg"
             />
             <goods title="Samsung Galaxy Tab 3 7.0 Lite SM-T116 8Gb Black" price="52000"
-                   description="- 7 дюйм, 1024x600;
-                                - Android;
-                                - Процессор: 4 ядра;
-                                - Внутренняя память 8 Гб;
-                                - Мобильная связь: 3G;
-                                - Цвет черный."
+                   description="- 7 дюйм, 1024x600;&#xA;- Android;&#xA;- Процессор: 4 ядра;&#xA;- Внутренняя память 8 Гб;&#xA;- Мобильная связь: 3G;&#xA;- Цвет черный."
                    image="goods/img/tablets/samsung-galaxy-tab-3-7-0-lite-sm-t116-8gb-black.jpg"
             />
             <goods title="Apple iPad Air 2 64Gb Wi-Fi + Cellular Space Gray" price="263000"
-                   description="- 9.7 дюйм, 2048x1536;
-                                - iOS;
-                                - Процессор: 3 ядра;
-                                - Внутренняя память 64 Гб;
-                                - Мобильная связь: 3G, LTE (4G), EDGE, GPRS, GSM1800, GSM1900, GSM900, HSCSD, HSDPA, HSPA+, HSUPA;
-                                - Цвет серый."
+                   description="- 9.7 дюйм, 2048x1536;&#xA;- iOS;&#xA;- Процессор: 3 ядра;&#xA;- Внутренняя память 64 Гб;&#xA;- Мобильная связь: 3G, LTE (4G), EDGE, GPRS, GSM1800, GSM1900, GSM900, HSCSD, HSDPA, HSPA+, HSUPA;&#xA;- Цвет серый."
                    image="goods/img/tablets/apple-ipad-air-2-64gb-wi-fi-cellular-space-gray.jpg"
             />
             <goods title="Samsung Galaxy Tab 3 7.0 Lite SM-T116 8Gb White" price="59000"
-                   description="- 7 дюйм, 1024x600;
-                                - Android;
-                                - Процессор: 4 ядра;
-                                - Внутренняя память 8 Гб;
-                                - Мобильная связь: 3G;
-                                - Цвет белый."
+                   description="- 7 дюйм, 1024x600;&#xA;- Android;&#xA;- Процессор: 4 ядра;&#xA;- Внутренняя память 8 Гб;&#xA;- Мобильная связь: 3G;&#xA;- Цвет белый."
                    image="goods/img/tablets/samsung-galaxy-tab-3-7-0-lite-sm-t116-8gb-white.jpg"
             />
             <goods title="Samsung Galaxy Tab A 7.0 SM-T285 8Gb LTE Black" price="63826"
-                   description="- 7 дюйм, 1280x800;
-                                - Android 5.1;
-                                - Процессор: 4 ядра;
-                                - Внутренняя память 8 Гб;
-                                - Мобильная связь: 3G, LTE (4G), GSM1800, GSM1900, GSM900, GSM850;
-                                - Цвет черный."
+                   description="- 7 дюйм, 1280x800;&#xA;- Android 5.1;&#xA;- Процессор: 4 ядра;&#xA;- Внутренняя память 8 Гб;&#xA;- Мобильная связь: 3G, LTE (4G), GSM1800, GSM1900, GSM900, GSM850;&#xA;- Цвет черный."
                    image="goods/img/tablets/samsung-galaxy-tab-a-7-0-sm-t285-8gb-lte-black.jpg"
             />
             <goods title="Apple iPad Pro 128Gb Wi-Fi + Cellular Space Gray" price="379000"
-                   description="- 12.9 дюйм;
-                                - iOS;
-                                - Внутренняя память 128 Гб;
-                                - Мобильная связь: 3G, LTE (4G), EDGE, GPRS, GSM1800, GSM1900, GSM900, HSCSD, HSDPA, HSPA+, HSUPA;
-                                - Цвет серый."
+                   description="- 12.9 дюйм;&#xA;- iOS;&#xA;- Внутренняя память 128 Гб;&#xA;- Мобильная связь: 3G, LTE (4G), EDGE, GPRS, GSM1800, GSM1900, GSM900, HSCSD, HSDPA, HSPA+, HSUPA;&#xA;- Цвет серый."
                    image="goods/img/tablets/apple-ipad-pro-128gb-wi-fi-cellular-space-gray.jpg"
             />
             <goods title="Samsung Galaxy Tab E 9.6 SM-T561 8Gb Black" price="70700"
-                   description="- 9.6 дюйм, 1280x800;
-                                - Android;
-                                - Процессор: 4 ядра;
-                                - Внутренняя память 8 Гб;
-                                - Мобильная связь: 3G;
-                                - Цвет черный."
+                   description="- 9.6 дюйм, 1280x800;&#xA;- Android;&#xA;- Процессор: 4 ядра;&#xA;- Внутренняя память 8 Гб;&#xA;- Мобильная связь: 3G;&#xA;- Цвет черный."
                    image="goods/img/tablets/samsung-galaxy-tab-e-9-6-sm-t561-8gb-black.jpg"
             />
             <goods title="ASUS ZenPad C 7.0 Z170CG 8Gb Black" price="39820"
-                   description="- 7 дюйм, 1024x600;
-                                - Android 5.0;
-                                - Процессор: 4 ядра;
-                                - Внутренняя память 8 Гб;
-                                - Мобильная связь: 3G, EDGE, GSM1800, GSM1900, GSM900;
-                                - Цвет черный."
+                   description="- 7 дюйм, 1024x600;&#xA;- Android 5.0;&#xA;- Процессор: 4 ядра;&#xA;- Внутренняя память 8 Гб;&#xA;- Мобильная связь: 3G, EDGE, GSM1800, GSM1900, GSM900;&#xA;- Цвет черный."
                    image="goods/img/tablets/asus-zenpad-c-7-0-z170cg-8gb-black.jpg"
             />
             <goods title="NextTab A3310 Black" price="16900"
-                   description="- планшет;
-                                - Android 5.1 Lollipop;
-                                - 7 дюйм, 1024x600;
-                                - размер встроенной памяти 8 Гб;
-                                - цвет черный."
+                   description="- планшет;&#xA;- Android 5.1 Lollipop;&#xA;- 7 дюйм, 1024x600;&#xA;- размер встроенной памяти 8 Гб;&#xA;- цвет черный."
                    image="goods/img/tablets/nexttab-a3310-black-1200783-1.jpg"
             />
             <goods title="Apple iPad Pro 128Gb Wi-Fi + Cellular Silver" price="369000"
-                   description="- 12.9 дюйм;
-                                - iOS;
-                                - Внутренняя память 128 Гб;
-                                - Мобильная связь: 3G, LTE (4G), EDGE, GPRS, GSM1800, GSM1900, GSM900, HSCSD, HSDPA, HSPA+, HSUPA;
-                                - Цвет серебристый."
+                   description="- 12.9 дюйм;&#xA;- iOS;&#xA;- Внутренняя память 128 Гб;&#xA;- Мобильная связь: 3G, LTE (4G), EDGE, GPRS, GSM1800, GSM1900, GSM900, HSCSD, HSDPA, HSPA+, HSUPA;&#xA;- Цвет серебристый."
                    image="goods/img/tablets/apple-ipad-pro-128gb-wi-fi-cellular-silver-1200829-1.jpg"
             />
             <goods title="NextTab B5210 Black" price="21900"
-                   description="- 7 дюйм, 1024х600;
-                                - Android 5.0;
-                                - Процессор: 4 ядра;
-                                - Внутренняя память 8 Гб;
-                                - Мобильная связь: 3G;
-                                - Цвет черный."
+                   description="- 7 дюйм, 1024х600;&#xA;- Android 5.0;&#xA;- Процессор: 4 ядра;&#xA;- Внутренняя память 8 Гб;&#xA;- Мобильная связь: 3G;&#xA;- Цвет черный."
                    image="goods/img/tablets/nexttab-b5210-black-1200789-1.jpg"
             />
         </category>

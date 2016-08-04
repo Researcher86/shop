@@ -32,18 +32,27 @@
 <div class="col-xs-9 goodsCatalog">
     <div class="row">
         <c:forEach var="goods" items="${goodsList}">
-            <div class="col-xs-3 text-center">
-                <img src="data:image/${goods.image.ext};base64,${goods.image.base64}" height="150" border="0" alt="">
-
-                <a href="<c:url value="/goods/${goods.id}"/>">
-                    <h4>${goods.name}</h4>
-                </a>
-
-                <h4>${goods.price} тг.</h4>
-
-                <button class="buy btn btn-danger" goodsId="${goods.id}">
-                    <span class="glyphicon glyphicon-shopping-cart"></span> Купить
-                </button>
+            <div class="col-xs-4 text-center">
+                <div class="thumbnail">
+                    <a href="<c:url value="/goods/${goods.id}"/>">
+                        <img src="data:image/${goods.image.ext};base64,${goods.image.base64}">
+                    </a>
+                    <div class="caption">
+                        <h5>
+                            <a href="<c:url value="/goods/${goods.id}"/>">
+                                ${goods.name}
+                            </a>
+                        </h5>
+                        <p>
+                            <h4>${goods.price} т</h4>
+                        </p>
+                        <p>
+                            <button class="buy btn btn-danger" goodsId="${goods.id}">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> Купить
+                            </button>
+                        </p>
+                    </div>
+                </div>
             </div>
         </c:forEach>
     </div>

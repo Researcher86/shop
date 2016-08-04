@@ -124,6 +124,14 @@ header .headerMenu{
     margin-top: 10px;
 }
 
+.thumbnail > .caption > h5{
+    height: 36px;
+}
+
+.dl-horizontal dd{
+    margin-bottom: 10px;
+}
+
 /*=========================Footer==========================*/
 html {
     position: relative;

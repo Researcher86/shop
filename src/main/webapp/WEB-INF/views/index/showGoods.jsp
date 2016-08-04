@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="col-xs-12">
     <div class="col-xs-4">
@@ -9,13 +10,30 @@
     </div>
 
     <div class="col-xs-8">
-        <h4>${goods.name}</h4>
-        <h5>${goods.category.name}</h5>
-        <h5>${goods.description}</h5>
-        <strong>Код товара: </strong><span>15364</span>
-        <button class="buy btn btn-danger" goodsId="${goods.id}">
-            <span class="glyphicon glyphicon-shopping-cart"></span> Купить
-        </button>
+        <dl class="dl-horizontal">
+            <dt>Наименование:</dt>
+            <dd>${goods.name}</dd>
+
+            <dt>Категория:</dt>
+            <dd>${goods.category.name}</dd>
+
+            <dt>Характеристики:</dt>
+            <dd>
+                ${goods.description.replaceAll('\\n', '<br />')}
+            </dd>
+
+            <dt>Цена:</dt>
+            <dd>
+                <span style="font-size: 18px">${goods.price} т</span>
+            </dd>
+
+            <dt></dt>
+            <dd>
+                <button class="buy btn btn-danger" goodsId="${goods.id}">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Купить
+                </button>
+            </dd>
+        </dl>
     </div>
     <div class="col-xs-12">
         <br>

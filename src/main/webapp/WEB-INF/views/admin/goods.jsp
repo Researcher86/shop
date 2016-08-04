@@ -24,7 +24,7 @@
         </div>
         <div class="form-group">
             <spring:label path="description">Краткое описание</spring:label>
-            <spring:textarea path="description" cssClass="form-control input-sm" cols="5"/>
+            <spring:textarea path="description" cssClass="form-control input-sm" cssStyle="height: 150px; resize: vertical"/>
         </div>
         <div class="form-group">
             <spring:label path="price">Цена</spring:label>

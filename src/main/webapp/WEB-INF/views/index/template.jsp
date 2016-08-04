@@ -64,7 +64,7 @@
                     <a href="<c:url value="/cart"/>" class="yen-bs-count_link">В корзине</a>
                     <strong><c:out
                             value="${empty cart.totalAmount ? 0 : cart.totalAmount}"/></strong><span> товаров</span><br>
-                    <span>на сумму </span><strong>${empty cart.totalPrice ? 0 : cart.totalPrice} тг.</strong>
+                    <span>на сумму </span><strong>${empty cart.totalPrice ? 0 : cart.totalPrice} т</strong>
 
                     <a href="<c:url value="/cart"/>" class="yen-bs-count_link" title="Корзина">
                         <div class="icon"></div>

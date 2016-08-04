@@ -33,7 +33,7 @@ public class IndexController extends AbstractController {
     private static final String PAGE_SHIPPING = "shipping";
     private static final String PAGE_CONTACTS = "contacts";
     private static final String PAGE_PRICE_LIST = "priceList";
-    private static final int PAGE_SIZE = 5;
+    private static final int PAGE_SIZE = 6;
 
     private final GoodsService goodsService;
 
@@ -102,8 +102,8 @@ public class IndexController extends AbstractController {
 
     private void addPagination(Model model, Page<Goods> page) {
         int current = page.getNumber() + 1;
-        int begin = Math.max(1, current - 5);
-        int end = Math.min(begin + 5, page.getTotalPages());
+        int begin = Math.max(1, current - 4);
+        int end = Math.min(begin + 4, page.getTotalPages());
 
         model.addAttribute("goodsLog", page);
         model.addAttribute("beginIndex", begin);
