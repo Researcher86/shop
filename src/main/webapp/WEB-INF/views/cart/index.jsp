@@ -49,8 +49,10 @@
         </table>
         <div>
             <c:if test="${empty client}">
-                <h5>Только авторизованные пользователи могут оформлять заказ</h5>
-                <h4><a href="<c:url value="/auth/login"/>">Авторизоваться</a></h4>
+                <div class="text-center">
+                    <h5>Только авторизованные пользователи могут оставлять комментарии</h5>
+                    <h4><a href="<c:url value="/auth/login"/>">Авторизоваться</a></h4>
+                </div>
             </c:if>
             <c:if test="${not empty client}">
                 <a class="btn btn-default pull-right" href="<c:url value="/cart/checkout"/>">Оформить заказ</a>

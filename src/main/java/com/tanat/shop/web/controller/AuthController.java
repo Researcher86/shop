@@ -57,7 +57,7 @@ public class AuthController {
             httpSession.setAttribute(ERROR_ATTR, null);
             return REDIRECT_HOME;
         } else {
-            httpSession.setAttribute(ERROR_ATTR, "Incorrect email or password");
+            httpSession.setAttribute(ERROR_ATTR, "Неверный логин или пароль!");
             model.addAttribute(CONTENT, "../auth/authentication.jsp");
             return INDEX_TEMPLATE;
         }

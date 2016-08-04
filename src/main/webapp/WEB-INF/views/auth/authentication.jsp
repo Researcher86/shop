@@ -4,7 +4,6 @@
 
 <div class="col-xs-12">
     <div class="col-xs-4 col-xs-offset-4">
-        <span class="text-danger">${error}</span>
         <c:url var="login" value="/auth/login"/>
         <spring:form action="${login}" method="post">
             <div class="form-group">
@@ -14,6 +13,8 @@
             <div class="form-group">
                 <label>Пароль</label>
                 <input class="form-control" type="password" name="password">
+
+                <span class="text-danger">${error}</span>
             </div>
             <div>
                 <button class="btn btn-default" type="submit">
@@ -22,6 +23,5 @@
             </div>
         </spring:form>
     </div>
-    <div class="col-xs-3"></div>
 </div>
 
