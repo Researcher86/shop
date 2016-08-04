@@ -2,6 +2,7 @@ package com.tanat.shop.web.controller;
 
 import com.tanat.shop.model.Cart;
 import com.tanat.shop.model.Client;
+import com.tanat.shop.service.ClientService;
 import com.tanat.shop.service.GoodsService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class CartControllerTest extends AbstractControllerTest {
 
     @Autowired
     private GoodsService goodsService;
+
+    @Autowired
+    private ClientService clientService;
 
     @Test
     public void index() throws Exception {
@@ -45,7 +49,7 @@ public class CartControllerTest extends AbstractControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(1))))
-                .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(50))));
+                .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(849000))));
     }
 
     @Test
@@ -61,7 +65,7 @@ public class CartControllerTest extends AbstractControllerTest {
                 .andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(1))))
-                .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(5))));
+                .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(84900))));
     }
 
     @Test
@@ -76,7 +80,7 @@ public class CartControllerTest extends AbstractControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(1))))
-                .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(45))));
+                .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(84900))));
     }
 
     @Test
@@ -88,7 +92,7 @@ public class CartControllerTest extends AbstractControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(request().sessionAttribute("cart", hasProperty("orders", hasSize(1))))
-                .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(45))));
+                .andExpect(request().sessionAttribute("cart", hasProperty("totalPrice", is(99000))));
     }
 
     @Test
@@ -127,13 +131,11 @@ public class CartControllerTest extends AbstractControllerTest {
     @Test
     public void checkoutData() throws Exception {
         Client client = Client.createSimple();
-        client.setId(1L);
-
-        Cart cart = new Cart();
+        clientService.save(client);
 
         mockMvc.perform(post("/cart/checkout")
                 .sessionAttr("client", client)
-                .sessionAttr("cart", cart)
+                .sessionAttr("cart", new Cart())
                 .param("shippingAddress", "test")
         )
                 .andDo(print())

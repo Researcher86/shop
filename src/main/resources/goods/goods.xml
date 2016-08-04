@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <categories>
+        <category title="Ноутбуки">
+            <goods title="Lenovo IdeaPad 100 15IBY Black" price="84900"
+                   description="Celeron Dual Core N2840 2160 Mhz / 15.6 / 1366x768 / 2 Gb / 500Gb / DVD-RW/ Intel UMA HD / Wi-Fi / Bluetooth / Win 10"
+                   image="goods/img/notebook/lenovo-ideapad-100-15iby-black.jpg"
+            />
+            <goods title="ASUS X540SA-XX012T Brown-Gold" price="84900"
+                   description="Celeron N6050 1600 Mhz / 15.6 / 1366x768 / 2Gb / 500Gb / Intel HD Graphics / Wi-Fi / Bluetooth / Win10"
+                   image="goods/img/notebook/asus-x540sa-xx012t-brown-gold.jpg"
+            />
+            <goods title="Lenovo IdeaPad 100 15 80MJ00L8RK Black" price="99000"
+                   description="Celeron N2840 2160 Mhz / 15.6 / 1366x768 / 4 Gb / 500Gb / DVD-RW/ Intel HD Graphics / Wi-Fi / Bluetooth / Win 10"
+                   image="goods/img/notebook/lenovo-ideapad-100-15-80mj00l8rk-black.jpg"
+            />
+            <goods title="Apple MacBook Pro with Retina display MF839RS Silver" price="489000"
+                   description="Core i5 2700 Mhz / 13.3 / 2560x1600 / 8.0Gb / 128Gb / DVD нет / Intel Iris Graphics / Wi-Fi / Bluetooth / MacOS X"
+                   image="goods/img/notebook/apple-macbook-pro-with-retina-display-mf839rs-silver.jpg"
+            />
+            <goods title="Nextbook MT1015 Black" price="59990"
+                   description="Intel Atom Z3735G 1800 Mhz / 10.1 / 1280 x 800 / 2 Gb / 64Gb SSD / Intel HD Graphics / Wi-Fi / Bluetooth / Win 10"
+                   image="goods/img/notebook/nextbook-mt1015-black.jpg"
+            />
+            <goods title="Apple MacBook Early 2015 Gold" price="550900"
+                   description="Core M 1100 Mhz / 12.0 / 2304x1440 / 8.0Gb / 256Gb SSD / DVD нет / Intel HD Graphics 5300 / Wi-Fi / Bluetooth / MacOS X"
+                   image="goods/img/notebook/apple-macbook-early-2015-gold.png"
+            />
+            <goods title="ASUS X540SA-XX079D Gray" price="94900"
+                   description="ntel Pentium N3700 1600 Mhz / 15.6 / 1366x768 / 4Gb / 500Gb / Intel HD Graphics / Wi-Fi / Bluetooth / DOS"
+                   image="goods/img/notebook/asus-x540sa-xx079d-gray.jpg"
+            />
+            <goods title="Apple MacBook Air A1466 MJVE2RS Silver" price="423900"
+                   description="Core i5 1600Mhz / 13.3 / 1440x900 / 4Gb / 128Gb / Intel HD Graphics / Wi-Fi / Bluetooth / Mac OS"
+                   image="goods/img/notebook/apple-macbook-air-a1466-mjve2rs-silver.jpg"
+            />
+            <goods title="HP PAVILION 11-k000ur x360 Silver" price="124900"
+                   description="Celeron N3050 1600 MHz/11.6/1366x768/4.0Gb/500Gb/DVD нет/Intel HD Graphics 5500/Wi-Fi/Bluetooth/Win 8.1"
+                   image="goods/img/notebook/hp-pavilion-11-k000ur-x360-silver.jpg"
+            />
+            <goods title="Apple MacBook Air 13 Early 2015 MJVE2 Silver" price="380000"
+                   description="Core i5 1600 Mhz / 13.3 / 1440x900 / 4.0Gb / 128Gb / DVD нет / Intel HD Graphics 6000 / Wi-Fi / Bluetooth / MacOS X"
+                   image="goods/img/notebook/apple-macbook-air-13-early-2015-mjve2-silver.jpg"
+            />
+            <goods title="ASUS X540LA-XX013T Gold - Black" price="138400"
+                   description="Intel Core i3 1700 Mhz / 15.6 / 1366x768 / 4Gb / 500Gb / Intel HD Graphics / Wi-Fi / Bluetooth / Win10"
+                   image="goods/img/notebook/asus-x540la-xx013t-gold-black.jpg"
+            />
+            <goods title="Apple MacBook Pro with Retina display MJLQ2RS/A Silver" price="830900"
+                   description="Intel Core i7 4770HQ 2200 Mhz / 15.4 / 2880×1800 / 16.0Gb / 256Gb SSD / Intel Iris Pro Graphics / Wi-Fi / MacOS X"
+                   image="goods/img/notebook/apple-macbook-pro-with-retina-display-mjlq2rs-a-silver.jpg"
+            />
+        </category>
+        <category title="Планшеты">
+            <goods title="NextTab B5230 Black" price="24900"
+                   description="- 7 дюйм, 1024х600;
+                                - Android 5.1;
+                                - Процессор: 4 ядра;
+                                - Внутренняя память 8 Гб;
+                                - Мобильная связь: 3G, LTE;
+                                - Цвет черный."
+                   image="goods/img/tablets/nexttab-b5230-black.jpg"
+            />
+            <goods title="Samsung Galaxy Tab3 Lite Plus SM-T113 White" price="35900"
+                   description="- 7 дюйм, 1024x600;
+                                - Android;
+                                - Процессор: 4 ядра;
+                                - Внутренняя память 8 Гб;
+                                - Цвет белый."
+                   image="goods/img/tablets/samsung-galaxy-tab3-lite-plus-sm-t113-white.jpg"
+            />
+            <goods title="Samsung Galaxy Tab 3 7.0 Lite SM-T116 8Gb Black" price="52000"
+                   description="- 7 дюйм, 1024x600;
+                                - Android;
+                                - Процессор: 4 ядра;
+                                - Внутренняя память 8 Гб;
+                                - Мобильная связь: 3G;
+                                - Цвет черный."
+                   image="goods/img/tablets/samsung-galaxy-tab-3-7-0-lite-sm-t116-8gb-black.jpg"
+            />
+            <goods title="Apple iPad Air 2 64Gb Wi-Fi + Cellular Space Gray" price="263000"
+                   description="- 9.7 дюйм, 2048x1536;
+                                - iOS;
+                                - Процессор: 3 ядра;
+                                - Внутренняя память 64 Гб;
+                                - Мобильная связь: 3G, LTE (4G), EDGE, GPRS, GSM1800, GSM1900, GSM900, HSCSD, HSDPA, HSPA+, HSUPA;
+                                - Цвет серый."
+                   image="goods/img/tablets/apple-ipad-air-2-64gb-wi-fi-cellular-space-gray.jpg"
+            />
+            <goods title="Samsung Galaxy Tab 3 7.0 Lite SM-T116 8Gb White" price="59000"
+                   description="- 7 дюйм, 1024x600;
+                                - Android;
+                                - Процессор: 4 ядра;
+                                - Внутренняя память 8 Гб;
+                                - Мобильная связь: 3G;
+                                - Цвет белый."
+                   image="goods/img/tablets/samsung-galaxy-tab-3-7-0-lite-sm-t116-8gb-white.jpg"
+            />
+            <goods title="Samsung Galaxy Tab A 7.0 SM-T285 8Gb LTE Black" price="63826"
+                   description="- 7 дюйм, 1280x800;
+                                - Android 5.1;
+                                - Процессор: 4 ядра;
+                                - Внутренняя память 8 Гб;
+                                - Мобильная связь: 3G, LTE (4G), GSM1800, GSM1900, GSM900, GSM850;
+                                - Цвет черный."
+                   image="goods/img/tablets/samsung-galaxy-tab-a-7-0-sm-t285-8gb-lte-black.jpg"
+            />
+            <goods title="Apple iPad Pro 128Gb Wi-Fi + Cellular Space Gray" price="379000"
+                   description="- 12.9 дюйм;
+                                - iOS;
+                                - Внутренняя память 128 Гб;
+                                - Мобильная связь: 3G, LTE (4G), EDGE, GPRS, GSM1800, GSM1900, GSM900, HSCSD, HSDPA, HSPA+, HSUPA;
+                                - Цвет серый."
+                   image="goods/img/tablets/apple-ipad-pro-128gb-wi-fi-cellular-space-gray.jpg"
+            />
+            <goods title="Samsung Galaxy Tab E 9.6 SM-T561 8Gb Black" price="70700"
+                   description="- 9.6 дюйм, 1280x800;
+                                - Android;
+                                - Процессор: 4 ядра;
+                                - Внутренняя память 8 Гб;
+                                - Мобильная связь: 3G;
+                                - Цвет черный."
+                   image="goods/img/tablets/samsung-galaxy-tab-e-9-6-sm-t561-8gb-black.jpg"
+            />
+            <goods title="ASUS ZenPad C 7.0 Z170CG 8Gb Black" price="39820"
+                   description="- 7 дюйм, 1024x600;
+                                - Android 5.0;
+                                - Процессор: 4 ядра;
+                                - Внутренняя память 8 Гб;
+                                - Мобильная связь: 3G, EDGE, GSM1800, GSM1900, GSM900;
+                                - Цвет черный."
+                   image="goods/img/tablets/asus-zenpad-c-7-0-z170cg-8gb-black.jpg"
+            />
+            <goods title="NextTab A3310 Black" price="16900"
+                   description="- планшет;
+                                - Android 5.1 Lollipop;
+                                - 7 дюйм, 1024x600;
+                                - размер встроенной памяти 8 Гб;
+                                - цвет черный."
+                   image="goods/img/tablets/nexttab-a3310-black-1200783-1.jpg"
+            />
+            <goods title="Apple iPad Pro 128Gb Wi-Fi + Cellular Silver" price="369000"
+                   description="- 12.9 дюйм;
+                                - iOS;
+                                - Внутренняя память 128 Гб;
+                                - Мобильная связь: 3G, LTE (4G), EDGE, GPRS, GSM1800, GSM1900, GSM900, HSCSD, HSDPA, HSPA+, HSUPA;
+                                - Цвет серебристый."
+                   image="goods/img/tablets/apple-ipad-pro-128gb-wi-fi-cellular-silver-1200829-1.jpg"
+            />
+            <goods title="NextTab B5210 Black" price="21900"
+                   description="- 7 дюйм, 1024х600;
+                                - Android 5.0;
+                                - Процессор: 4 ядра;
+                                - Внутренняя память 8 Гб;
+                                - Мобильная связь: 3G;
+                                - Цвет черный."
+                   image="goods/img/tablets/nexttab-b5210-black-1200789-1.jpg"
+            />
+        </category>
+        <category title="Настольные компьютеры">
+            <goods title="Apple iMac A1419 with Retina 5k display MF886RS Silver" price="940000"
+                   description="Core i5 3500 Mhz/27/5120x2880/8Gb/1000Gb/AMD Radeon R9 M290X/Wi-Fi/Bluetooth/MacOS X"
+                   image="goods/img/desktop/apple-imac-a1419-mf886rs-silver-1400150-1.jpg"
+            />
+            <goods title="Apple iMac A1419 MK482RU Silver" price="998900"
+                   description="Intel Core i5 3300 Mhz / 27 / 5120x2880 / 8.0Gb / 2000Gb / AMD Radeon R9 M395 / Wi-Fi / Bluetooth / Mac OS X"
+                   image="goods/img/desktop/apple-imac-a1419-mk482ru-silver-1400549-1.jpg"
+            />
+            <goods title="Apple iMac A1419 MK462RU Silver" price="780900"
+                   description="Intel Core i5 3200 Mhz / 27 / 5120x2880 / 8.0Gb / 1000Gb / AMD Radeon R9 M380 / Wi-Fi / Bluetooth / Mac OS X"
+                   image="goods/img/desktop/apple-imac-a1419-mk462ru-silver-1400536-1.jpg"
+            />
+            <goods title="Apple iMac 21,5 ME087 White" price="699900"
+                   description="Веб-камера FaceTime HD, Wi-Fi 802.11 b/g/n/ac, Bluetooth 4.0"
+                   image="goods/img/desktop/apple-imac-21-5-me087-white-1400018-1.jpg"
+            />
+            <goods title="Apple iMac A1418 MK142RU Silver" price="465900"
+                   description="Intel Core i5 1600 Mhz / 21.5 / 1920x1080 / 8.0Gb / 1000Gb / Intel HD Graphics / Wi-Fi / Bluetooth / Mac OS X"
+                   image="goods/img/desktop/apple-imac-a1418-mk142ru-silver-1400539-1.jpg"
+            />
+            <goods title="HP Pavilion 23-q061ur M2B60EA Silver" price="432306"
+                   description="Core i5 4460T 1900 Mhz / 23 / 1920x1080 / 8Gb / 1000Gb / DVD-RW / AMD Radeon R7 360 / Wi-Fi / Bluetooth / Win 8.1"
+                   image="goods/img/desktop/hp-pavilion-23-q061ur-m2b60ea-silver-1400393-1.jpg"
+            />
+            <goods title="Apple iMac A1419 Z0PG00RXE Silver" price="899900"
+                   description="Core i5 3400 Mhz/27/2560x1440/16.0Gb/1000Gb/NVIDIA GeForce GTX 780M/Wi-Fi/Bluetooth/MacOS X"
+                   image="goods/img/desktop/apple-imac-a1419-z0pg00rxe-silver-1400164-1.jpg"
+            />
+            <goods title="Lenovo B750 57329837 Black" price="589900"
+                   description="Core i5 4460 3200 Mhz/29/2560x1080/6.0Gb/1008Gb/DVD-RW/NVIDIA GeForce GTX 760A/Wi-Fi/Bluetooth/Win 8 64"
+                   image="goods/img/desktop/lenovo-b750-57329837-black-1400137-1.jpg"
+            />
+            <goods title="Acer Aspire Z1-612 DQ.B2NMC.003 White" price="137990"
+                   description="Intel Celeron N3050 2400 MHz / 19.5 / 1600x900 / 2.0Gb / 500Gb / DVD-RW / Intel HD Graphics / Wi-Fi / Bluetooth / Win 10 Home"
+                   image="goods/img/desktop/acer-aspire-z1-612-dq-b2nmc-003-white-1400849-1.jpg"
+            />
+            <goods title="Apple iMac A1418 MK452RU Silver" price="643900"
+                   description="Intel Core i5 3100 Mhz / 21.5 / 4096х2304 / 8.0Gb / 1000Gb / Intel Iris Pro / Wi-Fi / Bluetooth / Mac OS X"
+                   image="goods/img/desktop/apple-imac-a1418-mk452ru-silver-1400535-1.jpg"
+            />
+            <goods title="HP All-in-One 20-r011ur (N1Z80EA) Black" price="169900"
+                   description="E1-6015 1400 Mhz / 19.5 / 1600x900 / 4.0Gb / 1000Gb / DVD-RW / AMD Radeon R2 / Wi-Fi / Win 8"
+                   image="goods/img/desktop/hp-all-in-one-20-r011ur-n1z80ea-black-1400320-1.jpg"
+            />
+            <goods title="Apple iMac A1418 MK442RU Silver" price="557900"
+                   description="Intel Core i5 2800 Mhz / 21.5 / 1920x1080 / 8.0Gb / 1000Gb / Intel Iris Pro / Wi-Fi / Bluetooth / Mac OS X"
+                   image="goods/img/desktop/apple-imac-a1418-mk442ru-silver-1400533-1.jpg"
+            />
+        </category>
+    </categories>
+</root>

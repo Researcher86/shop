@@ -19,7 +19,7 @@ public class ReadResourceFile {
     public static byte[] read(String fileName) {
         File file;
         try {
-            file = ResourceUtils.getFile("classpath:img/" + fileName);
+            file = ResourceUtils.getFile("classpath:" + fileName);
             return Files.readAllBytes(file.toPath());
         } catch (FileNotFoundException e) {
             LOG.error("File not found", e);

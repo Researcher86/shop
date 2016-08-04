@@ -1,5 +1,6 @@
 package com.tanat.shop.model;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -24,6 +25,7 @@ public class Goods {
     private Integer price;
 
     @NotBlank(message = "Укажите краткое описание товара")
+    @Length(max = 10000)
     private String description;
 
     @NotNull(message = "Некорректно указана категоря товара")

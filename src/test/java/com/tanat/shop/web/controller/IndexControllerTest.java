@@ -90,6 +90,6 @@ public class IndexControllerTest extends AbstractControllerTest {
                 .andExpect(view().name("index/template"))
                 .andExpect(model().attributeExists("content"))
                 .andExpect(model().attributeExists("categories"))
-                .andExpect(model().attribute("goodsList", hasSize(1)));
+                .andExpect(model().attribute("goodsList", hasSize(5)));
     }
 }

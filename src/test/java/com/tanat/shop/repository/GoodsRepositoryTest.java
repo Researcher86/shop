@@ -73,7 +73,7 @@ public class GoodsRepositoryTest extends AbstractRepositoryTest {
 
     @Test
     public void testAddImage() throws Exception {
-        Image image = Image.load("bumaga.png");
+        Image image = Image.load("goods/img/desktop/acer-aspire-z1-612-dq-b2nmc-003-white-1400849-1.jpg");
         goods.setImage(image);
 
         goodsRepository.saveAndFlush(goods);

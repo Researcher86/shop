@@ -1,14 +1,23 @@
 package com.tanat.shop.util;
 
 import com.tanat.shop.model.*;
-import com.tanat.shop.repository.CartRepository;
-import com.tanat.shop.repository.CategoryRepository;
-import com.tanat.shop.repository.ClientRepository;
-import com.tanat.shop.repository.GoodsRepository;
+import com.tanat.shop.service.CartService;
+import com.tanat.shop.service.CategoryService;
+import com.tanat.shop.service.ClientService;
+import com.tanat.shop.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ResourceUtils;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import javax.annotation.PostConstruct;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 
 /**
  * Компонент для иницыализации БД
@@ -16,68 +25,93 @@ import javax.annotation.PostConstruct;
  */
 @Component
 public class InitDatabase {
-    private final CategoryRepository categoryRepository;
+    private final CategoryService categoryService;
 
-    private final GoodsRepository goodsRepository;
+    private final GoodsService goodsService;
 
-    private final ClientRepository clientRepository;
+    private final ClientService clientService;
 
-    private final CartRepository cartRepository;
+    private final CartService cartService;
 
     @Autowired
-    public InitDatabase(CartRepository cartRepository, ClientRepository clientRepository, CategoryRepository categoryRepository, GoodsRepository goodsRepository) {
-        this.cartRepository = cartRepository;
-        this.clientRepository = clientRepository;
-        this.categoryRepository = categoryRepository;
-        this.goodsRepository = goodsRepository;
+    public InitDatabase(CategoryService categoryService, GoodsService goodsService, ClientService clientService, CartService cartService) {
+        this.categoryService = categoryService;
+        this.goodsService = goodsService;
+        this.clientService = clientService;
+        this.cartService = cartService;
     }
 
+
     @PostConstruct
-    public void init() throws InterruptedException {
+    public void init() throws InterruptedException, ParserConfigurationException, IOException, SAXException {
         Client client = new Client("Test", "Test", "Test", "test@test.com", "test");
-        clientRepository.saveAndFlush(client);
+        clientService.save(client);
 
-        Category category2 = new Category("Ручка");
-        categoryRepository.saveAndFlush(category2);
+        loadGoodsFromXml();
 
-        Goods goods = new Goods("Ручка", 5, "Обычная", Image.load("pencel.jpg"));
-        goods.setCategory(category2);
-        goods.addComments(new Comment("Text comment", client));
-        goods.addComments(new Comment("Text comment2", client));
-        goodsRepository.saveAndFlush(goods);
+        addCommentForGoods(client);
+    }
 
-        category2 = new Category("Дырокол");
-        categoryRepository.saveAndFlush(category2);
+    private void addCommentForGoods(Client client) {
+        Comment comment1 = new Comment("Достоинства:  Цена и качество соответствует товару. Нареканий никаких нет, работает машинка на ура. Рекомендую.\n" +
+                                       "Недостатки: Не выявил. Не люблю китайскую технику, но тут рискнул и не прогадал.\n" +
+                                       "Товар приобретался в компании Юлмарт.Заказ пришел очень быстро, не разобрался до конца с системой такса, какая скидка? " +
+                                       "пол таксы? Не совсем понятно, единственное что понятно надо заплатить за эту скидку, а так опять же все устроило. " +
+                                       "Товар новый, придраться не к чему.", client);
 
-        goods = new Goods("Дырокол", 45, "Обычный", Image.load("dirakol.jpg"));
-        goods.setCategory(category2);
-        goodsRepository.saveAndFlush(goods);
+        Comment comment2 = new Comment("Достоинства:  Тонкий, легкий. Клавиатура приятная. Пластик корпуса хороший.\n" +
+                                        "Недостатки: " +
+                                        "1. Кнопка включения на левом торце снизу. да как можно было такое придумать? чтобы просто ноут подвинуть приходится следить чтоб случайно не нажать.\n" +
+                                        "2. Гнездо зарядки ровно по центру. дико неудобно как по мне.\n" +
+                                        "3. Углы обзора по вертикали ужасные. Яркость экрана низкая.\n" +
+                                        "4. Расположение кнопок на дополнительной цифровой клавиатуре вызывает удивление. лучше бы вообще не делали ее.\n" +
+                                        "5. Touchpad маленький, жесты понимает плоховато. \n" +
+                                        "6. Дисковод. Кнопка большая, нажимается при каждом удобном случае. Да и вообще непонятно для чего дисковод нужен в настоящее время. Атавизм.", client);
+        comment1.setActive(true);
+        comment2.setActive(true);
 
+        goodsService.addCommentForGoods(comment1, 1L);
+        goodsService.addCommentForGoods(comment2, 1L);
+    }
 
-        category2 = new Category("Карандаш");
-        categoryRepository.saveAndFlush(category2);
+    private void loadGoodsFromXml() throws ParserConfigurationException, SAXException, IOException {
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        dbf.setValidating(false); // не делать проверку валидации
+        DocumentBuilder db = dbf.newDocumentBuilder();
+        Document doc = db.parse(ResourceUtils.getFile("classpath:goods/goods.xml"));
 
-        goods = new Goods("Карандаш", 45, "Обычный", Image.load("karandash.jpg"));
-        goods.setCategory(category2);
-        goodsRepository.saveAndFlush(goods);
+        NodeList categoryList = doc.getDocumentElement().getChildNodes().item(1).getChildNodes();
 
+        for (int i = 0; i < categoryList.getLength(); i++) {
 
-        category2 = new Category("Бумага");
-        categoryRepository.saveAndFlush(category2);
+            if (categoryList.item(i) instanceof Element) {
+                Element elementCategory = (Element) categoryList.item(i);
 
-        goods = new Goods("Бумага", 45, "Обычная", Image.load("bumaga.png"));
-        goods.setCategory(category2);
-        goodsRepository.saveAndFlush(goods);
+                Category category = new Category(elementCategory.getAttributes().getNamedItem("title").getNodeValue());
+                categoryService.save(category);
 
-        categoryRepository.saveAndFlush(new Category("Линейка"));
-        categoryRepository.saveAndFlush(new Category("Папка"));
+                NodeList goodsList = elementCategory.getChildNodes();
+                for (int j = 0; j < goodsList.getLength(); j++) {
 
+                    if (goodsList.item(j) instanceof Element) {
+                        Element elementGoods = (Element) goodsList.item(j);
 
-        Cart cart = new Cart(client);
-        cart.addOrder(goods, 10);
-        cart.addOrder(goods, 1);
-        cart.setShippingAddress("Дощанова 133б");
+                        String title = elementGoods.getAttributes().getNamedItem("title").getNodeValue();
+                        int price = Integer.parseInt(elementGoods.getAttributes().getNamedItem("price").getNodeValue());
+                        String description = elementGoods.getAttributes().getNamedItem("description").getNodeValue();
+                        Image image = Image.load(elementGoods.getAttributes().getNamedItem("image").getNodeValue());
 
-        cartRepository.saveAndFlush(cart);
+                        Goods goods = new Goods(title,
+                                price,
+                                description,
+                                image);
+
+                        goods.setCategory(category);
+
+                        goodsService.save(goods);
+                    }
+                }
+            }
+        }
     }
 }

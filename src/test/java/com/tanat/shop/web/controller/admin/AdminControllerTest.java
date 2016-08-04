@@ -52,14 +52,17 @@ public class AdminControllerTest extends AbstractControllerTest {
         Category category = categoryService.getById(1L);
 
         assertEquals("Test", category.getName());
-        assertEquals(1, category.getGoodsList().size());
+        assertEquals(12, category.getGoodsList().size());
     }
 
     @Test(expected = AppException.class)
     public void deleteCategoryEmptyGoodsList() throws Exception {
-        mockMvc.perform(delete("/admin/categories/5")).andDo(print()).andExpect(status().isOk());
+        Category category = new Category("Test");
+        categoryService.save(category);
 
-        categoryService.getById(5L);
+        mockMvc.perform(delete("/admin/categories/" + category.getId())).andDo(print()).andExpect(status().isOk());
+
+        categoryService.getById(category.getId());
     }
 
     @Test

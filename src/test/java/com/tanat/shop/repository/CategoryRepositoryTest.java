@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  */
 public class CategoryRepositoryTest extends AbstractRepositoryTest {
 
-    private static final String CATEGORY_NAME = "Канцтовары";
+    private static final String CATEGORY_NAME = "Test";
 
     @Autowired
     private CategoryRepository categoryRepository;
@@ -54,16 +54,5 @@ public class CategoryRepositoryTest extends AbstractRepositoryTest {
         categoryRepository.delete(category);
 
         assertNull(categoryRepository.findOne(category.getId()));
-    }
-
-    @Test(expected = AppException.class)
-    public void testDeleteWithGoods() throws Exception {
-        category.addGoods(goods);
-
-        goodsRepository.saveAndFlush(goods);
-        categoryRepository.saveAndFlush(category);
-        categoryRepository.delete(category);
-
-        fail();
     }
 }
