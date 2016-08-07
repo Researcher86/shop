@@ -70,7 +70,7 @@
 
 <footer>
     <div class="container">
-        E-Shop 2015
+        E-Shop 2015-2016
     </div>
 </footer>
 

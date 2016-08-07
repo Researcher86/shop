@@ -5,14 +5,14 @@
 
 <div class="col-xs-3 goodsCatalog">
 
-    <div class="panel panel-danger">
-        <div class="panel-heading"><i class="glyphicon glyphicon-filter"></i> Фильтр</div>
-        <div class="panel-body">
-            <div class="list-group">
+    <%--<div class="panel panel-danger">--%>
+        <%--<div class="panel-heading"><i class="glyphicon glyphicon-filter"></i> Фильтр</div>--%>
+        <%--<div class="panel-body">--%>
+            <%--<div class="list-group">--%>
 
-            </div>
-        </div>
-    </div>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
 
     <div class="panel panel-danger">
         <div class="panel-heading"><i class="glyphicon glyphicon-list-alt"></i> Категории</div>

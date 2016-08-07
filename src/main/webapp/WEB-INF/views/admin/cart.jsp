@@ -31,18 +31,18 @@
                 <img src="data:image/${order.goods.image.ext};base64,${order.goods.image.base64}" height="30" border="0" alt="">
             </td>
             <td class="text-left">${order.goods.name}</td>
-            <td>${order.goods.price}</td>
+            <td>${order.goods.price} т</td>
             <td style="width: 120px">
                 ${order.amount}
             </td>
-            <td>${order.totalPrice}</td>
+            <td>${order.totalPrice} т</td>
         </tr>
     </c:forEach>
 
     <tr class="warning">
         <td colspan="4"></td>
         <td><strong>К оплате:</strong></td>
-        <td><strong>${cart.totalPrice}</strong></td>
+        <td><strong>${cart.totalPrice} т</strong></td>
     </tr>
 </table>
 
