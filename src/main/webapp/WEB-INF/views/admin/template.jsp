@@ -41,7 +41,7 @@
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
-            <form action="<c:url value="/admin/logout"/>" method="post" id="logoutForm">
+            <form action="<c:url value="/admin/logout"/>" method="post" id="logoutForm" style="display: none">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
             <ul class="nav navbar-nav navbar-right">
