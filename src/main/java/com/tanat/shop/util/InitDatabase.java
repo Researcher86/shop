@@ -20,7 +20,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 
 /**
- * Компонент для иницыализации БД
+ * Компонент для инициализации БД
  * Created by Tanat on 16.11.2015.
  */
 @Component
@@ -31,14 +31,11 @@ public class InitDatabase {
 
     private final ClientService clientService;
 
-    private final CartService cartService;
-
     @Autowired
-    public InitDatabase(CategoryService categoryService, GoodsService goodsService, ClientService clientService, CartService cartService) {
+    public InitDatabase(CategoryService categoryService, GoodsService goodsService, ClientService clientService) {
         this.categoryService = categoryService;
         this.goodsService = goodsService;
         this.clientService = clientService;
-        this.cartService = cartService;
     }
 
 
